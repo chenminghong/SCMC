@@ -32,7 +32,6 @@
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (weak, nonatomic) IBOutlet UIView *selectView;
-
 @property (nonatomic, strong) UIButton *selectedBtn;  //已经选中的Button
 
 @property (nonatomic, strong) UIView *markView; //按钮标记view
@@ -49,7 +48,7 @@
 
 - (UIView *)markView {
     if (!_markView) {
-        self.markView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth / 6.0 - 30.0, CGRectGetMaxY(self.selectView.bounds) - 2, 60.0, 2)];
+        self.markView = [[UIView alloc] initWithFrame:CGRectMake(0.0, CGRectGetMaxY(self.selectView.bounds) - 2, kScreenWidth / 4.0, 2)];
         self.markView.backgroundColor = MAIN_THEME_COLOR;
     }
     return _markView;
@@ -62,14 +61,14 @@
     self.view.backgroundColor = UIColorFromRGB(0xCBC9C7);
     
     //初始化刷新标识
-    self.reloadFlags = [NSMutableArray arrayWithArray:@[@1, @1, @1]];
+    self.reloadFlags = [NSMutableArray arrayWithArray:@[@1, @1, @1, @1]];
     
     self.collectionView.pagingEnabled = YES;
     [self.selectView addSubview:self.markView];
     
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     
-    for (NSInteger i = 0; i < 3; i++) {
+    for (NSInteger i = 0; i < 4; i++) {
         UIButton *btn = (UIButton *)[self.selectView viewWithTag:(100 + i)];
         [btn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
         [btn setTitleColor:MAIN_THEME_COLOR forState:UIControlStateSelected];
@@ -107,7 +106,7 @@
 
 - (void)resetMarkViewPositionWithIndex:(NSInteger)index {
     [UIView animateWithDuration:0.2 animations:^{
-        self.markView.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.selectView.bounds) * index / 3, 0.0);
+        self.markView.transform = CGAffineTransformMakeTranslation(CGRectGetWidth(self.selectView.bounds) * index / 4.0, 0.0);
     }];
 }
 
@@ -283,7 +282,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

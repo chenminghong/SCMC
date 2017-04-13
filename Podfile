@@ -15,6 +15,7 @@ pod 'TZImagePickerController', '~> 1.7.8'
 pod 'BaiduMobStat', '~> 4.3.0'
 pod 'SAMKeychain', '~> 1.5.2'
 pod 'XHVersion', '~> 1.0.1'
+pod 'JPush', '~> 3.0.2'
 
 
 

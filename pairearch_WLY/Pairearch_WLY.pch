@@ -37,11 +37,11 @@
 #import "RootTabController.h"
 #import "OrderStatus.h"
 #import "OrderStatusManager.h"
-#import <UserNotifications/UserNotifications.h>
 #import "OrderStatusKABaseController.h"
 #import "BaseViewController.h"
 #import "SAMKeychainManager.h"
-
+#import "JPUSHService.h"
+#import <UserNotifications/UserNotifications.h>
 
 
 
@@ -56,6 +56,7 @@
 #define USER_ACCOUNT @"user_account"  //用户密码
 #define USER_INFO    @"user_info"     //用户信息
 #define APP_ID       @"1218642055"    //Apple ID
+#define JPUSH_APPKEY @"1535cdca2ca8a6157f06ccaa"  //极光推送SDK的APPKEY
 
 //适配
 #define kWidthProportion  ([UIScreen mainScreen].bounds.size.width / 375)

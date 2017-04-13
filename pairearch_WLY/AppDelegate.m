@@ -10,10 +10,9 @@
 
 #import "LoginViewController.h"
 #import "RootTabController.h"
-
 #import <XHVersion.h>
 
-@interface AppDelegate ()<UNUserNotificationCenterDelegate>
+@interface AppDelegate ()<UNUserNotificationCenterDelegate, JPUSHRegisterDelegate>
 
 @end
 
@@ -39,6 +38,9 @@
     
     //版本更新
     [self checkAppVersion];
+    
+    //初始化JPush
+    [self registerJpushWithOptions:launchOptions];
     
     return YES;
 }
@@ -115,6 +117,36 @@
     }];
 }
 
+
+/**
+ 注册JPush通知
+
+ @param launchOptions 登录参数
+ */
+- (void)registerJpushWithOptions:(NSDictionary *)launchOptions {
+    //Required
+    //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
+    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 可以添加自定义categories
+        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
+        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
+    }
+    [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
+    [JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY channel:@"APP Store" apsForProduction:0 advertisingIdentifier:nil];
+}
+
+#pragma mark -- JPushDelegate
+
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger options))completionHandler {
+    
+}
+
+- (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler {
+    
+}
+
 //网络变化通知
 - (void)netWorkDidChangeAction {
     AFNetworkReachabilityManager *manager = [AFNetworkReachabilityManager sharedManager];
@@ -130,7 +162,11 @@
     [manager startMonitoring];
 }
 
-//添加本地通知
+/**
+ 添加本地通知
+
+ @param desStr 本地通知显示文字描述
+ */
 - (void)addNetLocalNotificationWithDesStr:(NSString *)desStr {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
     UNMutableNotificationContent *content = [UNMutableNotificationContent new];
@@ -160,6 +196,15 @@
     
     //开始上传
     [statTracker startWithAppId:APP_KEY];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // Required - 注册 DeviceToken
+    [JPUSHService registerDeviceToken:deviceToken];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
 }
 
 
