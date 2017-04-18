@@ -42,6 +42,7 @@
 #import "SAMKeychainManager.h"
 #import "JPUSHService.h"
 #import <UserNotifications/UserNotifications.h>
+#import "LocationManager.h"
 
 
 

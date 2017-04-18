@@ -58,7 +58,7 @@
         self.userNameTF.iconName = @"usernumber";
         self.userNameTF.backgroundColor = [UIColor whiteColor];
         self.userNameTF.placeholder = @"手机号";
-        self.userNameTF.keyboardType = UIKeyboardTypeNumberPad;
+        self.userNameTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
         self.userNameTF.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.userNameTF.borderStyle = UITextBorderStyleBezel;
         self.userNameTF.returnKeyType = UIReturnKeyDone;
@@ -193,7 +193,6 @@
         if (completeBlock) {
             completeBlock();
         }
-        [[LocationUploadManager shareManager] stopTrace];
     }];
 }
 
@@ -252,10 +251,12 @@
         [hud hide:YES];
         if (!error) {
             MBProgressHUD *hud = [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL / 2.0];
-            [[LocationUploadManager shareManager] setEntityWithEntityName:[NSString stringWithFormat:@"%@_%@", [LoginModel shareLoginModel].name, [LoginModel shareLoginModel].tel]];
             [hud setCompletionBlock:^(){
                 [self hideLoginPage];
             }];
+            
+            //在后台给JPush设置别名
+            [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].tel];
         } else {
             NSString *message = error.userInfo[ERROR_MSG];
             [MBProgressHUD bwm_showTitle:message toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];

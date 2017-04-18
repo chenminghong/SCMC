@@ -42,6 +42,8 @@
     //初始化JPush
     [self registerJpushWithOptions:launchOptions];
     
+    [[LocationManager shareManager] startUpdateLocation];
+    
     return YES;
 }
 
@@ -87,7 +89,6 @@
                 [alertView addAction:cancel];
                 [alertView addAction:sure];
                 [self.window.rootViewController presentViewController:alertView animated:YES completion:nil];
-                NSLog(@"trackViewUrl=%@", trackViewUrl);
             }
         }
     } failure:nil];
@@ -124,15 +125,9 @@
  @param launchOptions 登录参数
  */
 - (void)registerJpushWithOptions:(NSDictionary *)launchOptions {
-    //Required
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
-    JPUSHRegisterEntity * entity = [[JPUSHRegisterEntity alloc] init];
+    JPUSHRegisterEntity *entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
-    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
-        // 可以添加自定义categories
-        // NSSet<UNNotificationCategory *> *categories for iOS10 or later
-        // NSSet<UIUserNotificationCategory *> *categories for iOS8 and iOS9
-    }
     [JPUSHService registerForRemoteNotificationConfig:entity delegate:self];
     [JPUSHService setupWithOption:launchOptions appKey:JPUSH_APPKEY channel:@"APP Store" apsForProduction:0 advertisingIdentifier:nil];
 }
@@ -144,6 +139,7 @@
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
+//前台通知
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger options))completionHandler {
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {

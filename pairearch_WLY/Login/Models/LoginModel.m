@@ -28,9 +28,6 @@
     if (userInfo) {
         [self setValuesForKeysWithDictionary:userInfo];
     }
-    if (self.name && self.tel) {
-        [[LocationUploadManager shareManager] setEntityWithEntityName:[NSString stringWithFormat:@"%@_%@", [LoginModel shareLoginModel].name, [LoginModel shareLoginModel].tel]];
-    }
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key {
@@ -44,10 +41,6 @@
     
 }
 
-- (void)setTel:(NSString *)tel {
-    _tel = tel;
-    //开启定位上传
-}
 
 + (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
     return [[NetworkHelper shareClient] POST:USER_LOGIN_API parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
