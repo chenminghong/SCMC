@@ -148,6 +148,14 @@
     completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
 }
 
+
+/**
+ 前台接收通知
+
+ @param center 通知中心
+ @param response 通知回复
+ @param completionHandler 完成回调
+ */
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler {
     // Required
     NSDictionary * userInfo = response.notification.request.content.userInfo;
