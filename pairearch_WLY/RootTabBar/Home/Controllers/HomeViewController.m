@@ -10,14 +10,13 @@
 
 #import "LoginViewController.h"
 #import "PaomaLabel.h"
-#import "LatestNoticeInfoViewController.h"
 #import "WQLPaoMaView.h"
 #import "HomeTableCell.h"
 #import "HomePageModel.h"
+#import "StartTransportFooterView.h"
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIButton *safetyCheckBtn;
 @property (weak, nonatomic) IBOutlet UIButton *userIconBtn;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userNumberLabel;
@@ -27,9 +26,23 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) UILabel *headLabel;
+@property (weak, nonatomic) IBOutlet UIView *stateView;
 
-@property (nonatomic, strong) NSMutableArray *dataModelArr;
+@property (weak, nonatomic) IBOutlet UILabel *stateLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *topLineView;
+
+@property (weak, nonatomic) IBOutlet UIView *bottomView;
+
+@property (weak, nonatomic) IBOutlet UILabel *assortLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *assortDesLabel;
+
+@property (weak, nonatomic) IBOutlet UIView *bottomLineView;
+
+@property (nonatomic, strong) UIButton *stateButton;  //底部接单按钮
+
+@property (nonatomic, strong) HomePageModel *homePageModel;
 
 @end
 
@@ -40,15 +53,17 @@
     // Do any additional setup after loading the view.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.dataModelArr = [NSMutableArray array];
     
     [self.view addSubview:self.paoma];
     [self.view addSubview:self.tableView];
+    [self.view addSubview:self.stateButton];
+    [MJRefreshUtil pullDownRefresh:self andScrollView:self.tableView andAction:@selector(getHomePageData)];
     
-    self.safetyCheckBtn.layer.masksToBounds = YES;
-    self.safetyCheckBtn.layer.cornerRadius = 5.0;
-    self.safetyCheckBtn.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.safetyCheckBtn.layer.borderWidth = 0.5;
+    self.stateLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
+    self.topLineView.backgroundColor = MAIN_THEME_COLOR;
+    self.bottomLineView.backgroundColor = MAIN_THEME_COLOR;
+    self.assortLabel.layer.masksToBounds = YES;
+    self.assortLabel.layer.cornerRadius = CGRectGetWidth(self.assortLabel.bounds) / 2.0;
     
     self.userIconBtn.layer.masksToBounds = YES;
     self.userIconBtn.layer.cornerRadius = (kScreenWidth * 6) / 32 / 2.0;
@@ -62,8 +77,6 @@
     //从后台到前台开始动画
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActiveNotificationAction) name:UIApplicationWillEnterForegroundNotification object:nil];
     
-    //请求首页数据
-    [self getHomePageData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -75,11 +88,8 @@
     
     [self.paoma startAnimation];
     
-    //获取数据检查状态
-    [self getIsSafetyCheck];
-    
     //获取首页Data数据
-    [self getHomePageData];
+    [MJRefreshUtil begainRefresh:self.tableView];
     
 }
 
@@ -117,70 +127,52 @@
         self.tableView = [UITableView new];
         [self.view addSubview:self.tableView];
         [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self.paoma.mas_bottom);
+            make.top.equalTo(self.stateView.mas_bottom);
             make.left.equalTo(self.view.mas_left);
-            make.bottom.equalTo(self.view.mas_bottom);
+            make.bottom.equalTo(self.bottomView.mas_top);
             make.right.equalTo(self.view.mas_right);
         }];
+        self.tableView.showsVerticalScrollIndicator = NO;
         self.tableView.delegate = self;
         self.tableView.dataSource = self;
         self.tableView.tableFooterView = [UITableView new];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-        self.tableView.tableHeaderView = self.headLabel;
     }
     return _tableView;
 }
 
-- (UILabel *)headLabel {
-    if (!_headLabel) {
-        self.headLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 60.0)];
-        self.headLabel.textAlignment = NSTextAlignmentCenter;
-        self.headLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
-        self.headLabel.textColor = MAIN_THEME_COLOR;
-        self.headLabel.text = @"装货在途";
+- (UIButton *)stateButton {
+    if (!_stateButton) {
+        self.stateButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.stateButton.backgroundColor = MAIN_THEME_COLOR;
+        [self.stateButton setTitle:@"查看详情" forState:UIControlStateNormal];
+        self.stateButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        [self.view addSubview:self.stateButton];
+        [self.stateButton mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.mas_equalTo(self.view.mas_centerX);
+            make.bottom.mas_equalTo(self.bottomView.mas_top).with.offset(-10);
+            make.width.mas_equalTo(self.view.mas_width).dividedBy(3.0);
+            make.height.mas_equalTo(40);
+        }];
+        [self.stateButton addTarget:self action:@selector(getLoadAction:) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _headLabel;
+    return _stateButton;
 }
+
 
 #pragma mark -- Get Data
 
-//检查是否进行安全检查
-- (void)getIsSafetyCheck {
-    [[NetworkHelper shareClient] GET:DAFETY_CHECK_API parameters:@{@"driverTel":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *respondDict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-        NSInteger status = [respondDict[@"status"] integerValue];
-        if (status == 1) {
-            [self.safetyCheckBtn setTitle:@"安全检查" forState:UIControlStateNormal];
-        } else {
-            [self.safetyCheckBtn setTitle:@"安全检查！" forState:UIControlStateNormal];
-        }
-        //如果有感叹号，设置感叹号的颜色
-        if (self.safetyCheckBtn.currentTitle.length > 4) {
-            [self fuwenbenLabel:self.safetyCheckBtn.titleLabel FontNumber:self.safetyCheckBtn.titleLabel.font AndRange:NSMakeRange(4, 1) AndColor:[UIColor redColor]];
-        }
-    } failure:nil];
-}
-
 //获取首页Data数据
 - (void)getHomePageData {
-    [HomePageModel getDataWithParameters:@{@"driverTel":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
-        NSArray *modelArr = model;
-        if (modelArr.count) {
-            self.dataModelArr = [NSMutableArray arrayWithArray:model];
-        }
-        [self.tableView reloadData];
-        if (self.dataModelArr.count) {
-            HomePageModel *model = self.dataModelArr[0];
-            if ([model.type isEqualToString:@"unabsorbed"]) {
-                self.headLabel.text = @"新单提示";
-            } else if ([model.type isEqualToString:@"distribution"]) {
-                self.headLabel.text = @"装货在途";
-            } else {
-                self.headLabel.text = @"";
-            }
+    [HomePageModel getDataWithParameters:@{@"mobile":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+        if (!error) {
+            self.homePageModel = model;
         } else {
-            self.headLabel.text = @"";
+            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
+        self.assortDesLabel.text = [NSString stringWithFormat:@"您有%@个运单可抢", self.homePageModel.bidcount];
+        [self.tableView reloadData];
+        [MJRefreshUtil endRefresh:self.tableView];
     }];
 }
 
@@ -203,29 +195,56 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataModelArr.count;
+    return self.homePageModel.orderModel? 1:0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomePageModel *model = self.dataModelArr[indexPath.row];
-    CGFloat loadNameConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"负载单号：%@", model.CODE] width:(kScreenWidth - 85.0)  fontSize:16.0];
-    CGFloat toAddressConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"收货地址：%@", model.DC_ADDRESS] width:(kScreenWidth - 85.0)  fontSize:16.0];
-    CGFloat planTimeConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"预约装货时间：%@", model.PLAN_DELIVER_TIME] width:(kScreenWidth - 85.0)  fontSize:13.0];
-    CGFloat height = loadNameConstant + toAddressConstant + planTimeConstant + 45.0;
-    return height;
+//    HomePageModel *model = self.dataModelArr[indexPath.row];
+//    CGFloat loadNameConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"负载单号：%@", model.CODE] width:(kScreenWidth - 85.0)  fontSize:16.0];
+//    CGFloat toAddressConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"收货地址：%@", model.DC_ADDRESS] width:(kScreenWidth - 85.0)  fontSize:16.0];
+//    CGFloat planTimeConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"预约装货时间：%@", model.PLAN_DELIVER_TIME] width:(kScreenWidth - 85.0)  fontSize:13.0];
+//    CGFloat height = loadNameConstant + toAddressConstant + planTimeConstant + 45.0;
+//    return height;
+    return 150;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
-    cell.homeModel = self.dataModelArr[indexPath.row];
+//    cell.homeModel = self.homePageModel.orders[indexPath.row];
     return cell;
 }
 
 #pragma mark -- ButtonAction
 
+
+/**
+ 拨打电话按钮点击事件
+
+ @param sender 拨打电话点击的按钮
+ */
 - (IBAction)telePhoneAction:(UIButton *)sender {
     NSString *str=[NSString stringWithFormat:@"telprompt://%@", @"021-66188125"];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:str]];
+}
+
+
+/**
+ 查看详情按钮点击事件
+
+ @param sender 点击的按钮
+ */
+- (IBAction)detailButtonAction:(UIButton *)sender {
+    NSLog(@"订单详情");
+}
+
+
+/**
+ 接收运单按钮点击事件
+
+ @param sender 接收运单按钮
+ */
+- (void)getLoadAction:(UIButton *)sender {
+    
 }
 
 - (void)dealloc {

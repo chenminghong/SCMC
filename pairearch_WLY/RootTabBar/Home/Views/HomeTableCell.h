@@ -11,11 +11,15 @@
 @class HomePageModel;
 
 @interface HomeTableCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIView *separatorView;
-@property (weak, nonatomic) IBOutlet UILabel *assortLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *loadNumberLabel;
-@property (weak, nonatomic) IBOutlet UILabel *loadAddressLabel;
-@property (weak, nonatomic) IBOutlet UILabel *reservationTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *planLoadTimeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startAssortLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *startAddressLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endAssortLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *endAddressLabel;
 
 @property (nonatomic, strong) HomePageModel *homeModel;  //主页数据
 

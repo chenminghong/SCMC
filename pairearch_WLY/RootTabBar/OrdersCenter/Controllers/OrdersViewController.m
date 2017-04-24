@@ -1,22 +1,26 @@
 //
-//  NotificationCenterController.m
+//  OrdersViewController.m
 //  pairearch_WLY
 //
-//  Created by Leo on 2017/2/15.
+//  Created by Jean on 2017/4/24.
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
-#import "NotificationCenterController.h"
+#import "OrdersViewController.h"
 
-@interface NotificationCenterController ()
+@interface OrdersViewController ()
 
 @end
 
-@implementation NotificationCenterController
+@implementation OrdersViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    self.title = @"竞价中心";
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
