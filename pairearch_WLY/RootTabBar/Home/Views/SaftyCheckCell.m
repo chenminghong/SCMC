@@ -28,13 +28,10 @@
 
 - (void)setModel:(SafetyCheckModel *)model {
     _model = model;
-    self.statementLabel.text = [NSString stringWithFormat:@"%@", model.safetyStr];
-    if ([model.selected boolValue]) {
-        self.selectView.image = [UIImage imageNamed:@"xuanzekuang"];
-    } else {
-        self.selectView.image = [UIImage imageNamed:@"kongkuang"];
-    }
+    self.statementLabel.text = [NSString stringWithFormat:@"%@", model.des_title];
 }
+
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

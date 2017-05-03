@@ -21,8 +21,15 @@
 
 /*============================首页相关=============================*/
 
-//首页待接收数据
+//首页数据
 #define HOME_PAGE_DATA_API                @"loadFirstUnCheckOrder.a"        //get
+
+//首页订单详情数据
+#define LOAD_DETAIL_API                   @"oadOrderDetailById.a"           //get
+
+//接收运单
+#define GET_LOAD_API                      @"driverAcceptOrder.a"            //post
+
 
 //安全选项检查
 #define SAFETY_CONFIRMATION_API           @"safeVeriSave.a"                 //post

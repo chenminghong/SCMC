@@ -27,7 +27,6 @@
 //自定义头文件
 #import "NavigationController.h"
 #import "NetworkHelper.h"
-#import "LocationUploadManager.h"
 #import "BaseModel.h"
 #import "PaireachAPI.h"
 #import "MJRefreshUtil.h"
@@ -36,7 +35,6 @@
 #import "LoginModel.h"
 #import "RootTabController.h"
 #import "OrderStatus.h"
-#import "OrderStatusManager.h"
 #import "OrderStatusKABaseController.h"
 #import "BaseViewController.h"
 #import "SAMKeychainManager.h"

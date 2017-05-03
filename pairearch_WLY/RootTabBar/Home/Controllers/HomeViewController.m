@@ -13,7 +13,9 @@
 #import "WQLPaoMaView.h"
 #import "HomeTableCell.h"
 #import "HomePageModel.h"
-#import "StartTransportFooterView.h"
+#import "OrderStatus212Controller.h"
+#import "Mistake212Controller.h"
+
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -82,7 +84,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    self.navigationController.navigationBar.hidden = YES;
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
     self.userNameLabel.text = [LoginModel shareLoginModel].name;
     self.userNumberLabel.text = [LoginModel shareLoginModel].tel;
     
@@ -164,7 +166,7 @@
 
 //获取首页Data数据
 - (void)getHomePageData {
-    [HomePageModel getDataWithParameters:@{@"mobile":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+    [HomePageModel getDataWithUrl:HOME_PAGE_DATA_API parameters:@{@"mobile":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
         if (!error) {
             self.homePageModel = model;
         } else {
@@ -173,6 +175,11 @@
         self.assortDesLabel.text = [NSString stringWithFormat:@"您有%@个运单可抢", self.homePageModel.bidcount];
         [self.tableView reloadData];
         [MJRefreshUtil endRefresh:self.tableView];
+        if ([self.homePageModel.loadResult integerValue] == 0) {
+            [self.stateButton setTitle:@"暂无订单" forState:UIControlStateNormal];
+        } else {
+            [self.stateButton setTitle:@"点击查看详情" forState:UIControlStateNormal];
+        }
     }];
 }
 
@@ -199,18 +206,18 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    HomePageModel *model = self.dataModelArr[indexPath.row];
-//    CGFloat loadNameConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"负载单号：%@", model.CODE] width:(kScreenWidth - 85.0)  fontSize:16.0];
-//    CGFloat toAddressConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"收货地址：%@", model.DC_ADDRESS] width:(kScreenWidth - 85.0)  fontSize:16.0];
-//    CGFloat planTimeConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"预约装货时间：%@", model.PLAN_DELIVER_TIME] width:(kScreenWidth - 85.0)  fontSize:13.0];
-//    CGFloat height = loadNameConstant + toAddressConstant + planTimeConstant + 45.0;
-//    return height;
-    return 150;
+    HomePageModel *model = self.homePageModel.orderModel;
+    CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
+    CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
+    CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
+    CGFloat endDcAddConstant = [BaseModel heightForTextString:model.dcAddress width:(kScreenWidth - 85.0)  fontSize:13.0];
+    CGFloat height = startNameConstant + startAddConstant + endDcNameConstant + endDcAddConstant + 50.0 + 20;
+    return height < 130.0? 130.0:height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
-//    cell.homeModel = self.homePageModel.orders[indexPath.row];
+    cell.homeModel = self.homePageModel.orderModel;
     return cell;
 }
 
@@ -244,7 +251,17 @@
  @param sender 接收运单按钮
  */
 - (void)getLoadAction:(UIButton *)sender {
-    
+    if (!self.homePageModel) {
+        return;
+    }
+    if ([self.homePageModel.orderModel.status integerValue] == ORDER_STATUS_212) {
+        OrderStatus212Controller *orderVC = [OrderStatus212Controller new];
+        [self.navigationController pushViewController:orderVC animated:YES];
+    } else {
+        Mistake212Controller *mistake = [Mistake212Controller new];
+        mistake.status = self.homePageModel.orderModel.status;
+        [self.navigationController pushViewController:mistake animated:YES];
+    }
 }
 
 - (void)dealloc {

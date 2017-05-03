@@ -44,13 +44,13 @@
 - (void)setOrderModel:(OrderListModel *)orderModel {
     _orderModel = orderModel;
     
-    if (![orderModel.TRANSPORT_CODE isEqualToString:ORDER_TYPE_BACK]) {
-        [self.selectedBtn setImage:[UIImage imageNamed:@"xuanzekuang"] forState:UIControlStateSelected];
-        [self.selectedBtn setImage:[UIImage imageNamed:@"kongkuang"] forState:UIControlStateNormal];
-    } else {
-        [self.selectedBtn setImage:[UIImage imageNamed:@"xuanzekuang-back"] forState:UIControlStateSelected];
-        [self.selectedBtn setImage:[UIImage imageNamed:@"kongkuang-back"] forState:UIControlStateNormal];
-    }
+//    if (![orderModel.TRANSPORT_CODE isEqualToString:ORDER_TYPE_BACK]) {
+//        [self.selectedBtn setImage:[UIImage imageNamed:@"xuanzekuang"] forState:UIControlStateSelected];
+//        [self.selectedBtn setImage:[UIImage imageNamed:@"kongkuang"] forState:UIControlStateNormal];
+//    } else {
+//        [self.selectedBtn setImage:[UIImage imageNamed:@"xuanzekuang-back"] forState:UIControlStateSelected];
+//        [self.selectedBtn setImage:[UIImage imageNamed:@"kongkuang-back"] forState:UIControlStateNormal];
+//    }
     
     self.selectedBtn.userInteractionEnabled = NO;
     
@@ -69,7 +69,6 @@
     self.loadNameLabel.text = [NSString stringWithFormat:@"发货地名称：%@", orderModel.SOURCE_NAME];
     self.loadAddressLabel.text = [NSString stringWithFormat:@"发货地址：%@", orderModel.SOURCE_ADDR];
     self.reserveShiptimeLabel.text = [NSString stringWithFormat:@"预约发货时间：%@", orderModel.PLAN_DELIVER_TIME];
-    self.kaLabel.text = [OrderStatusManager getOrderTypeDesStringWithOrderTyoe:orderModel.TRANSPORT_CODE];
     self.stateLabel.text = [NSString stringWithFormat:@"%@", orderModel.STATUS_NAME];
     self.tonheavierLabel.text = [NSString stringWithFormat:@"货物吨重：%@", orderModel.TOTAL_WEIGHT];
     self.getNameLabel.text = [NSString stringWithFormat:@"收货地名称：%@", orderModel.DC_NAME];

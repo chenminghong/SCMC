@@ -58,16 +58,13 @@
 
 - (void)setHomeModel:(HomePageModel *)homeModel {
     _homeModel = homeModel;
-//    if ([homeModel.TRANSPORT_CODE isEqualToString:ORDER_TYPE_KA]) {
-//        self.assortLabel.text = @"KA";
-//    } else if ([homeModel.TRANSPORT_CODE isEqualToString:ORDER_TYPE_BACK]) {
-//        self.assortLabel.text = @"回";
-//    } else if ([homeModel.TRANSPORT_CODE isEqualToString:ORDER_TYPE_COMMON]) {
-//        self.assortLabel.text = @"常";
-//    }
-//    
-//    self.loadNumberLabel.text = [NSString stringWithFormat:@"负载单号：%@", homeModel.CODE];
-//    self.loadAddressLabel.text = [NSString stringWithFormat:@"收货地址：%@", homeModel.DC_ADDRESS];
+
+    self.loadNumberLabel.text = [NSString stringWithFormat:@"单号:%@", homeModel.code];
+    self.planLoadTimeLabel.text = homeModel.wareDispatchTime;
+    self.startNameLabel.text = homeModel.sourceName;
+    self.startAddressLabel.text = homeModel.sourceAddr;
+    self.endNameLabel.text = homeModel.dcName;
+    self.endAddressLabel.text = homeModel.dcAddress;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

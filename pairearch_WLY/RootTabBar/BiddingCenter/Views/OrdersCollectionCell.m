@@ -153,47 +153,6 @@
         cell.selectedBtn.hidden = NO;
     }
     
-    //设置cell状态
-    if ([cell.orderModel.TRANSPORT_CODE isEqualToString:ORDER_TYPE_KA]) {
-        cell.assortLabel.text = @"KA";
-        if (self.indexPath.item == 2) {
-            cell.assortLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            cell.stateLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            cell.kaLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            [cell.telephoneBtn setBackgroundImage:[UIImage imageNamed:@"telephone-del"] forState:UIControlStateNormal];
-        } else {
-            cell.assortLabel.backgroundColor = THEME_COLOR_KA;
-            cell.stateLabel.backgroundColor = THEME_COLOR_KA;
-            cell.kaLabel.backgroundColor = THEME_COLOR_KA;
-            [cell.telephoneBtn setBackgroundImage:[UIImage imageNamed:@"telephone"] forState:UIControlStateNormal];
-        }
-    } else if ([cell.orderModel.TRANSPORT_CODE isEqualToString:ORDER_TYPE_BACK]) {
-        cell.assortLabel.text = @"回";
-        if (self.indexPath.item == 2) {
-            cell.assortLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            cell.stateLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            cell.kaLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            [cell.telephoneBtn setBackgroundImage:[UIImage imageNamed:@"telephone-del"] forState:UIControlStateNormal];
-        } else {
-            cell.assortLabel.backgroundColor = THEME_COLOR_BACK;
-            cell.stateLabel.backgroundColor = THEME_COLOR_BACK;
-            cell.kaLabel.backgroundColor = THEME_COLOR_BACK;
-            [cell.telephoneBtn setBackgroundImage:[UIImage imageNamed:@"telephone"] forState:UIControlStateNormal];
-        }
-    } else if ([cell.orderModel.TRANSPORT_CODE isEqualToString:ORDER_TYPE_COMMON]) {
-        cell.assortLabel.text = @"常";
-        if (self.indexPath.item == 2) {
-            cell.assortLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            cell.stateLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            cell.kaLabel.backgroundColor = ABNORMAL_THEME_COLOR;
-            [cell.telephoneBtn setBackgroundImage:[UIImage imageNamed:@"telephone-del"] forState:UIControlStateNormal];
-        } else {
-            cell.assortLabel.backgroundColor = THEME_COLOR_COMMON;
-            cell.stateLabel.backgroundColor = THEME_COLOR_COMMON;
-            cell.kaLabel.backgroundColor = THEME_COLOR_COMMON;
-            [cell.telephoneBtn setBackgroundImage:[UIImage imageNamed:@"telephone"] forState:UIControlStateNormal];
-        }
-    }
     return cell;
 }
 

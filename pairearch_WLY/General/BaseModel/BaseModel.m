@@ -57,8 +57,13 @@
     
 }
 
-//验证登录是否成功
+//网络请求
 + (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock {
+    return nil;
+}
+
+//网络请求
++ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
     return nil;
 }
 

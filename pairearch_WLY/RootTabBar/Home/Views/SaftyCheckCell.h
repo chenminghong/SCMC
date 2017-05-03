@@ -11,7 +11,7 @@
 @class SafetyCheckModel;
 
 @interface SaftyCheckCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *selectView;
+
 @property (weak, nonatomic) IBOutlet UILabel *statementLabel;
 
 @property (nonatomic, strong) SafetyCheckModel *model;

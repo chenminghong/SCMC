@@ -11,8 +11,8 @@
 @implementation HomePageModel
 
 
-+ (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
-    return [[NetworkHelper shareClient] GET:HOME_PAGE_DATA_API parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
++ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url Parameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
+    return [[NetworkHelper shareClient] GET:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSInteger ordersCount = [responseDict[@"loadResult"] integerValue];
         HomePageModel *model = [HomePageModel getModelWithDict:responseDict];
@@ -25,6 +25,14 @@
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         endBlock(nil, error);
     }];
+}
+
+//- (NSString *)code {
+//    return [NSString stringWithFormat:@"单号:%@", _code];
+//}
+
+- (NSString *)wareDispatchTime {
+    return [NSString stringWithFormat:@"计划装运日期:%@", [_wareDispatchTime substringToIndex:10]];
 }
 
 
