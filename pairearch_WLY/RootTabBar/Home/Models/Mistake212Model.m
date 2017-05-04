@@ -1,24 +1,27 @@
 //
-//  HomePageModel.m
+//  Mistake212Model.m
 //  pairearch_WLY
 //
-//  Created by Leo on 2017/3/10.
+//  Created by Jean on 2017/5/4.
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
-#import "HomePageModel.h"
+#import "Mistake212Model.h"
 
-@implementation HomePageModel
-
+@implementation Mistake212Model
 
 + (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
     return [[NetworkHelper shareClient] GET:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         NSInteger ordersCount = [responseDict[@"loadResult"] integerValue];
-        HomePageModel *model = [HomePageModel getModelWithDict:responseDict];
+        Mistake212Model *model = [Mistake212Model getModelWithDict:responseDict];
         if (ordersCount > 0) {
-            NSDictionary *orderDict = responseDict[@"orders"];
-            model.orderModel = [HomePageModel getModelWithDict:orderDict];
+            NSArray *orderArr = responseDict[@"orders"];
+            model.orders = [NSMutableArray array];
+            for (NSDictionary *orderDict in orderArr) {
+                Mistake212Model *orderModel = [Mistake212Model getModelWithDict:orderDict];
+                [model.orders addObject:orderModel];
+            }
         }
         endBlock(model, nil);
         
@@ -26,14 +29,5 @@
         endBlock(nil, error);
     }];
 }
-
-//- (NSString *)code {
-//    return [NSString stringWithFormat:@"单号:%@", _code];
-//}
-
-- (NSString *)wareDispatchTime {
-    return [NSString stringWithFormat:@"计划装运日期:%@", [_wareDispatchTime substringToIndex:10]];
-}
-
 
 @end

@@ -10,8 +10,8 @@
 
 #import "Mistake212Header.h"
 #import "Mistake212Footer.h"
-#import "HomePageModel.h"
 #import "HomeTableCell.h"
+#import "Mistake212Model.h"
 
 #define HEIGHT_FOR_HEADER  50.0
 #define HEIGHT_FOR_FOOTER  80.0
@@ -24,7 +24,7 @@
 
 @property (nonatomic, strong) Mistake212Footer *footerView;
 
-@property (nonatomic, strong) HomePageModel *homePageModel;
+@property (nonatomic, strong) Mistake212Model *mistake212Model;
 
 @end
 
@@ -41,6 +41,11 @@
 
 - (void)setStatus:(NSString *)status {
     _status = status;
+//    [self getDataFromNet];
+}
+
+- (void)setOrderCode:(NSString *)orderCode {
+    _orderCode = orderCode;
     [self getDataFromNet];
 }
 
@@ -80,9 +85,9 @@
 
 //获取首页Data数据
 - (void)getDataFromNet {
-    [HomePageModel getDataWithUrl:LOAD_DETAIL_API parameters:@{@"mobile":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.homePageModel.orderModel.code} endBlock:^(id model, NSError *error) {
+    [Mistake212Model getDataWithUrl:LOAD_DETAIL_API parameters:@{@"userName":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.orderCode} endBlock:^(id model, NSError *error) {
         if (!error) {
-            self.homePageModel = model;
+            self.mistake212Model = model;
         } else {
             [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
@@ -98,7 +103,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.mistake212Model.orders.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -110,7 +115,8 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    self.headerView.planTimeLabel.text = self.homePageModel.orderModel.planDate;
+    Mistake212Model *model = self.mistake212Model.orders[0];
+    self.headerView.planTimeLabel.text = model.planDate;
     return self.headerView;
 }
 
@@ -119,7 +125,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomePageModel *model = self.homePageModel.orderModel;
+    Mistake212Model *model = self.mistake212Model.orders[indexPath.row];
     CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
@@ -130,7 +136,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
-    cell.homeModel = self.homePageModel.orderModel;
+    cell.homeModel = self.mistake212Model.orders[indexPath.row];
     return cell;
 }
 

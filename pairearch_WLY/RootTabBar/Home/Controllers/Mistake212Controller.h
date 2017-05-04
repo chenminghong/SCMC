@@ -12,4 +12,6 @@
 
 @property (nonatomic, copy) NSString *status;  //状态
 
+@property (nonatomic, copy) NSString *orderCode; //订单号
+
 @end

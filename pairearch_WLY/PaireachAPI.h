@@ -25,7 +25,7 @@
 #define HOME_PAGE_DATA_API                @"loadFirstUnCheckOrder.a"        //get
 
 //首页订单详情数据
-#define LOAD_DETAIL_API                   @"oadOrderDetailById.a"           //get
+#define LOAD_DETAIL_API                   @"loadOrderDetailById.a"           //get
 
 //接收运单
 #define GET_LOAD_API                      @"driverAcceptOrder.a"            //post

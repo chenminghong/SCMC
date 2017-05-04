@@ -29,6 +29,7 @@
 		0FE5C0051EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5C0041EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m */; };
 		0FE5C0081EB1D15600F82D97 /* Mistake212Footer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5C0071EB1D15600F82D97 /* Mistake212Footer.m */; };
 		0FE5C00A1EB1D16000F82D97 /* Mistake212Footer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5C0091EB1D16000F82D97 /* Mistake212Footer.xib */; };
+		0FE9632D1EBB195600F916DD /* Mistake212Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9632C1EBB195600F916DD /* Mistake212Model.m */; };
 		76DA3C9EDAD9C136CDB7CBDB /* libPods-pairearch_WLY.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E253EE02D936D5B70824B760 /* libPods-pairearch_WLY.a */; };
 		B307BF471E7238E5005D7979 /* HomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B307BF461E7238E5005D7979 /* HomePageModel.m */; };
 		B32228DB1E52A2C300ED50ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B32228DA1E52A2C300ED50ED /* main.m */; };
@@ -137,6 +138,8 @@
 		0FE5C0061EB1D15600F82D97 /* Mistake212Footer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mistake212Footer.h; sourceTree = "<group>"; };
 		0FE5C0071EB1D15600F82D97 /* Mistake212Footer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mistake212Footer.m; sourceTree = "<group>"; };
 		0FE5C0091EB1D16000F82D97 /* Mistake212Footer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Mistake212Footer.xib; sourceTree = "<group>"; };
+		0FE9632B1EBB195600F916DD /* Mistake212Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mistake212Model.h; sourceTree = "<group>"; };
+		0FE9632C1EBB195600F916DD /* Mistake212Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mistake212Model.m; sourceTree = "<group>"; };
 		4B0612EA886C1F63FFF37775 /* Pods-pairearch_WLY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pairearch_WLY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pairearch_WLY/Pods-pairearch_WLY.debug.xcconfig"; sourceTree = "<group>"; };
 		B307BF451E7238E5005D7979 /* HomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageModel.h; sourceTree = "<group>"; };
 		B307BF461E7238E5005D7979 /* HomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageModel.m; sourceTree = "<group>"; };
@@ -731,6 +734,8 @@
 				B3D3B29A1E66EA550033EF84 /* SafetyCheckModel.m */,
 				B307BF451E7238E5005D7979 /* HomePageModel.h */,
 				B307BF461E7238E5005D7979 /* HomePageModel.m */,
+				0FE9632B1EBB195600F916DD /* Mistake212Model.h */,
+				0FE9632C1EBB195600F916DD /* Mistake212Model.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -806,7 +811,7 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = CB93LUJYU2;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -932,6 +937,7 @@
 				0FE5BFFF1EB191E900F82D97 /* Mistake212Header.m in Sources */,
 				0FD9C0921EADD80800CD7E00 /* OrderListModel.m in Sources */,
 				B38411101E5D875700F7069F /* FuctionUtil.m in Sources */,
+				0FE9632D1EBB195600F916DD /* Mistake212Model.m in Sources */,
 				B384113C1E5E832C00F7069F /* VersionInfoViewController.m in Sources */,
 				B3D3B2A81E66EA550033EF84 /* HomeTableCell.m in Sources */,
 				B38411121E5D875700F7069F /* MJRefreshUtil.m in Sources */,
@@ -1111,7 +1117,7 @@
 				CODE_SIGN_ENTITLEMENTS = pairearch_WLY/pairearch_WLY.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xin Zheng (DNBUL24P82)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = CB93LUJYU2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1140,8 +1146,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.paireach.scmc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "636e480b-805c-41e6-8abc-ce446379b884";
-				PROVISIONING_PROFILE_SPECIFIER = com.paireach.scmc_development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1157,7 +1163,7 @@
 				CODE_SIGN_ENTITLEMENTS = pairearch_WLY/pairearch_WLY.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Xin Zheng (DNBUL24P82)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = CB93LUJYU2;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1186,8 +1192,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.paireach.scmc;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "636e480b-805c-41e6-8abc-ce446379b884";
-				PROVISIONING_PROFILE_SPECIFIER = com.paireach.scmc_development;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

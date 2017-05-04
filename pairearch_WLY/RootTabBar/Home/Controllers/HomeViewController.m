@@ -260,6 +260,7 @@
     } else {
         Mistake212Controller *mistake = [Mistake212Controller new];
         mistake.status = self.homePageModel.orderModel.status;
+        mistake.orderCode = self.homePageModel.orderModel.code;
         [self.navigationController pushViewController:mistake animated:YES];
     }
 }
