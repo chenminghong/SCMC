@@ -8,6 +8,10 @@
 
 #import "BaseViewController.h"
 
+#import "HomePageModel.h"
+
 @interface OrderStatus212Controller : BaseViewController
+
+@property (nonatomic, strong) HomePageModel *homePageModel;
 
 @end

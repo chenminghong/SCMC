@@ -256,11 +256,11 @@
     }
     if ([self.homePageModel.orderModel.status integerValue] == ORDER_STATUS_212) {
         OrderStatus212Controller *orderVC = [OrderStatus212Controller new];
+        orderVC.homePageModel = self.homePageModel;
         [self.navigationController pushViewController:orderVC animated:YES];
     } else {
         Mistake212Controller *mistake = [Mistake212Controller new];
-        mistake.status = self.homePageModel.orderModel.status;
-        mistake.orderCode = self.homePageModel.orderModel.code;
+        mistake.homePageModel = self.homePageModel;
         [self.navigationController pushViewController:mistake animated:YES];
     }
 }

@@ -8,10 +8,10 @@
 
 #import "BaseViewController.h"
 
+#import "HomePageModel.h"
+
 @interface Mistake212Controller : BaseViewController
 
-@property (nonatomic, copy) NSString *status;  //状态
-
-@property (nonatomic, copy) NSString *orderCode; //订单号
+@property (nonatomic, strong) HomePageModel *homePageModel;
 
 @end

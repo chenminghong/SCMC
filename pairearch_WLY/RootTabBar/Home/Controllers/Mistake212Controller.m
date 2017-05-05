@@ -11,10 +11,9 @@
 #import "Mistake212Header.h"
 #import "Mistake212Footer.h"
 #import "HomeTableCell.h"
-#import "Mistake212Model.h"
 
-#define HEIGHT_FOR_HEADER  50.0
-#define HEIGHT_FOR_FOOTER  80.0
+#define HEIGHT_FOR_HEADER  25.0
+#define HEIGHT_FOR_FOOTER  ((kScreenWidth - 200) * 9.0 / 16.0) + 36.0
 
 @interface Mistake212Controller ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -23,8 +22,6 @@
 @property (nonatomic, strong) Mistake212Header *headerView;
 
 @property (nonatomic, strong) Mistake212Footer *footerView;
-
-@property (nonatomic, strong) Mistake212Model *mistake212Model;
 
 @end
 
@@ -37,16 +34,6 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [NavigationController getNavigationBackItemWithTarget:self SEL:@selector(popBackAction:)];
     [self.view addSubview:self.tableView];
-}
-
-- (void)setStatus:(NSString *)status {
-    _status = status;
-//    [self getDataFromNet];
-}
-
-- (void)setOrderCode:(NSString *)orderCode {
-    _orderCode = orderCode;
-    [self getDataFromNet];
 }
 
 - (Mistake212Header *)headerView {
@@ -81,21 +68,6 @@
     return _tableView;
 }
 
-#pragma mark -- Get Data
-
-//获取首页Data数据
-- (void)getDataFromNet {
-    [Mistake212Model getDataWithUrl:LOAD_DETAIL_API parameters:@{@"userName":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.orderCode} endBlock:^(id model, NSError *error) {
-        if (!error) {
-            self.mistake212Model = model;
-        } else {
-            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-        }
-        [self.tableView reloadData];
-        [MJRefreshUtil endRefresh:self.tableView];
-    }];
-}
-
 #pragma mark -- TableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -103,7 +75,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.mistake212Model.orders.count;
+    return self.homePageModel.orderModel? 1:0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -115,17 +87,23 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    Mistake212Model *model = self.mistake212Model.orders[0];
-    self.headerView.planTimeLabel.text = model.planDate;
+    NSString *tempStr = self.homePageModel.orderModel.planDate;
+    if (tempStr.length > 0) {
+        self.headerView.planTimeLabel.text = tempStr;
+    } else {
+        self.headerView.planTimeLabel.text = @"承运商未预约时间";
+    }
     return self.headerView;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    self.footerView.codeImageView.image = [CreatQRCodeAndBarCodeFromLeon generateBarCode:self.homePageModel.orderModel.code size:CGSizeMake(kScreenWidth, kScreenWidth * 9.0 / 16.0) color:[UIColor blackColor] backGroundColor:nil];
+    self.footerView.codeNumberLabel.text = self.homePageModel.orderModel.code;
     return self.footerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    Mistake212Model *model = self.mistake212Model.orders[indexPath.row];
+    HomePageModel *model = self.homePageModel.orderModel;
     CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
@@ -136,8 +114,12 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
-    cell.homeModel = self.mistake212Model.orders[indexPath.row];
+    cell.homeModel = self.homePageModel.orderModel;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 }
 
 /**

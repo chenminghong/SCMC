@@ -30,6 +30,9 @@
 		0FE5C0081EB1D15600F82D97 /* Mistake212Footer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5C0071EB1D15600F82D97 /* Mistake212Footer.m */; };
 		0FE5C00A1EB1D16000F82D97 /* Mistake212Footer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5C0091EB1D16000F82D97 /* Mistake212Footer.xib */; };
 		0FE9632D1EBB195600F916DD /* Mistake212Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9632C1EBB195600F916DD /* Mistake212Model.m */; };
+		0FE963301EBC6FE800F916DD /* OrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9632F1EBC6FE800F916DD /* OrderDetailController.m */; };
+		0FE963341EBC78C600F916DD /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE963321EBC78C600F916DD /* OrderDetailCell.m */; };
+		0FE963351EBC78C600F916DD /* OrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE963331EBC78C600F916DD /* OrderDetailCell.xib */; };
 		76DA3C9EDAD9C136CDB7CBDB /* libPods-pairearch_WLY.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E253EE02D936D5B70824B760 /* libPods-pairearch_WLY.a */; };
 		B307BF471E7238E5005D7979 /* HomePageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B307BF461E7238E5005D7979 /* HomePageModel.m */; };
 		B32228DB1E52A2C300ED50ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B32228DA1E52A2C300ED50ED /* main.m */; };
@@ -140,6 +143,11 @@
 		0FE5C0091EB1D16000F82D97 /* Mistake212Footer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Mistake212Footer.xib; sourceTree = "<group>"; };
 		0FE9632B1EBB195600F916DD /* Mistake212Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mistake212Model.h; sourceTree = "<group>"; };
 		0FE9632C1EBB195600F916DD /* Mistake212Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mistake212Model.m; sourceTree = "<group>"; };
+		0FE9632E1EBC6FE800F916DD /* OrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailController.h; sourceTree = "<group>"; };
+		0FE9632F1EBC6FE800F916DD /* OrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailController.m; sourceTree = "<group>"; };
+		0FE963311EBC78C600F916DD /* OrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailCell.h; sourceTree = "<group>"; };
+		0FE963321EBC78C600F916DD /* OrderDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailCell.m; sourceTree = "<group>"; };
+		0FE963331EBC78C600F916DD /* OrderDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderDetailCell.xib; sourceTree = "<group>"; };
 		4B0612EA886C1F63FFF37775 /* Pods-pairearch_WLY.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-pairearch_WLY.debug.xcconfig"; path = "Pods/Target Support Files/Pods-pairearch_WLY/Pods-pairearch_WLY.debug.xcconfig"; sourceTree = "<group>"; };
 		B307BF451E7238E5005D7979 /* HomePageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomePageModel.h; sourceTree = "<group>"; };
 		B307BF461E7238E5005D7979 /* HomePageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomePageModel.m; sourceTree = "<group>"; };
@@ -723,6 +731,8 @@
 				0FE5BFF01EB03CE300F82D97 /* SafetyControlController.h */,
 				0FE5BFF11EB03CE300F82D97 /* SafetyControlController.m */,
 				0FE5BFF31EB071ED00F82D97 /* SafetyControl.plist */,
+				0FE9632E1EBC6FE800F916DD /* OrderDetailController.h */,
+				0FE9632F1EBC6FE800F916DD /* OrderDetailController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -761,6 +771,9 @@
 				B3D3B29F1E66EA550033EF84 /* SaftyCheckCell.h */,
 				B3D3B2A01E66EA550033EF84 /* SaftyCheckCell.m */,
 				B3D3B2A11E66EA550033EF84 /* SaftyCheckCell.xib */,
+				0FE963311EBC78C600F916DD /* OrderDetailCell.h */,
+				0FE963321EBC78C600F916DD /* OrderDetailCell.m */,
+				0FE963331EBC78C600F916DD /* OrderDetailCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -866,6 +879,7 @@
 				0FE5C00A1EB1D16000F82D97 /* Mistake212Footer.xib in Resources */,
 				0FD9C0B81EADD88D00CD7E00 /* OrdersViewController.storyboard in Resources */,
 				0FE5BFF41EB071ED00F82D97 /* SafetyControl.plist in Resources */,
+				0FE963351EBC78C600F916DD /* OrderDetailCell.xib in Resources */,
 				B32228E41E52A2C300ED50ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -944,6 +958,7 @@
 				B384113B1E5E832C00F7069F /* AlterPasswordViewController.m in Sources */,
 				B384111C1E5D886000F7069F /* LoginTextField.m in Sources */,
 				B384113A1E5E832C00F7069F /* AboutUsViewController.m in Sources */,
+				0FE963301EBC6FE800F916DD /* OrderDetailController.m in Sources */,
 				B37BA6CF1E80FA29001A74B8 /* AbnormalReportCell.m in Sources */,
 				0FD9C0B31EADD80800CD7E00 /* OrdersCollectionCell.m in Sources */,
 				B38410FB1E5D875700F7069F /* FileHelper.m in Sources */,
@@ -980,6 +995,7 @@
 				B38410B61E5D375600F7069F /* BaseModel.m in Sources */,
 				B37BA6D51E8127A9001A74B8 /* LxGridViewFlowLayout.m in Sources */,
 				B32228DB1E52A2C300ED50ED /* main.m in Sources */,
+				0FE963341EBC78C600F916DD /* OrderDetailCell.m in Sources */,
 				B3CC54B51E601C920072EA47 /* PaomaLabel.m in Sources */,
 				B307BF471E7238E5005D7979 /* HomePageModel.m in Sources */,
 			);

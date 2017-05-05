@@ -41,6 +41,7 @@
 #import "JPUSHService.h"
 #import <UserNotifications/UserNotifications.h>
 #import "LocationManager.h"
+#import "CreatQRCodeAndBarCodeFromLeon.h"
 
 
 

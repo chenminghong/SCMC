@@ -23,8 +23,6 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) HomePageModel *homePageModel;
-
 @property (nonatomic, strong) Header212View *headerView;
 
 @property (nonatomic, strong) FooterSelectView *footerView;
@@ -45,7 +43,7 @@
     [self.view addSubview:self.tableView];
     
     //请求首页数据
-    [self getHomePageData];
+//    [self getHomePageData];
     
 }
 
@@ -106,7 +104,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return self.homePageModel.orderModel? 1:0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -187,10 +185,11 @@
             NSString *result = [NSString stringWithFormat:@"%@", responseObject[@"result"]];
             if ([result boolValue]) {
                 MBProgressHUD *hud = [MBProgressHUD bwm_showTitle:@"订单接收成功！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
+                __weak typeof(self) weakSelf;
                 [hud setCompletionBlock:^() {
                     Mistake212Controller *mistake = [Mistake212Controller new];
-                    mistake.status = self.homePageModel.orderModel.status;
-                    [self.navigationController pushViewController:mistake animated:YES];
+                    mistake.homePageModel = weakSelf.homePageModel;
+                    [weakSelf.navigationController pushViewController:mistake animated:YES];
                 }];
             } else {
                 [MBProgressHUD bwm_showTitle:@"订单接收失败！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
