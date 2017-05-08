@@ -14,6 +14,7 @@
 #import "FooterSelectView.h"
 #import "SafetyControlController.h"
 #import "Mistake212Controller.h"
+#import "OrderDetailController.h"
 
 
 #define HEIGHT_FOR_HEADER  50.0
@@ -138,6 +139,12 @@
     HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
     cell.homeModel = self.homePageModel.orderModel;
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    OrderDetailController *orderDetailVC = [OrderDetailController new];
+    orderDetailVC.orderCode = self.homePageModel.orderModel.code;
+    [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
 
 #pragma mark -- 按钮点击事件

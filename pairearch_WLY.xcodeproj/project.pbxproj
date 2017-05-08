@@ -29,7 +29,7 @@
 		0FE5C0051EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5C0041EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m */; };
 		0FE5C0081EB1D15600F82D97 /* Mistake212Footer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5C0071EB1D15600F82D97 /* Mistake212Footer.m */; };
 		0FE5C00A1EB1D16000F82D97 /* Mistake212Footer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5C0091EB1D16000F82D97 /* Mistake212Footer.xib */; };
-		0FE9632D1EBB195600F916DD /* Mistake212Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9632C1EBB195600F916DD /* Mistake212Model.m */; };
+		0FE9632D1EBB195600F916DD /* OrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9632C1EBB195600F916DD /* OrderDetailModel.m */; };
 		0FE963301EBC6FE800F916DD /* OrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9632F1EBC6FE800F916DD /* OrderDetailController.m */; };
 		0FE963341EBC78C600F916DD /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE963321EBC78C600F916DD /* OrderDetailCell.m */; };
 		0FE963351EBC78C600F916DD /* OrderDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE963331EBC78C600F916DD /* OrderDetailCell.xib */; };
@@ -141,8 +141,8 @@
 		0FE5C0061EB1D15600F82D97 /* Mistake212Footer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mistake212Footer.h; sourceTree = "<group>"; };
 		0FE5C0071EB1D15600F82D97 /* Mistake212Footer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mistake212Footer.m; sourceTree = "<group>"; };
 		0FE5C0091EB1D16000F82D97 /* Mistake212Footer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Mistake212Footer.xib; sourceTree = "<group>"; };
-		0FE9632B1EBB195600F916DD /* Mistake212Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mistake212Model.h; sourceTree = "<group>"; };
-		0FE9632C1EBB195600F916DD /* Mistake212Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mistake212Model.m; sourceTree = "<group>"; };
+		0FE9632B1EBB195600F916DD /* OrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailModel.h; sourceTree = "<group>"; };
+		0FE9632C1EBB195600F916DD /* OrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailModel.m; sourceTree = "<group>"; };
 		0FE9632E1EBC6FE800F916DD /* OrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailController.h; sourceTree = "<group>"; };
 		0FE9632F1EBC6FE800F916DD /* OrderDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailController.m; sourceTree = "<group>"; };
 		0FE963311EBC78C600F916DD /* OrderDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailCell.h; sourceTree = "<group>"; };
@@ -744,8 +744,8 @@
 				B3D3B29A1E66EA550033EF84 /* SafetyCheckModel.m */,
 				B307BF451E7238E5005D7979 /* HomePageModel.h */,
 				B307BF461E7238E5005D7979 /* HomePageModel.m */,
-				0FE9632B1EBB195600F916DD /* Mistake212Model.h */,
-				0FE9632C1EBB195600F916DD /* Mistake212Model.m */,
+				0FE9632B1EBB195600F916DD /* OrderDetailModel.h */,
+				0FE9632C1EBB195600F916DD /* OrderDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -951,7 +951,7 @@
 				0FE5BFFF1EB191E900F82D97 /* Mistake212Header.m in Sources */,
 				0FD9C0921EADD80800CD7E00 /* OrderListModel.m in Sources */,
 				B38411101E5D875700F7069F /* FuctionUtil.m in Sources */,
-				0FE9632D1EBB195600F916DD /* Mistake212Model.m in Sources */,
+				0FE9632D1EBB195600F916DD /* OrderDetailModel.m in Sources */,
 				B384113C1E5E832C00F7069F /* VersionInfoViewController.m in Sources */,
 				B3D3B2A81E66EA550033EF84 /* HomeTableCell.m in Sources */,
 				B38411121E5D875700F7069F /* MJRefreshUtil.m in Sources */,

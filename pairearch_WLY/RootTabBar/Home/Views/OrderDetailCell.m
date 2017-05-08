@@ -8,6 +8,8 @@
 
 #import "OrderDetailCell.h"
 
+#import "OrderDetailModel.h"
+
 @implementation OrderDetailCell
 
 - (void)setFrame:(CGRect)frame {
@@ -39,6 +41,17 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    
+    [self.layer setMasksToBounds:YES];
+    self.layer.cornerRadius = 5;
+}
+
+- (void)setDetailModel:(OrderDetailModel *)detailModel {
+    _detailModel = detailModel;
+    self.commodityCodeLabel.text = detailModel.productCode;
+    self.commodityNameLabel.text = detailModel.productName;
+    self.commodityCountLabel.text = detailModel.planCount;
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

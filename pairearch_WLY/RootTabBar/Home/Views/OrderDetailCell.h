@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class OrderDetailModel;
+
 @interface OrderDetailCell : UITableViewCell
+
 @property (weak, nonatomic) IBOutlet UILabel *commodityCodeLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *commodityNameLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *commodityCountLabel;
+
+@property (nonatomic, strong) OrderDetailModel *detailModel;
 
 
 /**

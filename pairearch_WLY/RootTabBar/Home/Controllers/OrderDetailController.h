@@ -10,4 +10,6 @@
 
 @interface OrderDetailController : BaseViewController
 
+@property (nonatomic, copy) NSString *orderCode;
+
 @end

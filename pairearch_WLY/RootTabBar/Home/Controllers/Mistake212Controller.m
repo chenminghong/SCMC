@@ -11,6 +11,7 @@
 #import "Mistake212Header.h"
 #import "Mistake212Footer.h"
 #import "HomeTableCell.h"
+#import "OrderDetailController.h"
 
 #define HEIGHT_FOR_HEADER  25.0
 #define HEIGHT_FOR_FOOTER  ((kScreenWidth - 200) * 9.0 / 16.0) + 36.0
@@ -119,7 +120,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    OrderDetailController *orderDetailVC = [OrderDetailController new];
+    orderDetailVC.orderCode = self.homePageModel.orderModel.code;
+    [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
 
 /**

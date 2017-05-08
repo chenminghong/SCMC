@@ -10,6 +10,9 @@
 
 @implementation HomePageModel
 
+- (NSString *)code {
+    return [NSString stringWithFormat:@"%@", _code];
+}
 
 + (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
     return [[NetworkHelper shareClient] GET:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -21,7 +24,6 @@
             model.orderModel = [HomePageModel getModelWithDict:orderDict];
         }
         endBlock(model, nil);
-        
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         endBlock(nil, error);
     }];
