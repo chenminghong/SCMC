@@ -192,11 +192,10 @@
             NSString *result = [NSString stringWithFormat:@"%@", responseObject[@"result"]];
             if ([result boolValue]) {
                 MBProgressHUD *hud = [MBProgressHUD bwm_showTitle:@"订单接收成功！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
-                __weak typeof(self) weakSelf;
                 [hud setCompletionBlock:^() {
                     Mistake212Controller *mistake = [Mistake212Controller new];
-                    mistake.homePageModel = weakSelf.homePageModel;
-                    [weakSelf.navigationController pushViewController:mistake animated:YES];
+                    mistake.homePageModel = self.homePageModel;
+                    [self.navigationController pushViewController:mistake animated:YES];
                 }];
             } else {
                 [MBProgressHUD bwm_showTitle:@"订单接收失败！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
