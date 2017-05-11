@@ -8,14 +8,14 @@
 
 #import "OrdersViewController.h"
 
-#import "HomeTableCell.h"
-#import "HomePageModel.h"
+#import "OrderListTableCell.h"
+#import "OrdersModel.h"
 
 @interface OrdersViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) HomePageModel *homePageModel;
+@property (nonatomic, strong) OrdersModel *ordersModel;
 
 @end
 
@@ -28,6 +28,8 @@
     self.title = @"运单中心";
     
     [self.view addSubview:self.tableView];
+    
+    [self getOrderListData];
     
 }
 
@@ -47,6 +49,23 @@
     return _tableView;
 }
 
+//获取订单列表Data数据
+- (void)getOrderListData {
+    [OrdersModel getDataWithParameters:@{@"driverTel":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+        if (!error) {
+            self.ordersModel = model;
+            if (self.ordersModel.modelsList.count <= 0) {
+                [MBProgressHUD bwm_showTitle:@"暂无订单" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+            }
+        } else {
+            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        }
+        [self.tableView reloadData];
+        [MJRefreshUtil endRefresh:self.tableView];
+        
+    }];
+}
+
 #pragma mark -- TableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -54,22 +73,22 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.homePageModel.orderModel? 1:0;
+    return self.ordersModel.modelsList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomePageModel *model = self.homePageModel.orderModel;
+    OrdersModel *model = self.ordersModel.modelsList[indexPath.row];
     CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
     CGFloat endDcAddConstant = [BaseModel heightForTextString:model.dcAddress width:(kScreenWidth - 85.0)  fontSize:13.0];
-    CGFloat height = startNameConstant + startAddConstant + endDcNameConstant + endDcAddConstant + 50.0 + 20;
+    CGFloat height = startNameConstant + startAddConstant + endDcNameConstant + endDcAddConstant + 50.0 + 20 + 30;
     return height < 130.0? 130.0:height;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
-    cell.homeModel = self.homePageModel.orderModel;
+    OrderListTableCell *cell = [OrderListTableCell getCellWithTable:tableView];
+    cell.orderModel = self.ordersModel.modelsList[indexPath.row];
     return cell;
 }
 

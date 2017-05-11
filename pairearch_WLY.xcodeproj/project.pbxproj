@@ -15,6 +15,8 @@
 		0FA20D381EC471AA005C2015 /* ListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D311EC471AA005C2015 /* ListTableCell.m */; };
 		0FA20D391EC471AA005C2015 /* ListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA20D321EC471AA005C2015 /* ListTableCell.xib */; };
 		0FA20D3A1EC471AA005C2015 /* OrdersCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */; };
+		0FA20D3E1EC4788C005C2015 /* OrderListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D3C1EC4788C005C2015 /* OrderListTableCell.m */; };
+		0FA20D3F1EC4788C005C2015 /* OrderListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA20D3D1EC4788C005C2015 /* OrderListTableCell.xib */; };
 		0FD9C0B61EADD88000CD7E00 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0B51EADD88000CD7E00 /* OrdersViewController.m */; };
 		0FD9C0B81EADD88D00CD7E00 /* OrdersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */; };
 		0FD9C0BB1EADF6D700CD7E00 /* OrderStatus212Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0BA1EADF6D600CD7E00 /* OrderStatus212Controller.m */; };
@@ -121,6 +123,9 @@
 		0FA20D321EC471AA005C2015 /* ListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableCell.xib; sourceTree = "<group>"; };
 		0FA20D331EC471AA005C2015 /* OrdersCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersCollectionCell.h; sourceTree = "<group>"; };
 		0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersCollectionCell.m; sourceTree = "<group>"; };
+		0FA20D3B1EC4788C005C2015 /* OrderListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableCell.h; sourceTree = "<group>"; };
+		0FA20D3C1EC4788C005C2015 /* OrderListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableCell.m; sourceTree = "<group>"; };
+		0FA20D3D1EC4788C005C2015 /* OrderListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListTableCell.xib; sourceTree = "<group>"; };
 		0FD9C0B41EADD88000CD7E00 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		0FD9C0B51EADD88000CD7E00 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrdersViewController.storyboard; sourceTree = "<group>"; };
@@ -528,6 +533,9 @@
 		B357274F1E5404EA003F9B2F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0FA20D3B1EC4788C005C2015 /* OrderListTableCell.h */,
+				0FA20D3C1EC4788C005C2015 /* OrderListTableCell.m */,
+				0FA20D3D1EC4788C005C2015 /* OrderListTableCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -958,6 +966,7 @@
 				0FE5BFF41EB071ED00F82D97 /* SafetyControl.plist in Resources */,
 				0FE963351EBC78C600F916DD /* OrderDetailCell.xib in Resources */,
 				B32228E41E52A2C300ED50ED /* Main.storyboard in Resources */,
+				0FA20D3F1EC4788C005C2015 /* OrderListTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1018,6 +1027,7 @@
 			files = (
 				0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */,
 				B38411131E5D875700F7069F /* URLHandleUtil.m in Sources */,
+				0FA20D3E1EC4788C005C2015 /* OrderListTableCell.m in Sources */,
 				B3CC54BF1E6020090072EA47 /* AutoHeight.m in Sources */,
 				0F397C3B1EA0DF8E002F3A38 /* LocationManager.m in Sources */,
 				B384110F1E5D875700F7069F /* FileDirPathUtil.m in Sources */,

@@ -30,7 +30,6 @@
 //接收运单
 #define GET_LOAD_API                      @"driverAcceptOrder.a"            //post
 
-
 //安全选项检查
 #define SAFETY_CONFIRMATION_API           @"safeVeriSave.a"                 //post
 
@@ -56,6 +55,13 @@
 
 //订单中心
 #define ORDER_LIST_API                    @"loadAllOrder.a"                 //get
+
+
+
+
+
+
+
 
 //订单详情
 #define ORDER_DETAIL_API                  @"loadDetailByTelAndCode.a"       //get
