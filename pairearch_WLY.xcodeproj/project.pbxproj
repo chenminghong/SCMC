@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		0F397C3B1EA0DF8E002F3A38 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F397C3A1EA0DF8E002F3A38 /* LocationManager.m */; };
-		0FD9C08B1EADD80800CD7E00 /* OrdersCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0261EADD80800CD7E00 /* OrdersCenterController.m */; };
-		0FD9C08C1EADD80800CD7E00 /* OrdersCenterController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0271EADD80800CD7E00 /* OrdersCenterController.storyboard */; };
-		0FD9C0921EADD80800CD7E00 /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0371EADD80800CD7E00 /* OrderListModel.m */; };
-		0FD9C0B11EADD80800CD7E00 /* ListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C06B1EADD80800CD7E00 /* ListTableCell.m */; };
-		0FD9C0B21EADD80800CD7E00 /* ListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C06C1EADD80800CD7E00 /* ListTableCell.xib */; };
-		0FD9C0B31EADD80800CD7E00 /* OrdersCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C06E1EADD80800CD7E00 /* OrdersCollectionCell.m */; };
+		0FA20D141EC46BDE005C2015 /* OrdersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D131EC46BDE005C2015 /* OrdersModel.m */; };
+		0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D241EC471AA005C2015 /* OrdersCenterController.m */; };
+		0FA20D361EC471AA005C2015 /* OrdersCenterController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA20D251EC471AA005C2015 /* OrdersCenterController.storyboard */; };
+		0FA20D371EC471AA005C2015 /* OrderListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D2B1EC471AA005C2015 /* OrderListModel.m */; };
+		0FA20D381EC471AA005C2015 /* ListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D311EC471AA005C2015 /* ListTableCell.m */; };
+		0FA20D391EC471AA005C2015 /* ListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA20D321EC471AA005C2015 /* ListTableCell.xib */; };
+		0FA20D3A1EC471AA005C2015 /* OrdersCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */; };
 		0FD9C0B61EADD88000CD7E00 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0B51EADD88000CD7E00 /* OrdersViewController.m */; };
 		0FD9C0B81EADD88D00CD7E00 /* OrdersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */; };
 		0FD9C0BB1EADF6D700CD7E00 /* OrderStatus212Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0BA1EADF6D600CD7E00 /* OrderStatus212Controller.m */; };
@@ -107,16 +108,19 @@
 		0F397C391EA0DF8E002F3A38 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		0F397C3A1EA0DF8E002F3A38 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		0F966D001EA5C11600FCAD18 /* pairearch_WLY.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = pairearch_WLY.entitlements; sourceTree = "<group>"; };
-		0FD9C0251EADD80800CD7E00 /* OrdersCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersCenterController.h; sourceTree = "<group>"; };
-		0FD9C0261EADD80800CD7E00 /* OrdersCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersCenterController.m; sourceTree = "<group>"; };
-		0FD9C0271EADD80800CD7E00 /* OrdersCenterController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrdersCenterController.storyboard; sourceTree = "<group>"; };
-		0FD9C0361EADD80800CD7E00 /* OrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListModel.h; sourceTree = "<group>"; };
-		0FD9C0371EADD80800CD7E00 /* OrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListModel.m; sourceTree = "<group>"; };
-		0FD9C06A1EADD80800CD7E00 /* ListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableCell.h; sourceTree = "<group>"; };
-		0FD9C06B1EADD80800CD7E00 /* ListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableCell.m; sourceTree = "<group>"; };
-		0FD9C06C1EADD80800CD7E00 /* ListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableCell.xib; sourceTree = "<group>"; };
-		0FD9C06D1EADD80800CD7E00 /* OrdersCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersCollectionCell.h; sourceTree = "<group>"; };
-		0FD9C06E1EADD80800CD7E00 /* OrdersCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersCollectionCell.m; sourceTree = "<group>"; };
+		0FA20D121EC46BDE005C2015 /* OrdersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersModel.h; sourceTree = "<group>"; };
+		0FA20D131EC46BDE005C2015 /* OrdersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersModel.m; sourceTree = "<group>"; };
+		0FA20D1D1EC46DEF005C2015 /* PaireachAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaireachAPI.h; sourceTree = "<group>"; };
+		0FA20D231EC471AA005C2015 /* OrdersCenterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersCenterController.h; sourceTree = "<group>"; };
+		0FA20D241EC471AA005C2015 /* OrdersCenterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersCenterController.m; sourceTree = "<group>"; };
+		0FA20D251EC471AA005C2015 /* OrdersCenterController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrdersCenterController.storyboard; sourceTree = "<group>"; };
+		0FA20D2A1EC471AA005C2015 /* OrderListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListModel.h; sourceTree = "<group>"; };
+		0FA20D2B1EC471AA005C2015 /* OrderListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListModel.m; sourceTree = "<group>"; };
+		0FA20D301EC471AA005C2015 /* ListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableCell.h; sourceTree = "<group>"; };
+		0FA20D311EC471AA005C2015 /* ListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableCell.m; sourceTree = "<group>"; };
+		0FA20D321EC471AA005C2015 /* ListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ListTableCell.xib; sourceTree = "<group>"; };
+		0FA20D331EC471AA005C2015 /* OrdersCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersCollectionCell.h; sourceTree = "<group>"; };
+		0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersCollectionCell.m; sourceTree = "<group>"; };
 		0FD9C0B41EADD88000CD7E00 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		0FD9C0B51EADD88000CD7E00 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrdersViewController.storyboard; sourceTree = "<group>"; };
@@ -214,7 +218,6 @@
 		B384111A1E5D886000F7069F /* LoginTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginTextField.m; sourceTree = "<group>"; };
 		B384111D1E5D893C00F7069F /* LoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginModel.h; sourceTree = "<group>"; };
 		B384111E1E5D893C00F7069F /* LoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginModel.m; sourceTree = "<group>"; };
-		B38411211E5D8A5000F7069F /* PaireachAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaireachAPI.h; sourceTree = "<group>"; };
 		B38411221E5E827600F7069F /* PersonalCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonalCenterViewController.h; sourceTree = "<group>"; };
 		B38411231E5E827600F7069F /* PersonalCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonalCenterViewController.m; sourceTree = "<group>"; };
 		B384112A1E5E830400F7069F /* CancelLoginTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CancelLoginTableViewCell.h; sourceTree = "<group>"; };
@@ -271,45 +274,117 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0FD9BFE71EADD7C200CD7E00 /* BiddingCenter */ = {
+		0FA20D1E1EC471AA005C2015 /* BiddingCenter */ = {
 			isa = PBXGroup;
 			children = (
-				0FD9BFEB1EADD80800CD7E00 /* Controllers */,
-				0FD9C0281EADD80800CD7E00 /* Models */,
-				0FD9C0381EADD80800CD7E00 /* Views */,
+				0FA20D1F1EC471AA005C2015 /* Controllers */,
+				0FA20D261EC471AA005C2015 /* Models */,
+				0FA20D2C1EC471AA005C2015 /* Views */,
 			);
 			path = BiddingCenter;
 			sourceTree = "<group>";
 		};
-		0FD9BFEB1EADD80800CD7E00 /* Controllers */ = {
+		0FA20D1F1EC471AA005C2015 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0FD9C0251EADD80800CD7E00 /* OrdersCenterController.h */,
-				0FD9C0261EADD80800CD7E00 /* OrdersCenterController.m */,
-				0FD9C0271EADD80800CD7E00 /* OrdersCenterController.storyboard */,
+				0FA20D201EC471AA005C2015 /* BACK */,
+				0FA20D211EC471AA005C2015 /* COMMON */,
+				0FA20D221EC471AA005C2015 /* KA */,
+				0FA20D231EC471AA005C2015 /* OrdersCenterController.h */,
+				0FA20D241EC471AA005C2015 /* OrdersCenterController.m */,
+				0FA20D251EC471AA005C2015 /* OrdersCenterController.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		0FD9C0281EADD80800CD7E00 /* Models */ = {
+		0FA20D201EC471AA005C2015 /* BACK */ = {
 			isa = PBXGroup;
 			children = (
-				0FD9C0361EADD80800CD7E00 /* OrderListModel.h */,
-				0FD9C0371EADD80800CD7E00 /* OrderListModel.m */,
+			);
+			path = BACK;
+			sourceTree = "<group>";
+		};
+		0FA20D211EC471AA005C2015 /* COMMON */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = COMMON;
+			sourceTree = "<group>";
+		};
+		0FA20D221EC471AA005C2015 /* KA */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KA;
+			sourceTree = "<group>";
+		};
+		0FA20D261EC471AA005C2015 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0FA20D271EC471AA005C2015 /* BACK */,
+				0FA20D281EC471AA005C2015 /* COMMON */,
+				0FA20D291EC471AA005C2015 /* KA */,
+				0FA20D2A1EC471AA005C2015 /* OrderListModel.h */,
+				0FA20D2B1EC471AA005C2015 /* OrderListModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0FD9C0381EADD80800CD7E00 /* Views */ = {
+		0FA20D271EC471AA005C2015 /* BACK */ = {
 			isa = PBXGroup;
 			children = (
-				0FD9C06A1EADD80800CD7E00 /* ListTableCell.h */,
-				0FD9C06B1EADD80800CD7E00 /* ListTableCell.m */,
-				0FD9C06C1EADD80800CD7E00 /* ListTableCell.xib */,
-				0FD9C06D1EADD80800CD7E00 /* OrdersCollectionCell.h */,
-				0FD9C06E1EADD80800CD7E00 /* OrdersCollectionCell.m */,
+			);
+			path = BACK;
+			sourceTree = "<group>";
+		};
+		0FA20D281EC471AA005C2015 /* COMMON */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = COMMON;
+			sourceTree = "<group>";
+		};
+		0FA20D291EC471AA005C2015 /* KA */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KA;
+			sourceTree = "<group>";
+		};
+		0FA20D2C1EC471AA005C2015 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0FA20D2D1EC471AA005C2015 /* BACK */,
+				0FA20D2E1EC471AA005C2015 /* COMMON */,
+				0FA20D2F1EC471AA005C2015 /* KA */,
+				0FA20D301EC471AA005C2015 /* ListTableCell.h */,
+				0FA20D311EC471AA005C2015 /* ListTableCell.m */,
+				0FA20D321EC471AA005C2015 /* ListTableCell.xib */,
+				0FA20D331EC471AA005C2015 /* OrdersCollectionCell.h */,
+				0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0FA20D2D1EC471AA005C2015 /* BACK */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BACK;
+			sourceTree = "<group>";
+		};
+		0FA20D2E1EC471AA005C2015 /* COMMON */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = COMMON;
+			sourceTree = "<group>";
+		};
+		0FA20D2F1EC471AA005C2015 /* KA */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = KA;
 			sourceTree = "<group>";
 		};
 		0FE5C0021EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon */ = {
@@ -364,7 +439,7 @@
 				B32228DC1E52A2C300ED50ED /* AppDelegate.h */,
 				B32228DD1E52A2C300ED50ED /* AppDelegate.m */,
 				B3F313FE1E52B672002DD95D /* Pairearch_WLY.pch */,
-				B38411211E5D8A5000F7069F /* PaireachAPI.h */,
+				0FA20D1D1EC46DEF005C2015 /* PaireachAPI.h */,
 				B37CB1F41E694D3E00A1463F /* OrderStatus.h */,
 				B35727821E546DD9003F9B2F /* Login */,
 				B35727631E540D9D003F9B2F /* General */,
@@ -403,8 +478,8 @@
 			children = (
 				B357272D1E53FC61003F9B2F /* RootTabController.h */,
 				B357272E1E53FC61003F9B2F /* RootTabController.m */,
-				0FD9BFE71EADD7C200CD7E00 /* BiddingCenter */,
 				B3D3B28D1E66EA550033EF84 /* Home */,
+				0FA20D1E1EC471AA005C2015 /* BiddingCenter */,
 				B35727311E5402C4003F9B2F /* OrdersCenter */,
 				B35727321E5402C4003F9B2F /* PrivateCenter */,
 			);
@@ -444,6 +519,8 @@
 		B357274E1E5404EA003F9B2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0FA20D121EC46BDE005C2015 /* OrdersModel.h */,
+				0FA20D131EC46BDE005C2015 /* OrdersModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -868,14 +945,14 @@
 				0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */,
 				B32228E91E52A2C300ED50ED /* LaunchScreen.storyboard in Resources */,
 				B38411461E5E91DE00F7069F /* CancelLoginCell.xib in Resources */,
-				0FD9C08C1EADD80800CD7E00 /* OrdersCenterController.storyboard in Resources */,
-				0FD9C0B21EADD80800CD7E00 /* ListTableCell.xib in Resources */,
 				B32228E61E52A2C300ED50ED /* Assets.xcassets in Resources */,
 				0FE5C0011EB191F500F82D97 /* Mistake212Header.xib in Resources */,
+				0FA20D391EC471AA005C2015 /* ListTableCell.xib in Resources */,
 				B38411411E5E89C700F7069F /* PersonalCenterCell.xib in Resources */,
 				0FD9C0C51EAEDD4E00CD7E00 /* FooterSelectView.xib in Resources */,
 				B3D3B2A91E66EA550033EF84 /* HomeTableCell.xib in Resources */,
 				B3D3B2A31E66EA550033EF84 /* HomeViewController.storyboard in Resources */,
+				0FA20D361EC471AA005C2015 /* OrdersCenterController.storyboard in Resources */,
 				0FE5C00A1EB1D16000F82D97 /* Mistake212Footer.xib in Resources */,
 				0FD9C0B81EADD88D00CD7E00 /* OrdersViewController.storyboard in Resources */,
 				0FE5BFF41EB071ED00F82D97 /* SafetyControl.plist in Resources */,
@@ -939,6 +1016,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */,
 				B38411131E5D875700F7069F /* URLHandleUtil.m in Sources */,
 				B3CC54BF1E6020090072EA47 /* AutoHeight.m in Sources */,
 				0F397C3B1EA0DF8E002F3A38 /* LocationManager.m in Sources */,
@@ -946,10 +1024,10 @@
 				B35727811E545865003F9B2F /* NetworkHelper.m in Sources */,
 				B37BA6C91E80C443001A74B8 /* AbnormalReportController.m in Sources */,
 				B38411401E5E89C700F7069F /* PersonalCenterCell.m in Sources */,
+				0FA20D3A1EC471AA005C2015 /* OrdersCollectionCell.m in Sources */,
 				B384111B1E5D886000F7069F /* LoginViewController.m in Sources */,
 				0FE5C0051EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m in Sources */,
 				0FE5BFFF1EB191E900F82D97 /* Mistake212Header.m in Sources */,
-				0FD9C0921EADD80800CD7E00 /* OrderListModel.m in Sources */,
 				B38411101E5D875700F7069F /* FuctionUtil.m in Sources */,
 				0FE9632D1EBB195600F916DD /* OrderDetailModel.m in Sources */,
 				B384113C1E5E832C00F7069F /* VersionInfoViewController.m in Sources */,
@@ -960,7 +1038,6 @@
 				B384113A1E5E832C00F7069F /* AboutUsViewController.m in Sources */,
 				0FE963301EBC6FE800F916DD /* OrderDetailController.m in Sources */,
 				B37BA6CF1E80FA29001A74B8 /* AbnormalReportCell.m in Sources */,
-				0FD9C0B31EADD80800CD7E00 /* OrdersCollectionCell.m in Sources */,
 				B38410FB1E5D875700F7069F /* FileHelper.m in Sources */,
 				B384110D1E5D875700F7069F /* AlertInfoUtil.m in Sources */,
 				0FD9C0B61EADD88000CD7E00 /* OrdersViewController.m in Sources */,
@@ -968,12 +1045,14 @@
 				B38410A21E5C3D7D00F7069F /* CWStarRateView.m in Sources */,
 				B336CC181E88C026000F3928 /* BaseViewController.m in Sources */,
 				0FE5BFF71EB0A9F900F82D97 /* Mistake212Controller.m in Sources */,
+				0FA20D371EC471AA005C2015 /* OrderListModel.m in Sources */,
 				B384110E1E5D875700F7069F /* CustomButton.m in Sources */,
 				B37BA6D61E8127A9001A74B8 /* TZTestCell.m in Sources */,
 				B38411111E5D875700F7069F /* InputValueCheckUtil.m in Sources */,
+				0FA20D141EC46BDE005C2015 /* OrdersModel.m in Sources */,
+				0FA20D381EC471AA005C2015 /* ListTableCell.m in Sources */,
 				B3CC54C61E6037D60072EA47 /* WQLPaoMaView.m in Sources */,
 				0FD9C0BE1EAE0B7100CD7E00 /* Header212View.m in Sources */,
-				0FD9C0B11EADD80800CD7E00 /* ListTableCell.m in Sources */,
 				B357272F1E53FC61003F9B2F /* RootTabController.m in Sources */,
 				B357276A1E540E46003F9B2F /* NavigationController.m in Sources */,
 				B32228DE1E52A2C300ED50ED /* AppDelegate.m in Sources */,
@@ -989,7 +1068,6 @@
 				B38411311E5E830400F7069F /* CancelLoginTableViewCell.m in Sources */,
 				B38411321E5E830400F7069F /* FeedbackIdeaTableViewCell.m in Sources */,
 				B357277A1E5435AE003F9B2F /* MyLocationManager.m in Sources */,
-				0FD9C08B1EADD80800CD7E00 /* OrdersCenterController.m in Sources */,
 				B38411241E5E827600F7069F /* PersonalCenterViewController.m in Sources */,
 				0FD9C0BB1EADF6D700CD7E00 /* OrderStatus212Controller.m in Sources */,
 				B38410B61E5D375600F7069F /* BaseModel.m in Sources */,

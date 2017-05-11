@@ -62,6 +62,7 @@
         self.userNameTF.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.userNameTF.borderStyle = UITextBorderStyleBezel;
         self.userNameTF.returnKeyType = UIReturnKeyDone;
+        self.userNameTF.delegate = self;
         NSString *userNumber = [[NSUserDefaults standardUserDefaults] objectForKey:USER_NUMBER];
         if (userNumber.length) {
             self.userNameTF.text = [NSString stringWithFormat:@"%@", userNumber];
@@ -82,6 +83,7 @@
         self.passwordTF.layer.cornerRadius = self.userNameTF.layer.cornerRadius;
         self.passwordTF.borderStyle = UITextBorderStyleBezel;
         self.passwordTF.returnKeyType = UIReturnKeyDone;
+        self.passwordTF.delegate = self;
     }
     return _passwordTF;
 }
@@ -151,6 +153,13 @@
     if (phoneNumber.length) {
         self.userNameTF.text = phoneNumber;
     }
+}
+
+#pragma mark -- UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.view endEditing:YES];
+    return YES;
 }
 
 #pragma mark -- Common Methods

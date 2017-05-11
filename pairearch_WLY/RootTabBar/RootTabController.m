@@ -31,20 +31,21 @@
     HomeViewController *homeVC = [homeSB instantiateViewControllerWithIdentifier:@"HomeViewController"];
     NavigationController *homeNC = [self addNavigationItemForViewController:homeVC];
     
-    UIStoryboard *orderSB = [UIStoryboard storyboardWithName:@"OrdersCenterController" bundle:[NSBundle mainBundle]];
-    OrdersCenterController *orderVC = [orderSB instantiateViewControllerWithIdentifier:@"OrdersCenterController"];
-    NavigationController *orderNC = [self addNavigationItemForViewController:orderVC];
     
     UIStoryboard *ordersSB = [UIStoryboard storyboardWithName:@"OrdersViewController" bundle:[NSBundle mainBundle]];
     OrdersViewController *ordersVC = [ordersSB instantiateViewControllerWithIdentifier:@"OrdersViewController"];
     NavigationController *ordersNC = [self addNavigationItemForViewController:ordersVC];
+    
+    UIStoryboard *orderSB = [UIStoryboard storyboardWithName:@"OrdersCenterController" bundle:[NSBundle mainBundle]];
+    OrdersCenterController *orderVC = [orderSB instantiateViewControllerWithIdentifier:@"OrdersCenterController"];
+    NavigationController *orderNC = [self addNavigationItemForViewController:orderVC];
     
     PersonalCenterViewController *privateVC = [PersonalCenterViewController new];
     NavigationController *privateNC = [self addNavigationItemForViewController:privateVC];
     
     self.tabBar.translucent = NO;
     self.tabBar.barTintColor = TOP_BOTTOMBAR_COLOR;
-    self.viewControllers = @[homeNC, orderNC, ordersNC, privateNC];
+    self.viewControllers = @[homeNC, ordersNC, orderNC, privateNC];
     
     NSArray *titles = @[@"首页", @"运单中心", @"竞价中心", @"我的"];
     NSArray *images = @[@"zhuye", @"yundanzhongxin", @"bidding-icon", @"gerenzhongxin"];
