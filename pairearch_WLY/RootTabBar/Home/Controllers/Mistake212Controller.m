@@ -32,6 +32,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.title = @"运单详情";
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [NavigationController getNavigationBackItemWithTarget:self SEL:@selector(popBackAction:)];
     [self.view addSubview:self.tableView];
@@ -76,7 +77,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.homePageModel.orderModel? 1:0;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -88,7 +89,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    NSString *tempStr = self.homePageModel.orderModel.planDate;
+    NSString *tempStr = self.homePageModel.planDate;
     if (tempStr.length > 0) {
         self.headerView.planTimeLabel.text = tempStr;
     } else {
@@ -98,13 +99,13 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    self.footerView.codeImageView.image = [CreatQRCodeAndBarCodeFromLeon generateBarCode:self.homePageModel.orderModel.code size:CGSizeMake(kScreenWidth, kScreenWidth * 9.0 / 16.0) color:[UIColor blackColor] backGroundColor:nil];
-    self.footerView.codeNumberLabel.text = self.homePageModel.orderModel.code;
+    self.footerView.codeImageView.image = [CreatQRCodeAndBarCodeFromLeon generateBarCode:self.homePageModel.code size:CGSizeMake(kScreenWidth, kScreenWidth * 9.0 / 16.0) color:[UIColor blackColor] backGroundColor:nil];
+    self.footerView.codeNumberLabel.text = self.homePageModel.code;
     return self.footerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomePageModel *model = self.homePageModel.orderModel;
+    HomePageModel *model = self.homePageModel;
     CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
@@ -115,13 +116,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
-    cell.homeModel = self.homePageModel.orderModel;
+    cell.homeModel = self.homePageModel;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderDetailController *orderDetailVC = [OrderDetailController new];
-    orderDetailVC.orderCode = self.homePageModel.orderModel.code;
+    orderDetailVC.orderCode = self.homePageModel.code;
     [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
 

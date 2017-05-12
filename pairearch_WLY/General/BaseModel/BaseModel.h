@@ -23,7 +23,7 @@
 + (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock;
 
 //请求
-+ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock;
++ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock;
 
 //网络接口请求添加签名参数sign  ?不起作用啊
 + (NSDictionary *)signReqParams:(NSDictionary *)paramDict;

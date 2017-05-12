@@ -292,9 +292,6 @@
 		0FA20D1F1EC471AA005C2015 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0FA20D201EC471AA005C2015 /* BACK */,
-				0FA20D211EC471AA005C2015 /* COMMON */,
-				0FA20D221EC471AA005C2015 /* KA */,
 				0FA20D231EC471AA005C2015 /* OrdersCenterController.h */,
 				0FA20D241EC471AA005C2015 /* OrdersCenterController.m */,
 				0FA20D251EC471AA005C2015 /* OrdersCenterController.storyboard */,
@@ -302,66 +299,18 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		0FA20D201EC471AA005C2015 /* BACK */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BACK;
-			sourceTree = "<group>";
-		};
-		0FA20D211EC471AA005C2015 /* COMMON */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = COMMON;
-			sourceTree = "<group>";
-		};
-		0FA20D221EC471AA005C2015 /* KA */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = KA;
-			sourceTree = "<group>";
-		};
 		0FA20D261EC471AA005C2015 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0FA20D271EC471AA005C2015 /* BACK */,
-				0FA20D281EC471AA005C2015 /* COMMON */,
-				0FA20D291EC471AA005C2015 /* KA */,
 				0FA20D2A1EC471AA005C2015 /* OrderListModel.h */,
 				0FA20D2B1EC471AA005C2015 /* OrderListModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		0FA20D271EC471AA005C2015 /* BACK */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BACK;
-			sourceTree = "<group>";
-		};
-		0FA20D281EC471AA005C2015 /* COMMON */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = COMMON;
-			sourceTree = "<group>";
-		};
-		0FA20D291EC471AA005C2015 /* KA */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = KA;
-			sourceTree = "<group>";
-		};
 		0FA20D2C1EC471AA005C2015 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				0FA20D2D1EC471AA005C2015 /* BACK */,
-				0FA20D2E1EC471AA005C2015 /* COMMON */,
-				0FA20D2F1EC471AA005C2015 /* KA */,
 				0FA20D301EC471AA005C2015 /* ListTableCell.h */,
 				0FA20D311EC471AA005C2015 /* ListTableCell.m */,
 				0FA20D321EC471AA005C2015 /* ListTableCell.xib */,
@@ -369,27 +318,6 @@
 				0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		0FA20D2D1EC471AA005C2015 /* BACK */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = BACK;
-			sourceTree = "<group>";
-		};
-		0FA20D2E1EC471AA005C2015 /* COMMON */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = COMMON;
-			sourceTree = "<group>";
-		};
-		0FA20D2F1EC471AA005C2015 /* KA */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = KA;
 			sourceTree = "<group>";
 		};
 		0FE5C0021EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon */ = {

@@ -8,7 +8,7 @@
 
 #import "OrderListTableCell.h"
 
-#import "OrdersModel.h"
+#import "HomePageModel.h"
 
 @implementation OrderListTableCell
 
@@ -56,7 +56,7 @@
     return cell;
 }
 
-- (void)setOrderModel:(OrdersModel *)orderModel {
+- (void)setOrderModel:(HomePageModel *)orderModel {
     _orderModel = orderModel;
     self.loadNumberLabel.text = [NSString stringWithFormat:@"单号:%@", orderModel.code];
     self.planLoadTimeLabel.text = orderModel.wareDispatchTime;
@@ -64,8 +64,13 @@
     self.startAddressLabel.text = orderModel.sourceAddr;
     self.endNameLabel.text = orderModel.dcName;
     self.endAddressLabel.text = orderModel.dcAddress;
+    self.statusLabel.text = orderModel.statusName;
+    if (orderModel.status.integerValue == ORDER_STATUS_212) {
+        self.statusLabel.backgroundColor = [UIColor greenColor];
+    } else {
+        self.statusLabel.backgroundColor = MAIN_THEME_COLOR;
+    }
 }
-
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

@@ -42,6 +42,9 @@
     //初始化JPush
     [self registerJpushWithOptions:launchOptions];
     
+    //注册自定义消息监听
+    [self registerCustomerMessage];
+    
     [[LocationManager shareManager] startUpdateLocation];
     
     return YES;
@@ -108,6 +111,31 @@
     [self.window setRootViewController:rootTab];
 }
 
+
+/**
+ 注册监听自定义消息
+ */
+- (void)registerCustomerMessage {
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(networkDidReceiveMessage:) name:kJPFNetworkDidReceiveMessageNotification object:nil];
+}
+
+
+/**
+ 收到自定义消息执行的通知方法
+
+ @param notification 收到的消息对象
+ */
+- (void)networkDidReceiveMessage:(NSNotification *)notification {
+    NSDictionary * userInfo = [notification userInfo];
+    NSString *content = [userInfo valueForKey:@"content"];
+    NSDictionary *extras = [userInfo valueForKey:@"extras"];
+    NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
+    
+    [self addNetLocalNotificationWithDesStr:content];
+    
+}
+
 //注册本地通知
 - (void)registerLocalNotification {
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
@@ -125,6 +153,9 @@
  @param launchOptions 登录参数
  */
 - (void)registerJpushWithOptions:(NSDictionary *)launchOptions {
+    
+    NSLog(@"%s\n%@", __func__, launchOptions);
+    [MBProgressHUD bwm_showTitle:NSStringFromClass([launchOptions class]) toView:self.window hideAfter:10.0];
     //notice: 3.0.0及以后版本注册可以这样写，也可以继续用之前的注册方式
     JPUSHRegisterEntity *entity = [[JPUSHRegisterEntity alloc] init];
     entity.types = JPAuthorizationOptionAlert|JPAuthorizationOptionBadge|JPAuthorizationOptionSound;
@@ -139,20 +170,35 @@
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
-//前台通知
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
+
+//iOS 10 support
+
+/**
+ 程序在前台收到消息调用函数
+
+ @param center 通知中心
+ @param notification 前台通知对象
+ @param completionHandler 完成回调
+ */
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger options))completionHandler {
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
-    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+//    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+    NSLog(@"%s\n%@", __func__, userInfo);
 }
 
 /**
- 前台接收通知
+ 点击通知进入程序调用方法
 
  @param center 通知中心
- @param response 通知回复
+ @param response 通知响应对象
  @param completionHandler 完成回调
  */
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void(^)())completionHandler {
@@ -161,24 +207,26 @@
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
-    completionHandler();  // 系统要求执行这个方法
+//    completionHandler(UNNotificationPresentationOptionAlert);  //系统要求执行这个方法
+    NSLog(@"%s\n%@", __func__, userInfo);
 }
+
+
+//iOS 7 Remote Notification
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     
-    // Required, iOS 7 Support
+    // iOS 10 以下 Required
     [JPUSHService handleRemoteNotification:userInfo];
-    completionHandler(UIBackgroundFetchResultNewData);
+//    completionHandler(UIBackgroundFetchResultNewData);
+    NSLog(@"%s\n%@", __func__, userInfo);
 }
 
+// iOS6 及以下
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
-    // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
-}
-
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+    NSLog(@"%s\n%@", __func__, userInfo);
 }
 
 //网络变化通知
@@ -237,6 +285,9 @@
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    
+    [JPUSHService setBadge:0];//重置JPush服务器上面的badge值。如果下次服务端推送badge传"+1",则会在你当时JPush服务器上该设备的badge值的基础上＋1；
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];//apple自己的接口，变更应用本地（icon）的badge值；
 }
 
 

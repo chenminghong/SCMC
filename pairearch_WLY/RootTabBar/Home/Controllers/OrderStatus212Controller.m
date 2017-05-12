@@ -105,7 +105,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.homePageModel.orderModel? 1:0;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -117,7 +117,7 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-    self.headerView.planTimeLabel.text = self.homePageModel.orderModel.planDate;
+    self.headerView.planTimeLabel.text = self.homePageModel.planDate;
     return self.headerView;
 }
 
@@ -126,7 +126,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomePageModel *model = self.homePageModel.orderModel;
+    HomePageModel *model = self.homePageModel;
     CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
@@ -137,13 +137,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
-    cell.homeModel = self.homePageModel.orderModel;
+    cell.homeModel = self.homePageModel;
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderDetailController *orderDetailVC = [OrderDetailController new];
-    orderDetailVC.orderCode = self.homePageModel.orderModel.code;
+    orderDetailVC.orderCode = self.homePageModel.code;
     [self.navigationController pushViewController:orderDetailVC animated:YES];
 }
 
@@ -188,14 +188,12 @@
  */
 - (void)getLoadAAction:(UIButton *)sender {
     if (self.headerView.selectedButton.selected) {
-        [NetworkHelper POST:GET_LOAD_API parameters:@{@"userName":[LoginModel shareLoginModel].tel, @"orderCode":self.homePageModel.orderModel.code} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        [NetworkHelper POST:GET_LOAD_API parameters:@{@"userName":[LoginModel shareLoginModel].tel, @"orderCode":self.homePageModel.code} progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
             NSString *result = [NSString stringWithFormat:@"%@", responseObject[@"result"]];
             if ([result boolValue]) {
                 MBProgressHUD *hud = [MBProgressHUD bwm_showTitle:@"订单接收成功！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
                 [hud setCompletionBlock:^() {
-                    Mistake212Controller *mistake = [Mistake212Controller new];
-                    mistake.homePageModel = self.homePageModel;
-                    [self.navigationController pushViewController:mistake animated:YES];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 }];
             } else {
                 [MBProgressHUD bwm_showTitle:@"订单接收失败！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];

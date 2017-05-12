@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class OrdersModel;
+@class HomePageModel;
 
 @interface OrderListTableCell : UITableViewCell
 
@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *endAddressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *statusLabel;
 
-@property (nonatomic, strong) OrdersModel *orderModel;  //主页数据
+@property (nonatomic, strong) HomePageModel *orderModel;  //主页数据
 
 //加载cell
 + (instancetype)getCellWithTable:(UITableView *)table;

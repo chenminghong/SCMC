@@ -9,13 +9,16 @@
 #import "OrdersViewController.h"
 
 #import "OrderListTableCell.h"
-#import "OrdersModel.h"
+#import "HomePageModel.h"
+
+#import "OrderStatus212Controller.h"
+#import "Mistake212Controller.h"
 
 @interface OrdersViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) OrdersModel *ordersModel;
+@property (nonatomic, strong) HomePageModel *homeModel;
 
 @end
 
@@ -29,8 +32,13 @@
     
     [self.view addSubview:self.tableView];
     
-    [self getOrderListData];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [MJRefreshUtil begainRefresh:self.tableView];
 }
 
 - (UITableView *)tableView {
@@ -45,16 +53,17 @@
         self.tableView.dataSource = self;
         self.tableView.tableFooterView = [UITableView new];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [MJRefreshUtil pullDownRefresh:self andScrollView:self.tableView andAction:@selector(getOrderListData)];
     }
     return _tableView;
 }
 
 //获取订单列表Data数据
 - (void)getOrderListData {
-    [OrdersModel getDataWithParameters:@{@"driverTel":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+    [HomePageModel getDataWithUrl:ORDER_LIST_API parameters:@{@"driverTel":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
         if (!error) {
-            self.ordersModel = model;
-            if (self.ordersModel.modelsList.count <= 0) {
+            self.homeModel = model;
+            if (self.homeModel.orderModelList.count <= 0) {
                 [MBProgressHUD bwm_showTitle:@"暂无订单" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
             }
         } else {
@@ -62,7 +71,6 @@
         }
         [self.tableView reloadData];
         [MJRefreshUtil endRefresh:self.tableView];
-        
     }];
 }
 
@@ -73,11 +81,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.ordersModel.modelsList.count;
+    return self.homeModel.orderModelList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    OrdersModel *model = self.ordersModel.modelsList[indexPath.row];
+    HomePageModel *model = self.homeModel.orderModelList[indexPath.row];
     CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
@@ -88,12 +96,38 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderListTableCell *cell = [OrderListTableCell getCellWithTable:tableView];
-    cell.orderModel = self.ordersModel.modelsList[indexPath.row];
+    cell.orderModel = self.homeModel.orderModelList[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    HomePageModel *model = self.homeModel.orderModelList[indexPath.row];
+    [self jumpToControllerWithStatus:model.status.integerValue paraDict:model];
+}
+
+//KA界面跳转逻辑
+- (void)jumpToControllerWithStatus:(NSInteger)status paraDict:(HomePageModel *)model {
+    NSLog(@"status:%ld", status);
+    switch (status) {
+        case ORDER_STATUS_212:
+        {
+            OrderStatus212Controller *orderVC = [OrderStatus212Controller new];
+            orderVC.homePageModel = model;
+            [self.navigationController pushViewController:orderVC animated:YES];
+        }
+            break;
+            
+        case ORDER_STATUS_220:
+        {
+            Mistake212Controller *mistake = [Mistake212Controller new];
+            mistake.homePageModel = model;
+            [self.navigationController pushViewController:mistake animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning {

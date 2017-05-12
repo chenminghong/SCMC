@@ -28,6 +28,9 @@
     if (userInfo) {
         [self setValuesForKeysWithDictionary:userInfo];
     }
+    if (self.tel.length > 0) {
+        [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].tel];
+    }
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key {

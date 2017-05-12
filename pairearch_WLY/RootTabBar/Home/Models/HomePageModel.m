@@ -14,24 +14,26 @@
     return [NSString stringWithFormat:@"%@", _code];
 }
 
-+ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
-    return [[NetworkHelper shareClient] GET:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
-        NSInteger ordersCount = [responseDict[@"loadResult"] integerValue];
-        HomePageModel *model = [HomePageModel getModelWithDict:responseDict];
++ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock {
+    return [NetworkHelper GET:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask *task, MBProgressHUD *hud, id responseObject) {
+        [hud hide:NO];
+        NSInteger ordersCount = [responseObject[@"loadResult"] integerValue];
+        HomePageModel *model = [HomePageModel getModelWithDict:responseObject];
         if (ordersCount > 0) {
-            NSDictionary *orderDict = responseDict[@"orders"];
-            model.orderModel = [HomePageModel getModelWithDict:orderDict];
+            id orders = responseObject[@"orders"];
+            if ([[orders class] isSubclassOfClass:[NSDictionary class]]) {
+                model.orderModelList = [NSMutableArray array];
+                [model.orderModelList addObject:[HomePageModel getModelWithDict:orders]];
+            }
+            if ([[orders class] isSubclassOfClass:[NSArray class]]) {
+                model.orderModelList = [NSMutableArray arrayWithArray:[HomePageModel getModelsWithDicts:orders]];
+            }
         }
         endBlock(model, nil);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+    } failure:^(NSError *error) {
         endBlock(nil, error);
     }];
 }
-
-//- (NSString *)code {
-//    return [NSString stringWithFormat:@"单号:%@", _code];
-//}
 
 - (NSString *)wareDispatchTime {
     return [NSString stringWithFormat:@"计划装运日期:%@", [_wareDispatchTime substringToIndex:10]];

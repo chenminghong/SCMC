@@ -78,13 +78,16 @@
 
 @interface HomePageModel : BaseModel
 
-@property (nonatomic, copy) NSString *status;                   //订单状态
+@property (nonatomic, strong) NSMutableArray *orderModelList;        //可接收订单
+
 
 @property (nonatomic, copy) NSString *bidcount;                 //可抢订单数量
 
 @property (nonatomic, copy) NSString *loadResult;               //请求结果是否有订单
 
-@property (nonatomic, strong) HomePageModel *orderModel;        //可接收订单数组
+@property (nonatomic, copy) NSString *status;                   //订单状态码
+
+@property (nonatomic, copy) NSString *statusName;               //订单状态
 
 @property (nonatomic, copy) NSString *code;                     //单号
 

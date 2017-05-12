@@ -202,11 +202,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.homePageModel.orderModel? 1:0;
+    return self.homePageModel.orderModelList.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomePageModel *model = self.homePageModel.orderModel;
+    HomePageModel *model = self.homePageModel.orderModelList[indexPath.row];
     CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
     CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
@@ -217,7 +217,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     HomeTableCell *cell = [HomeTableCell getCellWithTable:tableView];
-    cell.homeModel = self.homePageModel.orderModel;
+    cell.homeModel = self.homePageModel.orderModelList[indexPath.row];
     return cell;
 }
 
@@ -251,16 +251,17 @@
  @param sender 接收运单按钮
  */
 - (void)getLoadAction:(UIButton *)sender {
-    if (!self.homePageModel) {
+    if (self.homePageModel.orderModelList.count <= 0) {
         return;
     }
-    if ([self.homePageModel.orderModel.status integerValue] == ORDER_STATUS_212) {
+    HomePageModel *homeModel = self.homePageModel.orderModelList[0];
+    if ([homeModel.status integerValue] == ORDER_STATUS_212) {
         OrderStatus212Controller *orderVC = [OrderStatus212Controller new];
-        orderVC.homePageModel = self.homePageModel;
+        orderVC.homePageModel = homeModel;
         [self.navigationController pushViewController:orderVC animated:YES];
     } else {
         Mistake212Controller *mistake = [Mistake212Controller new];
-        mistake.homePageModel = self.homePageModel;
+        mistake.homePageModel = homeModel;
         [self.navigationController pushViewController:mistake animated:YES];
     }
 }

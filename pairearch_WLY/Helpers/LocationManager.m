@@ -74,7 +74,7 @@
  @param locations 获取的位置信息
  */
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
-    NSLog(@"位置是：%@", locations);
+//    NSLog(@"位置是：%@", locations);
 }
 
 
@@ -85,7 +85,7 @@
  @param error 错误信息
  */
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    NSLog(@"%@", error);
+//    NSLog(@"%@", error);
 }
 
 
