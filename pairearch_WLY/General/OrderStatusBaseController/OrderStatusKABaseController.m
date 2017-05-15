@@ -19,12 +19,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-    
-    //界面消失刷新首页面
-    [[NSNotificationCenter defaultCenter] postNotificationName:ORDERSCENTER_RELOAD_NAME object:nil];
-}
 
 
 - (void)didReceiveMemoryWarning {

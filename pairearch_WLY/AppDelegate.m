@@ -127,7 +127,7 @@
  @param notification 收到的消息对象
  */
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
-    NSDictionary * userInfo = [notification userInfo];
+    NSDictionary *userInfo = [notification userInfo];
     NSString *content = [userInfo valueForKey:@"content"];
 //    NSDictionary *extras = [userInfo valueForKey:@"extras"];
 //    NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
@@ -190,7 +190,7 @@
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
-//    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+    completionHandler(UNNotificationPresentationOptionAlert); // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
     NSLog(@"%s\n%@", __func__, userInfo);
 }
 
@@ -207,7 +207,7 @@
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         [JPUSHService handleRemoteNotification:userInfo];
     }
-//    completionHandler(UNNotificationPresentationOptionAlert);  //系统要求执行这个方法
+    completionHandler(UNNotificationPresentationOptionAlert);  //系统要求执行这个方法
     NSLog(@"%s\n%@", __func__, userInfo);
 }
 
@@ -215,10 +215,8 @@
 //iOS 7 Remote Notification
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
-    
-    // iOS 10 以下 Required
     [JPUSHService handleRemoteNotification:userInfo];
-//    completionHandler(UIBackgroundFetchResultNewData);
+    completionHandler(UIBackgroundFetchResultNewData);
     NSLog(@"%s\n%@", __func__, userInfo);
 }
 

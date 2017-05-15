@@ -13,6 +13,7 @@
 
 #import "OrderStatus212Controller.h"
 #import "Mistake212Controller.h"
+#import "NestedSelectStateController.h"
 
 @interface OrdersViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -122,6 +123,13 @@
             Mistake212Controller *mistake = [Mistake212Controller new];
             mistake.homePageModel = model;
             [self.navigationController pushViewController:mistake animated:YES];
+        }
+            break;
+            
+        case ORDER_STATUS_224:
+        {
+            NestedSelectStateController *nestVC = [NestedSelectStateController new];
+            [self.navigationController pushViewController:nestVC animated:YES];
         }
             break;
             

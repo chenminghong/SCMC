@@ -66,9 +66,6 @@
             btn.selected = NO;
         }
     }
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadListData:) name:ORDERSCENTER_RELOAD_NAME object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

@@ -35,7 +35,6 @@
 #import "LoginModel.h"
 #import "RootTabController.h"
 #import "OrderStatus.h"
-#import "OrderStatusKABaseController.h"
 #import "BaseViewController.h"
 #import "SAMKeychainManager.h"
 #import "JPUSHService.h"

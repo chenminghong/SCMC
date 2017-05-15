@@ -25,6 +25,7 @@
 		0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0BF1EAE0B7D00CD7E00 /* Header212View.xib */; };
 		0FD9C0C31EAEDD4100CD7E00 /* FooterSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0C21EAEDD4100CD7E00 /* FooterSelectView.m */; };
 		0FD9C0C51EAEDD4E00CD7E00 /* FooterSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0C41EAEDD4E00CD7E00 /* FooterSelectView.xib */; };
+		0FE58E061EC95A5A0041E1D9 /* OrderStatusKABaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E051EC95A5A0041E1D9 /* OrderStatusKABaseController.m */; };
 		0FE5BFF21EB03CE300F82D97 /* SafetyControlController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5BFF11EB03CE300F82D97 /* SafetyControlController.m */; };
 		0FE5BFF41EB071ED00F82D97 /* SafetyControl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5BFF31EB071ED00F82D97 /* SafetyControl.plist */; };
 		0FE5BFF71EB0A9F900F82D97 /* Mistake212Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5BFF61EB0A9F900F82D97 /* Mistake212Controller.m */; };
@@ -46,7 +47,6 @@
 		B32228E91E52A2C300ED50ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B32228E71E52A2C300ED50ED /* LaunchScreen.storyboard */; };
 		B33090211E8BA4EA00CB898F /* SAMKeychainManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B33090201E8BA4EA00CB898F /* SAMKeychainManager.m */; };
 		B336CC181E88C026000F3928 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B336CC171E88C026000F3928 /* BaseViewController.m */; };
-		B336CC1E1E88C4C6000F3928 /* OrderStatusKABaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = B336CC1D1E88C4C6000F3928 /* OrderStatusKABaseController.m */; };
 		B357272F1E53FC61003F9B2F /* RootTabController.m in Sources */ = {isa = PBXBuildFile; fileRef = B357272E1E53FC61003F9B2F /* RootTabController.m */; };
 		B357276A1E540E46003F9B2F /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = B35727691E540E46003F9B2F /* NavigationController.m */; };
 		B357277A1E5435AE003F9B2F /* MyLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B35727791E5435AE003F9B2F /* MyLocationManager.m */; };
@@ -140,6 +140,8 @@
 		0FD9C0C11EAEDD4100CD7E00 /* FooterSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterSelectView.h; sourceTree = "<group>"; };
 		0FD9C0C21EAEDD4100CD7E00 /* FooterSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterSelectView.m; sourceTree = "<group>"; };
 		0FD9C0C41EAEDD4E00CD7E00 /* FooterSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterSelectView.xib; sourceTree = "<group>"; };
+		0FE58E041EC95A5A0041E1D9 /* OrderStatusKABaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatusKABaseController.h; sourceTree = "<group>"; };
+		0FE58E051EC95A5A0041E1D9 /* OrderStatusKABaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatusKABaseController.m; sourceTree = "<group>"; };
 		0FE5BFF01EB03CE300F82D97 /* SafetyControlController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SafetyControlController.h; sourceTree = "<group>"; };
 		0FE5BFF11EB03CE300F82D97 /* SafetyControlController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SafetyControlController.m; sourceTree = "<group>"; };
 		0FE5BFF31EB071ED00F82D97 /* SafetyControl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = SafetyControl.plist; sourceTree = "<group>"; };
@@ -175,8 +177,6 @@
 		B33090201E8BA4EA00CB898F /* SAMKeychainManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SAMKeychainManager.m; sourceTree = "<group>"; };
 		B336CC161E88C026000F3928 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		B336CC171E88C026000F3928 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		B336CC1C1E88C4C6000F3928 /* OrderStatusKABaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatusKABaseController.h; sourceTree = "<group>"; };
-		B336CC1D1E88C4C6000F3928 /* OrderStatusKABaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatusKABaseController.m; sourceTree = "<group>"; };
 		B357272D1E53FC61003F9B2F /* RootTabController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootTabController.h; sourceTree = "<group>"; };
 		B357272E1E53FC61003F9B2F /* RootTabController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootTabController.m; sourceTree = "<group>"; };
 		B35727681E540E46003F9B2F /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
@@ -321,6 +321,15 @@
 				0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0FE58E031EC95A5A0041E1D9 /* OrderStatusBaseController */ = {
+			isa = PBXGroup;
+			children = (
+				0FE58E041EC95A5A0041E1D9 /* OrderStatusKABaseController.h */,
+				0FE58E051EC95A5A0041E1D9 /* OrderStatusKABaseController.m */,
+			);
+			path = OrderStatusBaseController;
 			sourceTree = "<group>";
 		};
 		0FE5C0021EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon */ = {
@@ -525,8 +534,8 @@
 		B35727631E540D9D003F9B2F /* General */ = {
 			isa = PBXGroup;
 			children = (
+				0FE58E031EC95A5A0041E1D9 /* OrderStatusBaseController */,
 				B336CC151E88C010000F3928 /* BaseViewController */,
-				B37CB2291E6E96F900A1463F /* OrderStatusBaseController */,
 				B38410BA1E5D875700F7069F /* Service */,
 				B38410B31E5D374600F7069F /* BaseModel */,
 				B35727641E540D9D003F9B2F /* NavigationController */,
@@ -582,15 +591,6 @@
 				B38411181E5D886000F7069F /* Views */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		B37CB2291E6E96F900A1463F /* OrderStatusBaseController */ = {
-			isa = PBXGroup;
-			children = (
-				B336CC1C1E88C4C6000F3928 /* OrderStatusKABaseController.h */,
-				B336CC1D1E88C4C6000F3928 /* OrderStatusKABaseController.m */,
-			);
-			path = OrderStatusBaseController;
 			sourceTree = "<group>";
 		};
 		B384109E1E5C3CFE00F7069F /* Vender */ = {
@@ -1001,9 +1001,9 @@
 				B357276A1E540E46003F9B2F /* NavigationController.m in Sources */,
 				B32228DE1E52A2C300ED50ED /* AppDelegate.m in Sources */,
 				B3D3B2AA1E66EA550033EF84 /* SaftyCheckCell.m in Sources */,
+				0FE58E061EC95A5A0041E1D9 /* OrderStatusKABaseController.m in Sources */,
 				B33090211E8BA4EA00CB898F /* SAMKeychainManager.m in Sources */,
 				0FD9C0C31EAEDD4100CD7E00 /* FooterSelectView.m in Sources */,
-				B336CC1E1E88C4C6000F3928 /* OrderStatusKABaseController.m in Sources */,
 				B384111F1E5D893C00F7069F /* LoginModel.m in Sources */,
 				B38411451E5E91DE00F7069F /* CancelLoginCell.m in Sources */,
 				B3D3B2A71E66EA550033EF84 /* SafetyCheckModel.m in Sources */,

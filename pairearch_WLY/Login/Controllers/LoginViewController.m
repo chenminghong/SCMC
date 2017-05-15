@@ -267,7 +267,7 @@
             }];
             
             //在后台给JPush设置别名
-//            [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].tel];
+            [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].tel];
         } else {
             NSString *message = error.userInfo[ERROR_MSG];
             [MBProgressHUD bwm_showTitle:message toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
