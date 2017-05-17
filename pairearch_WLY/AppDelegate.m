@@ -1,4 +1,4 @@
-//
+    //
 //  AppDelegate.m
 //  pairearch_WLY
 //
@@ -129,9 +129,12 @@
 - (void)networkDidReceiveMessage:(NSNotification *)notification {
     NSDictionary *userInfo = [notification userInfo];
     NSString *content = [userInfo valueForKey:@"content"];
-//    NSDictionary *extras = [userInfo valueForKey:@"extras"];
-//    NSString *customizeField1 = [extras valueForKey:@"customizeField1"]; //服务端传递的Extras附加字段，key是自己定义的
-    
+    NSDictionary *extras = [userInfo valueForKey:@"extras"];
+    NSString *jsonStr = [extras valueForKey:@"params"]; //服务端传递的Extras附加字段，key是自己定义的
+    NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *paraDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil]
+    ;
+    [[NSNotificationCenter defaultCenter] postNotificationName:GET_CUSTOM_MESSAGE_NAME object:nil userInfo:paraDict];
     [self addNetLocalNotificationWithDesStr:content];
     
 }

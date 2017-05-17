@@ -110,7 +110,7 @@
 - (void)jumpToControllerWithStatus:(NSInteger)status paraDict:(HomePageModel *)model {
     NSLog(@"status:%ld", status);
     switch (status) {
-        case ORDER_STATUS_212:
+        case ORDER_STATUS_212://待接收
         {
             OrderStatus212Controller *orderVC = [OrderStatus212Controller new];
             orderVC.homePageModel = model;
@@ -118,17 +118,27 @@
         }
             break;
             
-        case ORDER_STATUS_220:
+        case ORDER_STATUS_220://已接收待签到
         {
-            Mistake212Controller *mistake = [Mistake212Controller new];
-            mistake.homePageModel = model;
-            [self.navigationController pushViewController:mistake animated:YES];
+            NestedSelectStateController *nestVC = [NestedSelectStateController new];
+            nestVC.homePageModel = model;
+            nestVC.status = status;
+            nestVC.code = model.code;
+            [self.navigationController pushViewController:nestVC animated:YES];
         }
             break;
             
-        case ORDER_STATUS_224:
+        case ORDER_STATUS_224://已签到待入厂
+        case ORDER_STATUS_226://已入厂待装货
+        case ORDER_STATUS_228://已装货未装货完成
+        case ORDER_STATUS_230://装货完成待出厂
+        case ORDER_STATUS_232://装货完成待出厂
+        case ORDER_STATUS_240:
+        case ORDER_STATUS_244://收货完成
         {
             NestedSelectStateController *nestVC = [NestedSelectStateController new];
+            nestVC.code = model.code;
+            nestVC.status = status;
             [self.navigationController pushViewController:nestVC animated:YES];
         }
             break;

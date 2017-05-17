@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomePageModel;
+
 @interface NestedSelectStateController : UIViewController
 
-@property (nonatomic, strong) NSDictionary *paraDict;  //参数
+@property (nonatomic, copy) NSString *code;            //订单编号
 
-@property (nonatomic, assign) NSInteger orderStatus; //load单号状态
+@property (nonatomic, assign) NSInteger status;        //订单状态码
 
-@property (nonatomic, copy) NSString *orderType; //订单类型
+@property (nonatomic, strong) HomePageModel *homePageModel;
 
 @end

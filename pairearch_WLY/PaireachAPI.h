@@ -13,7 +13,6 @@
 
 /*============================BaseUrl相关=============================*/
 //API前缀定义
-//#define PAIREACH_BASE_URL                @"http://192.168.1.14:8086/tts/client/"   //王敬刚
 #define PAIREACH_BASE_URL                @"http://106.14.39.65:8385/itip/client/"  //测试线上
 //#define PAIREACH_BASE_URL                @"http://192.168.1.14:8086/itip/client/"  //备用
 //#define PAIREACH_BASE_URL                @"http://dt.paireach.com/itip/client/"   //双至域名
@@ -56,6 +55,11 @@
 //订单中心
 #define ORDER_LIST_API                    @"loadAllOrder.a"                 //get
 
+//装货开始扫码
+#define LOAD_START_API                    @"loadStartOrder.a"               //get
+
+//装货结束扫码
+#define LOAD_END_API                      @"loadEndOrder.a"                 //get
 
 
 
@@ -114,8 +118,8 @@
 
 #pragma mark -- 通知中心
 
-//订单中心刷新通知
-//#define ORDERSCENTER_RELOAD_NAME            @"order_center_reloaddata"
+//接收到JPush自定义消息通知
+#define GET_CUSTOM_MESSAGE_NAME           @"get_custom_message_name"           //get
 
 
 

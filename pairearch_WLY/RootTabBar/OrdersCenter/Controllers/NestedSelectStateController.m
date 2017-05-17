@@ -8,17 +8,16 @@
 
 #import "NestedSelectStateController.h"
 
-//#import "OrderStatusKA230Controller.h"
-//#import "OrderDetailModel.h"
-//#import "OrderStatusKA230Controller.h"
-//#import "OrderStatusKA238Controller.h"
-//#import "OrderStatusKA240Controller.h"
-//#import "OrderStatusKA245Controller.h"
+#import "HomePageModel.h"
+#import "Mistake212Controller.h"
+#import "OrderStatus224Controller.h"
+#import "OrderStatus226Controller.h"
+#import "OrderStatus228Controller.h"
+#import "OrderStatus230Controller.h"
+#import "OrderStatus232Controller.h"
 
 
 @interface NestedSelectStateController ()
-
-@property (nonatomic, strong) NSMutableArray *dataListArr;  //数据源
 
 @end
 
@@ -31,101 +30,114 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationItem.leftBarButtonItem = [NavigationController getNavigationBackItemWithTarget:self SEL:@selector(popBackAction:)];
-}
-
-- (void)setParaDict:(NSDictionary *)paraDict {
-    _paraDict = paraDict;
     
-    [self loadDetailDataFromNet];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getCustomMessageAction:) name:GET_CUSTOM_MESSAGE_NAME object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(judgeJumpToDetailController) name:UIApplicationWillEnterForegroundNotification object:nil];
 }
 
-//网络请求数据
-- (void)loadDetailDataFromNet {
-//    [OrderDetailModel getDataWithParameters:self.paraDict endBlock:^(id model, NSError *error) {
-//        if (model) {
-//            //对model数据进行分类
-//            NSArray *dataListArr = [NSMutableArray arrayWithArray:model];
-//            NSMutableDictionary *orderCodeDict = [NSMutableDictionary dictionary];
-//            for (OrderDetailModel *detailModel in dataListArr) {
-//                [orderCodeDict setObject:detailModel forKey:detailModel.ORDER_CODE];
-//            }
-//            
-//            NSArray *orderCodeArr = [orderCodeDict allKeys];  //获取所有的orderCode
-//            self.dataListArr = [NSMutableArray array];
-//            for (NSString *orderCode in orderCodeArr) {
-//                NSMutableArray *modelArr = [NSMutableArray array];
-//                for (OrderDetailModel *model in dataListArr) {
-//                    if ([orderCode isEqualToString:model.ORDER_CODE]) {
-//                        [modelArr addObject:model];
-//                    }
-//                }
-//                [self.dataListArr addObject:modelArr];
-//            }
-//            
-//            //根据加载的数据判断跳转界面
-//            [self judgeJumpToDetailController];
-//        } else {
-//            [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-//        }
-//    }];
+- (void)getCustomMessageAction:(NSNotification *)sender {
+    NSDictionary *userInfo = [sender userInfo];
+    NSInteger status = [userInfo[@"status"] integerValue];
+    NSString *orderCode = userInfo[@"orderCode"];
+    self.status = status;
+    self.code = orderCode;
 }
+
+- (void)setStatus:(NSInteger)status {
+    _status = status;
+    [self judgeJumpToDetailController];
+}
+
+- (void)judgeJumpToDetailController {
+    [self judgeJumpToDetailControllerWithStatus:self.status code:self.code];
+}
+
 
 //根据加载的数据判断跳转界面
-- (void)judgeJumpToDetailController {
-//    OrderDetailModel *model = [self.dataListArr[0] firstObject];
-//    NSInteger status = [model.SHPM_STATUS integerValue];
-//    self.title = [OrderStatusManager getStatusTitleWithOrderStatus:status orderType:ORDER_TYPE_KA];
-//    switch (status) {
-//        case ORDER_STATUS_230:
-//        {
-//            OrderStatusKA230Controller *childVC = [OrderStatusKA230Controller new];
-//            childVC.paraDict = self.paraDict;
-//            childVC.orderStatus = status;
-//            childVC.dataListArr = self.dataListArr;
-//            [self addChildController:childVC];
-//        }
-//            break;
-//            
-//        case ORDER_STATUS_238:
-//        {
-//            OrderStatusKA238Controller *childVC = [OrderStatusKA238Controller new];
-//            childVC.paraDict = self.paraDict;
-//            childVC.orderStatus = status;
-//            childVC.dataListArr = self.dataListArr;
-//            [self addChildController:childVC];
-//        }
-//            break;
-//            
-//        case ORDER_STATUS_240:
-//        case ORDER_STATUS_241:
-//            
-//        {
-//            OrderStatusKA240Controller *childVC = [OrderStatusKA240Controller new];
-//            childVC.paraDict = self.paraDict;
-//            childVC.orderStatus = status;
-//            childVC.dataListArr = self.dataListArr;
-//            [self addChildController:childVC];
-//        }
-//            break;
-//            
-//        case ORDER_STATUS_245:
-//        {
-//            OrderStatusKA245Controller *evaluationVC = [OrderStatusKA245Controller new];
-//            evaluationVC.paraDict = self.paraDict;
-//            [self addChildController:evaluationVC];
-//        }
-//            break;
-//            
-//        default:
-//            break;
-//    }
+- (void)judgeJumpToDetailControllerWithStatus:(NSInteger)status code:(NSString *)code {
+    NSLog(@"status:%ld", status);
+    switch (status) {
+        case ORDER_STATUS_220://已接收待签到
+        {
+            self.title = @"运单详情";
+            Mistake212Controller *childVC = [Mistake212Controller new];
+            childVC.homePageModel = self.homePageModel;
+            [self addChildController:childVC];
+        }
+            break;
+            
+        case ORDER_STATUS_224:
+        {
+            self.title = @"入厂提示";
+            OrderStatus224Controller *childVC = [OrderStatus224Controller new];
+            childVC.status = self.status;
+            childVC.code = code;
+            [self addChildController:childVC];
+        }
+            break;
+            
+        case ORDER_STATUS_226:
+        {
+            self.title = @"开始装货";
+            OrderStatus226Controller *childVC = [OrderStatus226Controller new];
+            childVC.code = code;
+            childVC.status = status;
+            [self addChildController:childVC];
+        }
+            break;
+            
+        case ORDER_STATUS_228:
+        {
+            self.title = @"装货中";
+            OrderStatus228Controller *childVC = [OrderStatus228Controller new];
+            childVC.code = code;
+            childVC.status = status;
+            [self addChildController:childVC];
+        }
+            break;
+            
+        case ORDER_STATUS_230:
+        {
+            self.title = @"装货完成";
+            OrderStatus230Controller *childVC = [OrderStatus230Controller new];
+            childVC.code = code;
+            childVC.status = status;
+            [self addChildController:childVC];
+        }
+            break;
+            
+        case ORDER_STATUS_232:
+        {
+            self.title = @"收货签到";
+            OrderStatus232Controller *childVC = [OrderStatus232Controller new];
+            childVC.code = code;
+            childVC.status = status;
+            [self addChildController:childVC];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 //添加子视图控制器
 - (void)addChildController:(UIViewController *)viewController {
-    [self addChildViewController:viewController];
-    viewController.view.frame = self.view.bounds;
-    [self.view insertSubview:viewController.view atIndex:0];
+    if (self.childViewControllers.count > 0) {
+        if ([[self.childViewControllers[0] class] isSubclassOfClass:[viewController class]]) {
+            return;
+        }
+        [self.childViewControllers[0] removeFromParentViewController];
+        [self.view.subviews[0] removeFromSuperview];
+        [self addChildViewController:viewController];
+        viewController.view.frame = self.view.bounds;
+        [self.view insertSubview:viewController.view atIndex:0];
+    } else {
+        [self addChildViewController:viewController];
+        viewController.view.frame = self.view.bounds;
+        [self.view insertSubview:viewController.view atIndex:0];
+    }
 }
 
 #pragma mark -- ButtonAction
@@ -138,6 +150,10 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 /*
