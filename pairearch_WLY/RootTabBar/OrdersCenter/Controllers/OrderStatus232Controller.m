@@ -51,8 +51,9 @@
     }];
 }
 
+//入厂签到按钮点击事件
 - (IBAction)signButtonAction:(UIButton *)sender {
-    
+    [self networkWithUrlStr:SIGN_UP_API paraDict:@{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.code, @"lat":@"0", @"lng":@"0"}];
     
 }
 

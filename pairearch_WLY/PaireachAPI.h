@@ -55,6 +55,9 @@
 //订单中心
 #define ORDER_LIST_API                    @"loadAllOrder.a"                 //get
 
+//入厂签到
+#define SIGN_UP_API                       @"orderHandling.a"                //post
+
 //装货开始扫码
 #define LOAD_START_API                    @"loadStartOrder.a"               //get
 
