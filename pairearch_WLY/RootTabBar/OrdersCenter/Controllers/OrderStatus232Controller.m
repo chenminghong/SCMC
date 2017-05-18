@@ -26,9 +26,31 @@
     self.signButton.backgroundColor = MAIN_THEME_COLOR;
 }
 - (IBAction)planTimeAction:(UIButton *)sender {
-    [PlanTimePickerView showTimeSelectView];
+    __weak typeof(self) weakSelf = self;
+    [PlanTimePickerView showTimeSelectViewWithSelectBlock:^(NSDictionary *selectParaDict) {
+        NSLog(@"%@", selectParaDict);
+        NSMutableDictionary *paraDict = [NSMutableDictionary dictionaryWithDictionary:selectParaDict];
+        [paraDict setObject:weakSelf.code forKey:@"orderCode"];
+        [weakSelf networkWithUrlStr:CHANGE_PLAN_ARRIVETIME_API paraDict:paraDict];
+    }];
     
 }
+
+/**
+ 调用接口返回处理结果
+ 
+ @param urlStr 接口名称
+ @param paraDict 需要传递的参数
+ */
+- (void)networkWithUrlStr:(NSString *)urlStr paraDict:(NSDictionary *)paraDict {
+    [NetworkHelper POST:urlStr parameters:paraDict progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        NSString *msg = responseObject[@"remark"];
+        [ProgressHUD bwm_showTitle:msg toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+    } failure:^(NSError *error) {
+        [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+    }];
+}
+
 - (IBAction)signButtonAction:(UIButton *)sender {
     
     

@@ -16,6 +16,19 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
+        dataArr = @[@[@"00", @"02"],
+                    @[@"02", @"04"],
+                    @[@"04", @"06"],
+                    @[@"06", @"08"],
+                    @[@"08", @"10"],
+                    @[@"10", @"12"],
+                    @[@"12", @"14"],
+                    @[@"14", @"16"],
+                    @[@"16", @"18"],
+                    @[@"18", @"20"],
+                    @[@"20", @"22"],
+                    @[@"22", @"24"]];
+        
         self.backgroundColor = [UIColor clearColor];
         [self addSubview:self.shadowView];
         self.tapHide = YES;
@@ -26,6 +39,8 @@
         self.datePicker = [DatePickerView showInView:self frame:CGRectMake(0.0, kScreenHeight - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT) animationDuraton:K_ANIMATION_TIMEINTERVAL];
         [self.datePicker.datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
         [self.datePicker.selectTImeBtn addTarget:self action:@selector(selectTimeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.selectDate = self.datePicker.datePicker.date;
     }
     return self;
 }
@@ -45,12 +60,12 @@
     if (!_timePickerView) {
         self.timePickerView = [TimePickerView getTimePickerView];
         self.timePickerView.frame = CGRectMake(0.0, kScreenHeight - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT);
-//        self.timePickerView.timePickerView.showsSelectionIndicator = YES;
         UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
         CAShapeLayer *maskLayer = [CAShapeLayer new];
         maskLayer.frame = self.layer.bounds;
         maskLayer.path = maskPath.CGPath;
         self.timePickerView.layer.mask = maskLayer;
+        
         [self.timePickerView.cancelButton addTarget:self action:@selector(cancelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.timePickerView.sureButton addTarget:self action:@selector(sureButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -61,10 +76,11 @@
 /**
  显示视图
  */
-+ (PlanTimePickerView *)showTimeSelectView {
++ (PlanTimePickerView *)showTimeSelectViewWithSelectBlock:(SelectBlock)selectBlock {
     PlanTimePickerView *pickerView = [[PlanTimePickerView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     [window addSubview:pickerView];
+    pickerView.selectBlock = selectBlock;
     return pickerView;
 }
 
@@ -72,16 +88,20 @@
 /**
  隐藏视图
  */
-- (void)hide {
+- (void)hideWithCompletionBlock:(void(^)())completionBlock {
     [self.datePicker hide];
     [self.timePickerView hide];
     [UIView animateWithDuration:K_ANIMATION_TIMEINTERVAL animations:^{
         self.shadowView.alpha = 0.0;
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
+        if (completionBlock) {
+            completionBlock();
+        }
     }];
 }
 
+//设置是否单击隐藏时间选择器
 - (void)setTapHide:(BOOL)tapHide {
     _tapHide = tapHide;
     if (tapHide) {
@@ -91,29 +111,22 @@
     }
 }
 
-#pragma mark -- Delegate
 
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
+/**
+ 判断两个日期是不是同一天
+
+ @param date1 日期1
+ @param date2 日期2
+ @return 判断结果
+ */
++ (BOOL)isSameDay:(NSDate *)date1 date2:(NSDate *)date2 {
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    unsigned unitFlag = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay;
+    NSDateComponents *comp1 = [calendar components:unitFlag fromDate:date1];
+    NSDateComponents *comp2 = [calendar components:unitFlag fromDate:date2];
+    return (([comp1 day] == [comp2 day]) && ([comp1 month] == [comp2 month]) && ([comp1 year] == [comp2 year]));
+    
 }
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return 3;
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return @"测试数据";
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
-    //    if (self.pickBlock) {
-    //        self.pickBlock(self.dataList[row]);
-    //        [self hidePickerView];
-    //    }
-}
-
-
-
 
 #pragma mark -- 按钮点击事件
 
@@ -121,6 +134,23 @@
  选择时间按钮点击事件
  */
 - (void)selectTimeButtonAction:(UIButton *)sender {
+    if ([[self class] isSameDay:[NSDate date]  date2:self.selectDate]) {
+        NSMutableArray *dataListArr = [NSMutableArray array];
+        NSDate *date = [NSDate date];
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSDateComponents *components = [cal components:NSCalendarUnitHour fromDate:date];
+        NSInteger currentHour = [components hour];
+        for (NSArray *array in dataArr) {
+            NSInteger max = [array[1] integerValue];
+            if (max > currentHour) {
+                [dataListArr addObject:array];
+            }
+        }
+        self.timePickerView.dataArr = dataListArr;
+    } else {
+        self.timePickerView.dataArr = [NSMutableArray arrayWithArray:dataArr];
+    }
+    
     [UIView transitionFromView:self.datePicker toView:self.timePickerView duration:K_ANIMATION_TIMEINTERVAL options:UIViewAnimationOptionTransitionCrossDissolve completion:^(BOOL finished) {
         self.timePickerView.animationTimeInterval = K_ANIMATION_TIMEINTERVAL;
     }];
@@ -143,7 +173,20 @@
  确定按钮点击事件
  */
 - (void)sureButtonAction:(UIButton *)sender {
-    [self hide];
+    __weak typeof(self) weakSelf = self;
+    [self hideWithCompletionBlock:^{
+        NSDateFormatter *dateFormatter = [NSDateFormatter new];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+        NSString *planAchieveTime = [dateFormatter stringFromDate:weakSelf.datePicker.datePicker.date];
+        NSLog(@"%@",planAchieveTime);
+        NSString *planAchieveStartTime = [NSString stringWithFormat:@"%@:00", weakSelf.timePickerView.selectedTimeArr[0]];
+        NSString *planAchieveEndTime = [NSString stringWithFormat:@"%@:00", weakSelf.timePickerView.selectedTimeArr[1]];
+        NSDictionary *paraDict = @{@"planAchieveTime":planAchieveTime, @"planAchieveStartTime":planAchieveStartTime, @"planAchieveEndTime":planAchieveEndTime};
+        if (self.selectBlock) {
+            self.selectBlock(paraDict);
+        }
+    }];
+    
 }
 
 
@@ -151,10 +194,11 @@
  背景遮罩手势
  */
 - (void)tapGestureAction:(UITapGestureRecognizer *)sender {
-    [self hide];
+    [self hideWithCompletionBlock:nil];
 }
 
 - (void)datePickerValueChanged:(UIDatePicker *)sender {
+    self.selectDate = sender.date;
     NSLog(@"%@", sender.date);
 }
 

@@ -15,17 +15,6 @@
     self.datePicker.minimumDate = [NSDate date];
     self.topLabel.backgroundColor = MAIN_THEME_COLOR;
     [self.selectTImeBtn setTitleColor:MAIN_THEME_COLOR forState:UIControlStateNormal];
-    
-
-}
-
-- (void)setFrame:(CGRect)frame {
-    [super setFrame:frame];
-    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
-    CAShapeLayer *maskLayer = [CAShapeLayer new];
-    maskLayer.frame = self.layer.bounds;
-    maskLayer.path = maskPath.CGPath;
-    self.layer.mask = maskLayer;
 }
 
 + (instancetype)getDatepickerView {
@@ -42,6 +31,11 @@
     [UIView animateWithDuration:duration animations:^{
         dateView.transform = CGAffineTransformMakeTranslation(0.0, 0.0);
     }];
+    UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:dateView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
+    CAShapeLayer *maskLayer = [CAShapeLayer new];
+    maskLayer.frame = dateView.layer.bounds;
+    maskLayer.path = maskPath.CGPath;
+    dateView.layer.mask = maskLayer;
     return dateView;
 }
 

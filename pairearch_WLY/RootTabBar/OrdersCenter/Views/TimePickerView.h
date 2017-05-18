@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TimePickerView : UIView<UIPickerViewDelegate, UIPickerViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UILabel *topLabel;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *timePickerView;
@@ -16,6 +17,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *sureButton;
 
 @property (nonatomic, assign) NSTimeInterval animationTimeInterval;  //动画持续时间间隔
+
+@property (nonatomic, strong) NSMutableArray *dataArr;  //数据源
+
+@property (nonatomic, strong) NSArray *selectedTimeArr;  //选中的时间
 
 
 /**

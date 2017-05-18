@@ -21,16 +21,36 @@
     return [[[NSBundle mainBundle] loadNibNamed:@"TimePickerView" owner:self options:nil] firstObject];
 }
 
+- (void)setDataArr:(NSMutableArray *)dataArr {
+    _dataArr = dataArr;
+    [self.timePickerView reloadAllComponents];
+    self.selectedTimeArr = self.dataArr[0];
+}
+
+- (void)layoutSubviews {
+//    ((UIView *)[self.timePickerView.subviews objectAtIndex:1]).backgroundColor = [UIColor colorWithRed:135/255.0 green:118/255.0 blue:90/255.0 alpha:1.0];
+//    ((UIView *)[self.timePickerView.subviews objectAtIndex:2]).backgroundColor = [UIColor colorWithRed:135/255.0 green:118/255.0 blue:90/255.0 alpha:1.0];
+
+    ((UIView *)[self.timePickerView.subviews objectAtIndex:1]).backgroundColor = [UIColor lightGrayColor];
+    ((UIView *)[self.timePickerView.subviews objectAtIndex:2]).backgroundColor = [UIColor lightGrayColor];
+}
+
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
     return 1;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    return 10;
+    return self.dataArr.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return @"测试数据";
+    NSArray *countArr = self.dataArr[row];
+    NSString *title = [NSString stringWithFormat:@"%@:00-%@:00", countArr[0], countArr[1]];
+    return title;
+}
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    self.selectedTimeArr = self.dataArr[row];
 }
 
 - (void)hide {

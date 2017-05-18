@@ -61,6 +61,9 @@
 //装货结束扫码
 #define LOAD_END_API                      @"loadEndOrder.a"                 //get
 
+//修改预计到货时间
+#define CHANGE_PLAN_ARRIVETIME_API        @"savePlanAchieveTime.a"          //post
+
 
 
 
