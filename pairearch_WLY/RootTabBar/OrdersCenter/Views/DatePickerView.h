@@ -10,6 +10,7 @@
 
 @interface DatePickerView : UIView
 
+@property (weak, nonatomic) IBOutlet UILabel *topLabel;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *selectTImeBtn;
 @property (nonatomic, assign) NSTimeInterval animationTimeInterval;  //动画持续时间间隔

@@ -10,6 +10,13 @@
 
 @implementation TimePickerView
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+    self.topLabel.backgroundColor = MAIN_THEME_COLOR;
+    [self.cancelButton setTitleColor:MAIN_THEME_COLOR forState:UIControlStateNormal];
+    [self.sureButton setTitleColor:MAIN_THEME_COLOR forState:UIControlStateNormal];
+}
+
 + (instancetype)getTimePickerView {
     return [[[NSBundle mainBundle] loadNibNamed:@"TimePickerView" owner:self options:nil] firstObject];
 }

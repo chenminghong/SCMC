@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TimePickerView : UIView<UIPickerViewDelegate, UIPickerViewDataSource>
+@property (weak, nonatomic) IBOutlet UILabel *topLabel;
 
 @property (weak, nonatomic) IBOutlet UIPickerView *timePickerView;
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;

@@ -15,12 +15,13 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择预计到达收货工厂日期" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gS5-yt-KYN">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                    <color key="backgroundColor" red="0.93705266710000001" green="0.39020347599999999" blue="0.1872715056" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="lOK-1p-TOy"/>
+                        <constraint firstAttribute="height" constant="40" id="lOK-1p-TOy"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H7w-qb-cBd">
@@ -35,7 +36,7 @@
                     </state>
                 </button>
                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3ya-2f-c7u">
-                    <rect key="frame" x="0.0" y="30" width="375" height="341"/>
+                    <rect key="frame" x="0.0" y="40" width="375" height="331"/>
                     <date key="date" timeIntervalSinceReferenceDate="516624338.06557697">
                         <!--2017-05-16 10:45:38 +0000-->
                     </date>
@@ -61,6 +62,7 @@
             <connections>
                 <outlet property="datePicker" destination="3ya-2f-c7u" id="9EU-7C-yZi"/>
                 <outlet property="selectTImeBtn" destination="H7w-qb-cBd" id="BHE-A2-SAg"/>
+                <outlet property="topLabel" destination="gS5-yt-KYN" id="lVg-2U-aIW"/>
             </connections>
             <point key="canvasLocation" x="34.5" y="187.5"/>
         </view>

@@ -130,13 +130,19 @@
         }
         [self.childViewControllers[0] removeFromParentViewController];
         [self.view.subviews[0] removeFromSuperview];
+        
         [self addChildViewController:viewController];
-        viewController.view.frame = self.view.bounds;
-        [self.view insertSubview:viewController.view atIndex:0];
+        [UIView transitionWithView:self.view duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+            viewController.view.frame = self.view.bounds;
+            [self.view insertSubview:viewController.view atIndex:0];
+        } completion:nil];
+        
     } else {
         [self addChildViewController:viewController];
-        viewController.view.frame = self.view.bounds;
-        [self.view insertSubview:viewController.view atIndex:0];
+        [UIView transitionWithView:self.view duration:0.3 options:UIViewAnimationOptionTransitionCrossDissolve animations:^{
+            viewController.view.frame = self.view.bounds;
+            [self.view insertSubview:viewController.view atIndex:0];
+        } completion:nil];
     }
 }
 

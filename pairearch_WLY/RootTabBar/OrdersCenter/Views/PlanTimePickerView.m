@@ -9,7 +9,7 @@
 #import "PlanTimePickerView.h"
 
 #define K_ANIMATION_TIMEINTERVAL 0.2
-#define K_TIME_PICKERVIEW_HEIGHT  250.0
+#define K_TIME_PICKERVIEW_HEIGHT  300.0
 
 @implementation PlanTimePickerView
 
@@ -18,6 +18,7 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         [self addSubview:self.shadowView];
+        self.tapHide = YES;
         [UIView animateWithDuration:K_ANIMATION_TIMEINTERVAL animations:^{
             self.shadowView.alpha = 0.5;
         }];
@@ -43,7 +44,13 @@
 - (TimePickerView *)timePickerView {
     if (!_timePickerView) {
         self.timePickerView = [TimePickerView getTimePickerView];
-        self.timePickerView.frame = self.datePicker.frame;
+        self.timePickerView.frame = CGRectMake(0.0, kScreenHeight - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT);
+//        self.timePickerView.timePickerView.showsSelectionIndicator = YES;
+        UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
+        CAShapeLayer *maskLayer = [CAShapeLayer new];
+        maskLayer.frame = self.layer.bounds;
+        maskLayer.path = maskPath.CGPath;
+        self.timePickerView.layer.mask = maskLayer;
         [self.timePickerView.cancelButton addTarget:self action:@selector(cancelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.timePickerView.sureButton addTarget:self action:@selector(sureButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -73,6 +80,15 @@
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
     }];
+}
+
+- (void)setTapHide:(BOOL)tapHide {
+    _tapHide = tapHide;
+    if (tapHide) {
+        self.shadowView.userInteractionEnabled = YES;
+    } else {
+        self.shadowView.userInteractionEnabled = NO;
+    }
 }
 
 #pragma mark -- Delegate
@@ -105,7 +121,7 @@
  选择时间按钮点击事件
  */
 - (void)selectTimeButtonAction:(UIButton *)sender {
-    [UIView transitionFromView:self.datePicker toView:self.timePickerView duration:1.0 options:UIViewAnimationOptionCurveLinear completion:^(BOOL finished) {
+    [UIView transitionFromView:self.datePicker toView:self.timePickerView duration:K_ANIMATION_TIMEINTERVAL options:UIViewAnimationOptionTransitionCrossDissolve completion:^(BOOL finished) {
         self.timePickerView.animationTimeInterval = K_ANIMATION_TIMEINTERVAL;
     }];
 }
@@ -115,7 +131,7 @@
  取消按钮点击事件
  */
 - (void)cancelButtonAction:(UIButton *)sender {
-    [UIView transitionFromView:self.timePickerView toView:self.datePicker duration:1.0 options:UIViewAnimationOptionShowHideTransitionViews completion:^(BOOL finished) {
+    [UIView transitionFromView:self.timePickerView toView:self.datePicker duration:K_ANIMATION_TIMEINTERVAL options:UIViewAnimationOptionTransitionCrossDissolve completion:^(BOOL finished) {
         if (finished) {
             self.timePickerView.animationTimeInterval = K_ANIMATION_TIMEINTERVAL;
         }

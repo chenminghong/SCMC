@@ -19,6 +19,8 @@
 
 @property (nonatomic, strong) TimePickerView *timePickerView; //时间段选择
 
+@property (nonatomic, assign) BOOL tapHide;   //单击隐藏
+
 
 /**
  显示时间选择器
