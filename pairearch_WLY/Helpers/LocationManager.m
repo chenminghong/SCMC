@@ -163,8 +163,8 @@
             NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
             weakSelf.addressInfo = @{@"orderCode":@"",
                                  @"driverTel":@"",
-                                 @"longitude":tempDict[LONGITUDE],
-                                 @"latiude":tempDict[LATITUDE],
+                                 @"longitude":[NSString stringWithFormat:@"%@", tempDict[LONGITUDE]],
+                                 @"latiude":[NSString stringWithFormat:@"%@", tempDict[LATITUDE]],
                                  @"speed":speed,
                                  @"direction":direction,
                                  @"address":address,
@@ -180,19 +180,6 @@
 
 
 #pragma mark -- CLLocationManagerDelegate
-
-/**
- 定位成功回调
-
- @param manager 定位助手对象
- @param locations 获取的位置信息
- */
-//- (void)locationManager:(CLLocationManager *)manager
-//     didUpdateLocations:(NSArray<CLLocation *> *)locations {
-//    // 1.获取用户位置的对象
-//    self.location = [locations lastObject];
-//}
-
 
 /**
  地理位置更新回调
@@ -211,7 +198,6 @@
         NSLog(@"位置更新了");
     }
 }
-
 
 
 /**

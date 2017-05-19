@@ -34,7 +34,6 @@
         [paraDict setObject:weakSelf.code forKey:@"orderCode"];
         [weakSelf networkWithUrlStr:CHANGE_PLAN_ARRIVETIME_API paraDict:paraDict];
     }];
-    
 }
 
 /**
@@ -54,7 +53,9 @@
 
 //收货签到按钮点击事件
 - (IBAction)signButtonAction:(UIButton *)sender {
-    [self networkWithUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.code, @"lat":@"0", @"lng":@"0"}];
+    NSString *lat = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"latiude"]];
+    NSString *lng = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"longitude"]];
+    [self networkWithUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.code, @"lat":lat.length? lat:@"", @"lng":lng.length? lng:@""}];
     
 }
 
