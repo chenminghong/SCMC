@@ -65,7 +65,11 @@
         if (!error) {
             self.homeModel = model;
             if (self.homeModel.orderModelList.count <= 0) {
+                [LocationManager shareManager].orderCode = nil;  //结束定位上传
                 [MBProgressHUD bwm_showTitle:@"暂无订单" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+            } else {
+                HomePageModel *model = self.homeModel.orderModelList[0];
+                [LocationManager shareManager].orderCode = model.code;  //开启定位上传
             }
         } else {
             [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
@@ -133,8 +137,8 @@
         case ORDER_STATUS_228://已装货未装货完成
         case ORDER_STATUS_230://装货完成待出厂
         case ORDER_STATUS_232://装货完成待出厂
-        case ORDER_STATUS_240:
         case ORDER_STATUS_244://收货完成
+        case ORDER_STATUS_248://运单结束
         {
             NestedSelectStateController *nestVC = [NestedSelectStateController new];
             nestVC.code = model.code;

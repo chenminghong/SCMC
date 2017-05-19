@@ -45,8 +45,6 @@
     //注册自定义消息监听
     [self registerCustomerMessage];
     
-    [[LocationManager shareManager] startUpdateLocation];
-    
     return YES;
 }
 

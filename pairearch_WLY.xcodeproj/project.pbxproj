@@ -30,6 +30,10 @@
 		0FDE406A1ECB0FAE00FAEF48 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE40691ECB0FAE00FAEF48 /* DatePickerView.m */; };
 		0FDE406E1ECB0FC100FAEF48 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE406D1ECB0FC100FAEF48 /* DatePickerView.xib */; };
 		0FDE40711ECBF6B900FAEF48 /* PlanTimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE40701ECBF6B900FAEF48 /* PlanTimePickerView.m */; };
+		0FDE40751ECE8B4F00FAEF48 /* OrderStatus244Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE40731ECE8B4F00FAEF48 /* OrderStatus244Controller.m */; };
+		0FDE40761ECE8B4F00FAEF48 /* OrderStatus244Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE40741ECE8B4F00FAEF48 /* OrderStatus244Controller.xib */; };
+		0FDE407A1ECE8F6700FAEF48 /* OrderStatus248Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE40781ECE8F6700FAEF48 /* OrderStatus248Controller.m */; };
+		0FDE407B1ECE8F6700FAEF48 /* OrderStatus248Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE40791ECE8F6700FAEF48 /* OrderStatus248Controller.xib */; };
 		0FE58E061EC95A5A0041E1D9 /* OrderStatusKABaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E051EC95A5A0041E1D9 /* OrderStatusKABaseController.m */; };
 		0FE58E0A1EC97D6C0041E1D9 /* OrderStatus226Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E081EC97D6C0041E1D9 /* OrderStatus226Controller.m */; };
 		0FE58E0B1EC97D6C0041E1D9 /* OrderStatus226Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE58E091EC97D6C0041E1D9 /* OrderStatus226Controller.xib */; };
@@ -181,6 +185,12 @@
 		0FDE406D1ECB0FC100FAEF48 /* DatePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		0FDE406F1ECBF6B900FAEF48 /* PlanTimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlanTimePickerView.h; sourceTree = "<group>"; };
 		0FDE40701ECBF6B900FAEF48 /* PlanTimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlanTimePickerView.m; sourceTree = "<group>"; };
+		0FDE40721ECE8B4F00FAEF48 /* OrderStatus244Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus244Controller.h; sourceTree = "<group>"; };
+		0FDE40731ECE8B4F00FAEF48 /* OrderStatus244Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus244Controller.m; sourceTree = "<group>"; };
+		0FDE40741ECE8B4F00FAEF48 /* OrderStatus244Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus244Controller.xib; sourceTree = "<group>"; };
+		0FDE40771ECE8F6600FAEF48 /* OrderStatus248Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus248Controller.h; sourceTree = "<group>"; };
+		0FDE40781ECE8F6700FAEF48 /* OrderStatus248Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus248Controller.m; sourceTree = "<group>"; };
+		0FDE40791ECE8F6700FAEF48 /* OrderStatus248Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus248Controller.xib; sourceTree = "<group>"; };
 		0FE58E041EC95A5A0041E1D9 /* OrderStatusKABaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatusKABaseController.h; sourceTree = "<group>"; };
 		0FE58E051EC95A5A0041E1D9 /* OrderStatusKABaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatusKABaseController.m; sourceTree = "<group>"; };
 		0FE58E071EC97D6C0041E1D9 /* OrderStatus226Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus226Controller.h; sourceTree = "<group>"; };
@@ -634,6 +644,12 @@
 				0FE58E481EC9A6E50041E1D9 /* OrderStatus232Controller.h */,
 				0FE58E491EC9A6E50041E1D9 /* OrderStatus232Controller.m */,
 				0FE58E4A1EC9A6E50041E1D9 /* OrderStatus232Controller.xib */,
+				0FDE40721ECE8B4F00FAEF48 /* OrderStatus244Controller.h */,
+				0FDE40731ECE8B4F00FAEF48 /* OrderStatus244Controller.m */,
+				0FDE40741ECE8B4F00FAEF48 /* OrderStatus244Controller.xib */,
+				0FDE40771ECE8F6600FAEF48 /* OrderStatus248Controller.h */,
+				0FDE40781ECE8F6700FAEF48 /* OrderStatus248Controller.m */,
+				0FDE40791ECE8F6700FAEF48 /* OrderStatus248Controller.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1072,6 +1088,7 @@
 				0FE58E0B1EC97D6C0041E1D9 /* OrderStatus226Controller.xib in Resources */,
 				0FE58E331EC980C30041E1D9 /* QRCodeTopLeft@2x.png in Resources */,
 				0FE58E471EC9A11B0041E1D9 /* OrderStatus230Controller.xib in Resources */,
+				0FDE407B1ECE8F6700FAEF48 /* OrderStatus248Controller.xib in Resources */,
 				0FDE40671ECB0DC400FAEF48 /* TimePickerView.xib in Resources */,
 				0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */,
 				0FE58E421EC99B9B0041E1D9 /* OrderStatus228Controller.xib in Resources */,
@@ -1098,6 +1115,7 @@
 				0FA20D361EC471AA005C2015 /* OrdersCenterController.storyboard in Resources */,
 				0FE5C00A1EB1D16000F82D97 /* Mistake212Footer.xib in Resources */,
 				0FD9C0B81EADD88D00CD7E00 /* OrdersViewController.storyboard in Resources */,
+				0FDE40761ECE8B4F00FAEF48 /* OrderStatus244Controller.xib in Resources */,
 				0FE5BFF41EB071ED00F82D97 /* SafetyControl.plist in Resources */,
 				0FE963351EBC78C600F916DD /* OrderDetailCell.xib in Resources */,
 				0FE58E351EC980C30041E1D9 /* QRCodeTopRight@2x.png in Resources */,
@@ -1170,6 +1188,7 @@
 				B384110F1E5D875700F7069F /* FileDirPathUtil.m in Sources */,
 				0FDE406A1ECB0FAE00FAEF48 /* DatePickerView.m in Sources */,
 				B35727811E545865003F9B2F /* NetworkHelper.m in Sources */,
+				0FDE407A1ECE8F6700FAEF48 /* OrderStatus248Controller.m in Sources */,
 				B37BA6C91E80C443001A74B8 /* AbnormalReportController.m in Sources */,
 				B38411401E5E89C700F7069F /* PersonalCenterCell.m in Sources */,
 				0FA20D3A1EC471AA005C2015 /* OrdersCollectionCell.m in Sources */,
@@ -1198,6 +1217,7 @@
 				B336CC181E88C026000F3928 /* BaseViewController.m in Sources */,
 				0FE5BFF71EB0A9F900F82D97 /* Mistake212Controller.m in Sources */,
 				0FA20D371EC471AA005C2015 /* OrderListModel.m in Sources */,
+				0FDE40751ECE8B4F00FAEF48 /* OrderStatus244Controller.m in Sources */,
 				B384110E1E5D875700F7069F /* CustomButton.m in Sources */,
 				0FE58E501EC9AC130041E1D9 /* OrderStatus224Controller.m in Sources */,
 				0FE58E291EC980C30041E1D9 /* CIImage+SGExtension.m in Sources */,

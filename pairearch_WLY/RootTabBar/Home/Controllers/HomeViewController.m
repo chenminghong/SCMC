@@ -169,6 +169,12 @@
     [HomePageModel getDataWithUrl:HOME_PAGE_DATA_API parameters:@{@"mobile":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
         if (!error) {
             self.homePageModel = model;
+            if (self.homePageModel.orderModelList.count > 0) {
+                HomePageModel *model = self.homePageModel.orderModelList[0];
+                [LocationManager shareManager].orderCode = model.code;  //开启定位上传
+            } else {
+                [LocationManager shareManager].orderCode = nil;;   //结束定位上传
+            }
         } else {
             [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }

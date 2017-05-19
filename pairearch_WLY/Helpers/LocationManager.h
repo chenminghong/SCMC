@@ -11,17 +11,28 @@
 #import <CoreLocation/CoreLocation.h>
 
 @interface LocationManager : NSObject<CLLocationManagerDelegate>
+{
+    CLGeocoder *geocoder;  //地理位置编码
+}
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
+
+@property (nonatomic, strong) CLLocation *location;
+
+@property (nonatomic, strong) NSDictionary *addressInfo; //位置信息参数
+
+@property (nonatomic, strong) NSTimer *timer;  //定时器
+
+@property (nonatomic, copy) NSString *orderCode;  //当前正在走流程的订单号（为空的时候停止上传地理位置信息）
+
+
 //初始化
 + (instancetype)shareManager;
 
-//初始化定位数据
-- (void)initLocationManager;
-
 //开始定位
-- (void)startUpdateLocation;
+- (void)startUploadLocation;
+
 //结束定位
-- (void)stopUpdateLocation;
+- (void)stopUploadLocation;
 
 @end

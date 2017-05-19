@@ -13,40 +13,40 @@
 
 /*============================BaseUrl相关=============================*/
 //API前缀定义
-#define PAIREACH_BASE_URL                @"http://106.14.39.65:8385/itip/client/"  //测试线上
-//#define PAIREACH_BASE_URL                @"http://192.168.1.14:8086/itip/client/"  //备用
-//#define PAIREACH_BASE_URL                @"http://dt.paireach.com/itip/client/"   //双至域名
+#define PAIREACH_BASE_URL                @"http://106.14.39.65:8385/itip/client/"       //测试线上
+//#define PAIREACH_BASE_URL                @"http://192.168.1.14:8086/itip/client/"     //备用
+//#define PAIREACH_BASE_URL                @"http://dt.paireach.com/itip/client/"       //双至域名
 
 
 /*============================首页相关=============================*/
 
 //首页数据
-#define HOME_PAGE_DATA_API                @"loadFirstUnCheckOrder.a"        //get
+#define HOME_PAGE_DATA_API                @"loadFirstUnCheckOrder.a"            //get
 
 //首页订单详情数据
-#define LOAD_DETAIL_API                   @"loadOrderDetailById.a"           //get
+#define LOAD_DETAIL_API                   @"loadOrderDetailById.a"              //get
 
 //接收运单
-#define GET_LOAD_API                      @"driverAcceptOrder.a"            //post
+#define GET_LOAD_API                      @"driverAcceptOrder.a"                //post
 
 //安全选项检查
-#define SAFETY_CONFIRMATION_API           @"safeVeriSave.a"                 //post
+#define SAFETY_CONFIRMATION_API           @"safeVeriSave.a"                     //post
 
-//安全检查
-#define DAFETY_CHECK_API                  @"isSafeChecked.a"                //get
+//地理位置上传
+#define UPLOAD_LOCATION_API                  @"saveTrackList.a"                //post
 
 
 
 /*============================个人中心用户相关=============================*/
 
 //用户登录
-#define USER_LOGIN_API                    @"loginForDriver.a"               //post
+#define USER_LOGIN_API                    @"loginForDriver.a"                   //post
 
 //修改密码
-#define CHANGE_PASSWORD_API               @"changeDriverPwd.a"              //post
+#define CHANGE_PASSWORD_API               @"changeDriverPwd.a"                  //post
 
 //异常反馈
-#define ABNORMAL_UPLOAD_API               @"uploadAbnormalPresentationInfo.a"  //post
+#define ABNORMAL_UPLOAD_API               @"uploadAbnormalPresentationInfo.a"   //post
 
 
 
@@ -66,6 +66,12 @@
 
 //修改预计到货时间
 #define CHANGE_PLAN_ARRIVETIME_API        @"savePlanAchieveTime.a"          //post
+
+//收货签到
+#define DELIVERY_SIGN_UP_API              SIGN_UP_API                       //post
+
+//收货完成
+#define  DELIVERY_COMPLETE_API            SIGN_UP_API                       //post
 
 
 

@@ -1,40 +1,25 @@
 //
-//  OrderStatus232Controller.m
+//  OrderStatus244Controller.m
 //  pairearch_WLY
 //
-//  Created by Jean on 2017/5/15.
+//  Created by Jean on 2017/5/19.
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
-#import "OrderStatus232Controller.h"
+#import "OrderStatus244Controller.h"
 
-#import "PlanTimePickerView.h"
-
-@interface OrderStatus232Controller ()
-@property (weak, nonatomic) IBOutlet UIButton *planTimeButton;
-@property (weak, nonatomic) IBOutlet UIButton *signButton;
+@interface OrderStatus244Controller ()
+@property (weak, nonatomic) IBOutlet UIButton *completeButton;
 
 @end
 
-@implementation OrderStatus232Controller
+@implementation OrderStatus244Controller
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.planTimeButton.backgroundColor = MAIN_THEME_COLOR;
-    self.signButton.backgroundColor = MAIN_THEME_COLOR;
-}
-
-- (IBAction)planTimeAction:(UIButton *)sender {
-    __weak typeof(self) weakSelf = self;
-    [PlanTimePickerView showTimeSelectViewWithSelectBlock:^(NSDictionary *selectParaDict) {
-        NSLog(@"%@", selectParaDict);
-        NSMutableDictionary *paraDict = [NSMutableDictionary dictionaryWithDictionary:selectParaDict];
-        [paraDict setObject:weakSelf.code forKey:@"orderCode"];
-        [weakSelf networkWithUrlStr:CHANGE_PLAN_ARRIVETIME_API paraDict:paraDict];
-    }];
-    
+    self.completeButton.backgroundColor = MAIN_THEME_COLOR;
 }
 
 /**
@@ -52,10 +37,9 @@
     }];
 }
 
-//收货签到按钮点击事件
-- (IBAction)signButtonAction:(UIButton *)sender {
-    [self networkWithUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.code, @"lat":@"0", @"lng":@"0"}];
-    
+//收货完成按钮点击事件
+- (IBAction)completeButtonAction:(UIButton *)sender {
+    [self networkWithUrlStr:DELIVERY_COMPLETE_API paraDict:@{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.code, @"lat":@"0", @"lng":@"0"}];
 }
 
 - (void)didReceiveMemoryWarning {

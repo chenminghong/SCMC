@@ -15,6 +15,8 @@
 #import "OrderStatus228Controller.h"
 #import "OrderStatus230Controller.h"
 #import "OrderStatus232Controller.h"
+#import "OrderStatus244Controller.h"
+#import "OrderStatus248Controller.h"
 
 
 @interface NestedSelectStateController ()
@@ -38,10 +40,14 @@
 
 - (void)getCustomMessageAction:(NSNotification *)sender {
     NSDictionary *userInfo = [sender userInfo];
-    NSInteger status = [userInfo[@"status"] integerValue];
-    NSString *orderCode = userInfo[@"orderCode"];
-    self.status = status;
-    self.code = orderCode;
+    NSInteger flag = [userInfo[@"flag"] integerValue];
+    if (flag == 0) {
+        NSInteger status = [userInfo[@"status"] integerValue];
+        NSString *orderCode = userInfo[@"orderCode"];
+        self.status = status;
+        self.code = orderCode;
+    }
+    
 }
 
 - (void)setStatus:(NSInteger)status {
@@ -111,6 +117,26 @@
         {
             self.title = @"收货签到";
             OrderStatus232Controller *childVC = [OrderStatus232Controller new];
+            childVC.code = code;
+            childVC.status = status;
+            [self addChildController:childVC];
+        }
+            break;
+            
+        case ORDER_STATUS_244:
+        {
+            self.title = @"卸货完成";
+            OrderStatus244Controller *childVC = [OrderStatus244Controller new];
+            childVC.code = code;
+            childVC.status = status;
+            [self addChildController:childVC];
+        }
+            break;
+            
+        case ORDER_STATUS_248:
+        {
+            self.title = @"卸货完成";
+            OrderStatus248Controller *childVC = [OrderStatus248Controller new];
             childVC.code = code;
             childVC.status = status;
             [self addChildController:childVC];
