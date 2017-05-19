@@ -119,6 +119,7 @@
             OrderStatus232Controller *childVC = [OrderStatus232Controller new];
             childVC.code = code;
             childVC.status = status;
+            childVC.planAchieveTime = self.planAchieveTime;
             [self addChildController:childVC];
         }
             break;

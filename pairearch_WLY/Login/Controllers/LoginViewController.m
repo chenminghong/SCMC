@@ -201,6 +201,7 @@
         weakController.tabBarController.selectedIndex = 0;
         //取消别名设置
         [JPUSHService setTags:nil aliasInbackground:@""];
+        [LocationManager shareManager].orderCode = nil;
         if (completeBlock) {
             completeBlock();
         }

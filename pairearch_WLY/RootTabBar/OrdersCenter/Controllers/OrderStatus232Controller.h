@@ -14,4 +14,6 @@
 
 @property (nonatomic, assign) NSInteger status;        //订单状态码
 
+@property (nonatomic, copy) NSString *planAchieveTime; //预计到达收货工厂时间
+
 @end

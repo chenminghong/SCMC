@@ -103,5 +103,7 @@
 
 @property (nonatomic, copy) NSString *planDate;                 //预约时间
 
+@property (nonatomic, copy) NSString *planAchieveTime;          //预计到达收货工厂时间
+
 
 @end

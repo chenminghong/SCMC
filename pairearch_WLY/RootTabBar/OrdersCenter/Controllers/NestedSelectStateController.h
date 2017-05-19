@@ -18,4 +18,6 @@
 
 @property (nonatomic, strong) HomePageModel *homePageModel;
 
+@property (nonatomic, copy) NSString *planAchieveTime; //预计到达收货工厂时间
+
 @end

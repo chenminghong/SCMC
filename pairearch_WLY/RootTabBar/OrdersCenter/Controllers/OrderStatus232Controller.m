@@ -26,14 +26,28 @@
     self.signButton.backgroundColor = MAIN_THEME_COLOR;
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.planAchieveTime.length <= 0) {
+        [self showTimeSelectView];
+    }
+}
+
 - (IBAction)planTimeAction:(UIButton *)sender {
+    [self showTimeSelectView];
+}
+
+- (PlanTimePickerView *)showTimeSelectView {
     __weak typeof(self) weakSelf = self;
-    [PlanTimePickerView showTimeSelectViewWithSelectBlock:^(NSDictionary *selectParaDict) {
+    PlanTimePickerView *timeView = [PlanTimePickerView showTimeSelectViewWithSelectBlock:^(NSDictionary *selectParaDict) {
         NSLog(@"%@", selectParaDict);
         NSMutableDictionary *paraDict = [NSMutableDictionary dictionaryWithDictionary:selectParaDict];
         [paraDict setObject:weakSelf.code forKey:@"orderCode"];
         [weakSelf networkWithUrlStr:CHANGE_PLAN_ARRIVETIME_API paraDict:paraDict];
     }];
+    timeView.tapHide = self.planAchieveTime.length > 0;
+    return timeView;
 }
 
 /**
@@ -46,6 +60,9 @@
     [NetworkHelper POST:urlStr parameters:paraDict progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *msg = responseObject[@"remark"];
         [ProgressHUD bwm_showTitle:msg toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        if (self.planAchieveTime.length <= 0) {
+            self.planAchieveTime = @"111";
+        }
     } failure:^(NSError *error) {
         [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
     }];

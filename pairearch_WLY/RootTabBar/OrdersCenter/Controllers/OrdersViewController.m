@@ -123,15 +123,6 @@
             break;
             
         case ORDER_STATUS_220://已接收待签到
-        {
-            NestedSelectStateController *nestVC = [NestedSelectStateController new];
-            nestVC.homePageModel = model;
-            nestVC.status = status;
-            nestVC.code = model.code;
-            [self.navigationController pushViewController:nestVC animated:YES];
-        }
-            break;
-            
         case ORDER_STATUS_224://已签到待入厂
         case ORDER_STATUS_226://已入厂待装货
         case ORDER_STATUS_228://已装货未装货完成
@@ -141,7 +132,9 @@
         case ORDER_STATUS_248://运单结束
         {
             NestedSelectStateController *nestVC = [NestedSelectStateController new];
+            nestVC.homePageModel = model;
             nestVC.code = model.code;
+            nestVC.planAchieveTime = model.planAchieveTime;
             nestVC.status = status;
             [self.navigationController pushViewController:nestVC animated:YES];
         }
