@@ -42,11 +42,17 @@
     self.assortLabel.textColor = [UIColor whiteColor];
     self.assortLabel.backgroundColor = MAIN_THEME_COLOR;
     self.assortLabel.layer.masksToBounds = YES;
-    self.assortLabel.layer.cornerRadius = CGRectGetWidth(self.assortLabel.bounds);
+    self.assortLabel.layer.cornerRadius = 25.0;
 }
 
 - (void)setOrderModel:(OrderListModel *)orderModel {
     _orderModel = orderModel;
+    
+    self.loadNumberLabel.text = [NSString stringWithFormat:@"单号：%@", orderModel.bidCode];
+    self.reserveShiptimeLabel.text = [NSString stringWithFormat:@"%@", orderModel.planDate];
+    self.startNameLabel.text = orderModel.sourceName;
+    self.stopNameLabel.text = orderModel.dcName;
+    self.loadDemandLabel.text = orderModel.specialExplain;
 }
 
 
