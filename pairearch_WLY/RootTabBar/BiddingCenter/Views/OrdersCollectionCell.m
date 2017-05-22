@@ -25,7 +25,6 @@
     [super awakeFromNib];
     
     [self addSubview:self.listTableView];
-    [self addSubview:self.transpotBtn];
 }
 
 #pragma mark -- LazyLoding
@@ -46,41 +45,38 @@
     return _listTableView;
 }
 
-- (UIButton *)transpotBtn {
-    if (!_transpotBtn) {
-        self.transpotBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        [self addSubview:self.transpotBtn];
-        [self.transpotBtn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.mas_centerX);
-            make.bottom.equalTo(self.mas_bottom).with.offset(-20);
-            make.size.mas_equalTo(CGSizeMake(90, 35));
-        }];
-        self.transpotBtn.titleLabel.font = [UIFont systemFontOfSize:13.0];
-        self.transpotBtn.backgroundColor = MAIN_THEME_COLOR;
-        [self.transpotBtn setTitle:@"接收运单" forState:UIControlStateNormal];
-        [self.transpotBtn addTarget:self action:@selector(pushButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    return _transpotBtn;
-}
-
 - (void)setIndexPath:(NSIndexPath *)indexPath {
     _indexPath = indexPath;
-    if (indexPath.item == 0) {
-        self.type = @"unabsorbed";
-    } else if (indexPath.item == 1) {
-        self.type = @"distribution";
-    } else {
-        self.type = @"complete";
-    }
-    
-    if (self.indexPath.item == 0) {
-        if (self.listModelArr.count <= 0) {
-            [self.transpotBtn setHidden:YES];
-        } else {
-            [self.transpotBtn setHidden:NO];
+    switch (indexPath.item) {
+        case 0:
+        {
+            self.url = IN_BIDDING_API;//竞价中
         }
-    } else {
-        [self.transpotBtn setHidden:YES];
+            break;
+            
+        case 1:
+        {
+            self.url = IN_CHECK_API; //审核中
+        }
+            break;
+            
+        case 2:
+        {
+            self.url = ALREADY_BIDDING_API;  //已中标
+        }
+            break;
+            
+        case 3:
+        {
+            self.url = HISTORY_BIDDING_API; //历史竞价
+        }
+            break;
+            
+        default:
+        {
+            self.url = IN_BIDDING_API; //竞价中
+        }
+            break;
     }
 }
 
@@ -90,28 +86,21 @@
 
 //  请求网络数据
 - (void)loadDataFromNet {
-    NSString *driverTel = [[NSUserDefaults standardUserDefaults] objectForKey:USER_NUMBER];
     [self.listModelArr removeAllObjects];
-    [OrderListModel getDataWithParameters:@{@"driverTel":driverTel? driverTel:@"", @"status":self.type? self.type:@""} endBlock:^(id model, NSError *error) {
-        if (!error) {
-            self.listModelArr = [NSMutableArray arrayWithArray:model];
-            [self.reloadFlags replaceObjectAtIndex:self.indexPath.item withObject:@(0)];
-        } else {
-            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.listTableView.superview hideAfter:HUD_HIDE_TIMEINTERVAL];
-        }
-        [self.listTableView reloadData];
-        [MJRefreshUtil endRefresh:self.listTableView];
-        //显示隐藏底部“接收运单按钮”
-        if (self.indexPath.item == 0) {
-            if (self.listModelArr.count <= 0) {
-                [self.transpotBtn setHidden:YES];
-            } else {
-                [self.transpotBtn setHidden:NO];
-            }
-        } else {
-            [self.transpotBtn setHidden:YES];
-        }
+    
+    [OrderListModel getDataWithUrl:self.url.length>0? self.url:@"" parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+        
     }];
+    
+//    [OrderListModel getDataWithParameters:@{@"driverTel":driverTel? driverTel:@"", @"status":self.type? self.type:@""} endBlock:^(id model, NSError *error) {
+//        if (!error) {
+//            self.listModelArr = [NSMutableArray arrayWithArray:model];
+//        } else {
+//            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.listTableView.superview hideAfter:HUD_HIDE_TIMEINTERVAL];
+//        }
+//        [self.listTableView reloadData];
+//        [MJRefreshUtil endRefresh:self.listTableView];
+//    }];
 }
 
 
@@ -146,27 +135,14 @@
     cell.indexPath = indexPath;
     cell.orderModel = self.listModelArr[indexPath.row];
     
-    //处理选择框显示和隐藏
-    if (self.indexPath.item != 0) {
-        cell.selectedBtn.hidden = YES;
-    } else {
-        cell.selectedBtn.hidden = NO;
-    }
-    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.indexPath.item == 0) {
+    if (self.pushBlock) {
         OrderListModel *model = self.listModelArr[indexPath.row];
-        model.isSelected = !model.isSelected;
-        [self.listTableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (self.indexPath.item == 1) {
-        if (self.pushBlock) {
-            OrderListModel *model = self.listModelArr[indexPath.row];
-            NSMutableArray *modelArr = [NSMutableArray arrayWithObject:model];
-            self.pushBlock(modelArr, self.indexPath);
-        }
+        NSMutableArray *modelArr = [NSMutableArray arrayWithObject:model];
+        self.pushBlock(modelArr, self.indexPath);
     }
 }
 

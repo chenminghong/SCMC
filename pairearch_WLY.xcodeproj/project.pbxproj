@@ -405,11 +405,11 @@
 		0FA20D2C1EC471AA005C2015 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				0FA20D331EC471AA005C2015 /* OrdersCollectionCell.h */,
+				0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */,
 				0FA20D301EC471AA005C2015 /* ListTableCell.h */,
 				0FA20D311EC471AA005C2015 /* ListTableCell.m */,
 				0FA20D321EC471AA005C2015 /* ListTableCell.xib */,
-				0FA20D331EC471AA005C2015 /* OrdersCollectionCell.h */,
-				0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";

@@ -105,21 +105,6 @@
     }
 }
 
-//KA界面跳转逻辑
-- (void)jumpToKaControllerWithStatus:(NSInteger)status paraDict:(NSDictionary *)paraDict {
-
-}
-
-//BACK界面跳转逻辑
-- (void)jumpToBackControllerWithStatus:(NSInteger)status paraDict:(NSDictionary *)paraDict{
-    
-}
-
-//COMMON界面跳转逻辑
-- (void)jumpToCommonControllerWithStatus:(NSInteger)status paraDict:(NSDictionary *)paraDict{
-    
-}
-
 
 #pragma mark -- DelegateMethods
 
@@ -137,31 +122,9 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     OrdersCollectionCell *cell = [OrdersCollectionCell getCellWithCollectionView:collectionView indexPath:indexPath pushBlock:^(NSArray *selectModelArr, NSIndexPath *indexPath) {
-        if (selectModelArr.count == 0) {
-            [MBProgressHUD bwm_showTitle:@"请选择要接收的运单！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
-        }
-        if (selectModelArr.count > 1) {
-//            for (OrderListModel *model in selectModelArr) {
-//                if (![model.TRANSPORT_CODE isEqualToString:ORDER_TYPE_KA]) {
-//                    [MBProgressHUD bwm_showTitle:@"只有KA可以拼单！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
-//                    return;
-//                }
-//            }
-        }
-        if (selectModelArr.count >= 1) {
-            NSString *codeStr = @"";
-            for (NSInteger i = 0; i < selectModelArr.count; i++) {
-                OrderListModel *model = selectModelArr[i];
-                if (i == 0) {
-                    codeStr = [codeStr stringByAppendingFormat:@"%@", model.CODE];
-                } else {
-                    codeStr = [codeStr stringByAppendingFormat:@",%@", model.CODE];
-                }
-            }
-        }
+        
     }];
     cell.indexPath = indexPath;
-    cell.reloadFlags = self.reloadFlags;
     return cell;
 }
 
