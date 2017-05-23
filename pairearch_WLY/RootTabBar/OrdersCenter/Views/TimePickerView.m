@@ -28,9 +28,6 @@
 }
 
 - (void)layoutSubviews {
-//    ((UIView *)[self.timePickerView.subviews objectAtIndex:1]).backgroundColor = [UIColor colorWithRed:135/255.0 green:118/255.0 blue:90/255.0 alpha:1.0];
-//    ((UIView *)[self.timePickerView.subviews objectAtIndex:2]).backgroundColor = [UIColor colorWithRed:135/255.0 green:118/255.0 blue:90/255.0 alpha:1.0];
-
     ((UIView *)[self.timePickerView.subviews objectAtIndex:1]).backgroundColor = [UIColor lightGrayColor];
     ((UIView *)[self.timePickerView.subviews objectAtIndex:2]).backgroundColor = [UIColor lightGrayColor];
 }

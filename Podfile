@@ -16,6 +16,7 @@ pod 'BaiduMobStat', '~> 4.3.0'
 pod 'SAMKeychain', '~> 1.5.2'
 pod 'XHVersion', '~> 1.0.1'
 pod 'JPush', '~> 3.0.2'
+pod 'XFDialogBuilder', '~> 1.2.9'  #自定义弹出框
 
 
 

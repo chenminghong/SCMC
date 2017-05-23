@@ -71,6 +71,12 @@
 //竞价中详情
 #define BIDDING_DETAIL_API                @"loadByScOrderBidDetails.a"      //get
 
+//当前承运商下的司机车牌号
+#define GET_DRIVER_API                    @"loadByScOrderBidDetails.a"      //get
+
+//抢单操作
+#define SCRATCH_ORDER_API                 @"saveScBidInfo.a"                //get
+
 
 //审核中
 #define IN_CHECK_API                      @"queryAllScOrderBidForaudit.a"   //get
