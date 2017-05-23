@@ -44,6 +44,13 @@
     
 }
 
+- (NSString *)tel {
+    if (_tel.length <= 0) {
+        return @"";
+    }
+    return _tel;
+}
+
 
 + (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
     return [[NetworkHelper shareClient] POST:USER_LOGIN_API parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

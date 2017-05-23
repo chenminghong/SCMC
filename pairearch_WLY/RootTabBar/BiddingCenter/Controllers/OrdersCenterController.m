@@ -10,6 +10,7 @@
 
 #import "OrdersCollectionCell.h"
 #import "OrderListModel.h"
+#import "BiddingDetailController.h"
 
 
 @interface OrdersCenterController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
@@ -122,7 +123,12 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     OrdersCollectionCell *cell = [OrdersCollectionCell getCellWithCollectionView:collectionView indexPath:indexPath pushBlock:^(NSArray *selectModelArr, NSIndexPath *indexPath) {
-        
+        if (selectModelArr.count > 0) {
+            OrderListModel *model = selectModelArr[0];
+            BiddingDetailController *bidDetailVC = [BiddingDetailController new];
+            bidDetailVC.bidCode = model.bidCode;
+            [self.navigationController pushViewController:bidDetailVC animated:YES];
+        }
     }];
     cell.indexPath = indexPath;
     return cell;

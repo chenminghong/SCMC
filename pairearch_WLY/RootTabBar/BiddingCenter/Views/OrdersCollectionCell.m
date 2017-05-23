@@ -88,7 +88,7 @@
 - (void)loadDataFromNet {
     [self.listModelArr removeAllObjects];
     
-    [OrderListModel getDataWithUrl:self.url.length>0? self.url:@"" parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+    [OrderListModel getDataWithUrl:self.url.length>0? self.url:@"" parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"item":@(self.indexPath.item)} endBlock:^(id model, NSError *error) {
         if (!error) {
             self.listModelArr = [NSMutableArray arrayWithArray:model];
         } else {
@@ -98,16 +98,6 @@
         [self.listTableView reloadData];
         [MJRefreshUtil endRefresh:self.listTableView];
     }];
-    
-//    [OrderListModel getDataWithParameters:@{@"driverTel":driverTel? driverTel:@"", @"status":self.type? self.type:@""} endBlock:^(id model, NSError *error) {
-//        if (!error) {
-//            self.listModelArr = [NSMutableArray arrayWithArray:model];
-//        } else {
-//            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.listTableView.superview hideAfter:HUD_HIDE_TIMEINTERVAL];
-//        }
-//        [self.listTableView reloadData];
-//        [MJRefreshUtil endRefresh:self.listTableView];
-//    }];
 }
 
 
@@ -123,9 +113,8 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     OrderListModel *orderModel = self.listModelArr[indexPath.row];
-//    CGFloat sourceNameConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"发货地名称：%@", orderModel.sourceName] width:(kScreenWidth - 95.0)  fontSize:CELL_LABEL_FONTSIZE];
-    CGFloat specialExplainConstant = [BaseModel heightForTextString:[NSString stringWithFormat:@"预计到货时间：%@", orderModel.specialExplain] width:(kScreenWidth - 95.0)  fontSize:CELL_LABEL_FONTSIZE];
-    CGFloat height = 140+specialExplainConstant;
+    CGFloat specialExplainConstant = [BaseModel heightForTextString:orderModel.specialExplain width:(kScreenWidth - 100.0)  fontSize:CELL_LABEL_FONTSIZE];
+    CGFloat height = 140 + specialExplainConstant;
     return height;
 }
 
@@ -144,22 +133,6 @@
     if (self.pushBlock) {
         OrderListModel *model = self.listModelArr[indexPath.row];
         NSMutableArray *modelArr = [NSMutableArray arrayWithObject:model];
-        self.pushBlock(modelArr, self.indexPath);
-    }
-}
-
-
-#pragma mark -- ButtonAction
-
-//拼单按钮点击事件
-- (void)pushButtonAction:(UIButton *)sender {
-    if (self.pushBlock) {
-        NSMutableArray *modelArr = [NSMutableArray array];
-        for (OrderListModel *model in self.listModelArr) {
-//            if (model.isSelected) {
-//                [modelArr addObject:model];
-//            }
-        }
         self.pushBlock(modelArr, self.indexPath);
     }
 }

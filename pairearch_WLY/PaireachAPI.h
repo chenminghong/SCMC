@@ -61,8 +61,16 @@
 //收货完成
 #define  DELIVERY_COMPLETE_API            SIGN_UP_API                       //post
 
+
+
+/*============================竞价中心相关=============================*/
+
 //竞价中
 #define IN_BIDDING_API                    @"queryByScOrderBidForaudit.a"    //get
+
+//竞价中详情
+#define BIDDING_DETAIL_API                @"loadByScOrderBidDetails.a"      //get
+
 
 //审核中
 #define IN_CHECK_API                      @"queryAllScOrderBidForaudit.a"   //get

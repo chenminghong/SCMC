@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		0F397C3B1EA0DF8E002F3A38 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F397C3A1EA0DF8E002F3A38 /* LocationManager.m */; };
 		0F634CFB1EC5CD7600CFB8AB /* NestedSelectStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */; };
+		0F8986511ED3D36B007DCDD0 /* BiddingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */; };
+		0F8986521ED3D36B007DCDD0 /* BiddingDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */; };
+		0F8986551ED3D38D007DCDD0 /* BidddingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986541ED3D38D007DCDD0 /* BidddingDetailModel.m */; };
+		0F8986591ED3E12B007DCDD0 /* BidDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986571ED3E12B007DCDD0 /* BidDetailCell.m */; };
+		0F89865A1ED3E12B007DCDD0 /* BidDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986581ED3E12B007DCDD0 /* BidDetailCell.xib */; };
 		0FA20D141EC46BDE005C2015 /* OrdersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D131EC46BDE005C2015 /* OrdersModel.m */; };
 		0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D241EC471AA005C2015 /* OrdersCenterController.m */; };
 		0FA20D361EC471AA005C2015 /* OrdersCenterController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA20D251EC471AA005C2015 /* OrdersCenterController.storyboard */; };
@@ -149,6 +154,14 @@
 		0F397C3A1EA0DF8E002F3A38 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		0F634CF91EC5CD7600CFB8AB /* NestedSelectStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedSelectStateController.h; sourceTree = "<group>"; };
 		0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedSelectStateController.m; sourceTree = "<group>"; };
+		0F89864E1ED3D36B007DCDD0 /* BiddingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingDetailController.h; sourceTree = "<group>"; };
+		0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiddingDetailController.m; sourceTree = "<group>"; };
+		0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiddingDetailController.xib; sourceTree = "<group>"; };
+		0F8986531ED3D38D007DCDD0 /* BidddingDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidddingDetailModel.h; sourceTree = "<group>"; };
+		0F8986541ED3D38D007DCDD0 /* BidddingDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidddingDetailModel.m; sourceTree = "<group>"; };
+		0F8986561ED3E12B007DCDD0 /* BidDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidDetailCell.h; sourceTree = "<group>"; };
+		0F8986571ED3E12B007DCDD0 /* BidDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidDetailCell.m; sourceTree = "<group>"; };
+		0F8986581ED3E12B007DCDD0 /* BidDetailCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidDetailCell.xib; sourceTree = "<group>"; };
 		0F966D001EA5C11600FCAD18 /* pairearch_WLY.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = pairearch_WLY.entitlements; sourceTree = "<group>"; };
 		0FA20D121EC46BDE005C2015 /* OrdersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersModel.h; sourceTree = "<group>"; };
 		0FA20D131EC46BDE005C2015 /* OrdersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersModel.m; sourceTree = "<group>"; };
@@ -389,6 +402,9 @@
 				0FA20D231EC471AA005C2015 /* OrdersCenterController.h */,
 				0FA20D241EC471AA005C2015 /* OrdersCenterController.m */,
 				0FA20D251EC471AA005C2015 /* OrdersCenterController.storyboard */,
+				0F89864E1ED3D36B007DCDD0 /* BiddingDetailController.h */,
+				0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */,
+				0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -398,6 +414,8 @@
 			children = (
 				0FA20D2A1EC471AA005C2015 /* OrderListModel.h */,
 				0FA20D2B1EC471AA005C2015 /* OrderListModel.m */,
+				0F8986531ED3D38D007DCDD0 /* BidddingDetailModel.h */,
+				0F8986541ED3D38D007DCDD0 /* BidddingDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -410,6 +428,9 @@
 				0FA20D301EC471AA005C2015 /* ListTableCell.h */,
 				0FA20D311EC471AA005C2015 /* ListTableCell.m */,
 				0FA20D321EC471AA005C2015 /* ListTableCell.xib */,
+				0F8986561ED3E12B007DCDD0 /* BidDetailCell.h */,
+				0F8986571ED3E12B007DCDD0 /* BidDetailCell.m */,
+				0F8986581ED3E12B007DCDD0 /* BidDetailCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1085,6 +1106,7 @@
 				B37BA6D01E80FA29001A74B8 /* AbnormalReportCell.xib in Resources */,
 				B37BA6CB1E80D300001A74B8 /* AbnormalReportController.storyboard in Resources */,
 				0FE58E301EC980C30041E1D9 /* QRCodebottomRight@3x.png in Resources */,
+				0F89865A1ED3E12B007DCDD0 /* BidDetailCell.xib in Resources */,
 				0FE58E0B1EC97D6C0041E1D9 /* OrderStatus226Controller.xib in Resources */,
 				0FE58E331EC980C30041E1D9 /* QRCodeTopLeft@2x.png in Resources */,
 				0FE58E471EC9A11B0041E1D9 /* OrderStatus230Controller.xib in Resources */,
@@ -1120,6 +1142,7 @@
 				0FE963351EBC78C600F916DD /* OrderDetailCell.xib in Resources */,
 				0FE58E351EC980C30041E1D9 /* QRCodeTopRight@2x.png in Resources */,
 				B32228E41E52A2C300ED50ED /* Main.storyboard in Resources */,
+				0F8986521ED3D36B007DCDD0 /* BiddingDetailController.xib in Resources */,
 				0FA20D3F1EC4788C005C2015 /* OrderListTableCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1183,6 +1206,7 @@
 				B38411131E5D875700F7069F /* URLHandleUtil.m in Sources */,
 				0FA20D3E1EC4788C005C2015 /* OrderListTableCell.m in Sources */,
 				B3CC54BF1E6020090072EA47 /* AutoHeight.m in Sources */,
+				0F8986591ED3E12B007DCDD0 /* BidDetailCell.m in Sources */,
 				0F634CFB1EC5CD7600CFB8AB /* NestedSelectStateController.m in Sources */,
 				0F397C3B1EA0DF8E002F3A38 /* LocationManager.m in Sources */,
 				B384110F1E5D875700F7069F /* FileDirPathUtil.m in Sources */,
@@ -1228,6 +1252,7 @@
 				B3CC54C61E6037D60072EA47 /* WQLPaoMaView.m in Sources */,
 				0FE58E2C1EC980C30041E1D9 /* SGScanningQRCodeVC.m in Sources */,
 				0FD9C0BE1EAE0B7100CD7E00 /* Header212View.m in Sources */,
+				0F8986551ED3D38D007DCDD0 /* BidddingDetailModel.m in Sources */,
 				B357272F1E53FC61003F9B2F /* RootTabController.m in Sources */,
 				B357276A1E540E46003F9B2F /* NavigationController.m in Sources */,
 				B32228DE1E52A2C300ED50ED /* AppDelegate.m in Sources */,
@@ -1255,6 +1280,7 @@
 				0FDE40711ECBF6B900FAEF48 /* PlanTimePickerView.m in Sources */,
 				0FE963341EBC78C600F916DD /* OrderDetailCell.m in Sources */,
 				B3CC54B51E601C920072EA47 /* PaomaLabel.m in Sources */,
+				0F8986511ED3D36B007DCDD0 /* BiddingDetailController.m in Sources */,
 				B307BF471E7238E5005D7979 /* HomePageModel.m in Sources */,
 				0FE58E2B1EC980C30041E1D9 /* SGGenerateQRCodeVC.m in Sources */,
 				0FDE40651ECB0DB600FAEF48 /* TimePickerView.m in Sources */,

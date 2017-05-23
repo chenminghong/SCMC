@@ -84,7 +84,7 @@
 #define BUTTON_COLOR  UIColorFromRGB(0x66543C)
 
 //HUD隐藏的时间间隔
-#define HUD_HIDE_TIMEINTERVAL  2.0
+#define HUD_HIDE_TIMEINTERVAL  1.0
 
 //屏幕宽高
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -113,7 +113,7 @@
 #define kPersonalCenterArrowSideLength 14
 
 //cell的label字体大小
-#define CELL_LABEL_FONTSIZE     13.0
+#define CELL_LABEL_FONTSIZE     14.0
 
 //cell的label默认高度
 #define CELL_LABEL_HEIGHT     18.0

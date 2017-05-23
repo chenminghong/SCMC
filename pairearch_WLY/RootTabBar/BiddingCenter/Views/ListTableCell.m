@@ -43,13 +43,15 @@
     self.assortLabel.backgroundColor = MAIN_THEME_COLOR;
     self.assortLabel.layer.masksToBounds = YES;
     self.assortLabel.layer.cornerRadius = 25.0;
+    
+    self.separatorView.backgroundColor = TABLE_SEPARATOR_COLOR;
 }
 
 - (void)setOrderModel:(OrderListModel *)orderModel {
     _orderModel = orderModel;
     
     self.loadNumberLabel.text = [NSString stringWithFormat:@"单号：%@", orderModel.bidCode];
-    self.reserveShiptimeLabel.text = [NSString stringWithFormat:@"%@", orderModel.planDate];
+    self.reserveShiptimeLabel.text = [NSString stringWithFormat:@"装运日期：%@", orderModel.planDate];
     self.startNameLabel.text = orderModel.sourceName;
     self.stopNameLabel.text = orderModel.dcName;
     self.loadDemandLabel.text = orderModel.specialExplain;

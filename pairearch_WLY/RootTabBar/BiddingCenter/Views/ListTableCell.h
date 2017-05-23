@@ -22,6 +22,7 @@ typedef void(^FightSingleBlock)();
 @property (weak, nonatomic) IBOutlet UILabel *stopLabel;                  //终
 @property (weak, nonatomic) IBOutlet UILabel *stopNameLabel;          //收货地名称
 @property (weak, nonatomic) IBOutlet UILabel *loadDemandLabel;             //装运要求
+@property (weak, nonatomic) IBOutlet UIView *separatorView;
 
 @property (nonatomic, strong) NSIndexPath *indexPath;                   //当前的cell位置;
 
