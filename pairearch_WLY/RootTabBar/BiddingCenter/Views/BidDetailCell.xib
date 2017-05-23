@@ -66,7 +66,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="重量：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8MA-dD-xAa">
-                        <rect key="frame" x="10" y="125" width="45" height="20"/>
+                        <rect key="frame" x="10" y="120" width="45" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="MHx-cv-Hhf"/>
                             <constraint firstAttribute="width" constant="45" id="gSU-YY-5zh"/>
@@ -76,7 +76,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0吨" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YNT-yf-4qJ">
-                        <rect key="frame" x="55" y="125" width="412" height="20"/>
+                        <rect key="frame" x="55" y="120" width="412" height="20"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -108,7 +108,7 @@
                     <constraint firstItem="gD2-zW-c7k" firstAttribute="leading" secondItem="fyQ-xB-Z43" secondAttribute="trailing" constant="10" id="eRu-ic-wEZ"/>
                     <constraint firstItem="cqd-bu-RQb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="fCG-Vc-OIQ"/>
                     <constraint firstItem="Hv9-l3-HPj" firstAttribute="centerY" secondItem="sy4-LG-LFA" secondAttribute="centerY" id="g63-U1-GBG"/>
-                    <constraint firstItem="8MA-dD-xAa" firstAttribute="top" secondItem="sy4-LG-LFA" secondAttribute="bottom" constant="10" id="gNM-Yf-eeL"/>
+                    <constraint firstItem="8MA-dD-xAa" firstAttribute="top" secondItem="sy4-LG-LFA" secondAttribute="bottom" constant="5" id="gNM-Yf-eeL"/>
                     <constraint firstItem="Hv9-l3-HPj" firstAttribute="leading" secondItem="gD2-zW-c7k" secondAttribute="leading" id="h9Z-J1-VMI"/>
                     <constraint firstItem="sy4-LG-LFA" firstAttribute="height" secondItem="fyQ-xB-Z43" secondAttribute="height" id="h9n-FD-tiD"/>
                     <constraint firstItem="fyQ-xB-Z43" firstAttribute="height" secondItem="fyQ-xB-Z43" secondAttribute="width" multiplier="1:1" id="jZL-zl-icN"/>

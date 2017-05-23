@@ -18,9 +18,10 @@
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         BidddingDetailModel *model = [BidddingDetailModel new];
         model.driverArr = [NSMutableArray arrayWithArray:[BidddingDetailModel getModelsWithDicts:responseObject[@"driver"]]];
-        NSArray *productArr = responseObject[@"product"];
-        if (productArr.count > 0) {
-            model.productArr = [NSMutableArray arrayWithArray:[BidddingDetailModel getModelsWithDicts:[productArr objectAtIndex:0]]];
+        model.productArr = [NSMutableArray array];
+        for (NSArray *array in responseObject[@"product"]) {
+            NSArray *productArr = [BidddingDetailModel getModelsWithDicts:array];
+            [model.productArr addObject:productArr];
         }
         model.scorderbidArr = [NSMutableArray arrayWithArray:[BidddingDetailModel getModelsWithDicts:responseObject[@"scorderbid"]]];
         model.supplieArr = [NSMutableArray arrayWithArray:[BidddingDetailModel getModelsWithDicts:responseObject[@"supplie"]]];
