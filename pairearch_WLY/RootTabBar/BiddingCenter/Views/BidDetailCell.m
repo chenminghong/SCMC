@@ -9,7 +9,7 @@
 
 #import "BidDetailCell.h"
 
-#import "BidddingDetailModel.h"
+#import "BiddingDetailModel.h"
 
 @implementation BidDetailCell
 
@@ -19,6 +19,7 @@
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"BidDetailCell" owner:self options:nil] firstObject];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 }
 
@@ -41,7 +42,7 @@
     self.separatorView.backgroundColor = TABLE_SEPARATOR_COLOR;
 }
 
-- (void)setDetailModel:(BidddingDetailModel *)detailModel {
+- (void)setDetailModel:(BiddingDetailModel *)detailModel {
     _detailModel = detailModel;
     
     self.loadNumberLabel.text = [NSString stringWithFormat:@"单号：%@", detailModel.bidCode];

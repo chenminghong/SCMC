@@ -119,14 +119,21 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ListTableCell *cell = [ListTableCell getCellWithTable:tableView fightSingleBlock:^{
-        
-    }];
+    if (self.indexPath.item == 0) {
+        ListTableCell *cell = [ListTableCell getCellWithTable:tableView];
+        cell.indexPath = indexPath;
+        cell.orderModel = self.listModelArr[indexPath.row];
+        cell.assortLabel.text = @"抢";
+        return cell;
+    } else if (self.indexPath.item == 1) {
+        ListTableCell *cell = [ListTableCell getCellWithTable:tableView];
+        cell.indexPath = indexPath;
+        cell.orderModel = self.listModelArr[indexPath.row];
+        cell.assortLabel.text = @"正在\n审核";
+        return cell;
+    }
     
-    cell.indexPath = indexPath;
-    cell.orderModel = self.listModelArr[indexPath.row];
-    
-    return cell;
+    return nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

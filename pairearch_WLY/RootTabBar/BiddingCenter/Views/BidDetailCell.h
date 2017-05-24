@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class BidddingDetailModel;
+@class BiddingDetailModel;
 
 @interface BidDetailCell : UITableViewCell
 
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *tonnageLabel;             //重量
 @property (weak, nonatomic) IBOutlet UIView *separatorView;
 
-@property (nonatomic, strong) BidddingDetailModel *detailModel;   //model数据源
+@property (nonatomic, strong) BiddingDetailModel *detailModel;   //model数据源
 
 
 //加载cell

@@ -8,7 +8,7 @@
 
 #import "BaseModel.h"
 
-@interface BidddingDetailModel : BaseModel
+@interface BiddingDetailModel : BaseModel
 
 
 @property (nonatomic, strong) NSMutableArray *scorderbidArr;  //当前页竞价单列表
@@ -33,6 +33,8 @@
 @property (nonatomic, copy) NSString *specialExplain;      //装运要求
 
 @property (nonatomic, copy) NSString *tunnage;             //吨重
+
+@property (nonatomic, copy) NSString *deadlineTime;        //竞价截止时间
 
 
 //pruduct

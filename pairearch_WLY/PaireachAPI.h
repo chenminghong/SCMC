@@ -81,6 +81,16 @@
 //审核中
 #define IN_CHECK_API                      @"queryAllScOrderBidForaudit.a"   //get
 
+//审核中运单详情
+#define BIDDINF_CHECKING_API              @"loadByScOrderBidDetailsforSh.a" //get
+
+//修改竞价
+#define CHANGE_BIDDING_API                @"updateByScBidInfo.a"            //get
+
+//取消竞价
+#define CANCEL_BIDDING_API                @"deleteByScBidInfo.a"            //get
+
+
 //已中标
 #define ALREADY_BIDDING_API               @"queryByScOrderBidForZb.a"       //get
 

@@ -22,6 +22,7 @@
 #import <Masonry.h>
 #import <BaiduMobStat.h>
 #import <SAMKeychain.h>
+#import <IQKeyboardManager.h>
 
 
 //自定义头文件

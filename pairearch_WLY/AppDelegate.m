@@ -45,6 +45,9 @@
     //注册自定义消息监听
     [self registerCustomerMessage];
     
+    //初始化键盘输入框助手类
+    [self initIQKeyboardManager];
+    
     return YES;
 }
 
@@ -277,6 +280,19 @@
     
     //开始上传
     [statTracker startWithAppId:APP_KEY];
+}
+
+
+
+/**
+ 初始化输入框助手类
+ */
+- (void)initIQKeyboardManager {
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;
+    manager.shouldResignOnTouchOutside = YES;
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    manager.enableAutoToolbar = YES;
 }
 
 

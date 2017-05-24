@@ -8,7 +8,7 @@
 
 #import "BidSelectView.h"
 
-#import "BidddingDetailModel.h"
+#import "BiddingDetailModel.h"
 
 @implementation BidSelectView
 
@@ -90,7 +90,7 @@
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    BidddingDetailModel *model = self.dataArr[row];
+    BiddingDetailModel *model = self.dataArr[row];
     NSString *title = nil;
     if (model.supplierName) {
         title = [NSString stringWithFormat:@"%@", model.supplierName];

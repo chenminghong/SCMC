@@ -11,6 +11,7 @@
 #import "OrdersCollectionCell.h"
 #import "OrderListModel.h"
 #import "BiddingDetailController.h"
+#import "BiddingCheckingController.h"
 
 
 @interface OrdersCenterController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
@@ -73,6 +74,8 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:YES animated:YES];
+    
+    [self.collectionView reloadData];
 }
 
 #pragma mark -- ButtonActions
@@ -123,11 +126,18 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     OrdersCollectionCell *cell = [OrdersCollectionCell getCellWithCollectionView:collectionView indexPath:indexPath pushBlock:^(NSArray *selectModelArr, NSIndexPath *indexPath) {
-        if (selectModelArr.count > 0) {
+        if (indexPath.item == 0) {
+            if (selectModelArr.count > 0) {
+                OrderListModel *model = selectModelArr[0];
+                BiddingDetailController *bidDetailVC = [BiddingDetailController new];
+                bidDetailVC.bidCode = model.bidCode;
+                [self.navigationController pushViewController:bidDetailVC animated:YES];
+            }
+        } else if (indexPath.item == 1) {
+            BiddingCheckingController *biddingCheckingVC = [BiddingCheckingController new];
             OrderListModel *model = selectModelArr[0];
-            BiddingDetailController *bidDetailVC = [BiddingDetailController new];
-            bidDetailVC.bidCode = model.bidCode;
-            [self.navigationController pushViewController:bidDetailVC animated:YES];
+            biddingCheckingVC.bidCode = model.bidCode;
+            [self.navigationController pushViewController:biddingCheckingVC animated:YES];
         }
     }];
     cell.indexPath = indexPath;

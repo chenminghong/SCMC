@@ -8,16 +8,17 @@
 
 #import "BiddingDetailController.h"
 
-#import "BidddingDetailModel.h"
+#import "BiddingDetailModel.h"
 #import "BidDetailCell.h"
 #import "BiddingFooterView.h"
 #import "BidPickerView.h"
+#import "BidOrderDetailController.h"
 
 @interface BiddingDetailController ()<UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 
-@property (nonatomic, strong) BidddingDetailModel *biddingModel;  //数据源
+@property (nonatomic, strong) BiddingDetailModel *biddingModel;  //数据源
 
 @property (nonatomic, strong) BiddingFooterView *footerView;      //页脚视图
 
@@ -73,7 +74,7 @@
 }
 
 - (void)getDataFromNet {
-    [BidddingDetailModel getDataWithParameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} endBlock:^(id model, NSError *error) {
+    [BiddingDetailModel getDataWithParameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} endBlock:^(id model, NSError *error) {
         if (!error) {
             self.biddingModel = model;
         } else {
@@ -102,12 +103,23 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
-    BidddingDetailModel *model = self.biddingModel.supplieArr[0];
+    CGFloat weight = 0.0;
+    for (BiddingDetailModel *model in self.biddingModel.scorderbidArr) {
+        weight += [model.tunnage floatValue];
+    }
+    self.footerView.tonnageLabel.text = [NSString stringWithFormat:@"总重量：%.1f吨", weight];
+    
+    BiddingDetailModel *model = self.biddingModel.supplieArr[0];
     [self.footerView.supplierButton setTitle:model.supplierName forState:UIControlStateNormal];
     self.supplierCode = model.supplierCode;
+    
     model = self.biddingModel.driverArr[0];
     [self.footerView.plateNumberBotton setTitle:model.truckNumber forState:UIControlStateNormal];
     self.plateNumber = model.truckNumber;
+    
+    model = self.biddingModel.scorderbidArr[0];
+    self.footerView.deadLineTime = model.deadlineTime;
+    
     [self.footerView.supplierButton addTarget:self action:@selector(sipplierButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.footerView.plateNumberBotton addTarget:self action:@selector(plateNumberButtonAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.footerView.rapButton addTarget:self action:@selector(rapButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -119,6 +131,12 @@
     BidDetailCell *cell = [BidDetailCell getCellWithTable:tableView];
     cell.detailModel = self.biddingModel.scorderbidArr[indexPath.row];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    BidOrderDetailController *bidVC = [BidOrderDetailController new];
+    bidVC.dataArr = self.biddingModel.productArr[indexPath.row];
+    [self.navigationController pushViewController:bidVC animated:YES];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -182,14 +200,14 @@
     
     __weak typeof(self) weakSelf = self;
     [BidPickerView showTimeSelectViewWithTitle:@"请选择运营商" dataArr:self.biddingModel.supplieArr selectBlock:^(id model) {
-        BidddingDetailModel *detailModel = model;
+        BiddingDetailModel *detailModel = model;
         [weakSelf.footerView.supplierButton setTitle:detailModel.supplierName forState:UIControlStateNormal];
         self.supplierCode = detailModel.supplierCode;
-        BidddingDetailModel *tempModel = self.biddingModel.scorderbidArr[0];
+        BiddingDetailModel *tempModel = self.biddingModel.scorderbidArr[0];
         [[NetworkHelper shareClientBidd] GET:GET_DRIVER_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":tempModel.bidCode, @"supplierCode":detailModel.supplierCode} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-            weakSelf.biddingModel.driverArr = [NSMutableArray arrayWithArray:[BidddingDetailModel getModelsWithDicts:responseObject[@"driver"]]];
-            BidddingDetailModel *tempModel2 = self.biddingModel.driverArr[0];
+            weakSelf.biddingModel.driverArr = [NSMutableArray arrayWithArray:[BiddingDetailModel getModelsWithDicts:responseObject[@"driver"]]];
+            BiddingDetailModel *tempModel2 = self.biddingModel.driverArr[0];
             [weakSelf.footerView.plateNumberBotton setTitle:tempModel2.truckNumber forState:UIControlStateNormal];
         } failure:nil];
     }];
@@ -205,7 +223,7 @@
     [self.view endEditing:YES];
     __weak typeof(self) weakSelf = self;
     [BidPickerView showTimeSelectViewWithTitle:@"请选择车牌号" dataArr:self.biddingModel.driverArr selectBlock:^(id model) {
-        BidddingDetailModel *detailModel = model;
+        BiddingDetailModel *detailModel = model;
         [weakSelf.footerView.plateNumberBotton setTitle:detailModel.truckNumber forState:UIControlStateNormal];
         self.plateNumber = detailModel.truckNumber;
     }];
@@ -219,19 +237,12 @@
  @param sender 抢单按钮
  */
 - (void)rapButtonAction:(UIButton *)sender {
-    
-    /*
-     phoneNumber	手机号码
-     bidCode	单号
-     amount	价格
-     supplierCod	承运商编码
-     carno	车牌号*/
-    
+    [self.footerView.biddingTf resignFirstResponder];
     if ([self.footerView.biddingTf.text stringByReplacingOccurrencesOfString:@" " withString:@""].length <= 0) {
         [MBProgressHUD bwm_showTitle:@"请输入价格" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         return;
     }
-    BidddingDetailModel *model = self.biddingModel.scorderbidArr[0];
+    BiddingDetailModel *model = self.biddingModel.scorderbidArr[0];
     NSDictionary *paraDict = @{@"phoneNumber":[LoginModel shareLoginModel].tel,
                                @"bidCode":model.bidCode,
                                @"amount":self.footerView.biddingTf.text,
@@ -239,8 +250,13 @@
                                @"carno":self.plateNumber};
     [[NetworkHelper shareClientBidd] POST:SCRATCH_ORDER_API parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
+        NSLog(@"%@", responseObject);
+        MBProgressHUD *hud = [ProgressHUD bwm_showTitle:responseObject[@"saveResult"] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        [hud setCompletionBlock:^(){
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        
+        [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
     }];
 }
 

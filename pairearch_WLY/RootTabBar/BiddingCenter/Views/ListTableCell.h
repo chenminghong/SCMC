@@ -10,8 +10,6 @@
 
 @class OrderListModel;
 
-typedef void(^FightSingleBlock)();
-
 @interface ListTableCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *loadNumberLabel;          //发货单号
@@ -27,9 +25,8 @@ typedef void(^FightSingleBlock)();
 @property (nonatomic, strong) NSIndexPath *indexPath;                   //当前的cell位置;
 
 @property (nonatomic, strong) OrderListModel *orderModel;               //数据模型
-@property (nonatomic, copy) FightSingleBlock fightSingleBlock;          //拼单按钮回调
 
 //加载cell
-+ (instancetype)getCellWithTable:(UITableView *)table fightSingleBlock:(FightSingleBlock)fightSingleBlock;
++ (instancetype)getCellWithTable:(UITableView *)table;
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
-#import "BidddingDetailModel.h"
+#import "BiddingDetailModel.h"
 
-@implementation BidddingDetailModel
+@implementation BiddingDetailModel
 
 + (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock {
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -16,15 +16,15 @@
     return [[NetworkHelper shareClientBidd] GET:BIDDING_DETAIL_API parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [hud hide:YES];
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-        BidddingDetailModel *model = [BidddingDetailModel new];
-        model.driverArr = [NSMutableArray arrayWithArray:[BidddingDetailModel getModelsWithDicts:responseObject[@"driver"]]];
+        BiddingDetailModel *model = [BiddingDetailModel new];
+        model.driverArr = [NSMutableArray arrayWithArray:[BiddingDetailModel getModelsWithDicts:responseObject[@"driver"]]];
         model.productArr = [NSMutableArray array];
         for (NSArray *array in responseObject[@"product"]) {
-            NSArray *productArr = [BidddingDetailModel getModelsWithDicts:array];
+            NSArray *productArr = [BiddingDetailModel getModelsWithDicts:array];
             [model.productArr addObject:productArr];
         }
-        model.scorderbidArr = [NSMutableArray arrayWithArray:[BidddingDetailModel getModelsWithDicts:responseObject[@"scorderbid"]]];
-        model.supplieArr = [NSMutableArray arrayWithArray:[BidddingDetailModel getModelsWithDicts:responseObject[@"supplie"]]];
+        model.scorderbidArr = [NSMutableArray arrayWithArray:[BiddingDetailModel getModelsWithDicts:responseObject[@"scorderbid"]]];
+        model.supplieArr = [NSMutableArray arrayWithArray:[BiddingDetailModel getModelsWithDicts:responseObject[@"supplie"]]];
         if (endBlock) {
             endBlock(model, nil);
         }

@@ -13,13 +13,11 @@
 @implementation ListTableCell
 
 //加载cell
-+ (instancetype)getCellWithTable:(UITableView *)table fightSingleBlock:(FightSingleBlock)fightSingleBlock {
++ (instancetype)getCellWithTable:(UITableView *)table{
     ListTableCell *cell = [table dequeueReusableCellWithIdentifier:@"ListTableCell"];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"ListTableCell" owner:self options:nil] firstObject];
     }
-    cell.fightSingleBlock = fightSingleBlock;
-    
     return cell;
 }
 

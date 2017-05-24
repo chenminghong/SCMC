@@ -7,6 +7,7 @@ target ‘pairearch_WLY’ do
 pod 'AFNetworking'
 pod 'SDWebImage'
 pod 'MJRefresh'
+pod 'IQKeyboardManager'
 
 pod 'MBProgressHUD+BWMExtension', '~> 1.0.1'
 pod 'MBProgressHUD', '~> 0.9.2'
