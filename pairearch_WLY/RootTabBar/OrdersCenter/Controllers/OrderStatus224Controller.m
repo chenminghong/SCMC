@@ -22,10 +22,11 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.codeNumberLabel.text = [NSString stringWithFormat:@"%@", self.code];
-    self.codeImageView.image = [CreatQRCodeAndBarCodeFromLeon generateBarCode:self.code size:CGSizeMake(kScreenWidth, kScreenWidth * 9.0 / 16.0) color:[UIColor blackColor] backGroundColor:nil];
+- (void)setCode:(NSString *)code {
+    _code = code;
+    self.codeNumberLabel.text = [NSString stringWithFormat:@"%@", code];
+    UIImage *image = [CreatQRCodeAndBarCodeFromLeon generateBarCode:code size:CGSizeMake(kScreenWidth, kScreenWidth * 9.0 / 16.0) color:[UIColor blackColor] backGroundColor:nil];
+    self.codeImageView.image = image;
 }
 
 

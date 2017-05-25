@@ -118,7 +118,7 @@
     model = self.biddingModel.biddingDetailModel;
     self.footerView.plateNumberLabel.text = [NSString stringWithFormat:@"车牌号：%@", model.truckNumber];
     
-    model = self.biddingModel.scorderbidArr[0];
+    model = self.biddingModel.scorderbidArr.count>0? self.biddingModel.scorderbidArr[0]:nil;
     self.footerView.deadLineTime = model.deadlineTime;
     
     self.footerView.priceLabel.text = [NSString stringWithFormat:@"%.2f元/车(含税)", [self.biddingModel.amount floatValue]];

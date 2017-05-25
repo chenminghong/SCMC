@@ -46,6 +46,9 @@
 //入厂签到
 #define SIGN_UP_API                       @"orderHandling.a"                //post
 
+//是否可以进入装货工厂
+#define CAN_ENTERFAC_API                  @"canEnterFactory.a"              //get
+
 //装货开始扫码
 #define LOAD_START_API                    @"loadStartOrder.a"               //get
 

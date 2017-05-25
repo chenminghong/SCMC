@@ -74,12 +74,11 @@
             break;
             
         case ORDER_STATUS_224:
+        case ORDER_STATUS_225:
+        case ORDER_STATUS_227:
         {
-            self.title = @"入厂提示";
-            OrderStatus224Controller *childVC = [OrderStatus224Controller new];
-            childVC.status = self.status;
-            childVC.code = code;
-            [self addChildController:childVC];
+            [self getIsEnterFactory];
+            
         }
             break;
             
@@ -146,6 +145,32 @@
             
         default:
             break;
+    }
+}
+
+//判断是否能进入装货工厂
+- (void)getIsEnterFactory {
+    [[NetworkHelper shareClient] GET:CAN_ENTERFAC_API parameters:@{@"userName":[LoginModel shareLoginModel].tel, @"orderCode":self.code} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        [self isEnterFactoryWithStatus:str.integerValue];
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        
+    }];
+}
+
+//根据224状态判断跳转那个界面
+- (void)isEnterFactoryWithStatus:(NSInteger)status {
+    if (status == 0) {
+        
+    } else if (status == 1) {
+        //调用当前运能情况接口（返回0或者1）
+        self.title = @"入厂提示";
+        OrderStatus224Controller *childVC = [OrderStatus224Controller new];
+        [self addChildController:childVC];
+        childVC.status = self.status;
+        childVC.code = self.code;
+    } else if (status == 2) {
+        
     }
 }
 

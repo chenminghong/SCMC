@@ -105,5 +105,7 @@
 
 @property (nonatomic, copy) NSString *planAchieveTime;          //预计到达收货工厂时间
 
+@property (nonatomic, copy) NSString *warehouseType;            //仓库类型（10:内仓；11：外仓）
+
 
 @end

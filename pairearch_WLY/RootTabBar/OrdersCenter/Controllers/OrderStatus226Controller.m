@@ -64,7 +64,7 @@
         codeVC.navigationItem.leftBarButtonItem = [NavigationController getNavigationBackItemWithTarget:codeVC SEL:@selector(dismissModalViewControllerAnimated:)];
         [weakself presentViewController:naviNC animated:YES completion:nil];
     } else {
-        [MBProgressHUD bwm_showTitle:@"⚠️ 警告:未检测到您的摄像头, 请在真机上测试" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL / 2.0];
+        [MBProgressHUD bwm_showTitle:@"⚠️ 警告:未检测到您的摄像头, 请在真机上测试" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
     }
 }
 

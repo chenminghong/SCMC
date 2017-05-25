@@ -40,29 +40,29 @@
     _deadLineTime = deadLineTime;
     NSDate *deadDate = [self stringToDate:deadLineTime withDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     self.interval = deadDate.timeIntervalSinceNow - 2 * 60 * 60;
-    NSDateComponents *cmps = [self getTimeintervalWithTimeinterval:self.interval];
-    NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", cmps.hour]:[NSString stringWithFormat:@"%ld", cmps.hour];
-    NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", cmps.minute]:[NSString stringWithFormat:@"%ld", cmps.minute];
-    NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", cmps.second]:[NSString stringWithFormat:@"%ld", cmps.second];
-    self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", cmps.day, hour, minute, second];
-    //开启定时器
-    [self startTimer];
 }
 
 - (void)setInterval:(NSTimeInterval)interval {
     _interval = interval;
     if (interval <= 0) {
         [self stopTimer];
+        self.remainderTimeLabel.text = [NSString stringWithFormat:@"%d天  0%@小时 0%@分 0%@秒", 0, @(0), @(0), @(0)];
         self.changeBidButton.userInteractionEnabled = NO;
         self.changeBidButton.backgroundColor = [UIColor darkGrayColor];
         self.cancelBidButton.userInteractionEnabled = NO;
         self.cancelBidButton.backgroundColor = [UIColor darkGrayColor];
     } else {
-        [self startTimer];
         self.changeBidButton.userInteractionEnabled = YES;
         self.changeBidButton.backgroundColor = MAIN_THEME_COLOR;
         self.cancelBidButton.userInteractionEnabled = YES;
         self.cancelBidButton.backgroundColor = MAIN_THEME_COLOR;
+        [self startTimer];
+        
+        NSDateComponents *cmps = [self getTimeintervalWithTimeinterval:interval];
+        NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", cmps.hour]:[NSString stringWithFormat:@"%ld", cmps.hour];
+        NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", cmps.minute]:[NSString stringWithFormat:@"%ld", cmps.minute];
+        NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", cmps.second]:[NSString stringWithFormat:@"%ld", cmps.second];
+        self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", cmps.day, hour, minute, second];
     }
 }
 
@@ -88,12 +88,6 @@
 
 - (void)timeChangeAction:(NSTimer *)sender {
     self.interval -= 1;
-    NSDateComponents *cmps = [self getTimeintervalWithTimeinterval:self.interval];
-    
-    NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", cmps.hour]:[NSString stringWithFormat:@"%ld", cmps.hour];
-    NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", cmps.minute]:[NSString stringWithFormat:@"%ld", cmps.minute];
-    NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", cmps.second]:[NSString stringWithFormat:@"%ld", cmps.second];
-    self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", cmps.day, hour, minute, second];
 }
 
 
