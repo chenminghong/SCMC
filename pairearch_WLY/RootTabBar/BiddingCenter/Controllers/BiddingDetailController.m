@@ -139,6 +139,8 @@
     [self.navigationController pushViewController:bidVC animated:YES];
 }
 
+#pragma mark -- UITextFieldDelegate
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     // 当前输入的字符是'.'
     if ([string isEqualToString:@"."]) {
@@ -242,6 +244,7 @@
         [MBProgressHUD bwm_showTitle:@"请输入价格" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         return;
     }
+    __weak MBProgressHUD *hud1 = [MBProgressHUD bwm_showHUDAddedTo:self.view title:kBWMMBProgressHUDMsgLoading animated:YES];
     BiddingDetailModel *model = self.biddingModel.scorderbidArr[0];
     NSDictionary *paraDict = @{@"phoneNumber":[LoginModel shareLoginModel].tel,
                                @"bidCode":model.bidCode,
@@ -251,11 +254,13 @@
     [[NetworkHelper shareClientBidd] POST:SCRATCH_ORDER_API parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         NSLog(@"%@", responseObject);
-        MBProgressHUD *hud = [ProgressHUD bwm_showTitle:responseObject[@"saveResult"] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-        [hud setCompletionBlock:^(){
+        [hud1 hide:NO];
+        MBProgressHUD *hud2 = [ProgressHUD bwm_showTitle:responseObject[@"saveResult"] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        [hud2 setCompletionBlock:^(){
             [self.navigationController popToRootViewControllerAnimated:YES];
         }];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        [hud1 hide:NO];
         [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
     }];
 }

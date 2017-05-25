@@ -25,6 +25,9 @@
 		0F8986771ED57861007DCDD0 /* BiddingCheckingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986751ED57861007DCDD0 /* BiddingCheckingController.m */; };
 		0F8986781ED57861007DCDD0 /* BiddingCheckingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986761ED57861007DCDD0 /* BiddingCheckingController.xib */; };
 		0F89867B1ED5837E007DCDD0 /* BiddingCheckingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89867A1ED5837E007DCDD0 /* BiddingCheckingModel.m */; };
+		0F89867E1ED68353007DCDD0 /* InBiddingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89867D1ED68353007DCDD0 /* InBiddingDetailModel.m */; };
+		0F8986811ED691C1007DCDD0 /* BidCheckingFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986801ED691C1007DCDD0 /* BidCheckingFooterView.m */; };
+		0F8986831ED691CC007DCDD0 /* BidCheckingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986821ED691CC007DCDD0 /* BidCheckingFooterView.xib */; };
 		0FA20D141EC46BDE005C2015 /* OrdersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D131EC46BDE005C2015 /* OrdersModel.m */; };
 		0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D241EC471AA005C2015 /* OrdersCenterController.m */; };
 		0FA20D361EC471AA005C2015 /* OrdersCenterController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA20D251EC471AA005C2015 /* OrdersCenterController.storyboard */; };
@@ -191,6 +194,11 @@
 		0F8986761ED57861007DCDD0 /* BiddingCheckingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiddingCheckingController.xib; sourceTree = "<group>"; };
 		0F8986791ED5837E007DCDD0 /* BiddingCheckingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingCheckingModel.h; sourceTree = "<group>"; };
 		0F89867A1ED5837E007DCDD0 /* BiddingCheckingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiddingCheckingModel.m; sourceTree = "<group>"; };
+		0F89867C1ED68353007DCDD0 /* InBiddingDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InBiddingDetailModel.h; sourceTree = "<group>"; };
+		0F89867D1ED68353007DCDD0 /* InBiddingDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InBiddingDetailModel.m; sourceTree = "<group>"; };
+		0F89867F1ED691C1007DCDD0 /* BidCheckingFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidCheckingFooterView.h; sourceTree = "<group>"; };
+		0F8986801ED691C1007DCDD0 /* BidCheckingFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidCheckingFooterView.m; sourceTree = "<group>"; };
+		0F8986821ED691CC007DCDD0 /* BidCheckingFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidCheckingFooterView.xib; sourceTree = "<group>"; };
 		0F966D001EA5C11600FCAD18 /* pairearch_WLY.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = pairearch_WLY.entitlements; sourceTree = "<group>"; };
 		0FA20D121EC46BDE005C2015 /* OrdersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersModel.h; sourceTree = "<group>"; };
 		0FA20D131EC46BDE005C2015 /* OrdersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersModel.m; sourceTree = "<group>"; };
@@ -452,6 +460,8 @@
 				0F8986541ED3D38D007DCDD0 /* BiddingDetailModel.m */,
 				0F8986791ED5837E007DCDD0 /* BiddingCheckingModel.h */,
 				0F89867A1ED5837E007DCDD0 /* BiddingCheckingModel.m */,
+				0F89867C1ED68353007DCDD0 /* InBiddingDetailModel.h */,
+				0F89867D1ED68353007DCDD0 /* InBiddingDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -478,6 +488,9 @@
 				0F89866F1ED5591A007DCDD0 /* BidOrderDetailCell.h */,
 				0F8986701ED5591A007DCDD0 /* BidOrderDetailCell.m */,
 				0F8986711ED5591A007DCDD0 /* BidOrderDetailCell.xib */,
+				0F89867F1ED691C1007DCDD0 /* BidCheckingFooterView.h */,
+				0F8986801ED691C1007DCDD0 /* BidCheckingFooterView.m */,
+				0F8986821ED691CC007DCDD0 /* BidCheckingFooterView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1153,6 +1166,7 @@
 				B37BA6D01E80FA29001A74B8 /* AbnormalReportCell.xib in Resources */,
 				B37BA6CB1E80D300001A74B8 /* AbnormalReportController.storyboard in Resources */,
 				0F8986731ED5591A007DCDD0 /* BidOrderDetailCell.xib in Resources */,
+				0F8986831ED691CC007DCDD0 /* BidCheckingFooterView.xib in Resources */,
 				0FE58E301EC980C30041E1D9 /* QRCodebottomRight@3x.png in Resources */,
 				0F89865A1ED3E12B007DCDD0 /* BidDetailCell.xib in Resources */,
 				0FE58E0B1EC97D6C0041E1D9 /* OrderStatus226Controller.xib in Resources */,
@@ -1256,6 +1270,7 @@
 				0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */,
 				B38411131E5D875700F7069F /* URLHandleUtil.m in Sources */,
 				0FA20D3E1EC4788C005C2015 /* OrderListTableCell.m in Sources */,
+				0F89867E1ED68353007DCDD0 /* InBiddingDetailModel.m in Sources */,
 				0F89865F1ED41AC6007DCDD0 /* BiddingFooterView.m in Sources */,
 				0F8986691ED430C1007DCDD0 /* BidPickerView.m in Sources */,
 				B3CC54BF1E6020090072EA47 /* AutoHeight.m in Sources */,
@@ -1302,6 +1317,7 @@
 				0F8986641ED42DF3007DCDD0 /* BidSelectView.m in Sources */,
 				B37BA6D61E8127A9001A74B8 /* TZTestCell.m in Sources */,
 				B38411111E5D875700F7069F /* InputValueCheckUtil.m in Sources */,
+				0F8986811ED691C1007DCDD0 /* BidCheckingFooterView.m in Sources */,
 				0FA20D141EC46BDE005C2015 /* OrdersModel.m in Sources */,
 				0F89866D1ED5406C007DCDD0 /* BidOrderDetailController.m in Sources */,
 				0F89867B1ED5837E007DCDD0 /* BiddingCheckingModel.m in Sources */,
