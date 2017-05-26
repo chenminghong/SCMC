@@ -10,6 +10,8 @@
 
 #import "HomePageModel.h"
 #import "Mistake212Controller.h"
+#import "WaitTimeoutController.h"
+#import "WaitListController.h"
 #import "OrderStatus224Controller.h"
 #import "OrderStatus226Controller.h"
 #import "OrderStatus228Controller.h"
@@ -78,7 +80,6 @@
         case ORDER_STATUS_227:
         {
             [self getIsEnterFactory];
-            
         }
             break;
             
@@ -160,8 +161,10 @@
 
 //根据224状态判断跳转那个界面
 - (void)isEnterFactoryWithStatus:(NSInteger)status {
-    if (status == 0) {
-        
+    if (status == 0) {//候补排队
+        self.title = @"装货候补排队";
+        WaitListController *childVC = [WaitListController new];
+        [self addChildController:childVC];
     } else if (status == 1) {
         //调用当前运能情况接口（返回0或者1）
         self.title = @"入厂提示";
@@ -169,8 +172,10 @@
         [self addChildController:childVC];
         childVC.status = self.status;
         childVC.code = self.code;
-    } else if (status == 2) {
-        
+    } else if (status == 2) {//车辆超时
+        self.title = @"预约超时";
+        WaitTimeoutController *childVC = [WaitTimeoutController new];
+        [self addChildController:childVC];
     }
 }
 
