@@ -9,17 +9,17 @@
 #import "AbnormalReportController.h"
 
 #import "AbnormalReportCell.h"
-#import "LxGridViewFlowLayout.h"
 #import "TZImagePickerController.h"
 #import "UIView+Layout.h"
 #import "TZTestCell.h"
-#import <AssetsLibrary/AssetsLibrary.h>
-#import <Photos/Photos.h>
 #import "LxGridViewFlowLayout.h"
 #import "TZImageManager.h"
-#import "TZVideoPlayerController.h"
-#import "TZPhotoPreviewController.h"
-#import "TZGifPhotoPreviewController.h"
+//#import "LxGridViewFlowLayout.h"
+//#import <AssetsLibrary/AssetsLibrary.h>
+//#import <Photos/Photos.h>
+//#import "TZVideoPlayerController.h"
+//#import "TZPhotoPreviewController.h"
+//#import "TZGifPhotoPreviewController.h"
 
 @interface AbnormalReportController ()<UIScrollViewDelegate,UITableViewDelegate, UITableViewDataSource, TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate>
 {

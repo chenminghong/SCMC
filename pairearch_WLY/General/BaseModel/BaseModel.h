@@ -8,6 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSUInteger, WarehouseType) {
+    WarehouseTypeInside = 10,
+    WarehouseTypeOutside,
+};
+
 @interface BaseModel : NSObject
 
 //初始化Model

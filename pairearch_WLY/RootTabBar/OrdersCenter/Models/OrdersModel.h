@@ -28,8 +28,6 @@
 
 @property (nonatomic, copy) NSString *wareDispatchTime;         //计划装运日期
 
-
-
 @property (nonatomic, copy) NSString *planDate;                 //预约时间
 
 @end

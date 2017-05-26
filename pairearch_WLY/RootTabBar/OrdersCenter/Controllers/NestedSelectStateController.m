@@ -12,6 +12,7 @@
 #import "Mistake212Controller.h"
 #import "WaitTimeoutController.h"
 #import "WaitListController.h"
+#import "OutStorage220Controller.h"
 #import "OrderStatus224Controller.h"
 #import "OrderStatus226Controller.h"
 #import "OrderStatus228Controller.h"
@@ -22,6 +23,12 @@
 
 
 @interface NestedSelectStateController ()
+
+@property (nonatomic, copy) NSString *code;            //订单编号
+
+@property (nonatomic, assign) NSInteger status;        //订单状态码
+
+@property (nonatomic, copy) NSString *warehouseType;            //仓库类型（10:内仓；11：外仓）
 
 @end
 
@@ -44,12 +51,18 @@
     NSDictionary *userInfo = [sender userInfo];
     NSInteger flag = [userInfo[@"flag"] integerValue];
     if (flag == 0) {
-        NSInteger status = [userInfo[@"status"] integerValue];
-        NSString *orderCode = userInfo[@"orderCode"];
-        self.status = status;
-        self.code = orderCode;
+        self.homePageModel.code = userInfo[@"orderCode"];
+        self.homePageModel.status = userInfo[@"status"];
+        self.code = self.homePageModel.code;
+        self.status = self.homePageModel.status.integerValue;;
     }
     
+}
+
+- (void)setHomePageModel:(HomePageModel *)homePageModel {
+    _homePageModel = homePageModel;
+    self.code = homePageModel.code;
+    self.status = homePageModel.status.integerValue;
 }
 
 - (void)setStatus:(NSInteger)status {
@@ -68,10 +81,16 @@
     switch (status) {
         case ORDER_STATUS_220://已接收待签到
         {
-            self.title = @"运单详情";
-            Mistake212Controller *childVC = [Mistake212Controller new];
-            childVC.homePageModel = self.homePageModel;
-            [self addChildController:childVC];
+            self.title = @"装货工厂签到";
+            if (self.homePageModel.warehouseType.integerValue == WarehouseTypeInside) {
+                Mistake212Controller *childVC = [Mistake212Controller new];
+                childVC.homePageModel = self.homePageModel;
+                [self addChildController:childVC];
+            } else {
+                OutStorage220Controller *childVC = [OutStorage220Controller new];
+                childVC.homePageModel = self.homePageModel;
+                [self addChildController:childVC];
+            }
         }
             break;
             
@@ -119,7 +138,7 @@
             OrderStatus232Controller *childVC = [OrderStatus232Controller new];
             childVC.code = code;
             childVC.status = status;
-            childVC.planAchieveTime = self.planAchieveTime;
+            childVC.planAchieveTime = self.homePageModel.planAchieveTime;
             [self addChildController:childVC];
         }
             break;

@@ -107,11 +107,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     HomePageModel *model = self.homeModel.orderModelList[indexPath.row];
-    [self jumpToControllerWithStatus:model.status.integerValue paraDict:model];
+    [self jumpToControllerWithParaModel:model];
 }
 
 //KA界面跳转逻辑
-- (void)jumpToControllerWithStatus:(NSInteger)status paraDict:(HomePageModel *)model {
+- (void)jumpToControllerWithParaModel:(HomePageModel *)model {
+    NSInteger status = model.status.integerValue;
     NSLog(@"status:%ld", status);
     switch (status) {
         case ORDER_STATUS_212://待接收
@@ -134,11 +135,8 @@
         case ORDER_STATUS_248://运单结束
         {
             NestedSelectStateController *nestVC = [NestedSelectStateController new];
-            nestVC.homePageModel = model;
-            nestVC.code = model.code;
-            nestVC.planAchieveTime = model.planAchieveTime;
-            nestVC.status = status;
             [self.navigationController pushViewController:nestVC animated:YES];
+            nestVC.homePageModel = model;
         }
             break;
             

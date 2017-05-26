@@ -32,6 +32,9 @@
 		0F8986881ED7C4C5007DCDD0 /* WaitListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986861ED7C4C5007DCDD0 /* WaitListController.xib */; };
 		0F89868C1ED7C675007DCDD0 /* WaitTimeoutController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89868A1ED7C675007DCDD0 /* WaitTimeoutController.m */; };
 		0F89868D1ED7C675007DCDD0 /* WaitTimeoutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F89868B1ED7C675007DCDD0 /* WaitTimeoutController.xib */; };
+		0F8986901ED804C7007DCDD0 /* OutStorage220Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89868F1ED804C7007DCDD0 /* OutStorage220Controller.m */; };
+		0F8986931ED806DE007DCDD0 /* ButtonFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986921ED806DE007DCDD0 /* ButtonFooterView.m */; };
+		0F8986951ED806EC007DCDD0 /* ButtonFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986941ED806EC007DCDD0 /* ButtonFooterView.xib */; };
 		0FA20D141EC46BDE005C2015 /* OrdersModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D131EC46BDE005C2015 /* OrdersModel.m */; };
 		0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D241EC471AA005C2015 /* OrdersCenterController.m */; };
 		0FA20D361EC471AA005C2015 /* OrdersCenterController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FA20D251EC471AA005C2015 /* OrdersCenterController.storyboard */; };
@@ -209,6 +212,11 @@
 		0F8986891ED7C675007DCDD0 /* WaitTimeoutController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitTimeoutController.h; sourceTree = "<group>"; };
 		0F89868A1ED7C675007DCDD0 /* WaitTimeoutController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitTimeoutController.m; sourceTree = "<group>"; };
 		0F89868B1ED7C675007DCDD0 /* WaitTimeoutController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitTimeoutController.xib; sourceTree = "<group>"; };
+		0F89868E1ED804C7007DCDD0 /* OutStorage220Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OutStorage220Controller.h; sourceTree = "<group>"; };
+		0F89868F1ED804C7007DCDD0 /* OutStorage220Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OutStorage220Controller.m; sourceTree = "<group>"; };
+		0F8986911ED806DE007DCDD0 /* ButtonFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ButtonFooterView.h; sourceTree = "<group>"; };
+		0F8986921ED806DE007DCDD0 /* ButtonFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ButtonFooterView.m; sourceTree = "<group>"; };
+		0F8986941ED806EC007DCDD0 /* ButtonFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonFooterView.xib; sourceTree = "<group>"; };
 		0F966D001EA5C11600FCAD18 /* pairearch_WLY.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = pairearch_WLY.entitlements; sourceTree = "<group>"; };
 		0FA20D121EC46BDE005C2015 /* OrdersModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersModel.h; sourceTree = "<group>"; };
 		0FA20D131EC46BDE005C2015 /* OrdersModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersModel.m; sourceTree = "<group>"; };
@@ -720,6 +728,8 @@
 				0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */,
 				0F634CF91EC5CD7600CFB8AB /* NestedSelectStateController.h */,
 				0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */,
+				0F89868E1ED804C7007DCDD0 /* OutStorage220Controller.h */,
+				0F89868F1ED804C7007DCDD0 /* OutStorage220Controller.m */,
 				0F8986841ED7C4C5007DCDD0 /* WaitListController.h */,
 				0F8986851ED7C4C5007DCDD0 /* WaitListController.m */,
 				0F8986861ED7C4C5007DCDD0 /* WaitListController.xib */,
@@ -774,6 +784,9 @@
 				0FDE40681ECB0FAE00FAEF48 /* DatePickerView.h */,
 				0FDE40691ECB0FAE00FAEF48 /* DatePickerView.m */,
 				0FDE406D1ECB0FC100FAEF48 /* DatePickerView.xib */,
+				0F8986911ED806DE007DCDD0 /* ButtonFooterView.h */,
+				0F8986921ED806DE007DCDD0 /* ButtonFooterView.m */,
+				0F8986941ED806EC007DCDD0 /* ButtonFooterView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1179,6 +1192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3D3B2AB1E66EA550033EF84 /* SaftyCheckCell.xib in Resources */,
+				0F8986951ED806EC007DCDD0 /* ButtonFooterView.xib in Resources */,
 				B37BA6D01E80FA29001A74B8 /* AbnormalReportCell.xib in Resources */,
 				B37BA6CB1E80D300001A74B8 /* AbnormalReportController.storyboard in Resources */,
 				0F8986731ED5591A007DCDD0 /* BidOrderDetailCell.xib in Resources */,
@@ -1354,10 +1368,12 @@
 				0FD9C0C31EAEDD4100CD7E00 /* FooterSelectView.m in Sources */,
 				B384111F1E5D893C00F7069F /* LoginModel.m in Sources */,
 				0FE58E3D1EC984130041E1D9 /* ProgressHUD.m in Sources */,
+				0F8986931ED806DE007DCDD0 /* ButtonFooterView.m in Sources */,
 				B38411451E5E91DE00F7069F /* CancelLoginCell.m in Sources */,
 				B3D3B2A71E66EA550033EF84 /* SafetyCheckModel.m in Sources */,
 				B3D3B2A21E66EA550033EF84 /* HomeViewController.m in Sources */,
 				0FE5BFF21EB03CE300F82D97 /* SafetyControlController.m in Sources */,
+				0F8986901ED804C7007DCDD0 /* OutStorage220Controller.m in Sources */,
 				B38411311E5E830400F7069F /* CancelLoginTableViewCell.m in Sources */,
 				B38411321E5E830400F7069F /* FeedbackIdeaTableViewCell.m in Sources */,
 				0F8986771ED57861007DCDD0 /* BiddingCheckingController.m in Sources */,

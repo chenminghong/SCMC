@@ -12,12 +12,6 @@
 
 @interface NestedSelectStateController : UIViewController
 
-@property (nonatomic, copy) NSString *code;            //订单编号
-
-@property (nonatomic, assign) NSInteger status;        //订单状态码
-
 @property (nonatomic, strong) HomePageModel *homePageModel;
-
-@property (nonatomic, copy) NSString *planAchieveTime; //预计到达收货工厂时间
 
 @end

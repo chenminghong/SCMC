@@ -12,9 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    self.datePicker.minimumDate = [NSDate date];
-    self.topLabel.backgroundColor = MAIN_THEME_COLOR;
-    [self.selectTImeBtn setTitleColor:MAIN_THEME_COLOR forState:UIControlStateNormal];
+    
 }
 
 + (instancetype)getDatepickerView {
@@ -27,10 +25,15 @@
     dateView.frame = frame;
     [view addSubview:dateView];
     dateView.animationTimeInterval = duration;
+    dateView.datePicker.minimumDate = [NSDate date];
+    dateView.topLabel.backgroundColor = MAIN_THEME_COLOR;
+    [dateView.selectTImeBtn setTitleColor:MAIN_THEME_COLOR forState:UIControlStateNormal];
+    
     dateView.transform = CGAffineTransformMakeTranslation(0.0, frame.size.height);
     [UIView animateWithDuration:duration animations:^{
         dateView.transform = CGAffineTransformMakeTranslation(0.0, 0.0);
     }];
+    
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:dateView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
     CAShapeLayer *maskLayer = [CAShapeLayer new];
     maskLayer.frame = dateView.layer.bounds;

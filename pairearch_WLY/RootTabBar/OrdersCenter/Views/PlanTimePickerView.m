@@ -91,13 +91,14 @@
 - (void)hideWithCompletionBlock:(void(^)())completionBlock {
     [self.datePicker hide];
     [self.timePickerView hide];
+    __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:K_ANIMATION_TIMEINTERVAL animations:^{
-        self.shadowView.alpha = 0.0;
+        weakSelf.shadowView.alpha = 0.0;
     } completion:^(BOOL finished) {
-        [self removeFromSuperview];
         if (completionBlock) {
             completionBlock();
         }
+        [weakSelf removeFromSuperview];
     }];
 }
 
@@ -125,7 +126,6 @@
     NSDateComponents *comp1 = [calendar components:unitFlag fromDate:date1];
     NSDateComponents *comp2 = [calendar components:unitFlag fromDate:date2];
     return (([comp1 day] == [comp2 day]) && ([comp1 month] == [comp2 month]) && ([comp1 year] == [comp2 year]));
-    
 }
 
 #pragma mark -- 按钮点击事件
@@ -179,11 +179,15 @@
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         NSString *planAchieveTime = [dateFormatter stringFromDate:weakSelf.datePicker.datePicker.date];
         NSLog(@"%@",planAchieveTime);
-        NSString *planAchieveStartTime = [NSString stringWithFormat:@"%@:00", weakSelf.timePickerView.selectedTimeArr[0]];
-        NSString *planAchieveEndTime = [NSString stringWithFormat:@"%@:00", weakSelf.timePickerView.selectedTimeArr[1]];
-        NSDictionary *paraDict = @{@"planAchieveTime":planAchieveTime, @"planAchieveStartTime":planAchieveStartTime, @"planAchieveEndTime":planAchieveEndTime};
-        if (self.selectBlock) {
-            self.selectBlock(paraDict);
+        NSString *planAchieveStartTime = @"";
+        NSString *planAchieveEndTime = @"";
+        if (weakSelf.timePickerView.selectedTimeArr.count >= 2) {
+            planAchieveStartTime = [NSString stringWithFormat:@"%@:00", weakSelf.timePickerView.selectedTimeArr[0]];
+            planAchieveEndTime = [NSString stringWithFormat:@"%@:00", weakSelf.timePickerView.selectedTimeArr[1]];
+        }
+        NSDictionary *paraDict = @{@"planAchieveTime":planAchieveTime.length>0? planAchieveTime:@"", @"planAchieveStartTime":planAchieveStartTime, @"planAchieveEndTime":planAchieveEndTime};
+        if (weakSelf.selectBlock) {
+            weakSelf.selectBlock(paraDict);
         }
     }];
     

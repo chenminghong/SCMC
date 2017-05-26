@@ -13,6 +13,7 @@
 @interface OrderStatus232Controller ()
 @property (weak, nonatomic) IBOutlet UIButton *planTimeButton;
 @property (weak, nonatomic) IBOutlet UIButton *signButton;
+@property (nonatomic, strong) PlanTimePickerView *timeView;
 
 @end
 
@@ -34,20 +35,25 @@
     }
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.timeView removeFromSuperview];
+}
+
 - (IBAction)planTimeAction:(UIButton *)sender {
     [self showTimeSelectView];
 }
 
 - (PlanTimePickerView *)showTimeSelectView {
     __weak typeof(self) weakSelf = self;
-    PlanTimePickerView *timeView = [PlanTimePickerView showTimeSelectViewWithSelectBlock:^(NSDictionary *selectParaDict) {
-        NSLog(@"%@", selectParaDict);
+    self.timeView = [PlanTimePickerView showTimeSelectViewWithSelectBlock:^(NSDictionary *selectParaDict) {
+        NSLog(@"selectParaDict:%@", selectParaDict);
         NSMutableDictionary *paraDict = [NSMutableDictionary dictionaryWithDictionary:selectParaDict];
-        [paraDict setObject:weakSelf.code forKey:@"orderCode"];
+        [paraDict setObject:weakSelf.code.length>0? weakSelf.code:@"" forKey:@"orderCode"];
         [weakSelf networkWithUrlStr:CHANGE_PLAN_ARRIVETIME_API paraDict:paraDict];
     }];
-    timeView.tapHide = self.planAchieveTime.length > 0;
-    return timeView;
+    self.timeView.tapHide = self.planAchieveTime.length > 0;
+    return self.timeView;
 }
 
 /**

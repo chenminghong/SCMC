@@ -24,6 +24,8 @@
 #import <SAMKeychain.h>
 #import <IQKeyboardManager.h>
 #import <XFDialogBuilder.h>
+#import "TZImagePickerController.h"
+
 
 
 //自定义头文件
