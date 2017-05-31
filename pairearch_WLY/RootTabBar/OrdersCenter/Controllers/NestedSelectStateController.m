@@ -156,7 +156,7 @@
             
         case ORDER_STATUS_248:
         {
-            self.title = @"卸货完成";
+            self.title = @"收货完成";
             OrderStatus248Controller *childVC = [OrderStatus248Controller new];
             childVC.code = code;
             childVC.status = status;

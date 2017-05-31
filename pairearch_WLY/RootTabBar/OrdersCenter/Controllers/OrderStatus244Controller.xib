@@ -44,7 +44,7 @@
                         <constraint firstAttribute="height" constant="40" id="oQI-Z2-vVV"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="收货完成拍照">
+                    <state key="normal" title="卸货完成拍照">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
