@@ -12,6 +12,7 @@
 #import "ButtonFooterView.h"
 #import "HomeTableCell.h"
 #import "OrderDetailController.h"
+#import "TZImageManager.h"
 
 
 #define HEIGHT_FOR_HEADER  25.0
@@ -127,24 +128,26 @@
 #pragma mark -- 按钮点击事件
 
 - (void)footerButtonAction:(UIButton *)sender {
-    //弹出选择相册
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 columnNumber:4 delegate:self pushPhotoPickerVc:YES];
-    imagePickerVc.maxImagesCount = 1;
-    imagePickerVc.barItemTextFont = [UIFont systemFontOfSize:16.0];
-    imagePickerVc.allowTakePicture = YES;
-    imagePickerVc.alwaysEnableDoneBtn = NO;
-    imagePickerVc.allowPreview = NO;
-    imagePickerVc.allowPickingGif = NO;
-    imagePickerVc.allowPickingVideo = NO;
-    imagePickerVc.allowPickingOriginalPhoto = NO;
-    //    [imagePickerVc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x666666), NSFontAttributeName:[UIFont systemFontOfSize:18.0]}];
-    //    imagePickerVc.navigationBar.tintColor = UIColorFromRGB(0x666666);
-    //    imagePickerVc.navigationBar.barTintColor = TOP_BOTTOMBAR_COLOR;
-    //    imagePickerVc.barItemTextColor = UIColorFromRGB(0x666666);
-    //    imagePickerVc.selectedAssets = _selectedAssets; // 目前已经选中的图片数组
-    //    imagePickerVc.showSelectBtn = NO;
-    //    imagePickerVc.alwaysEnableDoneBtn = YES;
-    [self presentViewController:imagePickerVc animated:YES completion:nil];
+    //选择图片并且上传
+    NSString *userName = [LoginModel shareLoginModel].tel;
+    NSString *orderCode = self.homePageModel.code;
+    CLLocation *location =  [LocationManager shareManager].location;
+    NSString *lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    NSString *lng = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
+    [MyImagePickerManager presentImagePickerControllerInTarget:self finishPickingBlock:nil postUrlStr:SIGN_UP_API paraDict:@{@"userName":userName, @"orderCode":orderCode, @"lat":lat, @"lng":lng, @"locationTime":locationTime} endBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            NSString *remark = responseObject[@"remark"];
+            [ProgressHUD bwm_showTitle:remark toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+            NSLog(@"%@", responseObject);
+            
+        } else {
+            [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        }
+    }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -76,9 +76,28 @@
 
 //收货签到按钮点击事件
 - (IBAction)signButtonAction:(UIButton *)sender {
-    NSString *lat = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"latiude"]];
-    NSString *lng = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"longitude"]];
-    [self networkWithUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.code, @"lat":lat.length? lat:@"", @"lng":lng.length? lng:@""}];
+//    NSString *lat = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"latiude"]];
+//    NSString *lng = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"longitude"]];
+//    [self networkWithUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.code, @"lat":lat.length? lat:@"", @"lng":lng.length? lng:@""}];
+    
+    //选择图片并且上传
+    NSString *userName = [LoginModel shareLoginModel].tel;
+    NSString *orderCode = self.code;
+    CLLocation *location =  [LocationManager shareManager].location;
+    NSString *lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    NSString *lng = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
+    [MyImagePickerManager presentImagePickerControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":userName, @"orderCode":orderCode, @"lat":lat, @"lng":lng, @"locationTime":locationTime} endBlock:^(id responseObject, NSError *error) {
+        if (!error) {
+            NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
+            NSLog(@"%@", responseObject);
+            [ProgressHUD bwm_showTitle:remarkStr toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        } else {
+            [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        }
+    }];
     
 }
 

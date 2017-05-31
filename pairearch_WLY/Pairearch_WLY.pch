@@ -46,6 +46,7 @@
 #import "LocationManager.h"
 #import "CreatQRCodeAndBarCodeFromLeon.h"
 #import "ProgressHUD.h"
+#import "MyImagePickerManager.h"
 
 
 #pragma mark -- Define

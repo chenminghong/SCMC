@@ -14,6 +14,7 @@
 /*============================BaseUrl相关=============================*/
 //API前缀定义
 #define PAIREACH_BIDDING_URL             @"http://106.14.39.65:8385/itip/clientBid/"  //竞价中心
+
 #define PAIREACH_BASE_URL                @"http://106.14.39.65:8385/itip/client/"       //测试线上
 //#define PAIREACH_BASE_URL                @"http://192.168.1.14:8086/itip/client/"     //备用
 //#define PAIREACH_BASE_URL                @"http://itiptest.paireach.com/client/"       //双至域名
@@ -43,26 +44,29 @@
 //订单中心
 #define ORDER_LIST_API                    @"loadAllOrder.a"                 //get
 
-//入厂签到
-#define SIGN_UP_API                       @"orderHandling.a"                //post
+//装货入厂签到
+#define SIGN_UP_API                       @"outSingUpload.a"                //post
 
 //是否可以进入装货工厂
-#define CAN_ENTERFAC_API                  @"canEnterFactory.a"              //get
+#define CAN_ENTERFAC_API                  @"canEnterFactory.a"              //post
 
 //装货开始扫码
-#define LOAD_START_API                    @"loadStartOrder.a"               //get
+#define LOAD_START_API                    @"loadStartOrder.a"               //post
 
-//装货结束扫码
-#define LOAD_END_API                      @"loadEndOrder.a"                 //get
+//装货结束扫码(外仓)
+#define OUT_LOAD_END_API                  @"outLoadEndUpload.a"             //post
+
+//装货结束扫码(内仓)
+#define IN_LOAD_END_API                   @"uploadAfterLoadEnd.a"           //post
 
 //修改预计到货时间
 #define CHANGE_PLAN_ARRIVETIME_API        @"savePlanAchieveTime.a"          //post
 
 //收货签到
-#define DELIVERY_SIGN_UP_API              SIGN_UP_API                       //post
+#define DELIVERY_SIGN_UP_API              @"uploadBeforeTakeGoods.a"        //post
 
 //收货完成
-#define  DELIVERY_COMPLETE_API            SIGN_UP_API                       //post
+#define  DELIVERY_COMPLETE_API            @"uploadTakeGoods.a"              //post
 
 
 

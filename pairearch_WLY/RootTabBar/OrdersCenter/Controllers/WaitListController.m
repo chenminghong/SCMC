@@ -10,6 +10,8 @@
 
 @interface WaitListController ()
 
+@property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
+
 @end
 
 @implementation WaitListController

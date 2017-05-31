@@ -51,7 +51,7 @@
                         <constraint firstAttribute="height" constant="40" id="Odc-wG-4sY"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="装货结束扫码">
+                    <state key="normal" title="装货完成拍照">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>

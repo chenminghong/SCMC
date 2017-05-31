@@ -10,7 +10,7 @@
 #import "UIView+Layout.h"
 #import <Photos/Photos.h>
 #import <AssetsLibrary/AssetsLibrary.h>
-#import "TZImagePickerController/TZImagePickerController.h"
+#import "TZImagePickerController.h"
 
 @implementation TZTestCell
 

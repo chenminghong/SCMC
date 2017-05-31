@@ -36,6 +36,9 @@
 #define ORDER_STATUS_247    247    //直发收货完成
 #define ORDER_STATUS_248    248    //已签收
 
+#define STORAGE_TYPE_INSIDE     10   //内仓
+#define STORAGE_TYPE_OUTSIDE    11   //外仓
+
 
 
 #endif /* OrderStatus_h */

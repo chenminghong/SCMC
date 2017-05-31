@@ -14,4 +14,6 @@
 
 @property (nonatomic, assign) NSInteger status;        //订单状态码
 
+@property (nonatomic, copy) NSString *warehouseType;   //内仓还是外仓
+
 @end

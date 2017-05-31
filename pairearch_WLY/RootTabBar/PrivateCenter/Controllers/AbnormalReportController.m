@@ -278,7 +278,10 @@
 - (void)pushImagePickerController {
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:3 columnNumber:4 delegate:self pushPhotoPickerVc:YES];
     imagePickerVc.selectedAssets = _selectedAssets; // 目前已经选中的图片数组
+    [imagePickerVc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x666666), NSFontAttributeName:[UIFont systemFontOfSize:18.0]}];
     imagePickerVc.navigationBar.barTintColor = TOP_BOTTOMBAR_COLOR;
+    imagePickerVc.navigationBar.tintColor = UIColorFromRGB(0x666666);
+    imagePickerVc.barItemTextColor = UIColorFromRGB(0x666666);
     imagePickerVc.barItemTextFont = [UIFont systemFontOfSize:16.0];
     imagePickerVc.showSelectBtn = YES;
     imagePickerVc.allowTakePicture = NO;
@@ -308,7 +311,7 @@
     
     [NetworkHelper POST:ABNORMAL_UPLOAD_API parameters:paraDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (NSInteger i = 0; i < _selectedPhotos.count; i++) {
-            [formData appendPartWithFileData:UIImageJPEGRepresentation(_selectedPhotos[0], 0.8) name:@"file" fileName:[NSString stringWithFormat:@"abnormal_upload%ld.jpg", (long)i] mimeType:@"image/jpeg"];
+            [formData appendPartWithFileData:UIImageJPEGRepresentation(_selectedPhotos[i], 0.8) name:@"file" fileName:[NSString stringWithFormat:@"abnormal_upload%ld.jpg", (long)i] mimeType:@"image/jpeg"];
         }
     } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
@@ -342,7 +345,6 @@
     _isSelectOriginalPhoto = isSelectOriginalPhoto;
     [_collectionView reloadData];
 }
-
 
 
 - (void)didReceiveMemoryWarning {

@@ -118,6 +118,7 @@
             OrderStatus228Controller *childVC = [OrderStatus228Controller new];
             childVC.code = code;
             childVC.status = status;
+            childVC.warehouseType = self.homePageModel.warehouseType;
             [self addChildController:childVC];
         }
             break;
@@ -181,9 +182,15 @@
 //根据224状态判断跳转那个界面
 - (void)isEnterFactoryWithStatus:(NSInteger)status {
     if (status == 0) {//候补排队
-        self.title = @"装货候补排队";
         WaitListController *childVC = [WaitListController new];
         [self addChildController:childVC];
+        if (self.status == ORDER_STATUS_224) {
+            self.title = @"装货厂外排队";
+            childVC.tipsStr = @"您已签到成功，请在厂外等候入厂通知！";
+        } else {
+            self.title = @"装货候补排队";
+            childVC.tipsStr = @"您已签到成功，并进入候补排队队列，请联系承运商申请装货入厂排队！";
+        }
     } else if (status == 1) {
         //调用当前运能情况接口（返回0或者1）
         self.title = @"入厂提示";

@@ -10,4 +10,6 @@
 
 @interface WaitListController : BaseViewController
 
+@property (nonatomic, strong) NSString *tipsStr;  //提示信息
+
 @end

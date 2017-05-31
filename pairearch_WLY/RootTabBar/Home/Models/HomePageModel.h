@@ -80,7 +80,6 @@
 
 @property (nonatomic, strong) NSMutableArray *orderModelList;        //可接收订单
 
-
 @property (nonatomic, copy) NSString *bidcount;                 //可抢订单数量
 
 @property (nonatomic, copy) NSString *loadResult;               //请求结果是否有订单
@@ -106,6 +105,8 @@
 @property (nonatomic, copy) NSString *planAchieveTime;          //预计到达收货工厂时间
 
 @property (nonatomic, copy) NSString *warehouseType;            //仓库类型（10:内仓；11：外仓）
+
+@property (nonatomic, copy) NSString *isRoadSea;                //运输方式是否是海运或者铁运
 
 
 @end

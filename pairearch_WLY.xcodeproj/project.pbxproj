@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0F397C3B1EA0DF8E002F3A38 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F397C3A1EA0DF8E002F3A38 /* LocationManager.m */; };
+		0F4C92581EDEB69B00546AFF /* MyImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C92571EDEB69B00546AFF /* MyImagePickerManager.m */; };
 		0F634CFB1EC5CD7600CFB8AB /* NestedSelectStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */; };
 		0F8986511ED3D36B007DCDD0 /* BiddingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */; };
 		0F8986521ED3D36B007DCDD0 /* BiddingDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */; };
@@ -173,6 +174,8 @@
 /* Begin PBXFileReference section */
 		0F397C391EA0DF8E002F3A38 /* LocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
 		0F397C3A1EA0DF8E002F3A38 /* LocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
+		0F4C92561EDEB69B00546AFF /* MyImagePickerManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyImagePickerManager.h; sourceTree = "<group>"; };
+		0F4C92571EDEB69B00546AFF /* MyImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePickerManager.m; sourceTree = "<group>"; };
 		0F634CF91EC5CD7600CFB8AB /* NestedSelectStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedSelectStateController.h; sourceTree = "<group>"; };
 		0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedSelectStateController.m; sourceTree = "<group>"; };
 		0F89864E1ED3D36B007DCDD0 /* BiddingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingDetailController.h; sourceTree = "<group>"; };
@@ -888,6 +891,8 @@
 				0F397C3A1EA0DF8E002F3A38 /* LocationManager.m */,
 				B330901F1E8BA4EA00CB898F /* SAMKeychainManager.h */,
 				B33090201E8BA4EA00CB898F /* SAMKeychainManager.m */,
+				0F4C92561EDEB69B00546AFF /* MyImagePickerManager.h */,
+				0F4C92571EDEB69B00546AFF /* MyImagePickerManager.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1318,6 +1323,7 @@
 				B37BA6C91E80C443001A74B8 /* AbnormalReportController.m in Sources */,
 				B38411401E5E89C700F7069F /* PersonalCenterCell.m in Sources */,
 				0FA20D3A1EC471AA005C2015 /* OrdersCollectionCell.m in Sources */,
+				0F4C92581EDEB69B00546AFF /* MyImagePickerManager.m in Sources */,
 				0FE58E2A1EC980C30041E1D9 /* ScanSuccessJumpVC.m in Sources */,
 				B384111B1E5D886000F7069F /* LoginViewController.m in Sources */,
 				0FE5C0051EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m in Sources */,

@@ -30,18 +30,9 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您已进入候补队列，请联系承运商申请排队！" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4pG-QE-g7J">
-                    <rect key="frame" x="20" y="92" width="335" height="17"/>
-                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="4pG-QE-g7J" firstAttribute="trailing" secondItem="6QI-Ra-zTT" secondAttribute="trailing" id="15V-du-HLU"/>
-                <constraint firstItem="4pG-QE-g7J" firstAttribute="leading" secondItem="6QI-Ra-zTT" secondAttribute="leading" id="Kuu-1f-xaK"/>
-                <constraint firstItem="4pG-QE-g7J" firstAttribute="top" secondItem="6QI-Ra-zTT" secondAttribute="bottom" constant="5" id="PjN-3H-GxS"/>
                 <constraint firstItem="6QI-Ra-zTT" firstAttribute="top" secondItem="Efg-k9-Nw3" secondAttribute="bottom" constant="20" id="Y0u-J6-0hp"/>
                 <constraint firstItem="Efg-k9-Nw3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="cZs-kN-roA"/>
                 <constraint firstItem="6QI-Ra-zTT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="g7G-9i-UNV"/>

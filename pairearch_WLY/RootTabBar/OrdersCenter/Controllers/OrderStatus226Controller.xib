@@ -51,7 +51,7 @@
                         <constraint firstAttribute="height" constant="40" id="Gt6-dq-jF6"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="开始装货扫码">
+                    <state key="normal" title="开始开始拍照">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
