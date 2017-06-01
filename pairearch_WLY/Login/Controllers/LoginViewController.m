@@ -201,7 +201,13 @@
         weakController.tabBarController.selectedIndex = 0;
         //取消别名设置
         [JPUSHService setTags:nil aliasInbackground:@""];
+        
+        //停止定位上传功能
         [LocationManager shareManager].orderCode = nil;
+        
+        //友盟账号退出登录
+        [MobClick profileSignOff];
+        
         if (completeBlock) {
             completeBlock();
         }
@@ -269,6 +275,10 @@
             
             //在后台给JPush设置别名
             [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].tel];
+            
+            //友盟统计账号登录
+            NSString *name = [NSString stringWithFormat:@"%@_%@", [LoginModel shareLoginModel].name, [LoginModel shareLoginModel].tel];
+            [MobClick profileSignInWithPUID:name];
         } else {
             NSString *message = error.userInfo[ERROR_MSG];
             [MBProgressHUD bwm_showTitle:message toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];

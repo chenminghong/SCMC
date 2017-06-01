@@ -28,9 +28,13 @@
     if (userInfo) {
         [self setValuesForKeysWithDictionary:userInfo];
     }
-//    if (self.tel.length > 0) {
-//        [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].tel];
-//    }
+    
+    if (self.name && self.tel) {
+        NSString *name = [NSString stringWithFormat:@"%@_%@", [LoginModel shareLoginModel].name, [LoginModel shareLoginModel].tel];
+                
+        //开启友盟账号登录
+        [MobClick profileSignInWithPUID:name];
+    }
 }
 
 - (void)setValue:(id)value forKey:(NSString *)key {

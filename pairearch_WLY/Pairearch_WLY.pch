@@ -25,6 +25,7 @@
 #import <IQKeyboardManager.h>
 #import <XFDialogBuilder.h>
 #import "TZImagePickerController.h"
+#import <UMMobClick/MobClick.h>
 
 
 
@@ -53,6 +54,7 @@
 
 //关键字
 #define BAIDU_AK @"NudffmrH77cIxCdxQQtSd1PeNw75zbBR"  //百度地图AK
+#define UMENF_STATISTICS_APPKEY   @"592f8f301061d26c9b0015a0"  //友盟统计的APPKRY
 #define SERVER_ID    133374           //百度鹰眼服务的serverId
 #define APP_KEY      @"8393f45774"     //百度统计AppKey
 #define LOGIN_STATE  @"login_state"   //登录状态关键字

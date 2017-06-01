@@ -9,6 +9,7 @@ pod 'SDWebImage'
 pod 'MJRefresh'
 pod 'IQKeyboardManager'
 pod 'TZImagePickerController'
+pod 'UMengAnalytics-NO-IDFA'
 
 pod 'MBProgressHUD+BWMExtension', '~> 1.0.1'
 pod 'MBProgressHUD', '~> 0.9.2'

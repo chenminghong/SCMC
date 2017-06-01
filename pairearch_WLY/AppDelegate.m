@@ -48,6 +48,9 @@
     //初始化键盘输入框助手类
     [self initIQKeyboardManager];
     
+    //添加友盟统计
+    [self initUmengClick];
+    
     return YES;
 }
 
@@ -280,6 +283,18 @@
     
     //开始上传
     [statTracker startWithAppId:APP_KEY];
+}
+
+/**
+ 初始化友盟统计SDK
+ */
+- (void)initUmengClick {
+    UMConfigInstance.appKey = UMENF_STATISTICS_APPKEY;
+    UMConfigInstance.channelId = @"App Store";
+    NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    [MobClick setAppVersion:version];
+    [MobClick setLogEnabled:NO];
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
 }
 
 
