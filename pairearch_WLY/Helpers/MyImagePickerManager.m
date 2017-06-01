@@ -35,7 +35,7 @@
         NSString *photoTime = @"";
         if (photos.count > 0) {
             UIImage *image = photos[0];
-             data = UIImageJPEGRepresentation(image, 0.4);
+            data = UIImageJPEGRepresentation(image, 0.4);
             NSLog(@"imageLength:%lu", data.length);
             
             NSDateFormatter *dateFormatter = [NSDateFormatter new];
