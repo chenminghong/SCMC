@@ -51,7 +51,7 @@
 #define CAN_ENTERFAC_API                  @"canEnterFactory.a"              //post
 
 //装货开始扫码
-#define LOAD_START_API                    @"loadStartOrder.a"               //post
+#define LOAD_START_API                    @"uploadBeforeLoadStart.a"        //post
 
 //装货结束扫码(外仓)
 #define OUT_LOAD_END_API                  @"outLoadEndUpload.a"             //post
