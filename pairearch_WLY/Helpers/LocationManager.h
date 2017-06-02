@@ -13,6 +13,7 @@
 @interface LocationManager : NSObject<CLLocationManagerDelegate>
 {
     CLGeocoder *geocoder;  //地理位置编码
+    CLLocation *_location;  //存储地理位置
 }
 
 @property (nonatomic, strong) CLLocationManager *locationManager;

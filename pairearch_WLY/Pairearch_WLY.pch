@@ -26,6 +26,7 @@
 #import <XFDialogBuilder.h>
 #import "TZImagePickerController.h"
 #import <UMMobClick/MobClick.h>
+#import <DYLocationConverter.h>
 
 
 

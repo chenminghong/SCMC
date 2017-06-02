@@ -11,6 +11,7 @@ pod 'IQKeyboardManager'
 pod 'TZImagePickerController'
 pod 'UMengAnalytics-NO-IDFA'
 
+pod 'DYLocationConverter', '~> 0.0.4'
 pod 'MBProgressHUD+BWMExtension', '~> 1.0.1'
 pod 'MBProgressHUD', '~> 0.9.2'
 pod 'Masonry', '~> 1.0.2'

@@ -10,9 +10,6 @@
 
 #define UPLOAD_TIMEINTERVAL   30
 
-#define LATITUDE        @"latitude"  //纬度
-#define LONGITUDE       @"longitude" //经度
-
 @implementation LocationManager
 /**
  初始化
@@ -65,7 +62,7 @@
 //获取位置信息
 - (void)setLocation:(CLLocation *)location {
     _location = location;
-    [self getAddressInfoByLocation:location];
+    [self getAddressInfoByLocation:self.location];
 }
 
 - (void)setOrderCode:(NSString *)orderCode {
@@ -142,12 +139,7 @@
         if (!error) {
             CLPlacemark *placemark=[placemarks firstObject];
             NSDictionary *locationDict = placemark.addressDictionary;
-            NSLog(@"详细信息:%@", locationDict);
-            
-            CGFloat latitude = location.coordinate.latitude;
-            CGFloat longitude = location.coordinate.longitude;
-            NSDictionary *tempDict = [self locationMarsFromEarth_earthLat:latitude earthLon:longitude];  //地球坐标系转火星坐标系
-            tempDict = [self baiduLocationFromMars_marsLat:[tempDict[LATITUDE] floatValue] marsLon:[tempDict[LONGITUDE] floatValue]]; //火星坐标转百度坐标系
+    
             NSString *speed = [NSString stringWithFormat:@"%f", location.speed];
             NSString *direction = [NSString stringWithFormat:@"%f", location.course];
             NSArray *addressArr = [NSArray arrayWithArray:locationDict[@"FormattedAddressLines"]];
@@ -163,8 +155,8 @@
             NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
             weakSelf.addressInfo = @{@"orderCode":@"",
                                  @"driverTel":@"",
-                                 @"longitude":[NSString stringWithFormat:@"%@", tempDict[LONGITUDE]],
-                                 @"latiude":[NSString stringWithFormat:@"%@", tempDict[LATITUDE]],
+                                 @"longitude":[NSString stringWithFormat:@"%f", location.coordinate.longitude],
+                                 @"latiude":[NSString stringWithFormat:@"%f", location.coordinate.latitude],
                                  @"speed":speed,
                                  @"direction":direction,
                                  @"address":address,
@@ -174,29 +166,28 @@
                                  @"remark":remark,
                                  @"active":active,
                                  @"locationTime":locationTime};
+            NSLog(@"详细信息:%@", self.addressInfo);
         }
     }];
+}
+
+- (CLLocation *)location {
+    CLLocationCoordinate2D coordinate = [DYLocationConverter bd09FromWgs84:_location.coordinate];
+    return [[CLLocation alloc] initWithCoordinate:coordinate altitude:_location.altitude horizontalAccuracy:_location.horizontalAccuracy verticalAccuracy:_location.verticalAccuracy course:_location.course speed:_location.speed timestamp:_location.timestamp];
 }
 
 
 #pragma mark -- CLLocationManagerDelegate
 
 /**
- 地理位置更新回调
+ 位置更新提示
 
- @param manager 定位助手
- @param newLocation 新位置
- @param oldLocation 旧的位置
+ @param manager 定位助手类
+ @param locations 存储定位的位置信息
  */
-- (void)locationManager:(CLLocationManager *)manager
-    didUpdateToLocation:(CLLocation *)newLocation
-           fromLocation:(CLLocation *)oldLocation {
-    NSDate *newLocDate = newLocation.timestamp;
-    NSTimeInterval interval = [newLocDate timeIntervalSinceNow];
-    if(fabs(interval) < 10 ) {
-        self.location = newLocation;
-        NSLog(@"位置更新了");
-    }
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {
+    CLLocation *newLocation = [locations lastObject];
+    self.location = newLocation;
 }
 
 
@@ -226,94 +217,6 @@
     NSDate *destinationDateNow = [[NSDate alloc] initWithTimeInterval:interval sinceDate:anyDate];
     return destinationDateNow;
 }
-
-
-#pragma mark -- 地理位置坐标转换
-
-/**地球坐标 ---> 火星坐标*/
-- (NSDictionary *)locationMarsFromEarth_earthLat:(double)latitude earthLon:(double)longitude {
-    // 首先判断坐标是否属于天朝
-    if (![self isInChinaWithlat:latitude lon:longitude]) {
-        return @{LATITUDE:@(latitude),
-                 LONGITUDE:@(longitude)
-                 };
-    }
-    double a = 6378245.0;
-    double ee = 0.00669342162296594323;
-    
-    double dLat = [self transform_earth_from_mars_lat_lat:(latitude - 35.0) lon:(longitude - 35.0)];
-    double dLon = [self transform_earth_from_mars_lng_lat:(latitude - 35.0) lon:(longitude - 35.0)];
-    double radLat = latitude / 180.0 * M_PI;
-    double magic = sin(radLat);
-    magic = 1 - ee * magic * magic;
-    double sqrtMagic = sqrt(magic);
-    dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * M_PI);
-    dLon = (dLon * 180.0) / (a / sqrtMagic * cos(radLat) * M_PI);
-    
-    double newLatitude = latitude + dLat;
-    double newLongitude = longitude + dLon;
-    NSDictionary *dict = @{LATITUDE:@(newLatitude),
-                          LONGITUDE:@(newLongitude)
-                          };
-    return dict;
-}
-
-- (BOOL)isInChinaWithlat:(double)lat lon:(double)lon {
-    if (lon < 72.004 || lon > 137.8347)
-        return NO;
-    if (lat < 0.8293 || lat > 55.8271)
-        return NO;
-    return YES;
-}
-
-- (double)transform_earth_from_mars_lat_lat:(double)y lon:(double)x {
-    double ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * sqrt(fabs(x));
-    ret += (20.0 * sin(6.0 * x * M_PI) + 20.0 * sin(2.0 * x * M_PI)) * 2.0 / 3.0;
-    ret += (20.0 * sin(y * M_PI) + 40.0 * sin(y / 3.0 * M_PI)) * 2.0 / 3.0;
-    ret += (160.0 * sin(y / 12.0 * M_PI) + 3320 * sin(y * M_PI / 30.0)) * 2.0 / 3.0;
-    return ret;
-}
-
-- (double)transform_earth_from_mars_lng_lat:(double)y lon:(double)x {
-    double ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * sqrt(fabs(x));
-    ret += (20.0 * sin(6.0 * x * M_PI) + 20.0 * sin(2.0 * x * M_PI)) * 2.0 / 3.0;
-    ret += (20.0 * sin(x * M_PI) + 40.0 * sin(x / 3.0 * M_PI)) * 2.0 / 3.0;
-    ret += (150.0 * sin(x / 12.0 * M_PI) + 300.0 * sin(x / 30.0 * M_PI)) * 2.0 / 3.0;
-    return ret;
-}
-
-
-#pragma mark -- 火星坐标 <---> 百度坐标
-
-/** 百度坐标 => 火星坐标 */
-- (NSDictionary *)marsLocationFromBaidu_baiduLat:(double)latitude baiduLon:(double)longitude {
-    double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
-    double x = longitude - 0.0065, y = latitude - 0.006;
-    double z = sqrt(x * x + y * y) - 0.00002 * sin(y * x_pi);
-    double theta = atan2(y, x) - 0.000003 * cos(x * x_pi);
-    double newLatitude = z * sin(theta);
-    double newLongitude = z * cos(theta);
-    NSDictionary *dict = @{LATITUDE:@(newLatitude),
-                          LONGITUDE:@(newLongitude)
-                          };
-    return dict;
-}
-
-
-/** 火星坐标 => 百度坐标 */
-- (NSDictionary *)baiduLocationFromMars_marsLat:(double)latitude marsLon:(double)longitude {
-    double x_pi = 3.14159265358979324 * 3000.0 / 180.0;
-    double x = longitude, y = latitude;
-    double z = sqrt(x * x + y * y) + 0.00002 * sin(y * x_pi);
-    double theta = atan2(y, x) + 0.000003 * cos(x * x_pi);
-    double newLatitude = z * sin(theta) + 0.006;
-    double newLongitude = z * cos(theta) + 0.0065;
-    NSDictionary *dict = @{LATITUDE:@(newLatitude),
-                          LONGITUDE:@(newLongitude)
-                          };
-    return dict;
-}
-
 
 
 
