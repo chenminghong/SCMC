@@ -249,7 +249,7 @@
     NSDictionary *paraDict = @{@"phoneNumber":[LoginModel shareLoginModel].tel,
                                @"bidCode":model.bidCode,
                                @"amount":self.footerView.biddingTf.text,
-                               @"supplierCod":self.supplierCode,
+                               @"supplierCode":self.supplierCode,
                                @"carno":self.plateNumber};
     [[NetworkHelper shareClientBidd] POST:SCRATCH_ORDER_API parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];

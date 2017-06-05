@@ -36,7 +36,7 @@
             self.shadowView.alpha = 0.5;
         }];
         
-        self.datePicker = [DatePickerView showInView:self frame:CGRectMake(0.0, kScreenHeight - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT) animationDuraton:K_ANIMATION_TIMEINTERVAL];
+        self.datePicker = [DatePickerView showInView:self frame:CGRectMake(0.0, CGRectGetMaxY(frame) - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT) animationDuraton:K_ANIMATION_TIMEINTERVAL];
         [self.datePicker.datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
         [self.datePicker.selectTImeBtn addTarget:self action:@selector(selectTimeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -59,7 +59,7 @@
 - (TimePickerView *)timePickerView {
     if (!_timePickerView) {
         self.timePickerView = [TimePickerView getTimePickerView];
-        self.timePickerView.frame = CGRectMake(0.0, kScreenHeight - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT);
+        self.timePickerView.frame = CGRectMake(0.0, CGRectGetMaxY(self.frame) - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT);
         UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
         CAShapeLayer *maskLayer = [CAShapeLayer new];
         maskLayer.frame = self.layer.bounds;
@@ -76,10 +76,20 @@
 /**
  显示视图
  */
-+ (PlanTimePickerView *)showTimeSelectViewWithSelectBlock:(SelectBlock)selectBlock {
-    PlanTimePickerView *pickerView = [[PlanTimePickerView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:pickerView];
++ (PlanTimePickerView *)showTimeSelectViewInView:(UIView *)view withSelectBlock:(SelectBlock)selectBlock {
+    CGRect frame;
+    if (view) {
+        frame = view.bounds;
+    } else {
+        frame = [UIScreen mainScreen].bounds;
+    }
+    PlanTimePickerView *pickerView = [[PlanTimePickerView alloc] initWithFrame:frame];
+    if (view) {
+        [view addSubview:pickerView];
+    } else {
+        UIWindow *window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:pickerView];
+    }
     pickerView.selectBlock = selectBlock;
     return pickerView;
 }

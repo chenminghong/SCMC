@@ -37,6 +37,6 @@ typedef void(^SelectBlock)(NSDictionary *selectParaDict);
 
  @return 显示的时间选择器对象
  */
-+ (PlanTimePickerView *)showTimeSelectViewWithSelectBlock:(SelectBlock)selectBlock;
++ (PlanTimePickerView *)showTimeSelectViewInView:(UIView *)view withSelectBlock:(SelectBlock)selectBlock;
 
 @end

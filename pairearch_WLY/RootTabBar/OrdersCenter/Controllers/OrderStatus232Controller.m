@@ -46,7 +46,7 @@
 
 - (PlanTimePickerView *)showTimeSelectView {
     __weak typeof(self) weakSelf = self;
-    self.timeView = [PlanTimePickerView showTimeSelectViewWithSelectBlock:^(NSDictionary *selectParaDict) {
+    self.timeView = [PlanTimePickerView showTimeSelectViewInView:self.view withSelectBlock:^(NSDictionary *selectParaDict) {
         NSLog(@"selectParaDict:%@", selectParaDict);
         NSMutableDictionary *paraDict = [NSMutableDictionary dictionaryWithDictionary:selectParaDict];
         [paraDict setObject:weakSelf.code.length>0? weakSelf.code:@"" forKey:@"orderCode"];

@@ -35,7 +35,7 @@
 #define SAFETY_CONFIRMATION_API           @"safeVeriSave.a"                     //post
 
 //地理位置上传
-#define UPLOAD_LOCATION_API                  @"saveTrackList.a"                //post
+#define UPLOAD_LOCATION_API               @"saveTrackList.a"                //post
 
 
 
