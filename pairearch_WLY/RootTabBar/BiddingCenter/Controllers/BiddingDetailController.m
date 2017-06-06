@@ -74,7 +74,7 @@
 }
 
 - (void)getDataFromNet {
-    [BiddingDetailModel getDataWithParameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} endBlock:^(id model, NSError *error) {
+    [BiddingDetailModel getDataWithUrl:BIDDING_DETAIL_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} endBlock:^(id model, NSError *error) {
         if (!error) {
             self.biddingModel = model;
         } else {
@@ -230,7 +230,6 @@
         self.plateNumber = detailModel.truckNumber;
     }];
 }
-
 
 
 /**

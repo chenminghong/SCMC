@@ -12,6 +12,7 @@
 #import "OrderListModel.h"
 #import "BiddingDetailController.h"
 #import "BiddingCheckingController.h"
+#import "GetBiddingDetailController.h"
 
 
 @interface OrdersCenterController ()<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate>
@@ -24,9 +25,9 @@
 
 @property (nonatomic, strong) UIView *markView; //按钮标记view
 
-@property (nonatomic, strong) NSMutableArray *reloadFlags;  //table刷新标识
-
-@property (nonatomic, strong) OrdersCollectionCell *currentCell;  //当前显示的cell
+//@property (nonatomic, strong) NSMutableArray *reloadFlags;  //table刷新标识
+//
+//@property (nonatomic, strong) OrdersCollectionCell *currentCell;  //当前显示的cell
 
 @end
 
@@ -49,7 +50,7 @@
     self.view.backgroundColor = UIColorFromRGB(0xCBC9C7);
     
     //初始化刷新标识
-    self.reloadFlags = [NSMutableArray arrayWithArray:@[@1, @1, @1, @1]];
+//    self.reloadFlags = [NSMutableArray arrayWithArray:@[@1, @1, @1, @1]];
     
     self.collectionView.pagingEnabled = YES;
     
@@ -99,15 +100,15 @@
 }
 
 //刷新当前的列表
-- (void)reloadListData:(NSNotification *)sender {
-    for (NSInteger i = 0; i < 3; i++) {
-        [self.reloadFlags replaceObjectAtIndex:i withObject:@1];
-    }
-    if (self.currentCell) {
-        [MJRefreshUtil begainRefresh:self.currentCell.listTableView];
-        [self.reloadFlags replaceObjectAtIndex:self.currentCell.indexPath.item withObject:@0];
-    }
-}
+//- (void)reloadListData:(NSNotification *)sender {
+//    for (NSInteger i = 0; i < 3; i++) {
+//        [self.reloadFlags replaceObjectAtIndex:i withObject:@1];
+//    }
+//    if (self.currentCell) {
+//        [MJRefreshUtil begainRefresh:self.currentCell.listTableView];
+//        [self.reloadFlags replaceObjectAtIndex:self.currentCell.indexPath.item withObject:@0];
+//    }
+//}
 
 
 #pragma mark -- DelegateMethods
@@ -138,6 +139,11 @@
             OrderListModel *model = selectModelArr[0];
             biddingCheckingVC.bidCode = model.bidCode;
             [self.navigationController pushViewController:biddingCheckingVC animated:YES];
+        } else {
+            GetBiddingDetailController *biddingDetailVC = [GetBiddingDetailController new];
+            OrderListModel *model = selectModelArr[0];
+            biddingDetailVC.bidCode = model.bidCode;
+            [self.navigationController pushViewController:biddingDetailVC animated:YES];
         }
     }];
     cell.indexPath = indexPath;
@@ -146,12 +152,14 @@
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0) {
     
-    NSNumber *flag = self.reloadFlags[indexPath.item];
-    if ([flag boolValue]) {
-        OrdersCollectionCell *tempCell = (OrdersCollectionCell *)cell;
-        [MJRefreshUtil begainRefresh:tempCell.listTableView];
-    }
-    self.currentCell = (OrdersCollectionCell *)cell;
+//    NSNumber *flag = self.reloadFlags[indexPath.item];
+//    if ([flag boolValue]) {
+//        OrdersCollectionCell *tempCell = (OrdersCollectionCell *)cell;
+//        [MJRefreshUtil begainRefresh:tempCell.listTableView];
+//    }
+//    self.currentCell = (OrdersCollectionCell *)cell;
+    OrdersCollectionCell *tempCell = (OrdersCollectionCell *)cell;
+    [MJRefreshUtil begainRefresh:tempCell.listTableView];
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {

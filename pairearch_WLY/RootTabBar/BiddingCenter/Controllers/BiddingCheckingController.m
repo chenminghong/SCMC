@@ -43,6 +43,7 @@
     [super viewWillAppear:animated];
     
     [self.navigationController setNavigationBarHidden:NO animated:YES];
+    self.title = @"审核中";
 }
 
 - (UITableView *)tableView {
@@ -77,7 +78,7 @@
 
 //  请求网络数据
 - (void)loadDataFromNet{
-    [BiddingCheckingModel getDataWithParameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} endBlock:^(id model, NSError *error) {
+    [BiddingCheckingModel getDataWithUrl:BIDDINF_CHECKING_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} endBlock:^(id model, NSError *error) {
         if (!error) {
             self.biddingModel = model;
         } else {
@@ -250,7 +251,9 @@
         [hud1 hide:NO];
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         self.biddingModel.amount = responseObject[@"amount"];
-        self.footerView.priceLabel.text = [NSString stringWithFormat:@"%.2f元/车(含税)", [self.biddingModel.amount floatValue]];
+        if ([responseObject[@"amount"] length] > 0 && [self.biddingModel.amount floatValue] > 0.0) {
+            self.footerView.priceLabel.text = [NSString stringWithFormat:@"%.2f元/车(含税)", [self.biddingModel.amount floatValue]];
+        }
         [ProgressHUD bwm_showTitle:responseObject[@"updateResult"] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [hud1 hide:NO];

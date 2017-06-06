@@ -46,7 +46,7 @@
     _detailModel = detailModel;
     
     self.loadNumberLabel.text = [NSString stringWithFormat:@"单号：%@", detailModel.bidCode];
-    self.reserveShiptimeLabel.text = [NSString stringWithFormat:@"装运日期：%@", detailModel.planDate];
+    self.reserveShiptimeLabel.text = [NSString stringWithFormat:@"计划装运日期：%@", detailModel.planDate];
     self.startNameLabel.text = detailModel.sourceName;
     self.stopNameLabel.text = detailModel.dcName;
     self.tonnageLabel.text = [NSString stringWithFormat:@"%@吨", detailModel.tunnage];

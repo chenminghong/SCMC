@@ -101,6 +101,9 @@
 //已中标
 #define ALREADY_BIDDING_API               @"queryByScOrderBidForZb.a"       //get
 
+//已中标运单详情
+#define ALREADY_BIDDING_DETAIL_API        @"loadScorderbidforZb.a"          //get
+
 //历史竞价
 #define HISTORY_BIDDING_API               @"queryByScOrderBidHostory.a"     //get
 

@@ -26,7 +26,6 @@
 		0F8986771ED57861007DCDD0 /* BiddingCheckingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986751ED57861007DCDD0 /* BiddingCheckingController.m */; };
 		0F8986781ED57861007DCDD0 /* BiddingCheckingController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986761ED57861007DCDD0 /* BiddingCheckingController.xib */; };
 		0F89867B1ED5837E007DCDD0 /* BiddingCheckingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89867A1ED5837E007DCDD0 /* BiddingCheckingModel.m */; };
-		0F89867E1ED68353007DCDD0 /* InBiddingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89867D1ED68353007DCDD0 /* InBiddingDetailModel.m */; };
 		0F8986811ED691C1007DCDD0 /* BidCheckingFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986801ED691C1007DCDD0 /* BidCheckingFooterView.m */; };
 		0F8986831ED691CC007DCDD0 /* BidCheckingFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986821ED691CC007DCDD0 /* BidCheckingFooterView.xib */; };
 		0F8986871ED7C4C5007DCDD0 /* WaitListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986851ED7C4C5007DCDD0 /* WaitListController.m */; };
@@ -45,6 +44,9 @@
 		0FA20D3A1EC471AA005C2015 /* OrdersCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D341EC471AA005C2015 /* OrdersCollectionCell.m */; };
 		0FA20D3E1EC4788C005C2015 /* OrderListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FA20D3C1EC4788C005C2015 /* OrderListTableCell.m */; };
 		0FA20D3F1EC4788C005C2015 /* OrderListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FA20D3D1EC4788C005C2015 /* OrderListTableCell.xib */; };
+		0FB06E301EE64D77009B68D8 /* GetBiddingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB06E2E1EE64D77009B68D8 /* GetBiddingDetailController.m */; };
+		0FB06E311EE64D77009B68D8 /* GetBiddingDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FB06E2F1EE64D77009B68D8 /* GetBiddingDetailController.xib */; };
+		0FB06E341EE65000009B68D8 /* GetBiddingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB06E331EE65000009B68D8 /* GetBiddingDetailModel.m */; };
 		0FD9C0B61EADD88000CD7E00 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0B51EADD88000CD7E00 /* OrdersViewController.m */; };
 		0FD9C0B81EADD88D00CD7E00 /* OrdersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */; };
 		0FD9C0BB1EADF6D700CD7E00 /* OrderStatus212Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0BA1EADF6D600CD7E00 /* OrderStatus212Controller.m */; };
@@ -204,8 +206,6 @@
 		0F8986761ED57861007DCDD0 /* BiddingCheckingController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiddingCheckingController.xib; sourceTree = "<group>"; };
 		0F8986791ED5837E007DCDD0 /* BiddingCheckingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingCheckingModel.h; sourceTree = "<group>"; };
 		0F89867A1ED5837E007DCDD0 /* BiddingCheckingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiddingCheckingModel.m; sourceTree = "<group>"; };
-		0F89867C1ED68353007DCDD0 /* InBiddingDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InBiddingDetailModel.h; sourceTree = "<group>"; };
-		0F89867D1ED68353007DCDD0 /* InBiddingDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InBiddingDetailModel.m; sourceTree = "<group>"; };
 		0F89867F1ED691C1007DCDD0 /* BidCheckingFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidCheckingFooterView.h; sourceTree = "<group>"; };
 		0F8986801ED691C1007DCDD0 /* BidCheckingFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidCheckingFooterView.m; sourceTree = "<group>"; };
 		0F8986821ED691CC007DCDD0 /* BidCheckingFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidCheckingFooterView.xib; sourceTree = "<group>"; };
@@ -237,6 +237,11 @@
 		0FA20D3B1EC4788C005C2015 /* OrderListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableCell.h; sourceTree = "<group>"; };
 		0FA20D3C1EC4788C005C2015 /* OrderListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableCell.m; sourceTree = "<group>"; };
 		0FA20D3D1EC4788C005C2015 /* OrderListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListTableCell.xib; sourceTree = "<group>"; };
+		0FB06E2D1EE64D77009B68D8 /* GetBiddingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetBiddingDetailController.h; sourceTree = "<group>"; };
+		0FB06E2E1EE64D77009B68D8 /* GetBiddingDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetBiddingDetailController.m; sourceTree = "<group>"; };
+		0FB06E2F1EE64D77009B68D8 /* GetBiddingDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetBiddingDetailController.xib; sourceTree = "<group>"; };
+		0FB06E321EE65000009B68D8 /* GetBiddingDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetBiddingDetailModel.h; sourceTree = "<group>"; };
+		0FB06E331EE65000009B68D8 /* GetBiddingDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetBiddingDetailModel.m; sourceTree = "<group>"; };
 		0FD9C0B41EADD88000CD7E00 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		0FD9C0B51EADD88000CD7E00 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrdersViewController.storyboard; sourceTree = "<group>"; };
@@ -468,6 +473,9 @@
 				0F8986741ED57861007DCDD0 /* BiddingCheckingController.h */,
 				0F8986751ED57861007DCDD0 /* BiddingCheckingController.m */,
 				0F8986761ED57861007DCDD0 /* BiddingCheckingController.xib */,
+				0FB06E2D1EE64D77009B68D8 /* GetBiddingDetailController.h */,
+				0FB06E2E1EE64D77009B68D8 /* GetBiddingDetailController.m */,
+				0FB06E2F1EE64D77009B68D8 /* GetBiddingDetailController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -481,8 +489,8 @@
 				0F8986541ED3D38D007DCDD0 /* BiddingDetailModel.m */,
 				0F8986791ED5837E007DCDD0 /* BiddingCheckingModel.h */,
 				0F89867A1ED5837E007DCDD0 /* BiddingCheckingModel.m */,
-				0F89867C1ED68353007DCDD0 /* InBiddingDetailModel.h */,
-				0F89867D1ED68353007DCDD0 /* InBiddingDetailModel.m */,
+				0FB06E321EE65000009B68D8 /* GetBiddingDetailModel.h */,
+				0FB06E331EE65000009B68D8 /* GetBiddingDetailModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1204,6 +1212,7 @@
 				0F8986831ED691CC007DCDD0 /* BidCheckingFooterView.xib in Resources */,
 				0FE58E301EC980C30041E1D9 /* QRCodebottomRight@3x.png in Resources */,
 				0F89865A1ED3E12B007DCDD0 /* BidDetailCell.xib in Resources */,
+				0FB06E311EE64D77009B68D8 /* GetBiddingDetailController.xib in Resources */,
 				0FE58E0B1EC97D6C0041E1D9 /* OrderStatus226Controller.xib in Resources */,
 				0FE58E331EC980C30041E1D9 /* QRCodeTopLeft@2x.png in Resources */,
 				0FE58E471EC9A11B0041E1D9 /* OrderStatus230Controller.xib in Resources */,
@@ -1307,7 +1316,6 @@
 				0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */,
 				B38411131E5D875700F7069F /* URLHandleUtil.m in Sources */,
 				0FA20D3E1EC4788C005C2015 /* OrderListTableCell.m in Sources */,
-				0F89867E1ED68353007DCDD0 /* InBiddingDetailModel.m in Sources */,
 				0F89865F1ED41AC6007DCDD0 /* BiddingFooterView.m in Sources */,
 				0F8986691ED430C1007DCDD0 /* BidPickerView.m in Sources */,
 				B3CC54BF1E6020090072EA47 /* AutoHeight.m in Sources */,
@@ -1366,6 +1374,7 @@
 				0FD9C0BE1EAE0B7100CD7E00 /* Header212View.m in Sources */,
 				0F8986551ED3D38D007DCDD0 /* BiddingDetailModel.m in Sources */,
 				B357272F1E53FC61003F9B2F /* RootTabController.m in Sources */,
+				0FB06E301EE64D77009B68D8 /* GetBiddingDetailController.m in Sources */,
 				B357276A1E540E46003F9B2F /* NavigationController.m in Sources */,
 				B32228DE1E52A2C300ED50ED /* AppDelegate.m in Sources */,
 				B3D3B2AA1E66EA550033EF84 /* SaftyCheckCell.m in Sources */,
@@ -1388,6 +1397,7 @@
 				0FE58E4B1EC9A6E50041E1D9 /* OrderStatus232Controller.m in Sources */,
 				B38411241E5E827600F7069F /* PersonalCenterViewController.m in Sources */,
 				0F89868C1ED7C675007DCDD0 /* WaitTimeoutController.m in Sources */,
+				0FB06E341EE65000009B68D8 /* GetBiddingDetailModel.m in Sources */,
 				0FD9C0BB1EADF6D700CD7E00 /* OrderStatus212Controller.m in Sources */,
 				B38410B61E5D375600F7069F /* BaseModel.m in Sources */,
 				0FE58E411EC99B9B0041E1D9 /* OrderStatus228Controller.m in Sources */,

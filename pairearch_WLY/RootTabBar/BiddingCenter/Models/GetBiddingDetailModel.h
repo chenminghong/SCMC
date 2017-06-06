@@ -1,13 +1,13 @@
 //
-//  InBiddingDetailModel.h
+//  GetBiddingDetailModel.h
 //  pairearch_WLY
 //
-//  Created by Jean on 2017/5/25.
+//  Created by Jean on 2017/6/6.
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
 #import "BaseModel.h"
 
-@interface InBiddingDetailModel : BaseModel
+@interface GetBiddingDetailModel : BaseModel
 
 @end
