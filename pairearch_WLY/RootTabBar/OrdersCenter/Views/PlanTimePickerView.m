@@ -30,13 +30,12 @@
                     @[@"22", @"24"]];
         
         self.backgroundColor = [UIColor clearColor];
-        [self addSubview:self.shadowView];
         self.tapHide = YES;
         [UIView animateWithDuration:K_ANIMATION_TIMEINTERVAL animations:^{
             self.shadowView.alpha = 0.5;
         }];
         
-        self.datePicker = [DatePickerView showInView:self frame:CGRectMake(0.0, CGRectGetMaxY(frame) - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT) animationDuraton:K_ANIMATION_TIMEINTERVAL];
+        self.datePicker = [DatePickerView showInView:self frame:CGRectMake(0.0, CGRectGetHeight(frame) - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT) animationDuraton:K_ANIMATION_TIMEINTERVAL];
         [self.datePicker.datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
         [self.datePicker.selectTImeBtn addTarget:self action:@selector(selectTimeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -47,7 +46,12 @@
 
 - (UIView *)shadowView {
     if (!_shadowView) {
-        self.shadowView = [[UIView alloc] initWithFrame:self.bounds];
+        self.shadowView = [UIView new];
+        [self addSubview:self.shadowView];
+        [self.shadowView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self);
+        }];
+        
         self.shadowView.backgroundColor = [UIColor blackColor];
         self.shadowView.alpha = 0.0;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureAction:)];
@@ -59,7 +63,7 @@
 - (TimePickerView *)timePickerView {
     if (!_timePickerView) {
         self.timePickerView = [TimePickerView getTimePickerView];
-        self.timePickerView.frame = CGRectMake(0.0, CGRectGetMaxY(self.frame) - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT);
+        self.timePickerView.frame = CGRectMake(0, CGRectGetHeight(self.frame) - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT);
         UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.layer.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(5, 5)];
         CAShapeLayer *maskLayer = [CAShapeLayer new];
         maskLayer.frame = self.layer.bounds;
@@ -77,19 +81,11 @@
  显示视图
  */
 + (PlanTimePickerView *)showTimeSelectViewInView:(UIView *)view withSelectBlock:(SelectBlock)selectBlock {
-    CGRect frame;
-    if (view) {
-        frame = view.bounds;
-    } else {
-        frame = [UIScreen mainScreen].bounds;
-    }
-    PlanTimePickerView *pickerView = [[PlanTimePickerView alloc] initWithFrame:frame];
-    if (view) {
-        [view addSubview:pickerView];
-    } else {
-        UIWindow *window = [UIApplication sharedApplication].keyWindow;
-        [window addSubview:pickerView];
-    }
+    CGRect frame = [UIScreen mainScreen].bounds;
+    PlanTimePickerView *pickerView = [[PlanTimePickerView alloc] initWithFrame:CGRectMake(0, 64.0, frame.size.width, frame.size.height - 64)];
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    [window addSubview:pickerView];
+    
     pickerView.selectBlock = selectBlock;
     return pickerView;
 }

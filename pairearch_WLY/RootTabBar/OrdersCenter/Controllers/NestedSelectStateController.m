@@ -135,6 +135,12 @@
             
         case ORDER_STATUS_232:
         {
+            if ([self.homePageModel.isRoadSea containsString:@"海铁"] ||
+                [self.homePageModel.transportName containsString:@"海"] ||
+                [self.homePageModel.transportName containsString:@"铁"]) {
+                [self.navigationController popViewControllerAnimated:YES];
+                return;
+            }
             self.title = @"收货签到";
             OrderStatus232Controller *childVC = [OrderStatus232Controller new];
             childVC.code = code;

@@ -29,7 +29,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
     if (self.planAchieveTime.length <= 0) {
         [self showTimeSelectView];
     }
@@ -37,12 +36,15 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self.timeView removeFromSuperview];
+    if (self.timeView) {
+        [self.timeView removeFromSuperview];
+    }
 }
 
 - (IBAction)planTimeAction:(UIButton *)sender {
     [self showTimeSelectView];
 }
+
 
 - (PlanTimePickerView *)showTimeSelectView {
     __weak typeof(self) weakSelf = self;

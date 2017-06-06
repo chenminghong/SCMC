@@ -55,9 +55,7 @@
     self.collectionView.pagingEnabled = YES;
     
     [self.selectView addSubview:self.markView];
-    
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
-    
+        
     for (NSInteger i = 0; i < 4; i++) {
         UIButton *btn = (UIButton *)[self.selectView viewWithTag:(100 + i)];
         [btn setTitleColor:UIColorFromRGB(0x666666) forState:UIControlStateNormal];
