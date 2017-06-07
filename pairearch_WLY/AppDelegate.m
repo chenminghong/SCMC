@@ -21,6 +21,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    self.window.backgroundColor = TOP_BOTTOMBAR_COLOR;
+    
     if (![LoginViewController isLogin]) {
         [self loginPage];
     } else {

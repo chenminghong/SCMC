@@ -10,6 +10,7 @@ pod 'MJRefresh'
 pod 'IQKeyboardManager'
 pod 'TZImagePickerController'
 pod 'UMengAnalytics-NO-IDFA'
+pod 'FDFullscreenPopGesture'
 
 pod 'DYLocationConverter', '~> 0.0.4'
 pod 'MBProgressHUD+BWMExtension', '~> 1.0.1'
