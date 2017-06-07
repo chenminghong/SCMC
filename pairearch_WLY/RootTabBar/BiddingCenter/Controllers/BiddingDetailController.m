@@ -256,7 +256,7 @@
         [hud1 hide:NO];
         MBProgressHUD *hud2 = [ProgressHUD bwm_showTitle:responseObject[@"saveResult"] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         [hud2 setCompletionBlock:^(){
-            [self.navigationController popToRootViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:YES];
         }];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         [hud1 hide:NO];

@@ -45,6 +45,8 @@
         }
         NSMutableDictionary *tempParaDict = [NSMutableDictionary dictionaryWithDictionary:paraDict];
         [tempParaDict setObject:photoTime forKey:@"photoTime"];
+        NSString *addressStr = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"address"]];
+        [tempParaDict setObject:addressStr forKey:@"address"];
         [NetworkHelper POST:urlStr parameters:tempParaDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             [formData appendPartWithFileData:data name:@"photo" fileName:@"abnormal_upload.jpg" mimeType:@"image/jpeg"];
         } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {

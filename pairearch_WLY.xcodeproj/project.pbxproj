@@ -10,6 +10,8 @@
 		0F397C3B1EA0DF8E002F3A38 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F397C3A1EA0DF8E002F3A38 /* LocationManager.m */; };
 		0F4C92581EDEB69B00546AFF /* MyImagePickerManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F4C92571EDEB69B00546AFF /* MyImagePickerManager.m */; };
 		0F634CFB1EC5CD7600CFB8AB /* NestedSelectStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */; };
+		0F67C68C1EE7E91400AC9155 /* BiddingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67C68A1EE7E91400AC9155 /* BiddingListController.m */; };
+		0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */; };
 		0F8986511ED3D36B007DCDD0 /* BiddingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */; };
 		0F8986521ED3D36B007DCDD0 /* BiddingDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */; };
 		0F8986551ED3D38D007DCDD0 /* BiddingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986541ED3D38D007DCDD0 /* BiddingDetailModel.m */; };
@@ -180,6 +182,9 @@
 		0F4C92571EDEB69B00546AFF /* MyImagePickerManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyImagePickerManager.m; sourceTree = "<group>"; };
 		0F634CF91EC5CD7600CFB8AB /* NestedSelectStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedSelectStateController.h; sourceTree = "<group>"; };
 		0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedSelectStateController.m; sourceTree = "<group>"; };
+		0F67C6891EE7E91400AC9155 /* BiddingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingListController.h; sourceTree = "<group>"; };
+		0F67C68A1EE7E91400AC9155 /* BiddingListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiddingListController.m; sourceTree = "<group>"; };
+		0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiddingListController.xib; sourceTree = "<group>"; };
 		0F89864E1ED3D36B007DCDD0 /* BiddingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingDetailController.h; sourceTree = "<group>"; };
 		0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiddingDetailController.m; sourceTree = "<group>"; };
 		0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiddingDetailController.xib; sourceTree = "<group>"; };
@@ -1066,6 +1071,9 @@
 				B3D3B28F1E66EA550033EF84 /* HomeViewController.h */,
 				B3D3B2901E66EA550033EF84 /* HomeViewController.m */,
 				B3D3B2911E66EA550033EF84 /* HomeViewController.storyboard */,
+				0F67C6891EE7E91400AC9155 /* BiddingListController.h */,
+				0F67C68A1EE7E91400AC9155 /* BiddingListController.m */,
+				0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */,
 				0FD9C0B91EADF6D600CD7E00 /* OrderStatus212Controller.h */,
 				0FD9C0BA1EADF6D600CD7E00 /* OrderStatus212Controller.m */,
 				0FE5BFF51EB0A9F900F82D97 /* Mistake212Controller.h */,
@@ -1219,6 +1227,7 @@
 				0FDE407B1ECE8F6700FAEF48 /* OrderStatus248Controller.xib in Resources */,
 				0FDE40671ECB0DC400FAEF48 /* TimePickerView.xib in Resources */,
 				0F8986781ED57861007DCDD0 /* BiddingCheckingController.xib in Resources */,
+				0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */,
 				0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */,
 				0FE58E421EC99B9B0041E1D9 /* OrderStatus228Controller.xib in Resources */,
 				B32228E91E52A2C300ED50ED /* LaunchScreen.storyboard in Resources */,
@@ -1336,6 +1345,7 @@
 				B384111B1E5D886000F7069F /* LoginViewController.m in Sources */,
 				0FE5C0051EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m in Sources */,
 				0FE5BFFF1EB191E900F82D97 /* Mistake212Header.m in Sources */,
+				0F67C68C1EE7E91400AC9155 /* BiddingListController.m in Sources */,
 				B38411101E5D875700F7069F /* FuctionUtil.m in Sources */,
 				0FE9632D1EBB195600F916DD /* OrderDetailModel.m in Sources */,
 				B384113C1E5E832C00F7069F /* VersionInfoViewController.m in Sources */,

@@ -15,6 +15,7 @@
 #import "HomePageModel.h"
 #import "OrderStatus212Controller.h"
 #import "Mistake212Controller.h"
+#import "BiddingListController.h"
 
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -64,6 +65,7 @@
     self.stateLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:20];
     self.topLineView.backgroundColor = MAIN_THEME_COLOR;
     self.bottomLineView.backgroundColor = MAIN_THEME_COLOR;
+    self.assortLabel.backgroundColor = MAIN_THEME_COLOR;
     self.assortLabel.layer.masksToBounds = YES;
     self.assortLabel.layer.cornerRadius = CGRectGetWidth(self.assortLabel.bounds) / 2.0;
     
@@ -246,8 +248,9 @@
 
  @param sender 点击的按钮
  */
-- (IBAction)detailButtonAction:(UIButton *)sender {
-    NSLog(@"订单详情");
+- (IBAction)detailButtonAction:(UIButton *)sender {    
+    BiddingListController *biddingListVC = [BiddingListController new];
+    [self.navigationController pushViewController:biddingListVC animated:YES];
 }
 
 
