@@ -135,9 +135,7 @@
             
         case ORDER_STATUS_232:
         {
-            if ([self.homePageModel.isRoadSea containsString:@"海铁"] ||
-                [self.homePageModel.transportName containsString:@"海"] ||
-                [self.homePageModel.transportName containsString:@"铁"]) {
+            if ([self.homePageModel.isRoadSea containsString:@"海铁"]) {
                 [self.navigationController popViewControllerAnimated:YES];
                 return;
             }
@@ -171,6 +169,9 @@
             break;
             
         default:
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
             break;
     }
 }
