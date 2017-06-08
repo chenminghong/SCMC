@@ -36,8 +36,8 @@
     
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
     [MJRefreshUtil begainRefresh:self.tableView];
 }
@@ -61,21 +61,22 @@
 
 //获取订单列表Data数据
 - (void)getOrderListData {
+    __weak typeof(self) weakSelf = self;
     [HomePageModel getDataWithUrl:ORDER_LIST_API parameters:@{@"driverTel":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
         if (!error) {
-            self.homeModel = model;
-            if (self.homeModel.orderModelList.count <= 0) {
+            weakSelf.homeModel = model;
+            if (weakSelf.homeModel.orderModelList.count <= 0) {
                 [LocationManager shareManager].orderCode = nil;  //结束定位上传
-                [MBProgressHUD bwm_showTitle:@"暂无订单" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+                [MBProgressHUD bwm_showTitle:@"暂无订单" toView:weakSelf.view hideAfter:HUD_HIDE_TIMEINTERVAL];
             } else {
-                HomePageModel *model = self.homeModel.orderModelList[0];
+                HomePageModel *model = weakSelf.homeModel.orderModelList[0];
                 [LocationManager shareManager].orderCode = model.code;  //开启定位上传
             }
         } else {
-            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:weakSelf.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
         [self.tableView reloadData];
-        [MJRefreshUtil endRefresh:self.tableView];
+        [MJRefreshUtil endRefresh:weakSelf.tableView];
     }];
 }
 

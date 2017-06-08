@@ -9,17 +9,19 @@
 #import "AbnormalReportController.h"
 
 #import "AbnormalReportCell.h"
+#import "LxGridViewFlowLayout.h"
 #import "TZImagePickerController.h"
 #import "UIView+Layout.h"
 #import "TZTestCell.h"
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <Photos/Photos.h>
 #import "LxGridViewFlowLayout.h"
 #import "TZImageManager.h"
-//#import "LxGridViewFlowLayout.h"
-//#import <AssetsLibrary/AssetsLibrary.h>
-//#import <Photos/Photos.h>
-//#import "TZVideoPlayerController.h"
-//#import "TZPhotoPreviewController.h"
-//#import "TZGifPhotoPreviewController.h"
+#import "TZVideoPlayerController.h"
+#import "TZPhotoPreviewController.h"
+#import "TZGifPhotoPreviewController.h"
+
+#define MAX_IMAGE_COUNT  3   //最大可以选择的照片张数
 
 @interface AbnormalReportController ()<UIScrollViewDelegate,UITableViewDelegate, UITableViewDataSource, TZImagePickerControllerDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UIActionSheetDelegate,UIImagePickerControllerDelegate,UIAlertViewDelegate,UINavigationControllerDelegate>
 {
@@ -57,7 +59,6 @@
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
-        [self.view addSubview:_collectionView];
         [_collectionView registerClass:[TZTestCell class] forCellWithReuseIdentifier:@"TZTestCell"];
     }
     return _collectionView;
@@ -97,6 +98,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     //设置提交按钮
     UIButton *commitButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [commitButton setTitle:@"提交" forState:UIControlStateNormal];
@@ -132,7 +134,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AbnormalReportCell *cell = [AbnormalReportCell getCellWithTable:tableView];
     [cell.contentView addSubview:self.collectionView];
-
+    cell.loadNumberTf.text = self.loadNumber;
     return cell;
 }
 
@@ -269,25 +271,87 @@
             }
             [self presentViewController:_imagePickerVc animated:YES completion:nil];
         } else {
+            [MBProgressHUD bwm_showTitle:@"相机功能无法使用或没有相机！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
             NSLog(@"模拟器中无法打开照相机，请在真机中使用");
         }
     }
 }
 
+
+/**
+ 拍照结束回调
+
+ @param picker imagepickerVC对象
+ @param info 拍照获取的资源
+ */
+- (void)imagePickerController:(UIImagePickerController*)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
+    if ([type isEqualToString:@"public.image"]) {
+        TZImagePickerController *tzImagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:MAX_IMAGE_COUNT delegate:self];
+        [tzImagePickerVc showProgressHUD];
+        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+        // save photo and get asset / 保存图片，获取到asset
+        [[TZImageManager manager] savePhotoWithImage:image completion:^(NSError *error){
+            if (error) {
+                [tzImagePickerVc hideProgressHUD];
+                NSLog(@"图片保存失败 %@",error);
+            } else {
+                [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:YES completion:^(TZAlbumModel *model) {
+                    [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
+                        [tzImagePickerVc hideProgressHUD];
+                        TZAssetModel *assetModel = [models firstObject];
+                        if (tzImagePickerVc.sortAscendingByModificationDate) {
+                            assetModel = [models lastObject];
+                        }
+                        [self refreshCollectionViewWithAddedAsset:assetModel.asset image:image];
+                    }];
+                }];
+            }
+        }];
+    }
+}
+
+
+/**
+ 刷新上传图片列表
+
+ @param asset 新拍照的照片资源
+ @param image 拍照获取的图片
+ */
+- (void)refreshCollectionViewWithAddedAsset:(id)asset image:(UIImage *)image {
+    if (!_selectedPhotos) {
+        _selectedPhotos = [NSMutableArray array];
+    }
+    if (!_selectedAssets) {
+        _selectedAssets = [NSMutableArray array];
+    }
+    
+    if (_selectedPhotos.count < MAX_IMAGE_COUNT) {
+        [_selectedAssets addObject:asset];
+        [_selectedPhotos addObject:image];
+        [_collectionView reloadData];
+    } else {
+        [MBProgressHUD bwm_showTitle:[NSString stringWithFormat:@"最多只能上传%d张照片！", MAX_IMAGE_COUNT] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+    }
+}
+
+
 //弹出选择相册
 - (void)pushImagePickerController {
-    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:3 columnNumber:4 delegate:self pushPhotoPickerVc:YES];
-    imagePickerVc.selectedAssets = _selectedAssets; // 目前已经选中的图片数组
+    TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:MAX_IMAGE_COUNT columnNumber:4 delegate:self pushPhotoPickerVc:YES];
     [imagePickerVc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x666666), NSFontAttributeName:[UIFont systemFontOfSize:18.0]}];
     imagePickerVc.navigationBar.barTintColor = TOP_BOTTOMBAR_COLOR;
     imagePickerVc.navigationBar.tintColor = UIColorFromRGB(0x666666);
     imagePickerVc.barItemTextColor = UIColorFromRGB(0x666666);
+    imagePickerVc.selectedAssets = _selectedAssets; // 目前已经选中的图片数组
     imagePickerVc.barItemTextFont = [UIFont systemFontOfSize:16.0];
     imagePickerVc.showSelectBtn = YES;
     imagePickerVc.allowTakePicture = NO;
     imagePickerVc.alwaysEnableDoneBtn = YES;
     imagePickerVc.allowPickingGif = NO;
     imagePickerVc.allowPickingVideo = NO;
+    imagePickerVc.allowCrop = NO;
     [self presentViewController:imagePickerVc animated:YES completion:nil];
 }
 
@@ -308,18 +372,18 @@
 - (void)commitButtonAction:(UIButton *)sender {
     AbnormalReportCell *cell = (AbnormalReportCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
     
-    if ([cell.loadNumberTf.text stringByReplacingOccurrencesOfString:@" " withString:@""].length <= 0) {
-        [MBProgressHUD bwm_showTitle:@"请输入异常单号" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+    if (cell.loadNumberTf.text.length <= 0) {
+        [MBProgressHUD bwm_showTitle:@"请输入异常单号！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         return;
     }
     
     if (cell.loadNumberTv.text.length <= 0) {
-        [MBProgressHUD bwm_showTitle:@"请填写异常原因" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        [MBProgressHUD bwm_showTitle:@"请异常原因！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         return;
     }
     
     if (_selectedPhotos.count <= 0) {
-        [MBProgressHUD bwm_showTitle:@"请添加异常图片" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        [MBProgressHUD bwm_showTitle:@"请上传异常图片！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         return;
     }
     
@@ -333,14 +397,17 @@
         NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:responseObject options:NSJSONReadingMutableLeaves error:nil];
         __block NSInteger status = [responseDict[@"status"] integerValue];
         NSString *msg = responseDict[@"msg"];
-        MBProgressHUD *tempHUD = [MBProgressHUD bwm_showTitle:msg toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-        [tempHUD setCompletionBlock:^{
-            if (status == 1) {
-                [self.navigationController popViewControllerAnimated:YES];
-            }
-        }];
+        NSString *tempMsg = [msg stringByReplacingOccurrencesOfString:@" " withString:@""];
+        if (tempMsg.length > 0) {
+            MBProgressHUD *tempHUD = [ProgressHUD bwm_showTitle:msg toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+            [tempHUD setCompletionBlock:^{
+                if (status == 1) {
+                    [self.navigationController popViewControllerAnimated:YES];
+                }
+            }];
+        }
     } failure:^(NSError *error) {
-        [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+        [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
     }];
 }
 
@@ -361,6 +428,7 @@
     _isSelectOriginalPhoto = isSelectOriginalPhoto;
     [_collectionView reloadData];
 }
+
 
 
 - (void)didReceiveMemoryWarning {

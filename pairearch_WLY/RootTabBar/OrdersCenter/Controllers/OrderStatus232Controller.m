@@ -27,8 +27,16 @@
     self.signButton.backgroundColor = MAIN_THEME_COLOR;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    if (self.planAchieveTime.length <= 0) {
+//        [self showTimeSelectView];
+//    }
+//}
+
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if (self.planAchieveTime.length <= 0) {
         [self showTimeSelectView];
     }
@@ -36,10 +44,27 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    if (self.timeView) {
-        [self.timeView removeFromSuperview];
+//    if (self.timeView) {
+//        [self.timeView removeFromSuperview];
+//    }
+}
+
+- (void)setPlanAchieveTime:(NSString *)planAchieveTime {
+    _planAchieveTime = planAchieveTime;
+    
+    if (self.planAchieveTime.length <= 0) {
+        self.planTimeButton.userInteractionEnabled = NO;
+        self.planTimeButton.backgroundColor = ABNORMAL_THEME_COLOR;
+        self.signButton.userInteractionEnabled = NO;
+        self.signButton.backgroundColor = ABNORMAL_THEME_COLOR;
+    } else {
+        self.planTimeButton .userInteractionEnabled = YES;
+        self.planTimeButton.backgroundColor = MAIN_THEME_COLOR;
+        self.signButton.userInteractionEnabled = YES;
+        self.signButton.backgroundColor = MAIN_THEME_COLOR;
     }
 }
+
 
 - (IBAction)planTimeAction:(UIButton *)sender {
     [self showTimeSelectView];
@@ -49,7 +74,6 @@
 - (PlanTimePickerView *)showTimeSelectView {
     __weak typeof(self) weakSelf = self;
     self.timeView = [PlanTimePickerView showTimeSelectViewInView:self.view withSelectBlock:^(NSDictionary *selectParaDict) {
-        NSLog(@"selectParaDict:%@", selectParaDict);
         NSMutableDictionary *paraDict = [NSMutableDictionary dictionaryWithDictionary:selectParaDict];
         [paraDict setObject:weakSelf.code.length>0? weakSelf.code:@"" forKey:@"orderCode"];
         [weakSelf networkWithUrlStr:CHANGE_PLAN_ARRIVETIME_API paraDict:paraDict];
@@ -68,8 +92,9 @@
     [NetworkHelper POST:urlStr parameters:paraDict progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
         NSString *msg = responseObject[@"remark"];
         [ProgressHUD bwm_showTitle:msg toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-        if (self.planAchieveTime.length <= 0) {
-            self.planAchieveTime = @"111";
+        NSString *result = responseObject[@"result"];
+        if (result.integerValue == 1) {
+            self.planAchieveTime = [NSString stringWithFormat:@"%@ 00:00:00", paraDict[@"planAchieveTime"]];
         }
     } failure:^(NSError *error) {
         [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
@@ -78,10 +103,6 @@
 
 //收货签到按钮点击事件
 - (IBAction)signButtonAction:(UIButton *)sender {
-//    NSString *lat = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"latiude"]];
-//    NSString *lng = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"longitude"]];
-//    [self networkWithUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.code, @"lat":lat.length? lat:@"", @"lng":lng.length? lng:@""}];
-    
     //选择图片并且上传
     NSString *userName = [LoginModel shareLoginModel].tel;
     NSString *orderCode = self.code;
@@ -91,7 +112,14 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
-    [MyImagePickerManager presentImagePickerControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":userName, @"orderCode":orderCode, @"lat":lat, @"lng":lng, @"locationTime":locationTime} endBlock:^(id responseObject, NSError *error) {
+    NSDictionary *paraDict = @{@"userName":userName,
+                               @"orderCode":orderCode,
+                               @"lat":lat,
+                               @"lng":lng,
+                               @"locationTime":locationTime};
+    
+    
+    [MyImagePickerManager presentPhotoTakeControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_SIGN_UP_API paraDict:paraDict endBlock:^(id responseObject, NSError *error) {
         if (!error) {
             NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
             NSLog(@"%@", responseObject);
@@ -100,6 +128,16 @@
             [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
     }];
+    
+//    [MyImagePickerManager presentImagePickerControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":userName, @"orderCode":orderCode, @"lat":lat, @"lng":lng, @"locationTime":locationTime} endBlock:^(id responseObject, NSError *error) {
+//        if (!error) {
+//            NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
+//            NSLog(@"%@", responseObject);
+//            [ProgressHUD bwm_showTitle:remarkStr toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+//        } else {
+//            [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+//        }
+//    }];
     
 }
 

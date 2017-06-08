@@ -97,9 +97,14 @@
     
     [self.paoma startAnimation];
     
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
     //获取首页Data数据
     [MJRefreshUtil begainRefresh:self.tableView];
-    
 }
 
 //程序活跃的时候调用

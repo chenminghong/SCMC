@@ -10,7 +10,8 @@ pod 'MJRefresh'
 pod 'IQKeyboardManager'
 pod 'TZImagePickerController'
 pod 'UMengAnalytics-NO-IDFA'
-pod 'FDFullscreenPopGesture'
+pod 'FDFullscreenPopGesture'     #全屏手势返回库
+pod 'KMNavigationBarTransition'  #自定义pop、push动画库
 
 pod 'DYLocationConverter', '~> 0.0.4'
 pod 'MBProgressHUD+BWMExtension', '~> 1.0.1'

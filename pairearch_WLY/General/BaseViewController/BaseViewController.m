@@ -17,6 +17,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+//    self.view.backgroundColor = UIColorFromRGB(0xCBC9C7);
+    self.view.backgroundColor = [UIColor whiteColor];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -25,6 +29,7 @@
     //页面开始
 //    [[BaiduMobStat defaultStat] pageviewStartWithName:NSStringFromClass([self class])];
     [MobClick beginLogPageView:NSStringFromClass([self class])];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

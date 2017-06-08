@@ -22,14 +22,14 @@
 
 + (DatePickerView *)showInView:(UIView *)view frame:(CGRect)frame animationDuraton:(NSTimeInterval)duration {
     DatePickerView *dateView = [self getDatepickerView];
-    dateView.frame = frame;
     [view addSubview:dateView];
+    dateView.frame = frame;
+    dateView.transform = CGAffineTransformMakeTranslation(0.0, CGRectGetHeight(frame));
     dateView.animationTimeInterval = duration;
     dateView.datePicker.minimumDate = [NSDate date];
     dateView.topLabel.backgroundColor = MAIN_THEME_COLOR;
     [dateView.selectTImeBtn setTitleColor:MAIN_THEME_COLOR forState:UIControlStateNormal];
     
-    dateView.transform = CGAffineTransformMakeTranslation(0.0, frame.size.height);
     [UIView animateWithDuration:duration animations:^{
         dateView.transform = CGAffineTransformMakeTranslation(0.0, 0.0);
     }];

@@ -47,7 +47,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.view.backgroundColor = UIColorFromRGB(0xCBC9C7);
     
     //初始化刷新标识
 //    self.reloadFlags = [NSMutableArray arrayWithArray:@[@1, @1, @1, @1]];
@@ -77,7 +76,12 @@
     } else {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     
+    //刷新页面
     [self.collectionView reloadData];
 }
 

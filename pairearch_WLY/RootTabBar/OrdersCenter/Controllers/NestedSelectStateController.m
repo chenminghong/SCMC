@@ -84,12 +84,12 @@
             self.title = @"装货工厂签到";
             if (self.homePageModel.warehouseType.integerValue == WarehouseTypeInside) {
                 Mistake212Controller *childVC = [Mistake212Controller new];
-                childVC.homePageModel = self.homePageModel;
                 [self addChildController:childVC];
+                childVC.homePageModel = self.homePageModel;
             } else {
                 OutStorage220Controller *childVC = [OutStorage220Controller new];
-                childVC.homePageModel = self.homePageModel;
                 [self addChildController:childVC];
+                childVC.homePageModel = self.homePageModel;
             }
         }
             break;
@@ -106,9 +106,9 @@
         {
             self.title = @"开始装货";
             OrderStatus226Controller *childVC = [OrderStatus226Controller new];
+            [self addChildController:childVC];
             childVC.code = code;
             childVC.status = status;
-            [self addChildController:childVC];
         }
             break;
             
@@ -116,10 +116,10 @@
         {
             self.title = @"装货中";
             OrderStatus228Controller *childVC = [OrderStatus228Controller new];
+            [self addChildController:childVC];
             childVC.code = code;
             childVC.status = status;
             childVC.warehouseType = self.homePageModel.warehouseType;
-            [self addChildController:childVC];
         }
             break;
             
@@ -127,9 +127,9 @@
         {
             self.title = @"装货完成";
             OrderStatus230Controller *childVC = [OrderStatus230Controller new];
+            [self addChildController:childVC];
             childVC.code = code;
             childVC.status = status;
-            [self addChildController:childVC];
         }
             break;
             
@@ -141,10 +141,10 @@
             }
             self.title = @"收货签到";
             OrderStatus232Controller *childVC = [OrderStatus232Controller new];
+            [self addChildController:childVC];
             childVC.code = code;
             childVC.status = status;
             childVC.planAchieveTime = self.homePageModel.planAchieveTime;
-            [self addChildController:childVC];
         }
             break;
             
@@ -152,9 +152,9 @@
         {
             self.title = @"卸货完成";
             OrderStatus244Controller *childVC = [OrderStatus244Controller new];
+            [self addChildController:childVC];
             childVC.code = code;
             childVC.status = status;
-            [self addChildController:childVC];
         }
             break;
             
@@ -162,9 +162,9 @@
         {
             self.title = @"收货完成";
             OrderStatus248Controller *childVC = [OrderStatus248Controller new];
+            [self addChildController:childVC];
             childVC.code = code;
             childVC.status = status;
-            [self addChildController:childVC];
         }
             break;
             

@@ -34,10 +34,7 @@
     // Do any additional setup after loading the view.
     
     self.navigationController.navigationBar.translucent = NO;
-    
-    //个人中心界面的背景图片
-    self.view.backgroundColor = UIColorFromRGB(0xCBC9C7);
-    
+        
     self.title = @"个人中心";
     
     self.titltArr = @[@"异常上报", @"修改密码", @"版本信息", @"关于我们"];

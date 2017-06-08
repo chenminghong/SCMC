@@ -27,8 +27,6 @@
 #import "TZImagePickerController.h"
 #import <UMMobClick/MobClick.h>
 #import <DYLocationConverter.h>
-#import <UINavigationController+FDFullscreenPopGesture.h>
-
 
 
 //自定义头文件

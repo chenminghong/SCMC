@@ -35,7 +35,7 @@
             self.shadowView.alpha = 0.5;
         }];
         
-        self.datePicker = [DatePickerView showInView:self frame:CGRectMake(0.0, CGRectGetHeight(frame) - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT) animationDuraton:K_ANIMATION_TIMEINTERVAL];
+        self.datePicker = [DatePickerView showInView:self frame:CGRectMake(0, CGRectGetHeight(frame) - K_TIME_PICKERVIEW_HEIGHT, kScreenWidth, K_TIME_PICKERVIEW_HEIGHT) animationDuraton:K_ANIMATION_TIMEINTERVAL];
         [self.datePicker.datePicker addTarget:self action:@selector(datePickerValueChanged:) forControlEvents:UIControlEventValueChanged];
         [self.datePicker.selectTImeBtn addTarget:self action:@selector(selectTimeButtonAction:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -81,10 +81,14 @@
  显示视图
  */
 + (PlanTimePickerView *)showTimeSelectViewInView:(UIView *)view withSelectBlock:(SelectBlock)selectBlock {
-    CGRect frame = [UIScreen mainScreen].bounds;
-    PlanTimePickerView *pickerView = [[PlanTimePickerView alloc] initWithFrame:CGRectMake(0, 64.0, frame.size.width, frame.size.height - 64)];
-    UIWindow *window = [UIApplication sharedApplication].keyWindow;
-    [window addSubview:pickerView];
+//    CGRect frame = [UIScreen mainScreen].bounds;
+//    PlanTimePickerView *pickerView = [[PlanTimePickerView alloc] initWithFrame:CGRectMake(0, 64.0, frame.size.width, frame.size.height - 64)];
+//    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+//    [window addSubview:pickerView];
+    
+    CGRect frame = view.bounds;
+    PlanTimePickerView *pickerView = [[PlanTimePickerView alloc] initWithFrame:frame];
+    [view addSubview:pickerView];
     
     pickerView.selectBlock = selectBlock;
     return pickerView;

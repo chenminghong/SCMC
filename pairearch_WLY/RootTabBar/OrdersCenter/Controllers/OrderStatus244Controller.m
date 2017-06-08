@@ -50,7 +50,12 @@
     NSDateFormatter *dateFormatter = [NSDateFormatter new];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
-    [MyImagePickerManager presentImagePickerControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_COMPLETE_API paraDict:@{@"userName":userName, @"orderCode":orderCode, @"lat":lat, @"lng":lng, @"locationTime":locationTime} endBlock:^(id responseObject, NSError *error) {
+    NSDictionary *paraDict = @{@"userName":userName,
+                               @"orderCode":orderCode,
+                               @"lat":lat, @"lng":lng,
+                               @"locationTime":locationTime};
+    
+    [MyImagePickerManager presentPhotoTakeControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_COMPLETE_API paraDict:paraDict endBlock:^(id responseObject, NSError *error) {
         if (!error) {
             NSLog(@"%@", responseObject);
             NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
@@ -59,6 +64,16 @@
             [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
     }];
+    
+//    [MyImagePickerManager presentImagePickerControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_COMPLETE_API paraDict:@{@"userName":userName, @"orderCode":orderCode, @"lat":lat, @"lng":lng, @"locationTime":locationTime} endBlock:^(id responseObject, NSError *error) {
+//        if (!error) {
+//            NSLog(@"%@", responseObject);
+//            NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
+//            [ProgressHUD bwm_showTitle:remarkStr toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+//        } else {
+//            [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+//        }
+//    }];
 }
 
 - (void)didReceiveMemoryWarning {
