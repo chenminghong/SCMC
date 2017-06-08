@@ -12,7 +12,7 @@
 typedef void(^FinishPickerBlock)(NSDictionary *info);
 typedef void(^FinishPostBlock)(id responseObject, NSError *error);
 
-@interface MyImagePickerManager : NSObject<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface MyImagePickerManager : NSObject<UIImagePickerControllerDelegate, UINavigationControllerDelegate, TZImagePickerControllerDelegate>
 
 @property (nonatomic, strong) UIImagePickerController *imagePickerVC;
 

@@ -111,6 +111,54 @@
     }
     NSString *type = [info objectForKey:UIImagePickerControllerMediaType];
     if ([type isEqualToString:@"public.image"]) {
+        
+//        [picker dismissViewControllerAnimated:YES completion:^{
+//            // save photo and get asset / 保存图片，获取到asset
+//            UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+//            [[TZImageManager manager] savePhotoWithImage:image completion:^(NSError *error){
+//                if (error) {
+//                    NSLog(@"图片保存失败 %@",error);
+//                } else {
+//                    TZImageManager *manager = [TZImageManager manager];
+//                    [[TZImageManager manager] getCameraRollAlbum:NO allowPickingImage:YES completion:^(TZAlbumModel *model) {
+//                        [[TZImageManager manager] getAssetsFromFetchResult:model.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
+//                            TZAssetModel *assetModel = [models firstObject];
+//                            if (manager.sortAscendingByModificationDate) {
+//                                assetModel = [models lastObject];
+//                            }
+//                            NSData *data = UIImageJPEGRepresentation(image, 0.4);
+//                            NSLog(@"length:%lu", data.length / 1000);
+//                            
+//                            NSString *photoTime = @"";
+//                            NSDateFormatter *dateFormatter = [NSDateFormatter new];
+//                            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//                            PHAsset *tempAsset = assetModel.asset;
+//                            photoTime = [dateFormatter stringFromDate:tempAsset.creationDate];
+//                            
+//                            NSMutableDictionary *tempParaDict = [NSMutableDictionary dictionaryWithDictionary:self.paraDict];
+//                            [tempParaDict setObject:photoTime forKey:@"photoTime"];
+//                            NSString *addressStr = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"address"]];
+//                            [tempParaDict setObject:addressStr forKey:@"address"];
+//                            
+//                            [NetworkHelper POST:self.urlStr parameters:tempParaDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+//                                [formData appendPartWithFileData:data name:@"photo" fileName:@"abnormal_upload.jpg" mimeType:@"image/jpeg"];
+//                            } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+//                                if (self.finishPostBlock) {
+//                                    self.finishPostBlock(responseObject, nil);
+//                                }
+//                            } failure:^(NSError *error) {
+//                                if (self.finishPostBlock) {
+//                                    self.finishPostBlock(nil, error);
+//                                }
+//                            }];
+//                        }];
+//                    }];
+//                }
+//            }];
+//        }];
+        
+        
+        
         UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
         __block NSData *data = UIImageJPEGRepresentation(image, 0.2);
         NSLog(@"%lu", data.length / 1000);
@@ -198,5 +246,6 @@
         }];
     }];
 }
+
 
 @end
