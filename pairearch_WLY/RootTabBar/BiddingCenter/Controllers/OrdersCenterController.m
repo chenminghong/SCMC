@@ -72,16 +72,11 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    NSInteger index = self.navigationController.tabBarController.selectedIndex;
-    if (index != 2) {
+    if (self.tabBarController.selectedIndex != 2) {
         [self.navigationController setNavigationBarHidden:YES];
     } else {
         [self.navigationController setNavigationBarHidden:YES animated:YES];
     }
-    
-//    if (!self.navigationController.isNavigationBarHidden) {
-//        [self.navigationController setNavigationBarHidden:YES animated:YES];
-//    }
     
     [self.collectionView reloadData];
 }
