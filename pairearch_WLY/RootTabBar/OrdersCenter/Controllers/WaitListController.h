@@ -10,6 +10,8 @@
 
 @interface WaitListController : BaseViewController
 
-@property (nonatomic, strong) NSString *tipsStr;  //提示信息
+@property (nonatomic, copy) NSString *tipsStr;  //提示信息
+
+@property (nonatomic, copy) NSString *tipsTitleStr;   //标题文字
 
 @end

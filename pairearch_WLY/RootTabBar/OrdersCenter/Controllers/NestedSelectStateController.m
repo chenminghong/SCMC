@@ -198,6 +198,7 @@
             self.title = @"装货候补排队";
             childVC.tipsStr = @"您已签到成功，并进入候补排队队列，请联系承运商申请装货入厂排队！";
         }
+        childVC.tipsTitleStr = self.title;
     } else if (status == 1) {
         //调用当前运能情况接口（返回0或者1）
         self.title = @"入厂提示";

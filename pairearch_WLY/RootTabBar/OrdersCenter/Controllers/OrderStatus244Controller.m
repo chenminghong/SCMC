@@ -57,7 +57,6 @@
     
     [MyImagePickerManager presentPhotoTakeControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_COMPLETE_API paraDict:paraDict endBlock:^(id responseObject, NSError *error) {
         if (!error) {
-            NSLog(@"%@", responseObject);
             NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
             [ProgressHUD bwm_showTitle:remarkStr toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         } else {

@@ -25,8 +25,7 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidLayoutSubviews {
     self.codeNumberLabel.text = [NSString stringWithFormat:@"%@", self.code];
     self.codeImageView.image = [CreatQRCodeAndBarCodeFromLeon generateBarCode:self.code size:CGSizeMake(kScreenWidth, kScreenWidth * 9.0 / 16.0) color:[UIColor blackColor] backGroundColor:nil];
 }

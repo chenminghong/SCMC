@@ -12,6 +12,7 @@
 		0F634CFB1EC5CD7600CFB8AB /* NestedSelectStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */; };
 		0F67C68C1EE7E91400AC9155 /* BiddingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67C68A1EE7E91400AC9155 /* BiddingListController.m */; };
 		0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */; };
+		0F67C6911EEA8D7900AC9155 /* YQImageCompressTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67C6901EEA8D7900AC9155 /* YQImageCompressTool.m */; };
 		0F8986511ED3D36B007DCDD0 /* BiddingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */; };
 		0F8986521ED3D36B007DCDD0 /* BiddingDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */; };
 		0F8986551ED3D38D007DCDD0 /* BiddingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986541ED3D38D007DCDD0 /* BiddingDetailModel.m */; };
@@ -185,6 +186,8 @@
 		0F67C6891EE7E91400AC9155 /* BiddingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingListController.h; sourceTree = "<group>"; };
 		0F67C68A1EE7E91400AC9155 /* BiddingListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiddingListController.m; sourceTree = "<group>"; };
 		0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiddingListController.xib; sourceTree = "<group>"; };
+		0F67C68F1EEA8D7900AC9155 /* YQImageCompressTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YQImageCompressTool.h; sourceTree = "<group>"; };
+		0F67C6901EEA8D7900AC9155 /* YQImageCompressTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YQImageCompressTool.m; sourceTree = "<group>"; };
 		0F89864E1ED3D36B007DCDD0 /* BiddingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingDetailController.h; sourceTree = "<group>"; };
 		0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiddingDetailController.m; sourceTree = "<group>"; };
 		0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiddingDetailController.xib; sourceTree = "<group>"; };
@@ -454,6 +457,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F67C68E1EEA8D7900AC9155 /* YQImageCompressor */ = {
+			isa = PBXGroup;
+			children = (
+				0F67C68F1EEA8D7900AC9155 /* YQImageCompressTool.h */,
+				0F67C6901EEA8D7900AC9155 /* YQImageCompressTool.m */,
+			);
+			path = YQImageCompressor;
+			sourceTree = "<group>";
+		};
 		0FA20D1E1EC471AA005C2015 /* BiddingCenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -923,6 +935,7 @@
 		B384109E1E5C3CFE00F7069F /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				0F67C68E1EEA8D7900AC9155 /* YQImageCompressor */,
 				0FE58E3A1EC984130041E1D9 /* ProgressHUD */,
 				0FE58E0C1EC980C30041E1D9 /* SGQRCode */,
 				0FE5C0021EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon */,
@@ -1352,6 +1365,7 @@
 				B3D3B2A81E66EA550033EF84 /* HomeTableCell.m in Sources */,
 				B38411121E5D875700F7069F /* MJRefreshUtil.m in Sources */,
 				B384113B1E5E832C00F7069F /* AlterPasswordViewController.m in Sources */,
+				0F67C6911EEA8D7900AC9155 /* YQImageCompressTool.m in Sources */,
 				0FE58E381EC980C30041E1D9 /* SGAlertView.m in Sources */,
 				B384111C1E5D886000F7069F /* LoginTextField.m in Sources */,
 				B384113A1E5E832C00F7069F /* AboutUsViewController.m in Sources */,

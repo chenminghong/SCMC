@@ -67,7 +67,6 @@
     [MyImagePickerManager presentPhotoTakeControllerInTarget:self finishPickingBlock:nil postUrlStr:self.warehouseType.integerValue==STORAGE_TYPE_INSIDE? IN_LOAD_END_API:OUT_LOAD_END_API paraDict:paraDict endBlock:^(id responseObject, NSError *error) {
         if (!error) {
             NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
-            NSLog(@"%@", responseObject);
             [ProgressHUD bwm_showTitle:remarkStr toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         } else {
             [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];

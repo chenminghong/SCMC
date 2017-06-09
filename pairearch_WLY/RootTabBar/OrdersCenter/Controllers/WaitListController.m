@@ -11,6 +11,7 @@
 @interface WaitListController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tipsTitleLabel;
 
 @end
 
@@ -21,9 +22,15 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tipsLabel.text = self.tipsStr;
+}
+
+- (void)setTipsTitleStr:(NSString *)tipsTitleStr {
+    _tipsTitleStr = tipsTitleStr;
+    self.tipsTitleLabel.text = tipsTitleStr;
 }
 
 - (void)setTipsStr:(NSString *)tipsStr {

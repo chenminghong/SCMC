@@ -27,6 +27,9 @@
 #import "TZImagePickerController.h"
 #import <UMMobClick/MobClick.h>
 #import <DYLocationConverter.h>
+#import "YQImageCompressTool.h"
+#import <UIImage+ImageCompress.h>
+
 
 
 //自定义头文件

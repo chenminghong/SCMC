@@ -28,10 +28,10 @@
     self.startScanButton.backgroundColor = MAIN_THEME_COLOR;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
+- (void)viewDidLayoutSubviews {
     self.codeLabel.text = [NSString stringWithFormat:@"运单号：%@", self.code];
 }
+
 
 
 /**
@@ -50,23 +50,6 @@
 }
 
 - (IBAction)scanButtonAction:(UIButton *)sender {
-    //获取摄像设备
-//    AVCaptureDevice *device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
-//    if (device) {
-//        __weak typeof(self) weakself = self;
-//        SGScanningQRCodeVC *codeVC = [SGScanningQRCodeVC getSgscanningQRCodeVCWithResultBlock:^(NSString *scanResult) {
-//            //扫描结束回调
-//            NSLog(@"%@", scanResult);
-//            NSDictionary *paraDict = @{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"", @"orderCode":scanResult};
-//            [self networkWithUrlStr:LOAD_START_API paraDict:paraDict];
-//        }];
-//        NavigationController *naviNC = [[NavigationController alloc] initWithRootViewController:codeVC];
-//        codeVC.navigationItem.leftBarButtonItem = [NavigationController getNavigationBackItemWithTarget:codeVC SEL:@selector(dismissModalViewControllerAnimated:)];
-//        [weakself presentViewController:naviNC animated:YES completion:nil];
-//    } else {
-//        [MBProgressHUD bwm_showTitle:@"⚠️ 警告:未检测到您的摄像头, 请在真机上测试" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-//    }
-    
     //选择图片并且上传
     NSString *userName = [LoginModel shareLoginModel].tel;
     NSString *orderCode = self.code;

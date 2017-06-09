@@ -27,26 +27,11 @@
     self.signButton.backgroundColor = MAIN_THEME_COLOR;
 }
 
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    if (self.planAchieveTime.length <= 0) {
-//        [self showTimeSelectView];
-//    }
-//}
-
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     if (self.planAchieveTime.length <= 0) {
         [self showTimeSelectView];
     }
-}
-
-- (void)viewWillDisappear:(BOOL)animated {
-    [super viewWillDisappear:animated];
-//    if (self.timeView) {
-//        [self.timeView removeFromSuperview];
-//    }
 }
 
 - (void)setPlanAchieveTime:(NSString *)planAchieveTime {
@@ -72,6 +57,9 @@
 
 
 - (PlanTimePickerView *)showTimeSelectView {
+    if (_timeView) {
+        [_timeView removeFromSuperview];
+    }
     __weak typeof(self) weakSelf = self;
     self.timeView = [PlanTimePickerView showTimeSelectViewInView:self.view withSelectBlock:^(NSDictionary *selectParaDict) {
         NSMutableDictionary *paraDict = [NSMutableDictionary dictionaryWithDictionary:selectParaDict];

@@ -12,6 +12,7 @@ pod 'TZImagePickerController'
 pod 'UMengAnalytics-NO-IDFA'
 pod 'FDFullscreenPopGesture'     #全屏手势返回库
 pod 'KMNavigationBarTransition'  #自定义pop、push动画库
+pod 'UIImage+ImageCompress'
 
 pod 'DYLocationConverter', '~> 0.0.4'
 pod 'MBProgressHUD+BWMExtension', '~> 1.0.1'
@@ -22,7 +23,6 @@ pod 'SAMKeychain', '~> 1.5.2'
 pod 'XHVersion', '~> 1.0.1'
 pod 'JPush', '~> 3.0.2'
 pod 'XFDialogBuilder', '~> 1.2.9'  #自定义弹出框
-
 
 
 
