@@ -185,7 +185,7 @@
                 HomePageModel *model = self.homePageModel.orderModelList[0];
                 [LocationManager shareManager].orderCode = model.code;  //开启定位上传
             } else {
-                [LocationManager shareManager].orderCode = nil;;   //结束定位上传
+                [LocationManager shareManager].orderCode = nil;   //结束定位上传
             }
         } else {
             [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];

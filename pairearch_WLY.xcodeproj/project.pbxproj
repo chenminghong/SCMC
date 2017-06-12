@@ -1488,7 +1488,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xin Zheng (DNBUL24P82)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = EATR485WEG;
+				DEVELOPMENT_TEAM = CB93LUJYU2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1508,7 +1508,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "636e480b-805c-41e6-8abc-ce446379b884";
+				PROVISIONING_PROFILE = "20820dc5-08ab-4154-bdbf-2a5d2f4ec038";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1540,7 +1540,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Xin Zheng (DNBUL24P82)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = EATR485WEG;
+				DEVELOPMENT_TEAM = CB93LUJYU2;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1553,7 +1553,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "636e480b-805c-41e6-8abc-ce446379b884";
+				PROVISIONING_PROFILE = "20820dc5-08ab-4154-bdbf-2a5d2f4ec038";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1567,9 +1567,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = pairearch_WLY/pairearch_WLY.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xin Zheng (DNBUL24P82)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Paireach supply chain management Co., Ltd. (CB93LUJYU2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CB93LUJYU2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1613,9 +1613,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = pairearch_WLY/pairearch_WLY.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Xin Zheng (DNBUL24P82)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Paireach supply chain management Co., Ltd. (CB93LUJYU2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = CB93LUJYU2;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

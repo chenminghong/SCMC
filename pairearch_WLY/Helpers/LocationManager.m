@@ -8,7 +8,7 @@
 
 #import "LocationManager.h"
 
-#define UPLOAD_TIMEINTERVAL   30
+#define UPLOAD_TIMEINTERVAL   300
 
 @implementation LocationManager
 /**
@@ -87,9 +87,9 @@
     [paraDict setObject:[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"" forKey:@"driverTel"];
     [[NetworkHelper shareClient] POST:UPLOAD_LOCATION_API parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString *responseStr = [NSString stringWithFormat:@"%@", [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil]];
-//        NSLog(@"成功：%@", responseStr);
+        NSLog(@"成功：%@", responseStr);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-//        NSLog(@"%@", error.userInfo[ERROR_MSG]);
+        NSLog(@"%@", error.userInfo[ERROR_MSG]);
     }];
 }
 

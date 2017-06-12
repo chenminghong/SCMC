@@ -39,7 +39,7 @@
     [self startBaiduMob];
     
     //版本更新
-    [self checkAppVersion];
+//    [self checkAppVersion];
     
     //初始化JPush
     [self registerJpushWithOptions:launchOptions];
