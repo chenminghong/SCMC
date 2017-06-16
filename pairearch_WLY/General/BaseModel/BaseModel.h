@@ -48,6 +48,32 @@ typedef NS_ENUM(NSUInteger, WarehouseType) {
 //计算文字的宽度(定高)
 + (CGFloat)widthForTextString:(NSString *)tStr height:(CGFloat)tHeight fontSize:(CGFloat)tSize;
 
+/**
+ 获取网络运营商的IMSI
+ 
+ @return IMSI
+ */
++ (NSString *)getIMSI;
 
+/**
+ 获取SIM卡国家编码
+ 
+ @return MCC
+ */
++ (NSString *)getMobileCountryCode;
+
+/**
+ 获取SIM卡信息运营商编码
+ 
+ @return MNC
+ */
++ (NSString *)getMobileNetworkCode;
+
+/**
+ 获取CarrierName
+ 
+ @return name
+ */
++ (NSString *)getCarrierName;
 
 @end

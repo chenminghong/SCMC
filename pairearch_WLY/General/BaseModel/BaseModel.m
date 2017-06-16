@@ -17,6 +17,11 @@
 //获取设备型号
 #import <sys/utsname.h>
 
+//获取SIM卡信息
+#import <CoreTelephony/CTCarrier.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+
+
 #define SERVERKEY @"52a5dad279cd11e4b5ea0016maxinlin"
 
 @implementation BaseModel
@@ -289,6 +294,59 @@
     CGRect rect = [tStr boundingRectWithSize:CGSizeMake(MAXFLOAT, tHeight) options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesFontLeading|NSStringDrawingUsesLineFragmentOrigin attributes:dict context:nil];
     return rect.size.width + 5.0;
 }
+
+
+
+/**
+ 获取网络运营商的IMSI
+
+ @return IMSI
+ */
++ (NSString *)getIMSI {
+    NSString *mcc = [self getMobileCountryCode];
+    NSString *mnc = [self getMobileNetworkCode];
+    NSString *imsi = [NSString stringWithFormat:@"%@%@", mcc, mnc];
+    return imsi.length>0? imsi:@"";
+}
+
+
+/**
+ 获取SIM卡国家编码
+
+ @return MCC
+ */
++ (NSString *)getMobileCountryCode {
+    CTTelephonyNetworkInfo *info = [CTTelephonyNetworkInfo new];
+    CTCarrier *carrier = [info subscriberCellularProvider];
+    NSString *mcc = [carrier mobileCountryCode];
+    return mcc.length>0? mcc:@"";
+}
+
+
+/**
+ 获取手机网络运营商编码
+
+ @return MNC
+ */
++ (NSString *)getMobileNetworkCode {
+    CTTelephonyNetworkInfo *info = [CTTelephonyNetworkInfo new];
+    CTCarrier *carrier = [info subscriberCellularProvider];
+    NSString *mnc = [carrier mobileNetworkCode];
+    return mnc.length>0? mnc:@"";
+}
+
+/**
+ 获取CarrierName
+ 
+ @return name
+ */
++ (NSString *)getCarrierName {
+    CTTelephonyNetworkInfo *info = [CTTelephonyNetworkInfo new];
+    CTCarrier *carrier = [info subscriberCellularProvider];
+    NSString *name = [carrier carrierName];
+    return name.length>0? name:@"";
+}
+
 
 
 @end
