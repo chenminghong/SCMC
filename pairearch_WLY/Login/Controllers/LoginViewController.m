@@ -58,7 +58,7 @@
         self.userNameTF.iconName = @"usernumber";
         self.userNameTF.backgroundColor = [UIColor whiteColor];
         self.userNameTF.placeholder = @"手机号";
-        self.userNameTF.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
+        self.userNameTF.keyboardType = UIKeyboardTypeNumberPad;
         self.userNameTF.clearButtonMode = UITextFieldViewModeWhileEditing;
         self.userNameTF.borderStyle = UITextBorderStyleBezel;
         self.userNameTF.returnKeyType = UIReturnKeyDone;

@@ -53,10 +53,6 @@
     //添加友盟统计
     [self initUmengClick];
     
-    
-    NSString *name = [BaseModel getCarrierName];
-    NSLog(@"name:%@", name);
-    
     return YES;
 }
 
