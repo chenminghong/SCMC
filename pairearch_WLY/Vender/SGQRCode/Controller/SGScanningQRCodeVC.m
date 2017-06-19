@@ -159,10 +159,10 @@
     // 设置扫描范围(每一个取值0～1，以屏幕右上角为坐标原点)
     // 注：微信二维码的扫描范围是整个屏幕， 这里并没有做处理（可不用设置）
     
-    CGFloat scanContentViewW = self.view.bounds.size.width - 2 * scan_content_X;
-    CGFloat scanContentViewH = scanContentViewW;
-    CGRect frame = CGRectMake(scan_content_X, scan_content_Y, scanContentViewW, scanContentViewH);
-    NSLog(@"scanViewFrame:%@", NSStringFromCGRect(frame));
+//    CGFloat scanContentViewW = self.view.bounds.size.width - 2 * scan_content_X;
+//    CGFloat scanContentViewH = scanContentViewW;
+//    CGRect frame = CGRectMake(scan_content_X, scan_content_Y, scanContentViewW, scanContentViewH);
+//    NSLog(@"scanViewFrame:%@", NSStringFromCGRect(frame));
     
     
     output.rectOfInterest = CGRectMake(0.05, 0.2, 0.7, 0.6);
@@ -189,8 +189,8 @@
     self.previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:_session];
     _previewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
     _previewLayer.frame = self.view.layer.bounds;
-    CGRect tempRect = [self.previewLayer rectForMetadataOutputRectOfInterest:output.rectOfInterest];
-    NSLog(@"tempRect:%@", NSStringFromCGRect(tempRect));
+//    CGRect tempRect = [self.previewLayer rectForMetadataOutputRectOfInterest:output.rectOfInterest];
+//    NSLog(@"tempRect:%@", NSStringFromCGRect(tempRect));
     // 8、将图层插入当前视图
     [self.view.layer insertSublayer:_previewLayer atIndex:0];
     

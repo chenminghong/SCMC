@@ -59,10 +59,10 @@
         [self startTimer];
         
         NSDateComponents *cmps = [self getTimeintervalWithTimeinterval:interval];
-        NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", cmps.hour]:[NSString stringWithFormat:@"%ld", cmps.hour];
-        NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", cmps.minute]:[NSString stringWithFormat:@"%ld", cmps.minute];
-        NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", cmps.second]:[NSString stringWithFormat:@"%ld", cmps.second];
-        self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", cmps.day, hour, minute, second];
+        NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", (long)cmps.hour]:[NSString stringWithFormat:@"%ld", cmps.hour];
+        NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", (long)cmps.minute]:[NSString stringWithFormat:@"%ld", cmps.minute];
+        NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", (long)cmps.second]:[NSString stringWithFormat:@"%ld", cmps.second];
+        self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", (long)cmps.day, hour, minute, second];
     }
 }
 

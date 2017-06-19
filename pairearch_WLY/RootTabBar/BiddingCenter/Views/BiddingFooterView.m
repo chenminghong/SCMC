@@ -38,10 +38,10 @@
     NSDate *deadDate = [self stringToDate:deadLineTime withDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     self.interval = deadDate.timeIntervalSinceNow - 2 * 60 * 60;
     NSDateComponents *cmps = [self getTimeintervalWithTimeinterval:self.interval];
-    NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", cmps.hour]:[NSString stringWithFormat:@"%ld", cmps.hour];
-    NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", cmps.minute]:[NSString stringWithFormat:@"%ld", cmps.minute];
-    NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", cmps.second]:[NSString stringWithFormat:@"%ld", cmps.second];
-    self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", cmps.day, hour, minute, second];
+    NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", (long)cmps.hour]:[NSString stringWithFormat:@"%ld", (long)cmps.hour];
+    NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", (long)cmps.minute]:[NSString stringWithFormat:@"%ld", (long)cmps.minute];
+    NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", (long)cmps.second]:[NSString stringWithFormat:@"%ld", (long)cmps.second];
+    self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", (long)cmps.day, hour, minute, second];
     //开启定时器
     [self startTimer];
 }
@@ -83,10 +83,10 @@
     self.interval -= 1;
     NSDateComponents *cmps = [self getTimeintervalWithTimeinterval:self.interval];
 
-    NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", cmps.hour]:[NSString stringWithFormat:@"%ld", cmps.hour];
-    NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", cmps.minute]:[NSString stringWithFormat:@"%ld", cmps.minute];
-    NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", cmps.second]:[NSString stringWithFormat:@"%ld", cmps.second];
-    self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", cmps.day, hour, minute, second];
+    NSString *hour = cmps.hour<10? [NSString stringWithFormat:@"0%ld", (long)cmps.hour]:[NSString stringWithFormat:@"%ld", (long)cmps.hour];
+    NSString *minute = cmps.minute<10? [NSString stringWithFormat:@"0%ld", (long)cmps.minute]:[NSString stringWithFormat:@"%ld", (long)cmps.minute];
+    NSString *second = cmps.second<10? [NSString stringWithFormat:@"0%ld", (long)cmps.second]:[NSString stringWithFormat:@"%ld", (long)cmps.second];
+    self.remainderTimeLabel.text = [NSString stringWithFormat:@"%ld天  %@小时 %@分 %@秒", (long)cmps.day, hour, minute, second];
 }
 
 
