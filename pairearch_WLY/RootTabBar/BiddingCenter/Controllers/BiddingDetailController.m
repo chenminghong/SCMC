@@ -109,10 +109,16 @@
     }
     self.footerView.tonnageLabel.text = [NSString stringWithFormat:@"总重量：%.1f吨", weight];
     
+    if (self.biddingModel.supplieArr.count <= 0) {
+        return nil;
+    }
     BiddingDetailModel *model = self.biddingModel.supplieArr[0];
     [self.footerView.supplierButton setTitle:model.supplierName forState:UIControlStateNormal];
     self.supplierCode = model.supplierCode;
     
+    if (self.biddingModel.driverArr.count <= 0) {
+        return nil;
+    }
     model = self.biddingModel.driverArr[0];
     [self.footerView.plateNumberBotton setTitle:model.truckNumber forState:UIControlStateNormal];
     self.plateNumber = model.truckNumber;
