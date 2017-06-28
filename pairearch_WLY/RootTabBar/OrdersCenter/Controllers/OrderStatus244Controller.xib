@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderStatus244Controller">
             <connections>
+                <outlet property="completeBtn" destination="fnS-XY-WBB" id="yCa-YQ-ceE"/>
                 <outlet property="completeButton" destination="XXE-pi-MF4" id="t2y-Ks-LYH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -44,19 +45,34 @@
                         <constraint firstAttribute="height" constant="40" id="oQI-Z2-vVV"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <state key="normal" title="卸货完成拍照">
+                    <state key="normal" title="收货完成拍照">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="completeButtonAction:" destination="-1" eventType="touchUpInside" id="UMN-TW-CG3"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fnS-XY-WBB">
+                    <rect key="frame" x="100" y="219" width="175" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.65328338409999998" blue="0.43350003459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="收货完成">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="completeBtnAction:" destination="-1" eventType="touchUpInside" id="nAU-PB-OwE"/>
+                        <action selector="completeButtonAction:" destination="-1" eventType="touchUpInside" id="DgG-gv-iJk"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="fnS-XY-WBB" firstAttribute="top" secondItem="XXE-pi-MF4" secondAttribute="bottom" constant="30" id="2ri-O0-uRc"/>
                 <constraint firstItem="f6b-cV-t2b" firstAttribute="top" secondItem="F10-l8-rqq" secondAttribute="bottom" constant="5" id="5r6-wR-41X"/>
                 <constraint firstItem="XXE-pi-MF4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="AFU-Jg-0NC"/>
+                <constraint firstItem="fnS-XY-WBB" firstAttribute="height" secondItem="XXE-pi-MF4" secondAttribute="height" id="L65-ob-Inz"/>
                 <constraint firstItem="F10-l8-rqq" firstAttribute="top" secondItem="M76-8M-3Fr" secondAttribute="bottom" constant="20" id="LmV-2N-8Xs"/>
+                <constraint firstItem="fnS-XY-WBB" firstAttribute="centerX" secondItem="XXE-pi-MF4" secondAttribute="centerX" id="Mc8-LS-4n5"/>
                 <constraint firstAttribute="trailing" secondItem="F10-l8-rqq" secondAttribute="trailing" constant="20" id="N4U-UA-o88"/>
                 <constraint firstAttribute="trailing" secondItem="M76-8M-3Fr" secondAttribute="trailing" id="Rbc-7u-g2J"/>
                 <constraint firstItem="F10-l8-rqq" firstAttribute="top" secondItem="M76-8M-3Fr" secondAttribute="bottom" constant="20" id="TWR-Ds-HPT"/>
@@ -68,6 +84,7 @@
                 <constraint firstItem="M76-8M-3Fr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="hnr-f2-dNf"/>
                 <constraint firstItem="f6b-cV-t2b" firstAttribute="leading" secondItem="F10-l8-rqq" secondAttribute="leading" id="iNI-n3-ifL"/>
                 <constraint firstItem="M76-8M-3Fr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="pra-2S-zYN"/>
+                <constraint firstItem="fnS-XY-WBB" firstAttribute="width" secondItem="XXE-pi-MF4" secondAttribute="width" id="u9H-2E-X6g"/>
             </constraints>
         </view>
     </objects>
