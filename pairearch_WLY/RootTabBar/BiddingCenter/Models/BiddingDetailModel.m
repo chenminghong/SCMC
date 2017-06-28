@@ -42,7 +42,6 @@
     return [[NetworkHelper shareClientBidd] GET:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [hud hide:YES];
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-        NSString *dataStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         BiddingDetailModel *model = [BiddingDetailModel new];
         model.driverArr = [NSMutableArray arrayWithArray:[BiddingDetailModel getModelsWithDicts:responseObject[@"driver"]]];
         model.productArr = [NSMutableArray array];

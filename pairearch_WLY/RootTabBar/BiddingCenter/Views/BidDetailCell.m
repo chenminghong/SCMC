@@ -49,7 +49,7 @@
     self.reserveShiptimeLabel.text = [NSString stringWithFormat:@"计划装运日期：%@", detailModel.planDate];
     self.startNameLabel.text = detailModel.sourceName;
     self.stopNameLabel.text = detailModel.dcName;
-    self.tonnageLabel.text = [NSString stringWithFormat:@"%@吨", detailModel.tunnage];
+    self.tonnageLabel.text = [NSString stringWithFormat:@"%.1f吨", [detailModel.tunnage floatValue]];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
