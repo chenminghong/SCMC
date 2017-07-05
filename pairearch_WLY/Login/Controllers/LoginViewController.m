@@ -256,15 +256,15 @@
                                 @"model":[BaseModel iphoneType],
                                 @"is4G":@"1",
                                 @"wifiEnabled":@"1",
-                                @"networkOperatorName":[BaseModel getMobileNetworkCode],
+                                @"networkOperatorName":[BaseModel getCarrierName],
                                 @"imei":[SAMKeychainManager getUniquelyIdentifies],
                                 @"imsi":[BaseModel getIMSI],
                                 @"phoneType":@"0",
-                                @"simOperatorName":[BaseModel getCarrierName],
+                                @"simOperatorName":[BaseModel getMobileNetworkCode],
                                 @"phoneStatus":@"0",
-                                @"simCardNo":@"0",
+                                @"simCardNo":[SAMKeychainManager getUniquelyIdentifies],
                                 };
-    
+    NSLog(@"LoginParam:%@", paramDict);
     [LoginModel getDataWithParameters:paramDict endBlock:^(LoginModel *model, NSError *error) {
         [hud hide:YES];
         if (!error) {

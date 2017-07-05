@@ -11,6 +11,7 @@
 @interface OrderStatus244Controller ()
 @property (weak, nonatomic) IBOutlet UIButton *completeButton;
 @property (weak, nonatomic) IBOutlet UIButton *completeBtn;
+@property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
 
 @end
 
@@ -23,6 +24,7 @@
     self.completeButton.backgroundColor = MAIN_THEME_COLOR;
     self.completeBtn.backgroundColor = MAIN_THEME_COLOR;
     self.completeBtn.hidden = YES;
+    self.tipsLabel.hidden = YES;
 }
 
 /**
@@ -40,7 +42,7 @@
     }];
 }
 
-//收货完成拍照按钮点击事件
+//收货完成拍照按钮点击事件（需要上传图片）
 - (IBAction)completeButtonAction:(UIButton *)sender {
     
     //选择图片并且上传
@@ -63,19 +65,20 @@
             [ProgressHUD bwm_showTitle:remarkStr toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         } else {
             self.completeBtn.hidden = NO;
+            self.tipsLabel.hidden = NO;
             [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
     }];
 }
 
 
-//收货完成按钮点击事件
+//收货完成按钮点击事件（不需要上传图片）
 - (IBAction)completeBtnAction:(UIButton *)sender {
     NSDictionary *paraDict = @{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"",
                                @"orderCode":self.code,
                                @"lat":@"0",
                                @"lng":@"0"};
-    [self networkWithUrlStr:DELIVERY_COMPLETE_API paraDict:paraDict];
+    [self networkWithUrlStr:DELIVERY_COMPLETEBTN_API paraDict:paraDict];
 }
 
 - (void)didReceiveMemoryWarning {

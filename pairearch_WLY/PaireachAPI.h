@@ -53,7 +53,7 @@
 //是否可以进入装货工厂
 #define CAN_ENTERFAC_API                  @"canEnterFactory.a"              //post
 
-//装货开始扫码
+//装货开始拍照
 #define LOAD_START_API                    @"uploadBeforeLoadStart.a"        //post
 
 //装货结束扫码(外仓)
@@ -70,6 +70,9 @@
 
 //收货完成
 #define  DELIVERY_COMPLETE_API            @"uploadTakeGoods.a"              //post
+
+//收货完成（不需要上传图片）
+#define DELIVERY_COMPLETEBTN_API          @"orderHandling.a"                //post
 
 
 

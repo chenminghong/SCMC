@@ -252,7 +252,7 @@
         
         UIImage *compressImage = [UIImage compressImage:image compressRatio:0.05];
         NSData *imageData = UIImageJPEGRepresentation(compressImage, 0.3);
-        NSLog(@"imageDataLength:%u", imageData.length/1000);
+        NSLog(@"imageDataLength:%lu", imageData.length/1000);
         [[NetworkHelper shareClient] POST:self.urlStr parameters:tempParaDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
             [formData appendPartWithFileData:imageData name:@"photo" fileName:@"abnormal_upload.jpg" mimeType:@"image/jpeg"];
         } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

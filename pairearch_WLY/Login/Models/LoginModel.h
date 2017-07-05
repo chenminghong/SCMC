@@ -43,7 +43,7 @@
 
 @property (nonatomic, copy) NSString *idCard; //身份证号
 
-@property (nonatomic, copy) NSString *lastLoginTime;  //身份证号
+@property (nonatomic, copy) NSString *lastLoginTime;  //最后一次登录的时间
 
 @property (nonatomic, copy) NSString *logicState;
 

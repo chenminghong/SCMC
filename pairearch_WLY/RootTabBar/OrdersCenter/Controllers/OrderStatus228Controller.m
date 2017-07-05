@@ -61,7 +61,8 @@
     NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
     NSDictionary *paraDict = @{@"userName":userName,
                                @"orderCode":orderCode,
-                               @"lat":lat, @"lng":lng,
+                               @"lat":lat,
+                               @"lng":lng,
                                @"locationTime":locationTime};
     
     [MyImagePickerManager presentPhotoTakeControllerInTarget:self finishPickingBlock:nil postUrlStr:self.warehouseType.integerValue==STORAGE_TYPE_INSIDE? IN_LOAD_END_API:OUT_LOAD_END_API paraDict:paraDict endBlock:^(id responseObject, NSError *error) {

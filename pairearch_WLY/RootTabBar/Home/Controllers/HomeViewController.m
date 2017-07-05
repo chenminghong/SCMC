@@ -72,7 +72,6 @@
     self.userIconBtn.layer.masksToBounds = YES;
     self.userIconBtn.layer.cornerRadius = (kScreenWidth * 6) / 32 / 2.0;
     
-    
     self.userNameLabel.textColor = UIColorFromRGB(0x666666);
     self.userNumberLabel.textColor = UIColorFromRGB(0x666666);
     
@@ -190,7 +189,7 @@
         } else {
             [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
-        self.assortDesLabel.text = [NSString stringWithFormat:@"您有%@个运单可抢", self.homePageModel.bidcount];
+        self.assortDesLabel.text = [NSString stringWithFormat:@"您有%ld个运单可抢", self.homePageModel.bidcount.integerValue];
         [self.tableView reloadData];
         [MJRefreshUtil endRefresh:self.tableView];
         if ([self.homePageModel.loadResult integerValue] == 0) {

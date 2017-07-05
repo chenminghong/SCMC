@@ -264,20 +264,30 @@
  @param desStr 本地通知显示文字描述
  */
 - (void)addNetLocalNotificationWithDesStr:(NSString *)desStr {
-    UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
-    UNMutableNotificationContent *content = [UNMutableNotificationContent new];
-    content.body = [NSString localizedUserNotificationStringForKey:desStr arguments:nil];
-    content.sound = [UNNotificationSound defaultSound];
     
-    NSString *requestIdentifier = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
-    UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:nil];
-    
-    //添加推送成功后的处理！
-    [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
-        if (!error) {
-            NSLog(@"本地通知添加成功");
-        }
-    }];
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+        content.body = [NSString localizedUserNotificationStringForKey:desStr arguments:nil];
+        content.sound = [UNNotificationSound defaultSound];
+        
+        NSString *requestIdentifier = [NSString stringWithFormat:@"%.0f", [[NSDate date] timeIntervalSince1970]];
+        UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:requestIdentifier content:content trigger:nil];
+        
+        //添加推送成功后的处理！
+        [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+            if (!error) {
+                NSLog(@"本地通知添加成功");
+            }
+        }];
+    } else if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        localNotif.alertBody = [NSString stringWithFormat:@"%@", desStr];
+        //        localNotif.hasAction = NO;
+        //注意 ：  这里是立刻弹出通知，其实这里也可以来定时发出通知，或者倒计时发出通知
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+    }
 }
 
 //百度统计

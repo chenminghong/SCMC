@@ -21,8 +21,12 @@
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
 
+#import <dlfcn.h>
+
 
 #define SERVERKEY @"52a5dad279cd11e4b5ea0016maxinlin"
+
+#define PRIVATE_PATH "/System/Library/PrivateFrameworks/CoreTelephony.framework/CoreTelephony"
 
 @implementation BaseModel
 
@@ -346,7 +350,6 @@
     NSString *name = [carrier carrierName];
     return name.length>0? name:@"";
 }
-
 
 
 @end
