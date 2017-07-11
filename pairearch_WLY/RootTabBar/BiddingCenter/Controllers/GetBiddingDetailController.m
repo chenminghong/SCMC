@@ -45,7 +45,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self getDataFromNet];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,6 +53,11 @@
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
     self.title = @"订单详情";
+}
+
+- (void)setBidCode:(NSString *)bidCode {
+    _bidCode = bidCode;
+    [self getDataFromNet];
 }
 
 

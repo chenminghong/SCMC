@@ -56,7 +56,8 @@
     NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
     NSDictionary *paraDict = @{@"userName":userName,
                                @"orderCode":orderCode,
-                               @"lat":lat, @"lng":lng,
+                               @"lat":lat,
+                               @"lng":lng,
                                @"locationTime":locationTime};
     
     [MyImagePickerManager presentPhotoTakeControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_COMPLETE_API paraDict:paraDict endBlock:^(id responseObject, NSError *error) {
@@ -74,10 +75,25 @@
 
 //收货完成按钮点击事件（不需要上传图片）
 - (IBAction)completeBtnAction:(UIButton *)sender {
-    NSDictionary *paraDict = @{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"",
-                               @"orderCode":self.code,
-                               @"lat":@"0",
-                               @"lng":@"0"};
+//    NSDictionary *paraDict = @{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"",
+//                               @"orderCode":self.code,
+//                               @"lat":@"0",
+//                               @"lng":@"0"};
+    
+    //选择图片并且上传
+    NSString *userName = [LoginModel shareLoginModel].tel;
+    NSString *orderCode = self.code;
+    CLLocation *location =  [LocationManager shareManager].location;
+    NSString *lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    NSString *lng = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
+    NSDictionary *paraDict = @{@"userName":userName,
+                               @"orderCode":orderCode,
+                               @"lat":lat,
+                               @"lng":lng,
+                               @"locationTime":locationTime};
     [self networkWithUrlStr:DELIVERY_COMPLETEBTN_API paraDict:paraDict];
 }
 

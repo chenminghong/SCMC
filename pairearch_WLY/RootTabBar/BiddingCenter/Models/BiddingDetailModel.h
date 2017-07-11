@@ -41,8 +41,6 @@
 
 @property (nonatomic, copy) NSString *productName;         //产品名称
 
-//@property (nonatomic, copy) NSString *tunnage;             //重量
-
 @property (nonatomic, copy) NSString *planProductNums;     //计划数量
 
 

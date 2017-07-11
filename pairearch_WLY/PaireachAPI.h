@@ -59,7 +59,7 @@
 //装货结束扫码(外仓)
 #define OUT_LOAD_END_API                  @"outLoadEndUpload.a"             //post
 
-//装货结束扫码(内仓)
+//装货结束拍照(内仓)
 #define IN_LOAD_END_API                   @"uploadAfterLoadEnd.a"           //post
 
 //修改预计到货时间
