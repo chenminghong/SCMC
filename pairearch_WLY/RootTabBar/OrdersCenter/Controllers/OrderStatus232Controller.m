@@ -15,6 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *signButton;
 @property (nonatomic, strong) PlanTimePickerView *timeView;
 
+@property (weak, nonatomic) IBOutlet UIButton *completeBtn;
+@property (weak, nonatomic) IBOutlet UILabel *tipsLabel;
+
 @end
 
 @implementation OrderStatus232Controller
@@ -25,6 +28,10 @@
     
     self.planTimeButton.backgroundColor = MAIN_THEME_COLOR;
     self.signButton.backgroundColor = MAIN_THEME_COLOR;
+    
+    self.completeBtn.backgroundColor = MAIN_THEME_COLOR;
+    self.completeBtn.hidden = YES;
+    self.tipsLabel.hidden = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -43,7 +50,7 @@
         self.signButton.userInteractionEnabled = NO;
         self.signButton.backgroundColor = ABNORMAL_THEME_COLOR;
     } else {
-        self.planTimeButton .userInteractionEnabled = YES;
+        self.planTimeButton.userInteractionEnabled = YES;
         self.planTimeButton.backgroundColor = MAIN_THEME_COLOR;
         self.signButton.userInteractionEnabled = YES;
         self.signButton.backgroundColor = MAIN_THEME_COLOR;
@@ -106,27 +113,37 @@
                                @"lng":lng,
                                @"locationTime":locationTime};
     
-    
     [MyImagePickerManager presentPhotoTakeControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_SIGN_UP_API paraDict:paraDict endBlock:^(id responseObject, NSError *error) {
         if (!error) {
             NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
             NSLog(@"%@", responseObject);
             [ProgressHUD bwm_showTitle:remarkStr toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         } else {
+            self.completeBtn.hidden = NO;
+            self.tipsLabel.hidden = NO;
             [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
     }];
+}
+
+//收货完成按钮点击事件（不需要上传图片）
+- (IBAction)completeBtnAction:(UIButton *)sender {
+    //选择图片并且上传
+    NSString *userName = [LoginModel shareLoginModel].tel;
+    NSString *orderCode = self.code;
+    CLLocation *location =  [LocationManager shareManager].location;
+    NSString *lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];
+    NSString *lng = [NSString stringWithFormat:@"%f", location.coordinate.longitude];
+    NSDateFormatter *dateFormatter = [NSDateFormatter new];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *locationTime = [dateFormatter stringFromDate:location.timestamp];
+    NSDictionary *paraDict = @{@"userName":userName,
+                               @"orderCode":orderCode,
+                               @"lat":lat,
+                               @"lng":lng,
+                               @"locationTime":locationTime};
     
-//    [MyImagePickerManager presentImagePickerControllerInTarget:self finishPickingBlock:nil postUrlStr:DELIVERY_SIGN_UP_API paraDict:@{@"userName":userName, @"orderCode":orderCode, @"lat":lat, @"lng":lng, @"locationTime":locationTime} endBlock:^(id responseObject, NSError *error) {
-//        if (!error) {
-//            NSString *remarkStr = [NSString stringWithFormat:@"%@", responseObject[@"remark"]];
-//            NSLog(@"%@", responseObject);
-//            [ProgressHUD bwm_showTitle:remarkStr toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-//        } else {
-//            [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-//        }
-//    }];
-    
+    [self networkWithUrlStr:DELIVERY_COMPLETEBTN_API paraDict:paraDict];
 }
 
 - (void)didReceiveMemoryWarning {

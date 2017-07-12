@@ -10,8 +10,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OrderStatus232Controller">
             <connections>
+                <outlet property="completeBtn" destination="oy8-WR-dLZ" id="aUW-gw-0SV"/>
                 <outlet property="planTimeButton" destination="ivV-J8-w8M" id="MRr-oc-nKS"/>
                 <outlet property="signButton" destination="86I-9D-Gni" id="tRj-MQ-dS2"/>
+                <outlet property="tipsLabel" destination="tbJ-UZ-Jdd" id="oOT-CN-3nU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -53,7 +55,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86I-9D-Gni">
-                    <rect key="frame" x="100" y="597" width="174" height="40"/>
+                    <rect key="frame" x="100" y="510" width="174" height="40"/>
                     <color key="backgroundColor" red="1" green="0.65328338409999998" blue="0.43350003459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="jjw-9G-RVA"/>
@@ -66,8 +68,28 @@
                         <action selector="signButtonAction:" destination="-1" eventType="touchUpInside" id="zBp-Rg-6ra"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在到达收货地后点击下方按钮！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIg-zV-Ver">
-                    <rect key="frame" x="20" y="560" width="335" height="17"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在到达收货地后点击下方按钮：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIg-zV-Ver">
+                    <rect key="frame" x="20" y="473" width="335" height="17"/>
+                    <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy8-WR-dLZ">
+                    <rect key="frame" x="100" y="607" width="175" height="40"/>
+                    <color key="backgroundColor" red="1" green="0.65328338409999998" blue="0.43350003459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="WOF-GM-KHN"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="收货完成">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="completeBtnAction:" destination="-1" eventType="touchUpInside" id="VPx-G6-Brc"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拍照上传失败请点击下方按钮完成收货：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbJ-UZ-Jdd">
+                    <rect key="frame" x="20" y="580" width="335" height="17"/>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -81,18 +103,24 @@
                 <constraint firstItem="ZLo-bb-eZV" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="2Or-yQ-2nS"/>
                 <constraint firstItem="ivV-J8-w8M" firstAttribute="top" secondItem="P2n-e9-w3y" secondAttribute="bottom" constant="30" id="4bS-ON-WzN"/>
                 <constraint firstItem="tUm-1x-79v" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="BFu-ve-sWG"/>
+                <constraint firstAttribute="trailing" secondItem="tbJ-UZ-Jdd" secondAttribute="trailing" constant="20" id="C66-0W-WAH"/>
                 <constraint firstItem="P2n-e9-w3y" firstAttribute="leading" secondItem="ZLo-bb-eZV" secondAttribute="leading" id="E3D-t7-h7C"/>
                 <constraint firstAttribute="trailing" secondItem="tUm-1x-79v" secondAttribute="trailing" id="Enr-dD-u6a"/>
                 <constraint firstAttribute="trailing" secondItem="DIg-zV-Ver" secondAttribute="trailing" constant="20" id="FTi-G3-NcZ"/>
+                <constraint firstItem="oy8-WR-dLZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="KTh-YH-eaq"/>
+                <constraint firstItem="tbJ-UZ-Jdd" firstAttribute="top" secondItem="86I-9D-Gni" secondAttribute="bottom" constant="30" id="NJ1-VQ-7H7"/>
                 <constraint firstItem="86I-9D-Gni" firstAttribute="top" secondItem="DIg-zV-Ver" secondAttribute="bottom" constant="20" id="PUP-Kf-o9y"/>
                 <constraint firstItem="ZLo-bb-eZV" firstAttribute="top" secondItem="tUm-1x-79v" secondAttribute="bottom" constant="20" id="PaE-T6-XSA"/>
                 <constraint firstItem="P2n-e9-w3y" firstAttribute="trailing" secondItem="ZLo-bb-eZV" secondAttribute="trailing" id="SNW-pi-Gk8"/>
+                <constraint firstItem="tbJ-UZ-Jdd" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="TMe-dg-61M"/>
                 <constraint firstItem="86I-9D-Gni" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Z6r-CZ-jX2"/>
                 <constraint firstItem="DIg-zV-Ver" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="ZTq-jF-eqX"/>
                 <constraint firstItem="ZLo-bb-eZV" firstAttribute="top" secondItem="tUm-1x-79v" secondAttribute="bottom" constant="20" id="c4U-7V-SJf"/>
-                <constraint firstAttribute="bottom" secondItem="86I-9D-Gni" secondAttribute="bottom" constant="30" id="gsK-qf-gGX"/>
+                <constraint firstItem="oy8-WR-dLZ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="dle-wD-Cgj"/>
                 <constraint firstItem="86I-9D-Gni" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="mgc-Sj-ycU"/>
                 <constraint firstItem="tUm-1x-79v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="s4g-ty-Xqw"/>
+                <constraint firstItem="oy8-WR-dLZ" firstAttribute="top" secondItem="tbJ-UZ-Jdd" secondAttribute="bottom" constant="10" id="w8T-gk-2hK"/>
+                <constraint firstAttribute="bottom" secondItem="oy8-WR-dLZ" secondAttribute="bottom" constant="20" id="xfW-Cl-65n"/>
             </constraints>
         </view>
     </objects>
