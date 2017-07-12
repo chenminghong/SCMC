@@ -75,11 +75,6 @@
 
 //收货完成按钮点击事件（不需要上传图片）
 - (IBAction)completeBtnAction:(UIButton *)sender {
-//    NSDictionary *paraDict = @{@"userName":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"",
-//                               @"orderCode":self.code,
-//                               @"lat":@"0",
-//                               @"lng":@"0"};
-    
     //选择图片并且上传
     NSString *userName = [LoginModel shareLoginModel].tel;
     NSString *orderCode = self.code;
@@ -94,6 +89,7 @@
                                @"lat":lat,
                                @"lng":lng,
                                @"locationTime":locationTime};
+    
     [self networkWithUrlStr:DELIVERY_COMPLETEBTN_API paraDict:paraDict];
 }
 

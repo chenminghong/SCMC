@@ -72,7 +72,7 @@
 #define  DELIVERY_COMPLETE_API            @"uploadTakeGoods.a"              //post
 
 //收货完成（不需要上传图片）
-#define DELIVERY_COMPLETEBTN_API          @"orderHandling.a"                //post
+#define DELIVERY_COMPLETEBTN_API          @"unloadEndBeforeUrl.a"                //post
 
 
 
