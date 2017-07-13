@@ -182,7 +182,11 @@
             self.homePageModel = model;
             if (self.homePageModel.orderModelList.count > 0) {
                 HomePageModel *model = self.homePageModel.orderModelList[0];
-                [LocationManager shareManager].orderCode = model.code;  //开启定位上传
+                if ([model.status integerValue] > ORDER_STATUS_212) {
+                    [LocationManager shareManager].orderCode = model.code;  //开启定位上传
+                } else {
+                    [LocationManager shareManager].orderCode = nil;   //结束定位上传
+                }
             } else {
                 [LocationManager shareManager].orderCode = nil;   //结束定位上传
             }

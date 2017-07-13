@@ -70,7 +70,11 @@
                 [MBProgressHUD bwm_showTitle:@"暂无订单" toView:weakSelf.view hideAfter:HUD_HIDE_TIMEINTERVAL];
             } else {
                 HomePageModel *model = weakSelf.homeModel.orderModelList[0];
-                [LocationManager shareManager].orderCode = model.code;  //开启定位上传
+                if ([model.status integerValue] > ORDER_STATUS_212) {
+                    [LocationManager shareManager].orderCode = model.code;  //开启定位上传
+                } else {
+                    [LocationManager shareManager].orderCode = nil;  //关闭定位上传
+                }
             }
         } else {
             [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:weakSelf.view hideAfter:HUD_HIDE_TIMEINTERVAL];

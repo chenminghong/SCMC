@@ -192,6 +192,7 @@
             NSString *result = [NSString stringWithFormat:@"%@", responseObject[@"result"]];
             if ([result boolValue]) {
                 MBProgressHUD *hud = [MBProgressHUD bwm_showTitle:@"订单接收成功！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
+                [LocationManager shareManager].orderCode = self.homePageModel.code;  //开启定位上传
                 [hud setCompletionBlock:^() {
                     [self.navigationController popToRootViewControllerAnimated:YES];
                 }];
