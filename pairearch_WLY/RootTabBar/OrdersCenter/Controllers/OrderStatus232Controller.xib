@@ -55,7 +55,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="86I-9D-Gni">
-                    <rect key="frame" x="100" y="510" width="174" height="40"/>
+                    <rect key="frame" x="100" y="500" width="174" height="40"/>
                     <color key="backgroundColor" red="1" green="0.65328338409999998" blue="0.43350003459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="jjw-9G-RVA"/>
@@ -69,13 +69,13 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请在到达收货地后点击下方按钮：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIg-zV-Ver">
-                    <rect key="frame" x="20" y="473" width="335" height="17"/>
+                    <rect key="frame" x="20" y="463" width="335" height="17"/>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oy8-WR-dLZ">
-                    <rect key="frame" x="100" y="607" width="175" height="40"/>
+                    <rect key="frame" x="100" y="597" width="175" height="40"/>
                     <color key="backgroundColor" red="1" green="0.65328338409999998" blue="0.43350003459999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="WOF-GM-KHN"/>
@@ -89,7 +89,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="拍照上传失败请点击下方按钮完成收货：" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tbJ-UZ-Jdd">
-                    <rect key="frame" x="20" y="580" width="335" height="17"/>
+                    <rect key="frame" x="20" y="570" width="335" height="17"/>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -120,7 +120,7 @@
                 <constraint firstItem="86I-9D-Gni" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="100" id="mgc-Sj-ycU"/>
                 <constraint firstItem="tUm-1x-79v" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="s4g-ty-Xqw"/>
                 <constraint firstItem="oy8-WR-dLZ" firstAttribute="top" secondItem="tbJ-UZ-Jdd" secondAttribute="bottom" constant="10" id="w8T-gk-2hK"/>
-                <constraint firstAttribute="bottom" secondItem="oy8-WR-dLZ" secondAttribute="bottom" constant="20" id="xfW-Cl-65n"/>
+                <constraint firstAttribute="bottom" secondItem="oy8-WR-dLZ" secondAttribute="bottom" constant="30" id="xfW-Cl-65n"/>
             </constraints>
         </view>
     </objects>

@@ -91,7 +91,6 @@
 //抢单操作
 #define SCRATCH_ORDER_API                 @"saveScBidInfo.a"                //get
 
-
 //审核中
 #define IN_CHECK_API                      @"queryAllScOrderBidForaudit.a"   //get
 
