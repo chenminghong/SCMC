@@ -17,8 +17,6 @@
 
 @interface OrdersViewController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (nonatomic, strong) UITableView *tableView;
-
 @property (nonatomic, strong) HomePageModel *homeModel;
 
 @end
@@ -32,8 +30,6 @@
     self.title = @"运单中心";
     
     [self.view addSubview:self.tableView];
-    
-    
 }
 
 - (void)viewDidAppear:(BOOL)animated {

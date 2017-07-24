@@ -10,4 +10,6 @@
 
 @interface OrdersViewController : BaseViewController
 
+@property (nonatomic, strong) UITableView *tableView;
+
 @end

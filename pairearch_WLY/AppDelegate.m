@@ -10,6 +10,7 @@
 
 #import "LoginViewController.h"
 #import "RootTabController.h"
+#import "OrdersViewController.h"
 #import <XHVersion.h>
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate, JPUSHRegisterDelegate>
@@ -149,6 +150,17 @@
     ;
     [[NSNotificationCenter defaultCenter] postNotificationName:GET_CUSTOM_MESSAGE_NAME object:nil userInfo:paraDict];
     [self addNetLocalNotificationWithDesStr:content];
+    
+    //刷新订单中心列表状态
+    RootTabController *rootVC = (RootTabController *)self.window.rootViewController;
+    if (rootVC && rootVC.selectedIndex == 1) {
+        NavigationController *naviNC = [rootVC.viewControllers objectAtIndex:1];
+        if (naviNC.viewControllers.count > 0
+            && [[[naviNC.viewControllers objectAtIndex:0] class] isSubclassOfClass:[OrdersViewController class]]) {
+            OrdersViewController *orderVC = [naviNC.viewControllers objectAtIndex:0];
+            [MJRefreshUtil begainRefresh:orderVC.tableView];
+        }
+    }
     
 }
 
