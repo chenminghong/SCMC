@@ -193,7 +193,7 @@
         } else {
             [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
-        self.assortDesLabel.text = [NSString stringWithFormat:@"您有%ld个运单可抢", self.homePageModel.bidcount.integerValue];
+        self.assortDesLabel.text = [NSString stringWithFormat:@"您有%ld个运单可抢", (long)self.homePageModel.bidcount.integerValue];
         [self.tableView reloadData];
         [MJRefreshUtil endRefresh:self.tableView];
         if ([self.homePageModel.loadResult integerValue] == 0) {

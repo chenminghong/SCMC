@@ -13,6 +13,8 @@
 #import "OrdersViewController.h"
 #import <XHVersion.h>
 
+#import <MediaPlayer/MediaPlayer.h>
+
 @interface AppDelegate ()<UNUserNotificationCenterDelegate, JPUSHRegisterDelegate>
 
 @end
@@ -54,7 +56,25 @@
     //添加友盟统计
     [self initUmengClick];
     
+    
+    [self setNowPlayingInfo];
     return YES;
+}
+
+#pragma mark -设置控制中心正在播放的信息
+-(void)setNowPlayingInfo {
+    NSMutableDictionary *songDict = [NSMutableDictionary dictionary];
+    //歌名
+    [songDict setObject:@"李白" forKey:MPMediaItemPropertyTitle];
+    //歌手名
+    [songDict setObject:@"李荣浩" forKey:MPMediaItemPropertyArtist];
+    //歌曲的总时间
+    [songDict setObject:@(150) forKeyedSubscript:MPMediaItemPropertyPlaybackDuration];
+    //设置歌曲图片
+    MPMediaItemArtwork *imageItem = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"1024"]];
+    [songDict setObject:imageItem forKey:MPMediaItemPropertyArtwork];
+    //设置控制中心歌曲信息
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:songDict];
 }
 
 //检查App版本信息
@@ -144,12 +164,38 @@
     NSDictionary *userInfo = [notification userInfo];
     NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extras = [userInfo valueForKey:@"extras"];
-    NSString *jsonStr = [extras valueForKey:@"params"]; //服务端传递的Extras附加字段，key是自己定义的
-    NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *paraDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil]
-    ;
-    [[NSNotificationCenter defaultCenter] postNotificationName:GET_CUSTOM_MESSAGE_NAME object:nil userInfo:paraDict];
-    [self addNetLocalNotificationWithDesStr:content];
+    if (extras) {
+        NSString *jsonStr = [extras valueForKey:@"params"]; //服务端传递的Extras附加字段，key是自己定义的
+        NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
+        if (jsonData) {
+            NSDictionary *paraDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+            [[NSNotificationCenter defaultCenter] postNotificationName:GET_CUSTOM_MESSAGE_NAME object:nil userInfo:paraDict];
+            
+            NSString *orderCode = [NSString stringWithFormat:@"%@", paraDict[@"orderCode"]];
+            NSInteger status = [paraDict[@"status"] integerValue];
+            if (status == ORDER_STATUS_224 ||
+                status == ORDER_STATUS_225 ||
+                status == ORDER_STATUS_227) {
+                [[NetworkHelper shareClient] GET:CAN_ENTERFAC_API parameters:@{@"userName":[LoginModel shareLoginModel].tel, @"orderCode":orderCode} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+                    if (str.integerValue == 1) {
+                        [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:orderCode repeatInterval:0];
+                        [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:[NSString stringWithFormat:@"%@_timer", orderCode] repeatInterval:60];
+                    } else {
+                        [BaseModel removeAllPendingLocalNotification];
+                        [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:orderCode repeatInterval:0];
+                    }
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    [self addNetLocalNotificationWithDesStr:content.length <= 0? @"":content];
+                }];
+            } else {
+                [BaseModel removeAllPendingLocalNotification];
+                [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:orderCode repeatInterval:0];
+                //        [self addNetLocalNotificationWithDesStr:content.length <= 0? @"":content];
+            }
+        }
+    }
+    
     
     //刷新订单中心列表状态
     RootTabController *rootVC = (RootTabController *)self.window.rootViewController;
@@ -163,6 +209,7 @@
     }
     
 }
+
 
 //注册本地通知
 - (void)registerLocalNotification {
@@ -237,6 +284,10 @@
     }
     completionHandler(UNNotificationPresentationOptionAlert);  //系统要求执行这个方法
     NSLog(@"%s\n%@", __func__, userInfo);
+    
+    //程序后台点击通知栏通知移除通知
+    NSString *identifier = response.notification.request.identifier;
+    [BaseModel removePendingLocalNotificationWithIdentifier:identifier];
 }
 
 

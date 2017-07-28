@@ -76,4 +76,24 @@ typedef NS_ENUM(NSUInteger, WarehouseType) {
  */
 + (NSString *)getCarrierName;
 
+/**
+ 添加本地通知
+ 
+ @param contentStr 需要提示的通知内容
+ @param identifier 通知的唯一标识
+ @param interval 通知重复执行的时间间隔
+ */
++ (void)addLocalNotificationWithContent:(NSString *)contentStr identifier:(NSString *)identifier repeatInterval:(NSTimeInterval)interval;
+
+/**
+ 移除相应的通知
+ 
+ @param identifier 需要移除的通知的唯一标识
+ */
++ (void)removePendingLocalNotificationWithIdentifier:(NSString *)identifier;
+
+/**
+ 移除所有的通知
+ */
++ (void)removeAllPendingLocalNotification;
 @end

@@ -352,4 +352,84 @@
 }
 
 
+/**
+ 添加本地通知
+
+ @param contentStr 需要提示的通知内容
+ @param identifier 通知的唯一标识
+ @param interval 通知重复执行的时间间隔
+ */
++ (void)addLocalNotificationWithContent:(NSString *)contentStr identifier:(NSString *)identifier repeatInterval:(NSTimeInterval)interval {
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        UNMutableNotificationContent *content = [UNMutableNotificationContent new];
+        content.body = [NSString localizedUserNotificationStringForKey:contentStr arguments:nil];
+        content.sound = [UNNotificationSound defaultSound];
+        if (interval > 0) {            
+            UNTimeIntervalNotificationTrigger *trigger1 = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:interval repeats:YES];
+            
+            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:trigger1];
+            
+            //添加推送成功后的处理！
+            [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if (!error) {
+                    NSLog(@"本地通知添加成功");
+                }
+            }];
+        } else {
+            UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:identifier content:content trigger:nil];
+            
+            //添加推送成功后的处理！
+            [center addNotificationRequest:request withCompletionHandler:^(NSError * _Nullable error) {
+                if (!error) {
+                    NSLog(@"本地通知添加成功");
+                }
+            }];
+        }
+    } else if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
+        UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        localNotif.alertBody = [NSString stringWithFormat:@"%@", contentStr];
+        if (interval > 0) {
+            localNotif.repeatInterval = interval;
+        } else {
+            localNotif.repeatInterval = 0;
+        }
+        //        localNotif.hasAction = NO;
+        //注意 ：  这里是立刻弹出通知，其实这里也可以来定时发出通知，或者倒计时发出通知
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+    }
+}
+
+
+/**
+ 移除相应的通知
+
+ @param identifier 需要移除的通知的唯一标识
+ */
++ (void)removePendingLocalNotificationWithIdentifier:(NSString *)identifier {
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center removePendingNotificationRequestsWithIdentifiers:@[identifier]];
+//        [center removeDeliveredNotificationsWithIdentifiers:@[identifier]];
+    } else if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
+}
+
+
+/**
+ 移除所有的通知
+ */
++ (void)removeAllPendingLocalNotification {
+    if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) {
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        [center removeAllPendingNotificationRequests];
+//        [center removeAllDeliveredNotifications];
+    } else if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
+        [[UIApplication sharedApplication] cancelAllLocalNotifications];
+    }
+}
+
+
 @end
