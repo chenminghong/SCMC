@@ -13,7 +13,6 @@
 #import "OrdersViewController.h"
 #import <XHVersion.h>
 
-#import <MediaPlayer/MediaPlayer.h>
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate, JPUSHRegisterDelegate>
 
@@ -56,25 +55,7 @@
     //添加友盟统计
     [self initUmengClick];
     
-    
-    [self setNowPlayingInfo];
     return YES;
-}
-
-#pragma mark -设置控制中心正在播放的信息
--(void)setNowPlayingInfo {
-    NSMutableDictionary *songDict = [NSMutableDictionary dictionary];
-    //歌名
-    [songDict setObject:@"李白" forKey:MPMediaItemPropertyTitle];
-    //歌手名
-    [songDict setObject:@"李荣浩" forKey:MPMediaItemPropertyArtist];
-    //歌曲的总时间
-    [songDict setObject:@(150) forKeyedSubscript:MPMediaItemPropertyPlaybackDuration];
-    //设置歌曲图片
-    MPMediaItemArtwork *imageItem = [[MPMediaItemArtwork alloc] initWithImage:[UIImage imageNamed:@"1024"]];
-    [songDict setObject:imageItem forKey:MPMediaItemPropertyArtwork];
-    //设置控制中心歌曲信息
-    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:songDict];
 }
 
 //检查App版本信息
