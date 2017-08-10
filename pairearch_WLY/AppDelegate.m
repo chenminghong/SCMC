@@ -55,7 +55,72 @@
     //添加友盟统计
     [self initUmengClick];
     
+    //提醒用户打开位置权限
+    [self notificationUserOpenLocationServer];
+    
     return YES;
+}
+
+/**
+ 检查是否开启位置服务功能
+ 
+ @return 返回是否开启位置服务
+ */
+- (BOOL)isLocationAuthorizationOpen {
+    if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
+        return NO;
+    } else
+        return YES;
+}
+
+
+/**
+ 获取是否打开位置服务权限
+ 
+ @return 返回是否打开位置服务权限
+ */
+- (BOOL)locationServicesEnabled {
+    if ([CLLocationManager locationServicesEnabled]) {
+        NSLog(@"手机gps定位已经开启");
+        return YES;
+    } else {
+        NSLog(@"手机gps定位未开启");
+        return NO;
+    }
+}
+
+
+/**
+ 提醒用户开启位置服务
+ */
+- (void)notificationUserOpenLocationServer {
+    if ([self locationServicesEnabled] && ![self isLocationAuthorizationOpen]) {
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:@"位置服务权限已关闭，是否现在去开启？" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        UIAlertAction *sure = [UIAlertAction actionWithTitle:@"设置" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            if ([UIDevice currentDevice].systemVersion.floatValue > 8.0) {
+                NSURL *url = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
+                if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                    [[UIApplication sharedApplication] openURL:url];
+                }
+            } else {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=LOCATION_SERVICES"]];
+            }
+        }];
+        
+        [alertController addAction:sure];
+        [alertController addAction:cancel];
+        
+        UIWindow *alertWindow = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+        alertWindow.rootViewController = [[UIViewController alloc] init];
+        alertWindow.windowLevel = UIWindowLevelAlert + 1;
+        [alertWindow makeKeyAndVisible];
+        [alertWindow.rootViewController presentViewController:alertController animated:YES completion:nil];
+    }
 }
 
 //检查App版本信息
