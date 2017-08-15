@@ -61,16 +61,17 @@
 - (void)loadDataFromNet {
     [self.listModelArr removeAllObjects];
     
-    [OrderListModel getDataWithUrl:IN_BIDDING_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
-        if (!error) {
-            self.listModelArr = [NSMutableArray arrayWithArray:model];
-        } else {
-            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.listTableView.superview hideAfter:HUD_HIDE_TIMEINTERVAL];
-        }
-        
-        [self.listTableView reloadData];
-        [MJRefreshUtil endRefresh:self.listTableView];
-    }];
+    
+//    [OrderListModel getDataWithUrl:IN_BIDDING_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+//        if (!error) {
+//            self.listModelArr = [NSMutableArray arrayWithArray:model];
+//        } else {
+//            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.listTableView.superview hideAfter:HUD_HIDE_TIMEINTERVAL];
+//        }
+//        
+//        [self.listTableView reloadData];
+//        [MJRefreshUtil endRefresh:self.listTableView];
+//    }];
 }
 
 #pragma marks -- TableViewDelegate

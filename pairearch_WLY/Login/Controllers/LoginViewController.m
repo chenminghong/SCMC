@@ -114,7 +114,7 @@
         self.bottomLabel.font = [UIFont systemFontOfSize:13.0];
         self.bottomLabel.textColor = UIColorFromRGB(0x666666);
 //        self.bottomLabel.backgroundColor = UIColorFromRGB(0xF1D6D8);
-        self.bottomLabel.backgroundColor = TOP_BOTTOMBAR_COLOR;
+        self.bottomLabel.backgroundColor = TOP_NAVIBAR_COLOR;
         [self.bottomLabel mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(self.view);
             make.bottom.equalTo(self.view);

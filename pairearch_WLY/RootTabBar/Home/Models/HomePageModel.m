@@ -10,9 +10,6 @@
 
 @implementation HomePageModel
 
-- (NSString *)code {
-    return [NSString stringWithFormat:@"%@", _code];
-}
 
 + (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock {
     return [NetworkHelper GET:url parameters:paramDict progress:nil success:^(NSURLSessionDataTask *task, MBProgressHUD *hud, id responseObject) {
@@ -33,6 +30,10 @@
     } failure:^(NSError *error) {
         endBlock(nil, error);
     }];
+}
+
+- (NSString *)code {
+    return [NSString stringWithFormat:@"%@", _code];
 }
 
 - (NSString *)wareDispatchTime {

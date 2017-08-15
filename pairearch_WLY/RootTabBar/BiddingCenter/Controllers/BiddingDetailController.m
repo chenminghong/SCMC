@@ -74,14 +74,24 @@
 }
 
 - (void)getDataFromNet {
-    [BiddingDetailModel getDataWithUrl:BIDDING_DETAIL_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} endBlock:^(id model, NSError *error) {
+    
+    [BiddingDetailModel getDataWithUrl:BIDDING_DETAIL_API parameters:@{} endBlock:^(id model, NSError *error) {
         if (!error) {
-            self.biddingModel = model;
+            
         } else {
-            [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+            
         }
-        [self.tableView reloadData];
     }];
+    
+    
+//    [BiddingDetailModel getDataWithUrl:BIDDING_DETAIL_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} endBlock:^(id model, NSError *error) {
+//        if (!error) {
+//            self.biddingModel = model;
+//        } else {
+//            [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+//        }
+//        [self.tableView reloadData];
+//    }];
 }
 
 #pragma mark -- UITableViewDelegate

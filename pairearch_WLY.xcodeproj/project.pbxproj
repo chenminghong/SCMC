@@ -57,6 +57,10 @@
 		0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0BF1EAE0B7D00CD7E00 /* Header212View.xib */; };
 		0FD9C0C31EAEDD4100CD7E00 /* FooterSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0C21EAEDD4100CD7E00 /* FooterSelectView.m */; };
 		0FD9C0C51EAEDD4E00CD7E00 /* FooterSelectView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0C41EAEDD4E00CD7E00 /* FooterSelectView.xib */; };
+		0FDCFE631F419CEE00EC15D1 /* HomeCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFE611F419CEE00EC15D1 /* HomeCollectionCell.m */; };
+		0FDCFE641F419CEE00EC15D1 /* HomeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDCFE621F419CEE00EC15D1 /* HomeCollectionCell.xib */; };
+		0FDCFE681F419F1F00EC15D1 /* CollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDCFE661F419F1F00EC15D1 /* CollectionViewCell.m */; };
+		0FDCFE691F419F1F00EC15D1 /* CollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDCFE671F419F1F00EC15D1 /* CollectionViewCell.xib */; };
 		0FDE40651ECB0DB600FAEF48 /* TimePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE40641ECB0DB600FAEF48 /* TimePickerView.m */; };
 		0FDE40671ECB0DC400FAEF48 /* TimePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE40661ECB0DC400FAEF48 /* TimePickerView.xib */; };
 		0FDE406A1ECB0FAE00FAEF48 /* DatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE40691ECB0FAE00FAEF48 /* DatePickerView.m */; };
@@ -261,6 +265,12 @@
 		0FD9C0C11EAEDD4100CD7E00 /* FooterSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FooterSelectView.h; sourceTree = "<group>"; };
 		0FD9C0C21EAEDD4100CD7E00 /* FooterSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FooterSelectView.m; sourceTree = "<group>"; };
 		0FD9C0C41EAEDD4E00CD7E00 /* FooterSelectView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FooterSelectView.xib; sourceTree = "<group>"; };
+		0FDCFE601F419CEE00EC15D1 /* HomeCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeCollectionCell.h; sourceTree = "<group>"; };
+		0FDCFE611F419CEE00EC15D1 /* HomeCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeCollectionCell.m; sourceTree = "<group>"; };
+		0FDCFE621F419CEE00EC15D1 /* HomeCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionCell.xib; sourceTree = "<group>"; };
+		0FDCFE651F419F1F00EC15D1 /* CollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionViewCell.h; sourceTree = "<group>"; };
+		0FDCFE661F419F1F00EC15D1 /* CollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionViewCell.m; sourceTree = "<group>"; };
+		0FDCFE671F419F1F00EC15D1 /* CollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectionViewCell.xib; sourceTree = "<group>"; };
 		0FDE40631ECB0DB600FAEF48 /* TimePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimePickerView.h; sourceTree = "<group>"; };
 		0FDE40641ECB0DB600FAEF48 /* TimePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimePickerView.m; sourceTree = "<group>"; };
 		0FDE40661ECB0DC400FAEF48 /* TimePickerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimePickerView.xib; sourceTree = "<group>"; };
@@ -1093,9 +1103,9 @@
 				0FE5BFF61EB0A9F900F82D97 /* Mistake212Controller.m */,
 				0FE5BFF01EB03CE300F82D97 /* SafetyControlController.h */,
 				0FE5BFF11EB03CE300F82D97 /* SafetyControlController.m */,
-				0FE5BFF31EB071ED00F82D97 /* SafetyControl.plist */,
 				0FE9632E1EBC6FE800F916DD /* OrderDetailController.h */,
 				0FE9632F1EBC6FE800F916DD /* OrderDetailController.m */,
+				0FE5BFF31EB071ED00F82D97 /* SafetyControl.plist */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -1137,6 +1147,12 @@
 				0FE963311EBC78C600F916DD /* OrderDetailCell.h */,
 				0FE963321EBC78C600F916DD /* OrderDetailCell.m */,
 				0FE963331EBC78C600F916DD /* OrderDetailCell.xib */,
+				0FDCFE601F419CEE00EC15D1 /* HomeCollectionCell.h */,
+				0FDCFE611F419CEE00EC15D1 /* HomeCollectionCell.m */,
+				0FDCFE621F419CEE00EC15D1 /* HomeCollectionCell.xib */,
+				0FDCFE651F419F1F00EC15D1 /* CollectionViewCell.h */,
+				0FDCFE661F419F1F00EC15D1 /* CollectionViewCell.m */,
+				0FDCFE671F419F1F00EC15D1 /* CollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1233,6 +1249,7 @@
 				0F8986831ED691CC007DCDD0 /* BidCheckingFooterView.xib in Resources */,
 				0FE58E301EC980C30041E1D9 /* QRCodebottomRight@3x.png in Resources */,
 				0F89865A1ED3E12B007DCDD0 /* BidDetailCell.xib in Resources */,
+				0FDCFE641F419CEE00EC15D1 /* HomeCollectionCell.xib in Resources */,
 				0FB06E311EE64D77009B68D8 /* GetBiddingDetailController.xib in Resources */,
 				0FE58E0B1EC97D6C0041E1D9 /* OrderStatus226Controller.xib in Resources */,
 				0FE58E331EC980C30041E1D9 /* QRCodeTopLeft@2x.png in Resources */,
@@ -1250,6 +1267,7 @@
 				0FDE406E1ECB0FC100FAEF48 /* DatePickerView.xib in Resources */,
 				B38411461E5E91DE00F7069F /* CancelLoginCell.xib in Resources */,
 				B32228E61E52A2C300ED50ED /* Assets.xcassets in Resources */,
+				0FDCFE691F419F1F00EC15D1 /* CollectionViewCell.xib in Resources */,
 				0FE58E341EC980C30041E1D9 /* QRCodeTopLeft@3x.png in Resources */,
 				0FE5C0011EB191F500F82D97 /* Mistake212Header.xib in Resources */,
 				0FE58E511EC9AC130041E1D9 /* OrderStatus224Controller.xib in Resources */,
@@ -1335,6 +1353,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FDCFE631F419CEE00EC15D1 /* HomeCollectionCell.m in Sources */,
 				0FA20D351EC471AA005C2015 /* OrdersCenterController.m in Sources */,
 				B38411131E5D875700F7069F /* URLHandleUtil.m in Sources */,
 				0FA20D3E1EC4788C005C2015 /* OrderListTableCell.m in Sources */,
@@ -1372,6 +1391,7 @@
 				0FE58E391EC980C30041E1D9 /* SGScanningQRCodeView.m in Sources */,
 				0FE963301EBC6FE800F916DD /* OrderDetailController.m in Sources */,
 				B37BA6CF1E80FA29001A74B8 /* AbnormalReportCell.m in Sources */,
+				0FDCFE681F419F1F00EC15D1 /* CollectionViewCell.m in Sources */,
 				B38410FB1E5D875700F7069F /* FileHelper.m in Sources */,
 				B384110D1E5D875700F7069F /* AlertInfoUtil.m in Sources */,
 				0FD9C0B61EADD88000CD7E00 /* OrdersViewController.m in Sources */,
@@ -1566,6 +1586,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_ENTITLEMENTS = pairearch_WLY/pairearch_WLY.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Paireach supply chain management Co., Ltd. (CB93LUJYU2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1612,6 +1633,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_ENTITLEMENTS = pairearch_WLY/pairearch_WLY.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Shanghai Paireach supply chain management Co., Ltd. (CB93LUJYU2)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";

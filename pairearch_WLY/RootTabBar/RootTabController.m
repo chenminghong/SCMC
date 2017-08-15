@@ -14,6 +14,8 @@
 #import "PersonalCenterViewController.h"
 #import "LoginViewController.h"
 
+#define BOTTOM_DESELECT_COLOR   UIColorFromRGB(0x808080)   //底部状态栏未选中颜色
+
 @interface RootTabController ()
 
 @end
@@ -35,25 +37,25 @@
     OrdersViewController *ordersVC = [ordersSB instantiateViewControllerWithIdentifier:@"OrdersViewController"];
     NavigationController *ordersNC = [self addNavigationItemForViewController:ordersVC];
     
-    UIStoryboard *orderSB = [UIStoryboard storyboardWithName:@"OrdersCenterController" bundle:[NSBundle mainBundle]];
-    OrdersCenterController *orderVC = [orderSB instantiateViewControllerWithIdentifier:@"OrdersCenterController"];
-    NavigationController *orderNC = [self addNavigationItemForViewController:orderVC];
+//    UIStoryboard *orderSB = [UIStoryboard storyboardWithName:@"OrdersCenterController" bundle:[NSBundle mainBundle]];
+//    OrdersCenterController *orderVC = [orderSB instantiateViewControllerWithIdentifier:@"OrdersCenterController"];
+//    NavigationController *orderNC = [self addNavigationItemForViewController:orderVC];
     
     PersonalCenterViewController *privateVC = [PersonalCenterViewController new];
     NavigationController *privateNC = [self addNavigationItemForViewController:privateVC];
     
     self.tabBar.translucent = NO;
-    self.tabBar.barTintColor = TOP_BOTTOMBAR_COLOR;
-    self.viewControllers = @[homeNC, ordersNC, orderNC, privateNC];
+    self.tabBar.barTintColor = BOTTOM_ITEMBAR_COLOR;
+    self.viewControllers = @[homeNC, ordersNC, privateNC];
     
-    NSArray *titles = @[@"首页", @"运单中心", @"竞价中心", @"我的"];
-    NSArray *images = @[@"zhuye", @"yundanzhongxin", @"bidding-icon", @"gerenzhongxin"];
+    NSArray *titles = @[@"首页", @"历史运单", @"个人中心"];
+    NSArray *images = @[@"zhuye", @"yundanzhongxin", @"gerenzhongxin"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
         [item setImage:[[UIImage imageNamed:images[idx]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
         [item setSelectedImage:[[UIImage imageNamed:[images[idx] stringByAppendingString:@"-sel"]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
-        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:MAIN_THEME_COLOR} forState:UIControlStateSelected];
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:BOTTOM_DESELECT_COLOR} forState:UIControlStateNormal];
+        [item setTitleTextAttributes:@{NSForegroundColorAttributeName:TOP_NAVIBAR_COLOR} forState:UIControlStateSelected];
     }];
 }
 

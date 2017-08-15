@@ -325,7 +325,7 @@
     //弹出选择相册
     TZImagePickerController *imagePickerVc = [[TZImagePickerController alloc] initWithMaxImagesCount:1 columnNumber:4 delegate:nil pushPhotoPickerVc:YES];
     [imagePickerVc.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0x666666), NSFontAttributeName:[UIFont systemFontOfSize:18.0]}];
-    imagePickerVc.navigationBar.barTintColor = TOP_BOTTOMBAR_COLOR;
+    imagePickerVc.navigationBar.barTintColor = TOP_NAVIBAR_COLOR;
     imagePickerVc.navigationBar.tintColor = UIColorFromRGB(0x666666);
     imagePickerVc.barItemTextFont = [UIFont systemFontOfSize:16.0];
     imagePickerVc.barItemTextColor = UIColorFromRGB(0x666666);
