@@ -19,14 +19,13 @@
     // Do any additional setup after loading the view.
     
     self.navigationBar.translucent = NO;
-    
     self.navigationBar.barTintColor = TOP_NAVIBAR_COLOR;
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:UIColorFromRGB(0xffffff), NSFontAttributeName:[UIFont systemFontOfSize:20.0]}];
     
     //隐藏navigationBar底部线条
     [self hideNavigationBarBottomLine];
-    [NavigationController setLinearGradientNavigationBackgroundWithNavigationBar:self.navigationBar startColor:UIColorFromRGB(0xe7ac30) endColor:UIColorFromRGB(0xf5bf43)];
-    [NavigationController setLinearGradientNavigationBackgroundWithNavigationBar:self.navigationBar startColor:TOP_NAVIBAR_COLOR endColor:[UIColor whiteColor]];
+    [NavigationController setLinearGradientNavigationBackgroundWithNavigationBar:self.navigationBar startColor:UIColorFromRGB(0xe7ac30) endColor:UIColorFromRGB(0xFFB74D)];
+//    [NavigationController setLinearGradientNavigationBackgroundWithNavigationBar:self.navigationBar startColor:TOP_NAVIBAR_COLOR endColor:[UIColor whiteColor]];
 }
 
 //找到navigationBar底部线条
@@ -46,9 +45,10 @@
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
     if (self.viewControllers.count > 0) {
-        viewController.navigationItem.leftBarButtonItem = [[self class] getNavigationBackItemWithTarget:self SEL:@selector(popBackAction:)];
+        viewController.navigationItem.leftBarButtonItems = [[self class] getNavigationBackItemsWithTarget:self SEL:@selector(popBackAction:)];
         viewController.hidesBottomBarWhenPushed = YES;
         [viewController.navigationController setNavigationBarHidden:NO animated:YES];
+        viewController.title = @"我来运";
     }
     [super pushViewController:viewController animated:animated];
 }
@@ -133,11 +133,23 @@
 //获取返回按钮
 + (UIBarButtonItem *)getNavigationBackItemWithTarget:(id)target SEL:(SEL)sel {
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    backBtn.frame = CGRectMake(0, 0, 18, 18);
+    backBtn.frame = CGRectMake(0, 0, 44, 44);
     [backBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     [backBtn addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     return backItem;
+}
+
+//获取返回按钮
++ (NSArray <UIBarButtonItem *>*)getNavigationBackItemsWithTarget:(id)target SEL:(SEL)sel {
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    backBtn.frame = CGRectMake(0, 0, 44, 44);
+    [backBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
+    [backBtn addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
+    UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spaceItem.width = -15;
+    return @[spaceItem, backItem];
 }
 
 - (void)popBackAction:(UIBarButtonItem *)back {

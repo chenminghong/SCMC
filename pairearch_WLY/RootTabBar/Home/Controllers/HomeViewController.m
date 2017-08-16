@@ -18,6 +18,7 @@
 //#import "BiddingListController.h"
 
 #import "HomeCollectionCell.h"
+#import "TUListController.h"
 
 @interface HomeViewController ()<SDCycleScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -73,6 +74,7 @@
         self.tableView.backgroundColor = UIColorFromRGB(0xf2f2f2);
         self.tableView.tableFooterView = [UITableView new];
         self.tableView.tableHeaderView = self.sdCycleView;
+        self.tableView.separatorColor = TABLE_SEPARATOR_COLOR;
         self.tableView.separatorInset = UIEdgeInsetsZero;
     }
     return _tableView;
@@ -101,8 +103,8 @@
         tipsView.backgroundColor = [UIColor redColor];
         [_newsButton addSubview:tipsView];
         [tipsView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(_newsButton.mas_top);
-            make.right.mas_equalTo(_newsButton.mas_right);
+            make.top.mas_equalTo(_newsButton.mas_top).with.offset(1);
+            make.right.mas_equalTo(_newsButton.mas_right).with.offset(1);
             make.size.mas_equalTo(CGSizeMake(5, 5));
         }];
         tipsView.layer.masksToBounds = YES;
@@ -174,7 +176,38 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomeCollectionCell *cell = [HomeCollectionCell getCellWithTableView:tableView indexPath:indexPath];
+    HomeCollectionCell *cell = [HomeCollectionCell getCellWithTableView:tableView indexPath:indexPath selectAction:^(NSIndexPath *indexPath) {
+        switch (indexPath.item) {
+            case 0:
+            {
+                [ProgressHUD bwm_showTitle:@"正在开发" toView:self.view hideAfter:1.0];
+            }
+                break;
+                
+            case 1:
+            {
+                [ProgressHUD bwm_showTitle:@"正在开发" toView:self.view hideAfter:1.0];
+            }
+                break;
+                
+            case 2:
+            {
+                TUListController *tulistVC = [TUListController new];
+                [self.navigationController pushViewController:tulistVC animated:YES];
+            }
+                break;
+                
+            case 3:
+            {
+                [ProgressHUD bwm_showTitle:@"正在开发" toView:self.view hideAfter:1.0];
+
+            }
+                break;
+                
+            default:
+                break;
+        }
+    }];
     return cell;
 }
 

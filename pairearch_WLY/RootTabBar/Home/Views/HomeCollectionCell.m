@@ -30,12 +30,13 @@
  @param indexPath 当前cell的位置
  @return 返回获取的cell
  */
-+ (instancetype)getCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath {
++ (instancetype)getCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath selectAction:(SelectCellBlock)selectAction {
     HomeCollectionCell *cell = [tableView dequeueReusableCellWithIdentifier:@"HomeCollectionCell"];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"HomeCollectionCell" owner:self options:nil] firstObject];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.selectAction = selectAction;
     return cell;
 }
 
@@ -73,7 +74,9 @@
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    [ProgressHUD bwm_showTitle:[NSString stringWithFormat:@"点击第%ld个", (long)indexPath.item+1] toView:[UIApplication sharedApplication].keyWindow hideAfter:1.0];
+    if (self.selectAction) {
+        self.selectAction(indexPath);
+    }
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^SelectCellBlock)(NSIndexPath *indexPath);
+
 @interface HomeCollectionCell : UITableViewCell<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+
+@property (nonatomic, copy) SelectCellBlock selectAction;  //点击cell回调
 
 
 
@@ -21,6 +25,6 @@
  @param indexPath 当前cell的位置
  @return 返回获取的cell
  */
-+ (instancetype)getCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath;
++ (instancetype)getCellWithTableView:(UITableView *)tableView indexPath:(NSIndexPath *)indexPath selectAction:(SelectCellBlock)selectAction;
 
 @end

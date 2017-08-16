@@ -101,8 +101,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    OrderListTableCell *cell = [OrderListTableCell getCellWithTable:tableView];
-    cell.orderModel = self.homeModel.orderModelList[indexPath.row];
+    OrderListTableCell *cell = [OrderListTableCell getListCellWithTable:tableView indexPath:indexPath];
+//    cell.orderModel = self.homeModel.orderModelList[indexPath.row];
     return cell;
 }
 
