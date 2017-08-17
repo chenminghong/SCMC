@@ -19,6 +19,7 @@
 
 #import "HomeCollectionCell.h"
 #import "TUListController.h"
+#import "OrderStatus220Controller.h"
 
 @interface HomeViewController ()<SDCycleScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -199,7 +200,8 @@
                 
             case 3:
             {
-                [ProgressHUD bwm_showTitle:@"正在开发" toView:self.view hideAfter:1.0];
+                OrderStatus220Controller *orderVC = [OrderStatus220Controller new];
+                [self.navigationController pushViewController:orderVC animated:YES];
 
             }
                 break;

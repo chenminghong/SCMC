@@ -11,7 +11,6 @@
 #import "OrderListTableCell.h"
 #import "HomePageModel.h"
 
-#import "OrderStatus212Controller.h"
 #import "Mistake212Controller.h"
 #import "NestedSelectStateController.h"
 
@@ -118,9 +117,9 @@
     switch (status) {
         case ORDER_STATUS_212://待接收
         {
-            OrderStatus212Controller *orderVC = [OrderStatus212Controller new];
-            orderVC.homePageModel = model;
-            [self.navigationController pushViewController:orderVC animated:YES];
+//            OrderStatus212Controller *orderVC = [OrderStatus212Controller new];
+//            orderVC.homePageModel = model;
+//            [self.navigationController pushViewController:orderVC animated:YES];
         }
             break;
             

@@ -37,8 +37,6 @@
         self.tableView.backgroundColor = UIColorFromRGB(0xfdf6de);
         self.tableView.tableFooterView = [UITableView new];
         self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-//        self.tableView.separatorInset = UIEdgeInsetsMake(0, 10, 0, 0);
-//        self.tableView.separatorColor = TABLE_SEPARATOR_COLOR;
     }
     return _tableView;
 }

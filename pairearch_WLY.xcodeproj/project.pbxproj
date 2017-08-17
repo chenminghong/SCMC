@@ -19,6 +19,9 @@
 		0F5E10CA1F444A640012BE79 /* OrderListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10C81F444A640012BE79 /* OrderListCell.xib */; };
 		0F5E10CD1F4451B80012BE79 /* OrderListTableFooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10CC1F4451B80012BE79 /* OrderListTableFooter.m */; };
 		0F5E10CF1F4451C30012BE79 /* OrderListTableFooter.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10CE1F4451C30012BE79 /* OrderListTableFooter.xib */; };
+		0F5E10D31F453EB10012BE79 /* OrderStatus220Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10D11F453EB10012BE79 /* OrderStatus220Controller.m */; };
+		0F5E10D41F453EB10012BE79 /* OrderStatus220Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10D21F453EB10012BE79 /* OrderStatus220Controller.xib */; };
+		0F5E10D71F45854D0012BE79 /* QrcodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10D61F45854D0012BE79 /* QrcodeHelper.m */; };
 		0F634CFB1EC5CD7600CFB8AB /* NestedSelectStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */; };
 		0F67C68C1EE7E91400AC9155 /* BiddingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67C68A1EE7E91400AC9155 /* BiddingListController.m */; };
 		0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */; };
@@ -60,7 +63,6 @@
 		0FB06E341EE65000009B68D8 /* GetBiddingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FB06E331EE65000009B68D8 /* GetBiddingDetailModel.m */; };
 		0FD9C0B61EADD88000CD7E00 /* OrdersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0B51EADD88000CD7E00 /* OrdersViewController.m */; };
 		0FD9C0B81EADD88D00CD7E00 /* OrdersViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */; };
-		0FD9C0BB1EADF6D700CD7E00 /* OrderStatus212Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0BA1EADF6D600CD7E00 /* OrderStatus212Controller.m */; };
 		0FD9C0BE1EAE0B7100CD7E00 /* Header212View.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0BD1EAE0B7100CD7E00 /* Header212View.m */; };
 		0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FD9C0BF1EAE0B7D00CD7E00 /* Header212View.xib */; };
 		0FD9C0C31EAEDD4100CD7E00 /* FooterSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FD9C0C21EAEDD4100CD7E00 /* FooterSelectView.m */; };
@@ -209,6 +211,11 @@
 		0F5E10CB1F4451B80012BE79 /* OrderListTableFooter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderListTableFooter.h; sourceTree = "<group>"; };
 		0F5E10CC1F4451B80012BE79 /* OrderListTableFooter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderListTableFooter.m; sourceTree = "<group>"; };
 		0F5E10CE1F4451C30012BE79 /* OrderListTableFooter.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderListTableFooter.xib; sourceTree = "<group>"; };
+		0F5E10D01F453EB10012BE79 /* OrderStatus220Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus220Controller.h; sourceTree = "<group>"; };
+		0F5E10D11F453EB10012BE79 /* OrderStatus220Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus220Controller.m; sourceTree = "<group>"; };
+		0F5E10D21F453EB10012BE79 /* OrderStatus220Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus220Controller.xib; sourceTree = "<group>"; };
+		0F5E10D51F45854D0012BE79 /* QrcodeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QrcodeHelper.h; sourceTree = "<group>"; };
+		0F5E10D61F45854D0012BE79 /* QrcodeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QrcodeHelper.m; sourceTree = "<group>"; };
 		0F634CF91EC5CD7600CFB8AB /* NestedSelectStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedSelectStateController.h; sourceTree = "<group>"; };
 		0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedSelectStateController.m; sourceTree = "<group>"; };
 		0F67C6891EE7E91400AC9155 /* BiddingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingListController.h; sourceTree = "<group>"; };
@@ -278,8 +285,6 @@
 		0FD9C0B41EADD88000CD7E00 /* OrdersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrdersViewController.h; sourceTree = "<group>"; };
 		0FD9C0B51EADD88000CD7E00 /* OrdersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrdersViewController.m; sourceTree = "<group>"; };
 		0FD9C0B71EADD88D00CD7E00 /* OrdersViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = OrdersViewController.storyboard; sourceTree = "<group>"; };
-		0FD9C0B91EADF6D600CD7E00 /* OrderStatus212Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus212Controller.h; sourceTree = "<group>"; };
-		0FD9C0BA1EADF6D600CD7E00 /* OrderStatus212Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus212Controller.m; sourceTree = "<group>"; };
 		0FD9C0BC1EAE0B7100CD7E00 /* Header212View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header212View.h; sourceTree = "<group>"; };
 		0FD9C0BD1EAE0B7100CD7E00 /* Header212View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Header212View.m; sourceTree = "<group>"; };
 		0FD9C0BF1EAE0B7D00CD7E00 /* Header212View.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Header212View.xib; sourceTree = "<group>"; };
@@ -946,6 +951,8 @@
 				B33090201E8BA4EA00CB898F /* SAMKeychainManager.m */,
 				0F4C92561EDEB69B00546AFF /* MyImagePickerManager.h */,
 				0F4C92571EDEB69B00546AFF /* MyImagePickerManager.m */,
+				0F5E10D51F45854D0012BE79 /* QrcodeHelper.h */,
+				0F5E10D61F45854D0012BE79 /* QrcodeHelper.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1116,11 +1123,12 @@
 				0F5E10B51F4410DB0012BE79 /* TUListController.m */,
 				0F5E10BE1F4445D70012BE79 /* OrderListController.h */,
 				0F5E10BF1F4445D70012BE79 /* OrderListController.m */,
+				0F5E10D01F453EB10012BE79 /* OrderStatus220Controller.h */,
+				0F5E10D11F453EB10012BE79 /* OrderStatus220Controller.m */,
+				0F5E10D21F453EB10012BE79 /* OrderStatus220Controller.xib */,
 				0F67C6891EE7E91400AC9155 /* BiddingListController.h */,
 				0F67C68A1EE7E91400AC9155 /* BiddingListController.m */,
 				0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */,
-				0FD9C0B91EADF6D600CD7E00 /* OrderStatus212Controller.h */,
-				0FD9C0BA1EADF6D600CD7E00 /* OrderStatus212Controller.m */,
 				0FE5BFF51EB0A9F900F82D97 /* Mistake212Controller.h */,
 				0FE5BFF61EB0A9F900F82D97 /* Mistake212Controller.m */,
 				0FE5BFF01EB03CE300F82D97 /* SafetyControlController.h */,
@@ -1292,6 +1300,7 @@
 				0FDE407B1ECE8F6700FAEF48 /* OrderStatus248Controller.xib in Resources */,
 				0FDE40671ECB0DC400FAEF48 /* TimePickerView.xib in Resources */,
 				0F8986781ED57861007DCDD0 /* BiddingCheckingController.xib in Resources */,
+				0F5E10D41F453EB10012BE79 /* OrderStatus220Controller.xib in Resources */,
 				0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */,
 				0F5E10CF1F4451C30012BE79 /* OrderListTableFooter.xib in Resources */,
 				0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */,
@@ -1421,6 +1430,7 @@
 				B3D3B2A81E66EA550033EF84 /* HomeTableCell.m in Sources */,
 				0F5E10C91F444A640012BE79 /* OrderListCell.m in Sources */,
 				B38411121E5D875700F7069F /* MJRefreshUtil.m in Sources */,
+				0F5E10D31F453EB10012BE79 /* OrderStatus220Controller.m in Sources */,
 				B384113B1E5E832C00F7069F /* AlterPasswordViewController.m in Sources */,
 				0F67C6911EEA8D7900AC9155 /* YQImageCompressTool.m in Sources */,
 				0FE58E381EC980C30041E1D9 /* SGAlertView.m in Sources */,
@@ -1452,6 +1462,7 @@
 				0F8986811ED691C1007DCDD0 /* BidCheckingFooterView.m in Sources */,
 				0FA20D141EC46BDE005C2015 /* OrdersModel.m in Sources */,
 				0F89866D1ED5406C007DCDD0 /* BidOrderDetailController.m in Sources */,
+				0F5E10D71F45854D0012BE79 /* QrcodeHelper.m in Sources */,
 				0F89867B1ED5837E007DCDD0 /* BiddingCheckingModel.m in Sources */,
 				0FA20D381EC471AA005C2015 /* ListTableCell.m in Sources */,
 				B3CC54C61E6037D60072EA47 /* WQLPaoMaView.m in Sources */,
@@ -1483,7 +1494,6 @@
 				B38411241E5E827600F7069F /* PersonalCenterViewController.m in Sources */,
 				0F89868C1ED7C675007DCDD0 /* WaitTimeoutController.m in Sources */,
 				0FB06E341EE65000009B68D8 /* GetBiddingDetailModel.m in Sources */,
-				0FD9C0BB1EADF6D700CD7E00 /* OrderStatus212Controller.m in Sources */,
 				B38410B61E5D375600F7069F /* BaseModel.m in Sources */,
 				0FE58E411EC99B9B0041E1D9 /* OrderStatus228Controller.m in Sources */,
 				B37BA6D51E8127A9001A74B8 /* LxGridViewFlowLayout.m in Sources */,

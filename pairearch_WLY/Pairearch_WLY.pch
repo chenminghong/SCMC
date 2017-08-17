@@ -52,6 +52,7 @@
 #import "CreatQRCodeAndBarCodeFromLeon.h"
 #import "ProgressHUD.h"
 #import "MyImagePickerManager.h"
+#import "QrcodeHelper.h"
 
 
 #pragma mark -- Define
