@@ -22,6 +22,15 @@
 		0F5E10D31F453EB10012BE79 /* OrderStatus220Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10D11F453EB10012BE79 /* OrderStatus220Controller.m */; };
 		0F5E10D41F453EB10012BE79 /* OrderStatus220Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10D21F453EB10012BE79 /* OrderStatus220Controller.xib */; };
 		0F5E10D71F45854D0012BE79 /* QrcodeHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10D61F45854D0012BE79 /* QrcodeHelper.m */; };
+		0F5E10DA1F4687630012BE79 /* CustomHexagonLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10D91F4687630012BE79 /* CustomHexagonLabel.m */; };
+		0F5E10DE1F468AF70012BE79 /* WaitEnterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10DC1F468AF70012BE79 /* WaitEnterController.m */; };
+		0F5E10DF1F468AF70012BE79 /* WaitEnterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10DD1F468AF70012BE79 /* WaitEnterController.xib */; };
+		0F5E10E31F46CA420012BE79 /* OrderStatus226Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10E11F46CA420012BE79 /* OrderStatus226Controller.m */; };
+		0F5E10E41F46CA420012BE79 /* OrderStatus226Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10E21F46CA420012BE79 /* OrderStatus226Controller.xib */; };
+		0F5E10E81F46CBEB0012BE79 /* PrepareEnterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10E61F46CBEB0012BE79 /* PrepareEnterController.m */; };
+		0F5E10E91F46CBEB0012BE79 /* PrepareEnterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10E71F46CBEB0012BE79 /* PrepareEnterController.xib */; };
+		0F5E10ED1F46CC1B0012BE79 /* PressEnterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10EB1F46CC1B0012BE79 /* PressEnterController.m */; };
+		0F5E10EE1F46CC1B0012BE79 /* PressEnterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10EC1F46CC1B0012BE79 /* PressEnterController.xib */; };
 		0F634CFB1EC5CD7600CFB8AB /* NestedSelectStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */; };
 		0F67C68C1EE7E91400AC9155 /* BiddingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67C68A1EE7E91400AC9155 /* BiddingListController.m */; };
 		0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */; };
@@ -81,8 +90,6 @@
 		0FDE407A1ECE8F6700FAEF48 /* OrderStatus248Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FDE40781ECE8F6700FAEF48 /* OrderStatus248Controller.m */; };
 		0FDE407B1ECE8F6700FAEF48 /* OrderStatus248Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FDE40791ECE8F6700FAEF48 /* OrderStatus248Controller.xib */; };
 		0FE58E061EC95A5A0041E1D9 /* OrderStatusKABaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E051EC95A5A0041E1D9 /* OrderStatusKABaseController.m */; };
-		0FE58E0A1EC97D6C0041E1D9 /* OrderStatus226Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E081EC97D6C0041E1D9 /* OrderStatus226Controller.m */; };
-		0FE58E0B1EC97D6C0041E1D9 /* OrderStatus226Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE58E091EC97D6C0041E1D9 /* OrderStatus226Controller.xib */; };
 		0FE58E291EC980C30041E1D9 /* CIImage+SGExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E0F1EC980C30041E1D9 /* CIImage+SGExtension.m */; };
 		0FE58E2A1EC980C30041E1D9 /* ScanSuccessJumpVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E121EC980C30041E1D9 /* ScanSuccessJumpVC.m */; };
 		0FE58E2B1EC980C30041E1D9 /* SGGenerateQRCodeVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E141EC980C30041E1D9 /* SGGenerateQRCodeVC.m */; };
@@ -216,6 +223,20 @@
 		0F5E10D21F453EB10012BE79 /* OrderStatus220Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus220Controller.xib; sourceTree = "<group>"; };
 		0F5E10D51F45854D0012BE79 /* QrcodeHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QrcodeHelper.h; sourceTree = "<group>"; };
 		0F5E10D61F45854D0012BE79 /* QrcodeHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QrcodeHelper.m; sourceTree = "<group>"; };
+		0F5E10D81F4687630012BE79 /* CustomHexagonLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomHexagonLabel.h; sourceTree = "<group>"; };
+		0F5E10D91F4687630012BE79 /* CustomHexagonLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomHexagonLabel.m; sourceTree = "<group>"; };
+		0F5E10DB1F468AF70012BE79 /* WaitEnterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitEnterController.h; sourceTree = "<group>"; };
+		0F5E10DC1F468AF70012BE79 /* WaitEnterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitEnterController.m; sourceTree = "<group>"; };
+		0F5E10DD1F468AF70012BE79 /* WaitEnterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitEnterController.xib; sourceTree = "<group>"; };
+		0F5E10E01F46CA420012BE79 /* OrderStatus226Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus226Controller.h; sourceTree = "<group>"; };
+		0F5E10E11F46CA420012BE79 /* OrderStatus226Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus226Controller.m; sourceTree = "<group>"; };
+		0F5E10E21F46CA420012BE79 /* OrderStatus226Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus226Controller.xib; sourceTree = "<group>"; };
+		0F5E10E51F46CBEB0012BE79 /* PrepareEnterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepareEnterController.h; sourceTree = "<group>"; };
+		0F5E10E61F46CBEB0012BE79 /* PrepareEnterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepareEnterController.m; sourceTree = "<group>"; };
+		0F5E10E71F46CBEB0012BE79 /* PrepareEnterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrepareEnterController.xib; sourceTree = "<group>"; };
+		0F5E10EA1F46CC1B0012BE79 /* PressEnterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PressEnterController.h; sourceTree = "<group>"; };
+		0F5E10EB1F46CC1B0012BE79 /* PressEnterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PressEnterController.m; sourceTree = "<group>"; };
+		0F5E10EC1F46CC1B0012BE79 /* PressEnterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PressEnterController.xib; sourceTree = "<group>"; };
 		0F634CF91EC5CD7600CFB8AB /* NestedSelectStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedSelectStateController.h; sourceTree = "<group>"; };
 		0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedSelectStateController.m; sourceTree = "<group>"; };
 		0F67C6891EE7E91400AC9155 /* BiddingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingListController.h; sourceTree = "<group>"; };
@@ -313,9 +334,6 @@
 		0FDE40791ECE8F6700FAEF48 /* OrderStatus248Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus248Controller.xib; sourceTree = "<group>"; };
 		0FE58E041EC95A5A0041E1D9 /* OrderStatusKABaseController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatusKABaseController.h; sourceTree = "<group>"; };
 		0FE58E051EC95A5A0041E1D9 /* OrderStatusKABaseController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatusKABaseController.m; sourceTree = "<group>"; };
-		0FE58E071EC97D6C0041E1D9 /* OrderStatus226Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus226Controller.h; sourceTree = "<group>"; };
-		0FE58E081EC97D6C0041E1D9 /* OrderStatus226Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus226Controller.m; sourceTree = "<group>"; };
-		0FE58E091EC97D6C0041E1D9 /* OrderStatus226Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus226Controller.xib; sourceTree = "<group>"; };
 		0FE58E0E1EC980C30041E1D9 /* CIImage+SGExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CIImage+SGExtension.h"; sourceTree = "<group>"; };
 		0FE58E0F1EC980C30041E1D9 /* CIImage+SGExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CIImage+SGExtension.m"; sourceTree = "<group>"; };
 		0FE58E111EC980C30041E1D9 /* ScanSuccessJumpVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanSuccessJumpVC.h; sourceTree = "<group>"; };
@@ -803,9 +821,6 @@
 				0FE58E4D1EC9AC130041E1D9 /* OrderStatus224Controller.h */,
 				0FE58E4E1EC9AC130041E1D9 /* OrderStatus224Controller.m */,
 				0FE58E4F1EC9AC130041E1D9 /* OrderStatus224Controller.xib */,
-				0FE58E071EC97D6C0041E1D9 /* OrderStatus226Controller.h */,
-				0FE58E081EC97D6C0041E1D9 /* OrderStatus226Controller.m */,
-				0FE58E091EC97D6C0041E1D9 /* OrderStatus226Controller.xib */,
 				0FE58E3E1EC99B9B0041E1D9 /* OrderStatus228Controller.h */,
 				0FE58E3F1EC99B9B0041E1D9 /* OrderStatus228Controller.m */,
 				0FE58E401EC99B9B0041E1D9 /* OrderStatus228Controller.xib */,
@@ -1126,6 +1141,18 @@
 				0F5E10D01F453EB10012BE79 /* OrderStatus220Controller.h */,
 				0F5E10D11F453EB10012BE79 /* OrderStatus220Controller.m */,
 				0F5E10D21F453EB10012BE79 /* OrderStatus220Controller.xib */,
+				0F5E10DB1F468AF70012BE79 /* WaitEnterController.h */,
+				0F5E10DC1F468AF70012BE79 /* WaitEnterController.m */,
+				0F5E10DD1F468AF70012BE79 /* WaitEnterController.xib */,
+				0F5E10E51F46CBEB0012BE79 /* PrepareEnterController.h */,
+				0F5E10E61F46CBEB0012BE79 /* PrepareEnterController.m */,
+				0F5E10E71F46CBEB0012BE79 /* PrepareEnterController.xib */,
+				0F5E10EA1F46CC1B0012BE79 /* PressEnterController.h */,
+				0F5E10EB1F46CC1B0012BE79 /* PressEnterController.m */,
+				0F5E10EC1F46CC1B0012BE79 /* PressEnterController.xib */,
+				0F5E10E01F46CA420012BE79 /* OrderStatus226Controller.h */,
+				0F5E10E11F46CA420012BE79 /* OrderStatus226Controller.m */,
+				0F5E10E21F46CA420012BE79 /* OrderStatus226Controller.xib */,
 				0F67C6891EE7E91400AC9155 /* BiddingListController.h */,
 				0F67C68A1EE7E91400AC9155 /* BiddingListController.m */,
 				0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */,
@@ -1195,6 +1222,8 @@
 				0F5E10CB1F4451B80012BE79 /* OrderListTableFooter.h */,
 				0F5E10CC1F4451B80012BE79 /* OrderListTableFooter.m */,
 				0F5E10CE1F4451C30012BE79 /* OrderListTableFooter.xib */,
+				0F5E10D81F4687630012BE79 /* CustomHexagonLabel.h */,
+				0F5E10D91F4687630012BE79 /* CustomHexagonLabel.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1287,6 +1316,7 @@
 				0F8986951ED806EC007DCDD0 /* ButtonFooterView.xib in Resources */,
 				B37BA6D01E80FA29001A74B8 /* AbnormalReportCell.xib in Resources */,
 				B37BA6CB1E80D300001A74B8 /* AbnormalReportController.storyboard in Resources */,
+				0F5E10E91F46CBEB0012BE79 /* PrepareEnterController.xib in Resources */,
 				0F8986731ED5591A007DCDD0 /* BidOrderDetailCell.xib in Resources */,
 				0F8986831ED691CC007DCDD0 /* BidCheckingFooterView.xib in Resources */,
 				0F5E10BD1F4414860012BE79 /* TUListTableCell.xib in Resources */,
@@ -1294,7 +1324,6 @@
 				0F89865A1ED3E12B007DCDD0 /* BidDetailCell.xib in Resources */,
 				0FDCFE641F419CEE00EC15D1 /* HomeCollectionCell.xib in Resources */,
 				0FB06E311EE64D77009B68D8 /* GetBiddingDetailController.xib in Resources */,
-				0FE58E0B1EC97D6C0041E1D9 /* OrderStatus226Controller.xib in Resources */,
 				0FE58E331EC980C30041E1D9 /* QRCodeTopLeft@2x.png in Resources */,
 				0FE58E471EC9A11B0041E1D9 /* OrderStatus230Controller.xib in Resources */,
 				0FDE407B1ECE8F6700FAEF48 /* OrderStatus248Controller.xib in Resources */,
@@ -1306,6 +1335,7 @@
 				0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */,
 				0FE58E421EC99B9B0041E1D9 /* OrderStatus228Controller.xib in Resources */,
 				B32228E91E52A2C300ED50ED /* LaunchScreen.storyboard in Resources */,
+				0F5E10DF1F468AF70012BE79 /* WaitEnterController.xib in Resources */,
 				0FE58E321EC980C30041E1D9 /* QRCodeLine@3x.png in Resources */,
 				0FE58E2D1EC980C30041E1D9 /* QRCodebottomLeft@2x.png in Resources */,
 				0FE58E371EC980C30041E1D9 /* sound.caf in Resources */,
@@ -1313,6 +1343,7 @@
 				B38411461E5E91DE00F7069F /* CancelLoginCell.xib in Resources */,
 				B32228E61E52A2C300ED50ED /* Assets.xcassets in Resources */,
 				0FDCFE691F419F1F00EC15D1 /* CollectionViewCell.xib in Resources */,
+				0F5E10EE1F46CC1B0012BE79 /* PressEnterController.xib in Resources */,
 				0FE58E341EC980C30041E1D9 /* QRCodeTopLeft@3x.png in Resources */,
 				0FE5C0011EB191F500F82D97 /* Mistake212Header.xib in Resources */,
 				0FE58E511EC9AC130041E1D9 /* OrderStatus224Controller.xib in Resources */,
@@ -1333,6 +1364,7 @@
 				0FDE40761ECE8B4F00FAEF48 /* OrderStatus244Controller.xib in Resources */,
 				0F8986661ED42E08007DCDD0 /* BidSelectView.xib in Resources */,
 				0F8986611ED41AD1007DCDD0 /* BiddingFooterView.xib in Resources */,
+				0F5E10E41F46CA420012BE79 /* OrderStatus226Controller.xib in Resources */,
 				0F5E10C51F4446270012BE79 /* OrderListTableCell.xib in Resources */,
 				0FE5BFF41EB071ED00F82D97 /* SafetyControl.plist in Resources */,
 				0FE963351EBC78C600F916DD /* OrderDetailCell.xib in Resources */,
@@ -1411,6 +1443,7 @@
 				0F397C3B1EA0DF8E002F3A38 /* LocationManager.m in Sources */,
 				0F8986721ED5591A007DCDD0 /* BidOrderDetailCell.m in Sources */,
 				0F5E10C01F4445D70012BE79 /* OrderListController.m in Sources */,
+				0F5E10DA1F4687630012BE79 /* CustomHexagonLabel.m in Sources */,
 				B384110F1E5D875700F7069F /* FileDirPathUtil.m in Sources */,
 				0FDE406A1ECB0FAE00FAEF48 /* DatePickerView.m in Sources */,
 				B35727811E545865003F9B2F /* NetworkHelper.m in Sources */,
@@ -1418,6 +1451,7 @@
 				B37BA6C91E80C443001A74B8 /* AbnormalReportController.m in Sources */,
 				B38411401E5E89C700F7069F /* PersonalCenterCell.m in Sources */,
 				0FA20D3A1EC471AA005C2015 /* OrdersCollectionCell.m in Sources */,
+				0F5E10DE1F468AF70012BE79 /* WaitEnterController.m in Sources */,
 				0F4C92581EDEB69B00546AFF /* MyImagePickerManager.m in Sources */,
 				0FE58E2A1EC980C30041E1D9 /* ScanSuccessJumpVC.m in Sources */,
 				B384111B1E5D886000F7069F /* LoginViewController.m in Sources */,
@@ -1438,6 +1472,7 @@
 				B384113A1E5E832C00F7069F /* AboutUsViewController.m in Sources */,
 				0FE58E391EC980C30041E1D9 /* SGScanningQRCodeView.m in Sources */,
 				0FE963301EBC6FE800F916DD /* OrderDetailController.m in Sources */,
+				0F5E10E31F46CA420012BE79 /* OrderStatus226Controller.m in Sources */,
 				B37BA6CF1E80FA29001A74B8 /* AbnormalReportCell.m in Sources */,
 				0FDCFE681F419F1F00EC15D1 /* CollectionViewCell.m in Sources */,
 				B38410FB1E5D875700F7069F /* FileHelper.m in Sources */,
@@ -1488,11 +1523,12 @@
 				B38411311E5E830400F7069F /* CancelLoginTableViewCell.m in Sources */,
 				B38411321E5E830400F7069F /* FeedbackIdeaTableViewCell.m in Sources */,
 				0F8986771ED57861007DCDD0 /* BiddingCheckingController.m in Sources */,
-				0FE58E0A1EC97D6C0041E1D9 /* OrderStatus226Controller.m in Sources */,
 				B357277A1E5435AE003F9B2F /* MyLocationManager.m in Sources */,
 				0FE58E4B1EC9A6E50041E1D9 /* OrderStatus232Controller.m in Sources */,
+				0F5E10ED1F46CC1B0012BE79 /* PressEnterController.m in Sources */,
 				B38411241E5E827600F7069F /* PersonalCenterViewController.m in Sources */,
 				0F89868C1ED7C675007DCDD0 /* WaitTimeoutController.m in Sources */,
+				0F5E10E81F46CBEB0012BE79 /* PrepareEnterController.m in Sources */,
 				0FB06E341EE65000009B68D8 /* GetBiddingDetailModel.m in Sources */,
 				B38410B61E5D375600F7069F /* BaseModel.m in Sources */,
 				0FE58E411EC99B9B0041E1D9 /* OrderStatus228Controller.m in Sources */,

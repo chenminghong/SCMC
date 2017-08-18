@@ -8,6 +8,8 @@
 
 #import "OrderStatus220Controller.h"
 
+#import "WaitEnterController.h"
+
 @interface OrderStatus220Controller ()
 @property (weak, nonatomic) IBOutlet UIView *qrcodeBackgroundView;
 @property (weak, nonatomic) IBOutlet UIButton *tuNumberButton;
@@ -28,6 +30,13 @@
     self.qrcodeBackgroundView.layer.cornerRadius = 10;
     self.qrcodeImgView.image = [QrcodeHelper createLogoQrcodeImageWithMessage:@"TU10001" logoImage:[UIImage imageNamed:@"applogo"] imageSize:self.qrcodeImgView.bounds.size.width];
 }
+
+
+- (IBAction)tunumberButtonAction:(UIButton *)sender {
+    WaitEnterController *enterVC = [WaitEnterController new];
+    [self.navigationController pushViewController:enterVC animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

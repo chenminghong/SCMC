@@ -14,7 +14,6 @@
 #import "WaitListController.h"
 #import "OutStorage220Controller.h"
 #import "OrderStatus224Controller.h"
-#import "OrderStatus226Controller.h"
 #import "OrderStatus228Controller.h"
 #import "OrderStatus230Controller.h"
 #import "OrderStatus232Controller.h"
@@ -105,10 +104,10 @@
         case ORDER_STATUS_226:
         {
             self.title = @"开始装货";
-            OrderStatus226Controller *childVC = [OrderStatus226Controller new];
-            [self addChildController:childVC];
-            childVC.code = code;
-            childVC.status = status;
+//            OrderStatus226Controller *childVC = [OrderStatus226Controller new];
+//            [self addChildController:childVC];
+//            childVC.code = code;
+//            childVC.status = status;
         }
             break;
             
