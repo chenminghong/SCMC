@@ -1,16 +1,14 @@
 //
-//  OrderStatus226Controller.m
+//  OrderStatus228Controller.m
 //  pairearch_WLY
 //
-//  Created by Jean on 2017/8/18.
+//  Created by Jean on 2017/8/21.
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
-#import "OrderStatus226Controller.h"
-
 #import "OrderStatus228Controller.h"
 
-@interface OrderStatus226Controller ()
+@interface OrderStatus228Controller ()
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIButton *tuNumberButton;
@@ -20,7 +18,7 @@
 
 @end
 
-@implementation OrderStatus226Controller
+@implementation OrderStatus228Controller
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,9 +27,7 @@
 - (IBAction)tunumberButtonAction:(UIButton *)sender {
     
 }
-- (IBAction)photoStartLoadButtonAction:(CustomVerticalButton *)sender {
-    OrderStatus228Controller *orderVC = [OrderStatus228Controller new];
-    [self.navigationController pushViewController:orderVC animated:YES];
+- (IBAction)photoEndLoadButtonAction:(CustomVerticalButton *)sender {
 }
 
 - (void)didReceiveMemoryWarning {

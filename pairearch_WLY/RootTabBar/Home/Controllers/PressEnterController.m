@@ -9,6 +9,7 @@
 #import "PressEnterController.h"
 
 #import "CustomHexagonLabel.h"
+#import "OrderStatus226Controller.h"
 
 @interface PressEnterController ()
 
@@ -64,6 +65,11 @@
     self.enterDesLabel.layer.cornerRadius = 5;
     
     self.qrcodeImgView.image = [QrcodeHelper createLogoQrcodeImageWithMessage:@"TU10001" logoImage:[UIImage imageNamed:@"applogo"] imageSize:self.qrcodeImgView.bounds.size.width];
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    OrderStatus226Controller *orderVC = [OrderStatus226Controller new];
+    [self.navigationController pushViewController:orderVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

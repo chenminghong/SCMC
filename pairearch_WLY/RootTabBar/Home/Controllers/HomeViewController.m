@@ -52,9 +52,9 @@
     [super viewWillAppear:animated];
     
     
-    NSArray *imageUrlStrArr = @[@"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2425553731,532915246&fm=26&gp=0.jpg",
-                                @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1575884460,1805574265&fm=11&gp=0.jpg",
-                                @"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2431803605,4163962929&fm=11&gp=0.jpg",
+    NSArray *imageUrlStrArr = @[@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1238497980,1597218505&fm=26&gp=0.jpg",
+                                @"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1450410798,281036268&fm=26&gp=0.jpg",
+                                @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3503460854,933931965&fm=26&gp=0.jpg",
                                 @"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1128343348,3478453008&fm=26&gp=0.jpg"];
     self.sdCycleView.imageURLStringsGroup = imageUrlStrArr;
 }

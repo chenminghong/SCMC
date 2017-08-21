@@ -31,6 +31,9 @@
 		0F5E10E91F46CBEB0012BE79 /* PrepareEnterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10E71F46CBEB0012BE79 /* PrepareEnterController.xib */; };
 		0F5E10ED1F46CC1B0012BE79 /* PressEnterController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10EB1F46CC1B0012BE79 /* PressEnterController.m */; };
 		0F5E10EE1F46CC1B0012BE79 /* PressEnterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10EC1F46CC1B0012BE79 /* PressEnterController.xib */; };
+		0F5E10F21F4AD8E80012BE79 /* OrderStatus228Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10F01F4AD8E70012BE79 /* OrderStatus228Controller.m */; };
+		0F5E10F31F4AD8E80012BE79 /* OrderStatus228Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E10F11F4AD8E70012BE79 /* OrderStatus228Controller.xib */; };
+		0F5E10F61F4ADF540012BE79 /* CustomVerticalButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E10F51F4ADF540012BE79 /* CustomVerticalButton.m */; };
 		0F634CFB1EC5CD7600CFB8AB /* NestedSelectStateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */; };
 		0F67C68C1EE7E91400AC9155 /* BiddingListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F67C68A1EE7E91400AC9155 /* BiddingListController.m */; };
 		0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */; };
@@ -108,8 +111,6 @@
 		0FE58E381EC980C30041E1D9 /* SGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E261EC980C30041E1D9 /* SGAlertView.m */; };
 		0FE58E391EC980C30041E1D9 /* SGScanningQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E281EC980C30041E1D9 /* SGScanningQRCodeView.m */; };
 		0FE58E3D1EC984130041E1D9 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E3C1EC984130041E1D9 /* ProgressHUD.m */; };
-		0FE58E411EC99B9B0041E1D9 /* OrderStatus228Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E3F1EC99B9B0041E1D9 /* OrderStatus228Controller.m */; };
-		0FE58E421EC99B9B0041E1D9 /* OrderStatus228Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE58E401EC99B9B0041E1D9 /* OrderStatus228Controller.xib */; };
 		0FE58E461EC9A11B0041E1D9 /* OrderStatus230Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E441EC9A11B0041E1D9 /* OrderStatus230Controller.m */; };
 		0FE58E471EC9A11B0041E1D9 /* OrderStatus230Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE58E451EC9A11B0041E1D9 /* OrderStatus230Controller.xib */; };
 		0FE58E4B1EC9A6E50041E1D9 /* OrderStatus232Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E491EC9A6E50041E1D9 /* OrderStatus232Controller.m */; };
@@ -237,6 +238,11 @@
 		0F5E10EA1F46CC1B0012BE79 /* PressEnterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PressEnterController.h; sourceTree = "<group>"; };
 		0F5E10EB1F46CC1B0012BE79 /* PressEnterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PressEnterController.m; sourceTree = "<group>"; };
 		0F5E10EC1F46CC1B0012BE79 /* PressEnterController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PressEnterController.xib; sourceTree = "<group>"; };
+		0F5E10EF1F4AD8E70012BE79 /* OrderStatus228Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus228Controller.h; sourceTree = "<group>"; };
+		0F5E10F01F4AD8E70012BE79 /* OrderStatus228Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus228Controller.m; sourceTree = "<group>"; };
+		0F5E10F11F4AD8E70012BE79 /* OrderStatus228Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus228Controller.xib; sourceTree = "<group>"; };
+		0F5E10F41F4ADF540012BE79 /* CustomVerticalButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomVerticalButton.h; sourceTree = "<group>"; };
+		0F5E10F51F4ADF540012BE79 /* CustomVerticalButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomVerticalButton.m; sourceTree = "<group>"; };
 		0F634CF91EC5CD7600CFB8AB /* NestedSelectStateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NestedSelectStateController.h; sourceTree = "<group>"; };
 		0F634CFA1EC5CD7600CFB8AB /* NestedSelectStateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NestedSelectStateController.m; sourceTree = "<group>"; };
 		0F67C6891EE7E91400AC9155 /* BiddingListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingListController.h; sourceTree = "<group>"; };
@@ -359,9 +365,6 @@
 		0FE58E281EC980C30041E1D9 /* SGScanningQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGScanningQRCodeView.m; sourceTree = "<group>"; };
 		0FE58E3B1EC984130041E1D9 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		0FE58E3C1EC984130041E1D9 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
-		0FE58E3E1EC99B9B0041E1D9 /* OrderStatus228Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus228Controller.h; sourceTree = "<group>"; };
-		0FE58E3F1EC99B9B0041E1D9 /* OrderStatus228Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus228Controller.m; sourceTree = "<group>"; };
-		0FE58E401EC99B9B0041E1D9 /* OrderStatus228Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus228Controller.xib; sourceTree = "<group>"; };
 		0FE58E431EC9A11A0041E1D9 /* OrderStatus230Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus230Controller.h; sourceTree = "<group>"; };
 		0FE58E441EC9A11B0041E1D9 /* OrderStatus230Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus230Controller.m; sourceTree = "<group>"; };
 		0FE58E451EC9A11B0041E1D9 /* OrderStatus230Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus230Controller.xib; sourceTree = "<group>"; };
@@ -821,9 +824,6 @@
 				0FE58E4D1EC9AC130041E1D9 /* OrderStatus224Controller.h */,
 				0FE58E4E1EC9AC130041E1D9 /* OrderStatus224Controller.m */,
 				0FE58E4F1EC9AC130041E1D9 /* OrderStatus224Controller.xib */,
-				0FE58E3E1EC99B9B0041E1D9 /* OrderStatus228Controller.h */,
-				0FE58E3F1EC99B9B0041E1D9 /* OrderStatus228Controller.m */,
-				0FE58E401EC99B9B0041E1D9 /* OrderStatus228Controller.xib */,
 				0FE58E431EC9A11A0041E1D9 /* OrderStatus230Controller.h */,
 				0FE58E441EC9A11B0041E1D9 /* OrderStatus230Controller.m */,
 				0FE58E451EC9A11B0041E1D9 /* OrderStatus230Controller.xib */,
@@ -1153,6 +1153,9 @@
 				0F5E10E01F46CA420012BE79 /* OrderStatus226Controller.h */,
 				0F5E10E11F46CA420012BE79 /* OrderStatus226Controller.m */,
 				0F5E10E21F46CA420012BE79 /* OrderStatus226Controller.xib */,
+				0F5E10EF1F4AD8E70012BE79 /* OrderStatus228Controller.h */,
+				0F5E10F01F4AD8E70012BE79 /* OrderStatus228Controller.m */,
+				0F5E10F11F4AD8E70012BE79 /* OrderStatus228Controller.xib */,
 				0F67C6891EE7E91400AC9155 /* BiddingListController.h */,
 				0F67C68A1EE7E91400AC9155 /* BiddingListController.m */,
 				0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */,
@@ -1224,6 +1227,8 @@
 				0F5E10CE1F4451C30012BE79 /* OrderListTableFooter.xib */,
 				0F5E10D81F4687630012BE79 /* CustomHexagonLabel.h */,
 				0F5E10D91F4687630012BE79 /* CustomHexagonLabel.m */,
+				0F5E10F41F4ADF540012BE79 /* CustomVerticalButton.h */,
+				0F5E10F51F4ADF540012BE79 /* CustomVerticalButton.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1319,6 +1324,7 @@
 				0F5E10E91F46CBEB0012BE79 /* PrepareEnterController.xib in Resources */,
 				0F8986731ED5591A007DCDD0 /* BidOrderDetailCell.xib in Resources */,
 				0F8986831ED691CC007DCDD0 /* BidCheckingFooterView.xib in Resources */,
+				0F5E10F31F4AD8E80012BE79 /* OrderStatus228Controller.xib in Resources */,
 				0F5E10BD1F4414860012BE79 /* TUListTableCell.xib in Resources */,
 				0FE58E301EC980C30041E1D9 /* QRCodebottomRight@3x.png in Resources */,
 				0F89865A1ED3E12B007DCDD0 /* BidDetailCell.xib in Resources */,
@@ -1333,7 +1339,6 @@
 				0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */,
 				0F5E10CF1F4451C30012BE79 /* OrderListTableFooter.xib in Resources */,
 				0FD9C0C01EAE0B7D00CD7E00 /* Header212View.xib in Resources */,
-				0FE58E421EC99B9B0041E1D9 /* OrderStatus228Controller.xib in Resources */,
 				B32228E91E52A2C300ED50ED /* LaunchScreen.storyboard in Resources */,
 				0F5E10DF1F468AF70012BE79 /* WaitEnterController.xib in Resources */,
 				0FE58E321EC980C30041E1D9 /* QRCodeLine@3x.png in Resources */,
@@ -1516,6 +1521,7 @@
 				0FE58E3D1EC984130041E1D9 /* ProgressHUD.m in Sources */,
 				0F8986931ED806DE007DCDD0 /* ButtonFooterView.m in Sources */,
 				B38411451E5E91DE00F7069F /* CancelLoginCell.m in Sources */,
+				0F5E10F21F4AD8E80012BE79 /* OrderStatus228Controller.m in Sources */,
 				B3D3B2A71E66EA550033EF84 /* SafetyCheckModel.m in Sources */,
 				B3D3B2A21E66EA550033EF84 /* HomeViewController.m in Sources */,
 				0FE5BFF21EB03CE300F82D97 /* SafetyControlController.m in Sources */,
@@ -1531,7 +1537,6 @@
 				0F5E10E81F46CBEB0012BE79 /* PrepareEnterController.m in Sources */,
 				0FB06E341EE65000009B68D8 /* GetBiddingDetailModel.m in Sources */,
 				B38410B61E5D375600F7069F /* BaseModel.m in Sources */,
-				0FE58E411EC99B9B0041E1D9 /* OrderStatus228Controller.m in Sources */,
 				B37BA6D51E8127A9001A74B8 /* LxGridViewFlowLayout.m in Sources */,
 				B32228DB1E52A2C300ED50ED /* main.m in Sources */,
 				0F5E10BC1F4414860012BE79 /* TUListTableCell.m in Sources */,
@@ -1542,6 +1547,7 @@
 				B307BF471E7238E5005D7979 /* HomePageModel.m in Sources */,
 				0FE58E2B1EC980C30041E1D9 /* SGGenerateQRCodeVC.m in Sources */,
 				0FDE40651ECB0DB600FAEF48 /* TimePickerView.m in Sources */,
+				0F5E10F61F4ADF540012BE79 /* CustomVerticalButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

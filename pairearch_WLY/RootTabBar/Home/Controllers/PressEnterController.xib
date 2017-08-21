@@ -38,23 +38,23 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="装货码头W1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CL3-dy-xMc">
-                            <rect key="frame" x="86.5" y="110" width="183" height="26.5"/>
+                            <rect key="frame" x="86" y="110" width="184" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNB-0I-MJ5">
-                            <rect key="frame" x="86.5" y="394" width="183" height="35"/>
+                            <rect key="frame" x="86.5" y="394" width="183" height="35.5"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预计入厂时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sex-r5-hua">
-                                    <rect key="frame" x="1" y="1" width="122" height="33"/>
+                                    <rect key="frame" x="1" y="1" width="122" height="33.5"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:59" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sfL-rY-ZUy">
-                                    <rect key="frame" x="124" y="1" width="58" height="33"/>
+                                    <rect key="frame" x="124" y="1" width="58" height="33.5"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -86,7 +86,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请尽快到门岗处出示二维码，如错过最晚入厂时间，您将会排到队尾，重新排队" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KdN-nn-YOl">
-                            <rect key="frame" x="27" y="477" width="300.5" height="72"/>
+                            <rect key="frame" x="27" y="477.5" width="300.5" height="72"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>

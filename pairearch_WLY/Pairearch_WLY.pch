@@ -53,6 +53,7 @@
 #import "ProgressHUD.h"
 #import "MyImagePickerManager.h"
 #import "QrcodeHelper.h"
+#import "CustomVerticalButton.h"
 
 
 #pragma mark -- Define
