@@ -62,7 +62,7 @@
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoQ-wn-adA" customClass="CustomVerticalButton">
                             <rect key="frame" x="84.5" y="124" width="186" height="186.5"/>
-                            <color key="backgroundColor" red="0.41868108510000002" green="0.70683282609999998" blue="0.73684412239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" red="0.23397815227508545" green="0.65892678499221802" blue="0.90820056200027466" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="XoQ-wn-adA" secondAttribute="height" multiplier="1:1" id="VBQ-Zr-5UQ"/>
                             </constraints>

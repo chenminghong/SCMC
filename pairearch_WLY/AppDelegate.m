@@ -70,7 +70,7 @@
     if ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusDenied) {
         return NO;
     } else
-        return YES;
+    return YES;
 }
 
 

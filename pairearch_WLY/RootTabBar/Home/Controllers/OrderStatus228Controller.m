@@ -23,11 +23,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.photoImgButton.layer.cornerRadius = 8;
 }
 - (IBAction)tunumberButtonAction:(UIButton *)sender {
     
 }
+
 - (IBAction)photoEndLoadButtonAction:(CustomVerticalButton *)sender {
+    
 }
 
 - (void)didReceiveMemoryWarning {
