@@ -124,10 +124,10 @@
         case ORDER_STATUS_230:
         {
             self.title = @"装货完成";
-            OrderStatus230Controller *childVC = [OrderStatus230Controller new];
-            [self addChildController:childVC];
-            childVC.code = code;
-            childVC.status = status;
+//            OrderStatus230Controller *childVC = [OrderStatus230Controller new];
+//            [self addChildController:childVC];
+//            childVC.code = code;
+//            childVC.status = status;
         }
             break;
             

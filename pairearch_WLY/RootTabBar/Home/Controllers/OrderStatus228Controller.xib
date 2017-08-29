@@ -25,10 +25,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQv-Cg-3ZU">
-                    <rect key="frame" x="10" y="10" width="355" height="610"/>
+                    <rect key="frame" x="10" y="10" width="355" height="642"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vT2-C2-n6j">
-                            <rect key="frame" x="135.5" y="49.5" width="83" height="20"/>
+                            <rect key="frame" x="135.5" y="52" width="83" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="LET-eZ-r5w"/>
                             </constraints>
@@ -41,27 +41,27 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mp5-VG-IT6">
-                            <rect key="frame" x="64" y="93" width="227" height="1"/>
+                            <rect key="frame" x="64" y="98" width="227" height="1"/>
                             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="rdy-6D-ioc"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xiu-6o-op4">
-                            <rect key="frame" x="64" y="341.5" width="227" height="1"/>
+                            <rect key="frame" x="64" y="359.5" width="227" height="1"/>
                             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="hKZ-jA-RNV"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="装货完成时，请点击“装货完成拍照”" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jDl-05-11R">
-                            <rect key="frame" x="40" y="371.5" width="275" height="48"/>
+                            <rect key="frame" x="40" y="391" width="275" height="48"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoQ-wn-adA" customClass="CustomVerticalButton">
-                            <rect key="frame" x="84.5" y="124" width="186" height="186.5"/>
+                            <rect key="frame" x="79.5" y="130.5" width="196" height="196"/>
                             <color key="backgroundColor" red="0.23397815227508545" green="0.65892678499221802" blue="0.90820056200027466" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="XoQ-wn-adA" secondAttribute="height" multiplier="1:1" id="VBQ-Zr-5UQ"/>
@@ -97,7 +97,7 @@
             <color key="backgroundColor" red="0.93510115149999995" green="0.73776274919999996" blue="0.3168773949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="xQv-Cg-3ZU" firstAttribute="centerX" secondItem="0YR-AV-Fh4" secondAttribute="centerX" id="2jW-nX-wm0"/>
-                <constraint firstItem="xQv-Cg-3ZU" firstAttribute="height" secondItem="0YR-AV-Fh4" secondAttribute="height" multiplier="982:1074" id="IPm-V5-JW1"/>
+                <constraint firstAttribute="bottom" secondItem="xQv-Cg-3ZU" secondAttribute="bottom" constant="15" id="ISB-5a-Rvg"/>
                 <constraint firstItem="xQv-Cg-3ZU" firstAttribute="leading" secondItem="0YR-AV-Fh4" secondAttribute="leading" constant="10" id="lmS-pk-k7C"/>
                 <constraint firstItem="xQv-Cg-3ZU" firstAttribute="top" secondItem="0YR-AV-Fh4" secondAttribute="top" constant="10" id="wp2-XJ-b63"/>
             </constraints>

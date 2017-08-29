@@ -111,8 +111,6 @@
 		0FE58E381EC980C30041E1D9 /* SGAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E261EC980C30041E1D9 /* SGAlertView.m */; };
 		0FE58E391EC980C30041E1D9 /* SGScanningQRCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E281EC980C30041E1D9 /* SGScanningQRCodeView.m */; };
 		0FE58E3D1EC984130041E1D9 /* ProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E3C1EC984130041E1D9 /* ProgressHUD.m */; };
-		0FE58E461EC9A11B0041E1D9 /* OrderStatus230Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E441EC9A11B0041E1D9 /* OrderStatus230Controller.m */; };
-		0FE58E471EC9A11B0041E1D9 /* OrderStatus230Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE58E451EC9A11B0041E1D9 /* OrderStatus230Controller.xib */; };
 		0FE58E4B1EC9A6E50041E1D9 /* OrderStatus232Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E491EC9A6E50041E1D9 /* OrderStatus232Controller.m */; };
 		0FE58E4C1EC9A6E50041E1D9 /* OrderStatus232Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE58E4A1EC9A6E50041E1D9 /* OrderStatus232Controller.xib */; };
 		0FE58E501EC9AC130041E1D9 /* OrderStatus224Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE58E4E1EC9AC130041E1D9 /* OrderStatus224Controller.m */; };
@@ -125,6 +123,10 @@
 		0FE5C0051EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5C0041EB1C9D000F82D97 /* CreatQRCodeAndBarCodeFromLeon.m */; };
 		0FE5C0081EB1D15600F82D97 /* Mistake212Footer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE5C0071EB1D15600F82D97 /* Mistake212Footer.m */; };
 		0FE5C00A1EB1D16000F82D97 /* Mistake212Footer.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE5C0091EB1D16000F82D97 /* Mistake212Footer.xib */; };
+		0FE7AD941F5544B70046EF12 /* OrderStatus230Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7AD921F5544B70046EF12 /* OrderStatus230Controller.m */; };
+		0FE7AD951F5544B70046EF12 /* OrderStatus230Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE7AD931F5544B70046EF12 /* OrderStatus230Controller.xib */; };
+		0FE7AD991F554F430046EF12 /* ForkliftDriverStatus226Controller.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE7AD971F554F430046EF12 /* ForkliftDriverStatus226Controller.m */; };
+		0FE7AD9A1F554F430046EF12 /* ForkliftDriverStatus226Controller.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0FE7AD981F554F430046EF12 /* ForkliftDriverStatus226Controller.xib */; };
 		0FE9632D1EBB195600F916DD /* OrderDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9632C1EBB195600F916DD /* OrderDetailModel.m */; };
 		0FE963301EBC6FE800F916DD /* OrderDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE9632F1EBC6FE800F916DD /* OrderDetailController.m */; };
 		0FE963341EBC78C600F916DD /* OrderDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0FE963321EBC78C600F916DD /* OrderDetailCell.m */; };
@@ -365,9 +367,6 @@
 		0FE58E281EC980C30041E1D9 /* SGScanningQRCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGScanningQRCodeView.m; sourceTree = "<group>"; };
 		0FE58E3B1EC984130041E1D9 /* ProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressHUD.h; sourceTree = "<group>"; };
 		0FE58E3C1EC984130041E1D9 /* ProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressHUD.m; sourceTree = "<group>"; };
-		0FE58E431EC9A11A0041E1D9 /* OrderStatus230Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus230Controller.h; sourceTree = "<group>"; };
-		0FE58E441EC9A11B0041E1D9 /* OrderStatus230Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus230Controller.m; sourceTree = "<group>"; };
-		0FE58E451EC9A11B0041E1D9 /* OrderStatus230Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus230Controller.xib; sourceTree = "<group>"; };
 		0FE58E481EC9A6E50041E1D9 /* OrderStatus232Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus232Controller.h; sourceTree = "<group>"; };
 		0FE58E491EC9A6E50041E1D9 /* OrderStatus232Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus232Controller.m; sourceTree = "<group>"; };
 		0FE58E4A1EC9A6E50041E1D9 /* OrderStatus232Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus232Controller.xib; sourceTree = "<group>"; };
@@ -387,6 +386,12 @@
 		0FE5C0061EB1D15600F82D97 /* Mistake212Footer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mistake212Footer.h; sourceTree = "<group>"; };
 		0FE5C0071EB1D15600F82D97 /* Mistake212Footer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mistake212Footer.m; sourceTree = "<group>"; };
 		0FE5C0091EB1D16000F82D97 /* Mistake212Footer.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Mistake212Footer.xib; sourceTree = "<group>"; };
+		0FE7AD911F5544B70046EF12 /* OrderStatus230Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderStatus230Controller.h; sourceTree = "<group>"; };
+		0FE7AD921F5544B70046EF12 /* OrderStatus230Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderStatus230Controller.m; sourceTree = "<group>"; };
+		0FE7AD931F5544B70046EF12 /* OrderStatus230Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OrderStatus230Controller.xib; sourceTree = "<group>"; };
+		0FE7AD961F554F430046EF12 /* ForkliftDriverStatus226Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForkliftDriverStatus226Controller.h; sourceTree = "<group>"; };
+		0FE7AD971F554F430046EF12 /* ForkliftDriverStatus226Controller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForkliftDriverStatus226Controller.m; sourceTree = "<group>"; };
+		0FE7AD981F554F430046EF12 /* ForkliftDriverStatus226Controller.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForkliftDriverStatus226Controller.xib; sourceTree = "<group>"; };
 		0FE9632B1EBB195600F916DD /* OrderDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailModel.h; sourceTree = "<group>"; };
 		0FE9632C1EBB195600F916DD /* OrderDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OrderDetailModel.m; sourceTree = "<group>"; };
 		0FE9632E1EBC6FE800F916DD /* OrderDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OrderDetailController.h; sourceTree = "<group>"; };
@@ -824,9 +829,6 @@
 				0FE58E4D1EC9AC130041E1D9 /* OrderStatus224Controller.h */,
 				0FE58E4E1EC9AC130041E1D9 /* OrderStatus224Controller.m */,
 				0FE58E4F1EC9AC130041E1D9 /* OrderStatus224Controller.xib */,
-				0FE58E431EC9A11A0041E1D9 /* OrderStatus230Controller.h */,
-				0FE58E441EC9A11B0041E1D9 /* OrderStatus230Controller.m */,
-				0FE58E451EC9A11B0041E1D9 /* OrderStatus230Controller.xib */,
 				0FE58E481EC9A6E50041E1D9 /* OrderStatus232Controller.h */,
 				0FE58E491EC9A6E50041E1D9 /* OrderStatus232Controller.m */,
 				0FE58E4A1EC9A6E50041E1D9 /* OrderStatus232Controller.xib */,
@@ -1153,9 +1155,15 @@
 				0F5E10E01F46CA420012BE79 /* OrderStatus226Controller.h */,
 				0F5E10E11F46CA420012BE79 /* OrderStatus226Controller.m */,
 				0F5E10E21F46CA420012BE79 /* OrderStatus226Controller.xib */,
+				0FE7AD961F554F430046EF12 /* ForkliftDriverStatus226Controller.h */,
+				0FE7AD971F554F430046EF12 /* ForkliftDriverStatus226Controller.m */,
+				0FE7AD981F554F430046EF12 /* ForkliftDriverStatus226Controller.xib */,
 				0F5E10EF1F4AD8E70012BE79 /* OrderStatus228Controller.h */,
 				0F5E10F01F4AD8E70012BE79 /* OrderStatus228Controller.m */,
 				0F5E10F11F4AD8E70012BE79 /* OrderStatus228Controller.xib */,
+				0FE7AD911F5544B70046EF12 /* OrderStatus230Controller.h */,
+				0FE7AD921F5544B70046EF12 /* OrderStatus230Controller.m */,
+				0FE7AD931F5544B70046EF12 /* OrderStatus230Controller.xib */,
 				0F67C6891EE7E91400AC9155 /* BiddingListController.h */,
 				0F67C68A1EE7E91400AC9155 /* BiddingListController.m */,
 				0F67C68B1EE7E91400AC9155 /* BiddingListController.xib */,
@@ -1331,10 +1339,10 @@
 				0FDCFE641F419CEE00EC15D1 /* HomeCollectionCell.xib in Resources */,
 				0FB06E311EE64D77009B68D8 /* GetBiddingDetailController.xib in Resources */,
 				0FE58E331EC980C30041E1D9 /* QRCodeTopLeft@2x.png in Resources */,
-				0FE58E471EC9A11B0041E1D9 /* OrderStatus230Controller.xib in Resources */,
 				0FDE407B1ECE8F6700FAEF48 /* OrderStatus248Controller.xib in Resources */,
 				0FDE40671ECB0DC400FAEF48 /* TimePickerView.xib in Resources */,
 				0F8986781ED57861007DCDD0 /* BiddingCheckingController.xib in Resources */,
+				0FE7AD9A1F554F430046EF12 /* ForkliftDriverStatus226Controller.xib in Resources */,
 				0F5E10D41F453EB10012BE79 /* OrderStatus220Controller.xib in Resources */,
 				0F67C68D1EE7E91400AC9155 /* BiddingListController.xib in Resources */,
 				0F5E10CF1F4451C30012BE79 /* OrderListTableFooter.xib in Resources */,
@@ -1375,6 +1383,7 @@
 				0FE963351EBC78C600F916DD /* OrderDetailCell.xib in Resources */,
 				0FE58E351EC980C30041E1D9 /* QRCodeTopRight@2x.png in Resources */,
 				0F8986881ED7C4C5007DCDD0 /* WaitListController.xib in Resources */,
+				0FE7AD951F5544B70046EF12 /* OrderStatus230Controller.xib in Resources */,
 				B32228E41E52A2C300ED50ED /* Main.storyboard in Resources */,
 				0F8986521ED3D36B007DCDD0 /* BiddingDetailController.xib in Resources */,
 				0F89868D1ED7C675007DCDD0 /* WaitTimeoutController.xib in Resources */,
@@ -1484,7 +1493,6 @@
 				0F5E10B71F4410DB0012BE79 /* TUListController.m in Sources */,
 				B384110D1E5D875700F7069F /* AlertInfoUtil.m in Sources */,
 				0FD9C0B61EADD88000CD7E00 /* OrdersViewController.m in Sources */,
-				0FE58E461EC9A11B0041E1D9 /* OrderStatus230Controller.m in Sources */,
 				0FE5C0081EB1D15600F82D97 /* Mistake212Footer.m in Sources */,
 				B38410A21E5C3D7D00F7069F /* CWStarRateView.m in Sources */,
 				B336CC181E88C026000F3928 /* BaseViewController.m in Sources */,
@@ -1505,6 +1513,8 @@
 				0F5E10D71F45854D0012BE79 /* QrcodeHelper.m in Sources */,
 				0F89867B1ED5837E007DCDD0 /* BiddingCheckingModel.m in Sources */,
 				0FA20D381EC471AA005C2015 /* ListTableCell.m in Sources */,
+				0FE7AD991F554F430046EF12 /* ForkliftDriverStatus226Controller.m in Sources */,
+				0FE7AD941F5544B70046EF12 /* OrderStatus230Controller.m in Sources */,
 				B3CC54C61E6037D60072EA47 /* WQLPaoMaView.m in Sources */,
 				0FE58E2C1EC980C30041E1D9 /* SGScanningQRCodeVC.m in Sources */,
 				0FD9C0BE1EAE0B7100CD7E00 /* Header212View.m in Sources */,

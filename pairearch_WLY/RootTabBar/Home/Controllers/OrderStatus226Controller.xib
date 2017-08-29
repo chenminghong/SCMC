@@ -26,10 +26,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hks-cp-Rhr">
-                    <rect key="frame" x="10" y="10" width="355" height="610"/>
+                    <rect key="frame" x="10" y="10" width="355" height="642"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uib-m9-roX">
-                            <rect key="frame" x="135.5" y="49.5" width="83" height="20"/>
+                            <rect key="frame" x="135.5" y="52" width="83" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="20" id="Gve-r9-wtx"/>
                             </constraints>
@@ -42,33 +42,33 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rOw-UF-dsT">
-                            <rect key="frame" x="64" y="93" width="227" height="1"/>
+                            <rect key="frame" x="64" y="98" width="227" height="1"/>
                             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="4Q8-uV-IJh"/>
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZ8-bD-Ct5">
-                            <rect key="frame" x="64" y="413" width="227" height="1"/>
+                            <rect key="frame" x="64" y="434.5" width="227" height="1"/>
                             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="tkm-Nz-aoF"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请点击“开始装货拍照”，开始装货" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bB9-l6-oNV">
-                            <rect key="frame" x="40" y="438.5" width="275" height="48"/>
+                            <rect key="frame" x="40" y="461" width="275" height="48"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="到达装货码头W1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="C7N-VY-7cm">
-                            <rect key="frame" x="95.5" y="110.5" width="164.5" height="26.5"/>
+                            <rect key="frame" x="95.5" y="116.5" width="164.5" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7eY-7g-oZH" customClass="CustomVerticalButton">
-                            <rect key="frame" x="84.5" y="199" width="186" height="186"/>
+                            <rect key="frame" x="79.5" y="209.5" width="196" height="196"/>
                             <color key="backgroundColor" red="0.41868108510000002" green="0.70683282609999998" blue="0.73684412239999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="7eY-7g-oZH" secondAttribute="height" multiplier="1:1" id="8ZO-HE-RLC"/>
@@ -104,8 +104,8 @@
             </subviews>
             <color key="backgroundColor" red="0.93510115149999995" green="0.73776274919999996" blue="0.3168773949" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Hks-cp-Rhr" firstAttribute="height" secondItem="6cM-b5-FIS" secondAttribute="height" multiplier="982:1074" id="0Of-hF-IHF"/>
                 <constraint firstItem="Hks-cp-Rhr" firstAttribute="leading" secondItem="6cM-b5-FIS" secondAttribute="leading" constant="10" id="2rd-AZ-wiE"/>
+                <constraint firstAttribute="bottom" secondItem="Hks-cp-Rhr" secondAttribute="bottom" constant="15" id="4yn-A6-vfM"/>
                 <constraint firstItem="Hks-cp-Rhr" firstAttribute="centerX" secondItem="6cM-b5-FIS" secondAttribute="centerX" id="aOT-hT-U98"/>
                 <constraint firstItem="Hks-cp-Rhr" firstAttribute="top" secondItem="6cM-b5-FIS" secondAttribute="top" constant="10" id="nfr-7T-Gtn"/>
             </constraints>

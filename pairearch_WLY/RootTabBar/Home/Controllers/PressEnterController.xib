@@ -28,33 +28,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOm-P8-Gx1">
-                    <rect key="frame" x="10" y="10" width="355" height="575.5"/>
+                    <rect key="frame" x="10" y="10" width="355" height="642"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7fe-GU-B4X">
-                            <rect key="frame" x="63" y="88" width="229" height="1"/>
+                            <rect key="frame" x="63" y="98" width="229" height="1"/>
                             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="cNs-ML-ORH"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="装货码头W1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CL3-dy-xMc">
-                            <rect key="frame" x="86" y="110" width="184" height="26.5"/>
+                            <rect key="frame" x="86" y="122.5" width="184" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNB-0I-MJ5">
-                            <rect key="frame" x="86.5" y="394" width="183" height="35.5"/>
+                            <rect key="frame" x="86.5" y="439" width="183" height="40"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预计入厂时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Sex-r5-hua">
-                                    <rect key="frame" x="1" y="1" width="122" height="33.5"/>
+                                    <rect key="frame" x="1" y="1" width="122" height="38"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:59" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="sfL-rY-ZUy">
-                                    <rect key="frame" x="124" y="1" width="58" height="33.5"/>
+                                    <rect key="frame" x="124" y="1" width="58" height="38"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -73,20 +73,20 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Na-Cc-lww">
-                            <rect key="frame" x="63" y="449" width="229" height="1"/>
+                            <rect key="frame" x="63" y="500.5" width="229" height="1"/>
                             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="hdC-A0-vQs"/>
                             </constraints>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qnK-4D-jGq">
-                            <rect key="frame" x="83" y="181.5" width="188" height="187.5"/>
+                            <rect key="frame" x="72" y="202.5" width="210" height="209.5"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="qnK-4D-jGq" secondAttribute="height" multiplier="1:1" id="Omu-yx-gux"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请尽快到门岗处出示二维码，如错过最晚入厂时间，您将会排到队尾，重新排队" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="KdN-nn-YOl">
-                            <rect key="frame" x="27" y="477.5" width="300.5" height="72"/>
+                            <rect key="frame" x="27" y="532.5" width="300.5" height="72"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -119,9 +119,9 @@
             </subviews>
             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="YOm-P8-Gx1" secondAttribute="bottom" constant="15" id="NeL-MG-8Zm"/>
                 <constraint firstItem="YOm-P8-Gx1" firstAttribute="top" secondItem="0Xh-9a-k0z" secondAttribute="top" constant="10" id="XD9-BX-1hn"/>
                 <constraint firstAttribute="trailing" secondItem="YOm-P8-Gx1" secondAttribute="trailing" constant="10" id="dp9-qC-HAh"/>
-                <constraint firstItem="YOm-P8-Gx1" firstAttribute="height" secondItem="0Xh-9a-k0z" secondAttribute="height" multiplier="982:1138" id="hx1-ej-rrC"/>
                 <constraint firstItem="YOm-P8-Gx1" firstAttribute="leading" secondItem="0Xh-9a-k0z" secondAttribute="leading" constant="10" id="us4-y7-U41"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

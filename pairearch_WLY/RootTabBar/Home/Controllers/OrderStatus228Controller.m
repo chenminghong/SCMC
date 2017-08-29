@@ -8,6 +8,8 @@
 
 #import "OrderStatus228Controller.h"
 
+#import "OrderStatus230Controller.h"
+
 @interface OrderStatus228Controller ()
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
@@ -24,14 +26,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.view.backgroundColor = TOP_NAVIBAR_COLOR;
     self.photoImgButton.layer.cornerRadius = 8;
+    self.backgroundView.layer.masksToBounds = YES;
+    self.backgroundView.layer.cornerRadius = 10;
 }
+
 - (IBAction)tunumberButtonAction:(UIButton *)sender {
     
 }
 
 - (IBAction)photoEndLoadButtonAction:(CustomVerticalButton *)sender {
-    
+    OrderStatus230Controller *orderVC = [OrderStatus230Controller new];
+    [self.navigationController pushViewController:orderVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

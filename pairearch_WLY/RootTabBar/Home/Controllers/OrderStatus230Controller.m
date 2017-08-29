@@ -2,18 +2,18 @@
 //  OrderStatus230Controller.m
 //  pairearch_WLY
 //
-//  Created by Jean on 2017/5/15.
+//  Created by Jean on 2017/8/29.
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
 #import "OrderStatus230Controller.h"
 
-#import "CreatQRCodeAndBarCodeFromLeon.h"
-
 @interface OrderStatus230Controller ()
 
-@property (weak, nonatomic) IBOutlet UIImageView *codeImageView;
-@property (weak, nonatomic) IBOutlet UILabel *codeNumberLabel;
+@property (weak, nonatomic) IBOutlet UIView *backgroundView;
+@property (weak, nonatomic) IBOutlet UIButton *tuNumberButton;
+@property (weak, nonatomic) IBOutlet UIImageView *qrcodeImgView;
+@property (weak, nonatomic) IBOutlet UILabel *statusDescriptionLabel;
 
 @end
 
@@ -22,12 +22,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-
+    
+    self.view.backgroundColor = TOP_NAVIBAR_COLOR;
+    self.backgroundView.layer.masksToBounds = YES;
+    self.backgroundView.layer.cornerRadius = 10;
+    self.qrcodeImgView.image = [QrcodeHelper createLogoQrcodeImageWithMessage:@"TU10001" logoImage:[UIImage imageNamed:@"applogo"] imageSize:self.qrcodeImgView.bounds.size.width];
 }
-
-- (void)viewDidLayoutSubviews {
-    self.codeNumberLabel.text = [NSString stringWithFormat:@"%@", self.code];
-    self.codeImageView.image = [CreatQRCodeAndBarCodeFromLeon generateBarCode:self.code size:CGSizeMake(kScreenWidth, kScreenWidth * 9.0 / 16.0) color:[UIColor blackColor] backGroundColor:nil];
+- (IBAction)tunumberButtonAction:(UIButton *)sender {
+    
 }
 
 - (void)didReceiveMemoryWarning {

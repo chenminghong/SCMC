@@ -26,33 +26,33 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5A0-5H-bfX">
-                    <rect key="frame" x="10" y="10" width="355" height="575.5"/>
+                    <rect key="frame" x="10" y="10" width="355" height="642"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlD-NR-CdX">
-                            <rect key="frame" x="63" y="88" width="229" height="1"/>
+                            <rect key="frame" x="63" y="98" width="229" height="1"/>
                             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="tmn-4s-hJv"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="装货码头W1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9oH-pe-OIO">
-                            <rect key="frame" x="86.5" y="110" width="183" height="26.5"/>
+                            <rect key="frame" x="86.5" y="122.5" width="183" height="26.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="22"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HfU-Zg-sld">
-                            <rect key="frame" x="86.5" y="188.5" width="183" height="35"/>
+                            <rect key="frame" x="86.5" y="210.5" width="183" height="39"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="预计入厂时间" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="apT-iW-TBS">
-                                    <rect key="frame" x="1" y="1" width="122" height="33"/>
+                                    <rect key="frame" x="1" y="1" width="122" height="37"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:59" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="iqv-wn-cjt">
-                                    <rect key="frame" x="124" y="1" width="58" height="33"/>
+                                    <rect key="frame" x="124" y="1" width="58" height="37"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
@@ -71,14 +71,14 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rO6-bt-lrt">
-                            <rect key="frame" x="63" y="244" width="229" height="1"/>
+                            <rect key="frame" x="63" y="272" width="229" height="1"/>
                             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="bKu-Fs-7wz"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请尽快到门岗处等待入厂" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="FOV-PW-iBg">
-                            <rect key="frame" x="27" y="283.5" width="300.5" height="24"/>
+                            <rect key="frame" x="27" y="316.5" width="300.5" height="24"/>
                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
@@ -108,8 +108,8 @@
             </subviews>
             <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstAttribute="bottom" secondItem="5A0-5H-bfX" secondAttribute="bottom" constant="15" id="C5b-vf-Yrp"/>
                 <constraint firstItem="5A0-5H-bfX" firstAttribute="leading" secondItem="qvQ-fn-5mX" secondAttribute="leading" constant="10" id="OPg-h2-Auu"/>
-                <constraint firstItem="5A0-5H-bfX" firstAttribute="height" secondItem="qvQ-fn-5mX" secondAttribute="height" multiplier="982:1138" id="bwa-Fn-iov"/>
                 <constraint firstItem="5A0-5H-bfX" firstAttribute="top" secondItem="qvQ-fn-5mX" secondAttribute="top" constant="10" id="f7g-Ah-AuZ"/>
                 <constraint firstAttribute="trailing" secondItem="5A0-5H-bfX" secondAttribute="trailing" constant="10" id="hXU-qc-5Hf"/>
             </constraints>
