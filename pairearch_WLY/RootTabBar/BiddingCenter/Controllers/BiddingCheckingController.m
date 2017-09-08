@@ -181,7 +181,7 @@
             if (str.length > [str rangeOfString:@"."].location + 4) {
                 return NO;
             }
-            NSLog(@"str.length = %ld, str = %@, string.location = %ld", str.length, string, range.location);
+            NSLog(@"str.length = %ld, str = %@, string.location = %ld", (unsigned long)str.length, string, range.location);
         }
         //        else {
         //            if (textField.text.length > 5) {

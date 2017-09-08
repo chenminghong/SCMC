@@ -345,7 +345,7 @@
         if (photos.count > 0) {
             UIImage *image = photos[0];
             data = UIImageJPEGRepresentation(image, 0.4);
-            NSLog(@"imageLength:%lu", data.length);
+            NSLog(@"imageLength:%lu", (unsigned long)data.length);
             
             NSDateFormatter *dateFormatter = [NSDateFormatter new];
             [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];

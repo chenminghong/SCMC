@@ -113,7 +113,7 @@
 //KA界面跳转逻辑
 - (void)jumpToControllerWithParaModel:(HomePageModel *)model {
     NSInteger status = model.status.integerValue;
-    NSLog(@"status:%ld", status);
+    NSLog(@"status:%ld", (long)status);
     switch (status) {
         case ORDER_STATUS_212://待接收
         {

@@ -75,7 +75,7 @@
 
 //根据加载的数据判断跳转界面
 - (void)judgeJumpToDetailControllerWithStatus:(NSInteger)status code:(NSString *)code {
-    NSLog(@"status:%ld", status);
+    NSLog(@"status:%ld", (long)status);
     switch (status) {
         case ORDER_STATUS_220://已接收待签到
         {
@@ -138,21 +138,21 @@
                 return;
             }
             self.title = @"收货签到";
-            OrderStatus232Controller *childVC = [OrderStatus232Controller new];
-            [self addChildController:childVC];
-            childVC.code = code;
-            childVC.status = status;
-            childVC.planAchieveTime = self.homePageModel.planAchieveTime;
+//            OrderStatus232Controller *childVC = [OrderStatus232Controller new];
+//            [self addChildController:childVC];
+//            childVC.code = code;
+//            childVC.status = status;
+//            childVC.planAchieveTime = self.homePageModel.planAchieveTime;
         }
             break;
             
         case ORDER_STATUS_244:
         {
             self.title = @"卸货完成";
-            OrderStatus244Controller *childVC = [OrderStatus244Controller new];
-            [self addChildController:childVC];
-            childVC.code = code;
-            childVC.status = status;
+//            OrderStatus244Controller *childVC = [OrderStatus244Controller new];
+//            [self addChildController:childVC];
+//            childVC.code = code;
+//            childVC.status = status;
         }
             break;
             

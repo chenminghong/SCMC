@@ -1,39 +1,43 @@
 //
-//  OrderStatus230Controller.m
+//  OrderStatus232Controller.m
 //  pairearch_WLY
 //
-//  Created by Jean on 2017/8/29.
+//  Created by Jean on 2017/9/7.
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
-#import "OrderStatus230Controller.h"
-
 #import "OrderStatus232Controller.h"
 
-@interface OrderStatus230Controller ()
+#import "OrderStatus244Controller.h"
+
+@interface OrderStatus232Controller ()
 
 @property (weak, nonatomic) IBOutlet UIView *backgroundView;
 @property (weak, nonatomic) IBOutlet UIButton *tuNumberButton;
-@property (weak, nonatomic) IBOutlet UIImageView *qrcodeImgView;
+@property (weak, nonatomic) IBOutlet UILabel *wharfLabel;
+@property (weak, nonatomic) IBOutlet CustomVerticalButton *photoImgButton;
 @property (weak, nonatomic) IBOutlet UILabel *statusDescriptionLabel;
 
 @end
 
-@implementation OrderStatus230Controller
+@implementation OrderStatus232Controller
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
     self.view.backgroundColor = TOP_NAVIBAR_COLOR;
+    self.photoImgButton.layer.cornerRadius = 8;
     self.backgroundView.layer.masksToBounds = YES;
     self.backgroundView.layer.cornerRadius = 10;
-    self.qrcodeImgView.image = [QrcodeHelper createLogoQrcodeImageWithMessage:@"TU10001" logoImage:[UIImage imageNamed:@"applogo"] imageSize:self.qrcodeImgView.bounds.size.width];
 }
 
 - (IBAction)tunumberButtonAction:(UIButton *)sender {
-    OrderStatus232Controller *orderVC = [OrderStatus232Controller new];
+    OrderStatus244Controller *orderVC = [OrderStatus244Controller new];
     [self.navigationController pushViewController:orderVC animated:YES];
+}
+
+- (IBAction)photoEndLoadButtonAction:(CustomVerticalButton *)sender {
 }
 
 - (void)didReceiveMemoryWarning {
