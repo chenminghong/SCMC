@@ -48,7 +48,6 @@
         viewController.navigationItem.leftBarButtonItems = [[self class] getNavigationBackItemsWithTarget:self SEL:@selector(popBackAction:)];
         viewController.hidesBottomBarWhenPushed = YES;
         [viewController.navigationController setNavigationBarHidden:NO animated:YES];
-        viewController.title = @"我来运";
     }
     [super pushViewController:viewController animated:animated];
 }
@@ -68,7 +67,6 @@
     UIGraphicsBeginImageContext(CGSizeMake(kScreenWidth, 64));
     CGContextRef context = UIGraphicsGetCurrentContext();
     
-    //创建CGMutablePathRef
     CGMutablePathRef path = CGPathCreateMutable();
     CGRect rect = CGRectMake(0, 0, kScreenWidth, 64);
     CGPathMoveToPoint(path, NULL, CGRectGetMinX(rect), CGRectGetMinY(rect));
@@ -81,8 +79,6 @@
     [self drawRadialGradient:context path:path startColor:startColor.CGColor endColor:endColor.CGColor];
     
     CGPathRelease(path);
-    
-    //从Context中获取图像，并显示在界面上
     UIImage *backgroundImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [navigationBar setBackgroundImage:backgroundImage forBarMetrics:UIBarMetricsDefault];  //设置背景
