@@ -58,6 +58,8 @@
                                 @"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1128343348,3478453008&fm=26&gp=0.jpg"];
     self.sdCycleView.imageURLStringsGroup = imageUrlStrArr;
     
+    [self getHomePageData];
+    
 //    [ProgressHUD bwm_showTitle:@"加载成功" toView:self.view hideAfter:MAXFLOAT msgType:BWMMBProgressHUDMsgTypeSuccessful];
 }
 
@@ -125,7 +127,7 @@
 //获取首页Data数据
 - (void)getHomePageData {
     
-    [HomePageModel getDataWithUrl:HOME_PAGE_DATA_API parameters:@{@"mobile":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+    [HomePageModel getDataWithUrl:HOME_PAGE_COUNT_API parameters:@{@"mobile":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
         if (!error) {
             self.homePageModel = model;
             if (self.homePageModel.orderModelList.count > 0) {

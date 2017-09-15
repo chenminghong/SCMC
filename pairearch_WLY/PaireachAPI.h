@@ -13,63 +13,94 @@
 
 /*============================BaseUrl相关=============================*/
 //API前缀定义
-#define PAIREACH_BIDDING_URL             @"http://106.14.39.65:8385/itip/clientBid/"  //竞价中心
-//#define PAIREACH_BIDDING_URL             @"http://192.168.0.140:8085/itip/clientBid/"  //竞价中心Ada本地
-
-
-#define PAIREACH_BASE_URL                @"http://106.14.39.65:8385/itip/client/"       //测试线上
+#define PAIREACH_BASE_URL                @"http://106.14.39.65:8385/itip/clientApp"       //测试线上
 //#define PAIREACH_BASE_URL                @"http://192.168.0.140:8085/itip/client/"      //Ada本地IP
 //#define PAIREACH_BASE_URL                @"http://192.168.1.14:8086/itip/client/"     //备用
 //#define PAIREACH_BASE_URL                @"http://itiptest.paireach.com/client/"       //双至域名
 
 
+/*
+ 接口访问地址：192.168.0.188:8085/itip/clientApp/
+ 
+ 司机接单： driverAcceptOrder.a
+ 内仓司机装货签到：loadSignOrder.a
+ 外仓装货签到：outLoadStartOrder.a
+ 装货开始：loadStartOrder.a
+ 装货结束:loadEndOrder.a
+ 运单轨迹：saveTrackList.a
+ 收货签到：unloadStartOrder.a
+ 收货完成：unloadEndOrder.a
+ 是否可以入装货工厂：canEnterFactory.a
+ 未结束TU列表：queryDriverAllTus.a
+ TU绑定运单列表：queryOrdersByTu.a
+ APP首页数据统计：countHome.a
+ */
+
 /*============================首页相关=============================*/
-
-//首页数据
-#define HOME_PAGE_DATA_API                @"loadFirstUnCheckOrder.a"            //get
-
-//首页订单详情数据
-#define LOAD_DETAIL_API                   @"loadOrderDetailById.a"              //get
 
 //接收运单
 #define GET_LOAD_API                      @"driverAcceptOrder.a"                //post
 
-//安全选项检查
-#define SAFETY_CONFIRMATION_API           @"safeVeriSave.a"                     //post
+//首页个数数据
+#define HOME_PAGE_COUNT_API                @"countHome.a"            //get
 
 //地理位置上传
 #define UPLOAD_LOCATION_API               @"saveTrackList.a"                //post
 
 
 
+
+
+
+//首页订单详情数据
+#define LOAD_DETAIL_API                   @"loadOrderDetailById.a"              //get
+
+//安全选项检查
+#define SAFETY_CONFIRMATION_API           @"safeVeriSave.a"                     //post
+
+
+
+
 /*============================运单中心用户相关=============================*/
+
+//内仓司机装货入厂签到
+#define SIGN_UP_API                       @"loadSignOrder.a"           //post
+
+//是否可以进入装货工厂
+#define CAN_ENTERFAC_API                  @"canEnterFactory.a"         //post
+
+//外仓司机装货开始拍照
+#define OUT_LOAD_START_API                @"loadSignOrder.a"           //post
+
+//内仓司机装货开始拍照
+#define INNEROUT_LOAD_START_API           @"loadStartOrder.a"          //post
+
+//装货结束扫码(内/外仓)
+#define LOAD_END_API                      @"loadEndOrder.a"            //post
+
+//收货签到
+#define DELIVERY_SIGN_UP_API              @"unloadStartOrder.a"        //post
+
+//收货完成
+#define  DELIVERY_COMPLETE_API            @"unloadEndOrder.a"          //post
+
+//根据TU单号获取订单列表
+#define GET_ORDERLIST_API                 @"queryOrdersByTu.a"         //post
+
+//获取TU单列表数据
+#define TU_LIST_API                       @"queryDriverAllTus.a"       //post
+
+
+
+
+
+
 
 //订单中心
 #define ORDER_LIST_API                    @"loadAllOrder.a"                 //get
 
-//装货入厂签到
-#define SIGN_UP_API                       @"outSingUpload.a"                //post
-
-//是否可以进入装货工厂
-#define CAN_ENTERFAC_API                  @"canEnterFactory.a"              //post
-
-//装货开始拍照
-#define LOAD_START_API                    @"uploadBeforeLoadStart.a"        //post
-
-//装货结束扫码(外仓)
-#define OUT_LOAD_END_API                  @"outLoadEndUpload.a"             //post
-
-//装货结束拍照(内仓)
-#define IN_LOAD_END_API                   @"uploadAfterLoadEnd.a"           //post
-
 //修改预计到货时间
 #define CHANGE_PLAN_ARRIVETIME_API        @"savePlanAchieveTime.a"          //post
-
-//收货签到
-#define DELIVERY_SIGN_UP_API              @"uploadBeforeTakeGoods.a"        //post
-
-//收货完成
-#define  DELIVERY_COMPLETE_API            @"uploadTakeGoods.a"              //post
 
 //收货完成（不需要上传图片）
 //#define DELIVERY_COMPLETEBTN_API          @"unloadEndBeforeUrl.a"                //post

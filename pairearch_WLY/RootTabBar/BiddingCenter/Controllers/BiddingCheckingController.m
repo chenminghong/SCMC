@@ -247,7 +247,7 @@
         return;
     }
     __weak MBProgressHUD *hud1 = [MBProgressHUD bwm_showHUDAddedTo:self.view title:kBWMMBProgressHUDMsgLoading animated:YES];
-    [[NetworkHelper shareClientBidd] POST:CHANGE_BIDDING_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode, @"price":self.changeBiddingTf.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[NetworkHelper shareClient] POST:CHANGE_BIDDING_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode, @"price":self.changeBiddingTf.text} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         [hud1 hide:NO];
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         self.biddingModel.amount = responseObject[@"amount"];
@@ -268,7 +268,7 @@
  */
 - (void)cancelBiddingPost {
     __weak MBProgressHUD *hud1 = [MBProgressHUD bwm_showHUDAddedTo:self.view title:kBWMMBProgressHUDMsgLoading animated:YES];
-    [[NetworkHelper shareClientBidd] POST:CANCEL_BIDDING_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[NetworkHelper shareClient] POST:CANCEL_BIDDING_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":self.bidCode} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         [hud1 hide:NO];
         MBProgressHUD *hud2 = [ProgressHUD bwm_showTitle:responseObject[@"deleteResult"] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];

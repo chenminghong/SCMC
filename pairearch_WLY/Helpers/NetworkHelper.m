@@ -25,23 +25,6 @@
     return sharedClient;
 }
 
-//竞价中心
-+ (instancetype)shareClientBidd {
-    static NetworkHelper *sharedClient = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        
-        sharedClient = [[NetworkHelper alloc] initWithBaseURL:[NSURL URLWithString:PAIREACH_BIDDING_URL]];
-        //        sharedClient.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
-        sharedClient.responseSerializer = [AFHTTPResponseSerializer serializer];
-        sharedClient.securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
-        [sharedClient.requestSerializer setValue:@"XMLHttpRequest" forHTTPHeaderField:@"x-requested-with"];
-        sharedClient.requestSerializer.timeoutInterval = REQUEST_TIMEOUT;
-    });
-    return sharedClient;
-}
-
-
 + (instancetype)shareClientOther {
     static NetworkHelper *sharedClient = nil;
     static dispatch_once_t onceToken;

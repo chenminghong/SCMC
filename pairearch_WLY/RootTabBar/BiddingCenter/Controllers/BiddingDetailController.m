@@ -222,7 +222,7 @@
         [weakSelf.footerView.supplierButton setTitle:detailModel.supplierName forState:UIControlStateNormal];
         self.supplierCode = detailModel.supplierCode;
         BiddingDetailModel *tempModel = self.biddingModel.scorderbidArr[0];
-        [[NetworkHelper shareClientBidd] GET:GET_DRIVER_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":tempModel.bidCode, @"supplierCode":detailModel.supplierCode} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        [[NetworkHelper shareClient] GET:GET_DRIVER_API parameters:@{@"phoneNumber":[LoginModel shareLoginModel].tel, @"bidCode":tempModel.bidCode, @"supplierCode":detailModel.supplierCode} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
             responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
             weakSelf.biddingModel.driverArr = [NSMutableArray arrayWithArray:[BiddingDetailModel getModelsWithDicts:responseObject[@"driver"]]];
             BiddingDetailModel *tempModel2 = self.biddingModel.driverArr[0];
@@ -266,7 +266,7 @@
                                @"amount":self.footerView.biddingTf.text,
                                @"supplierCode":self.supplierCode,
                                @"carno":self.plateNumber};
-    [[NetworkHelper shareClientBidd] POST:SCRATCH_ORDER_API parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[NetworkHelper shareClient] POST:SCRATCH_ORDER_API parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
         NSLog(@"%@", responseObject);
         [hud1 hide:NO];

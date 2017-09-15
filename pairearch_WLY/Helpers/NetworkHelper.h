@@ -34,11 +34,6 @@ typedef NS_ENUM(NSUInteger, NetworkStatus) {
 //init
 + (instancetype)shareClient;
 
-//竞价中心
-+ (instancetype)shareClientBidd;
-
-+ (instancetype)shareClientOther;
-
 //判断网络状态
 + (NetworkReachabilityStatus)localizedNetworkReachabilityStatus;
 
