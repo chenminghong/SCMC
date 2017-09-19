@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BidFailController">
             <connections>
+                <outlet property="descriptionLabel" destination="QUy-92-c1E" id="Ydq-TT-kEj"/>
                 <outlet property="view" destination="5ah-du-jPk" id="rno-sP-I7e"/>
             </connections>
         </placeholder>

@@ -27,7 +27,6 @@
     
     self.view.backgroundColor = TOP_NAVIBAR_COLOR;
     self.title = @"消息";
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -62,34 +61,10 @@
         self.descriptionLabel.numberOfLines = 0;
         self.descriptionLabel.lineBreakMode = NSLineBreakByTruncatingTail;
         self.descriptionLabel.linkColor = [UIColor blueColor];
-        self.descriptionLabel.linkHighlightColor = [UIColor orangeColor];
+        self.descriptionLabel.linkBackgroundColor = [UIColor clearColor];
+        self.descriptionLabel.linkHighlightColor = [UIColor blueColor];
     }
     return _descriptionLabel;
-}
-
--(void)distinguishPhoneNumLabel:(UILabel *)label labelStr:(NSString *)labelStr{
-    //获取字符串中的电话号码
-    NSString *regulaStr = @"\\d{3,4}[- ]?\\d{7,8}"; NSRange stringRange = NSMakeRange(0, labelStr.length); //正则匹配
-    NSError *error;
-    NSMutableAttributedString *str = [[NSMutableAttributedString alloc] initWithString:labelStr];
-    NSRegularExpression *regexps = [NSRegularExpression regularExpressionWithPattern:regulaStr options:0 error:&error];
-    if (!error && regexps != nil) {
-        [regexps enumerateMatchesInString:labelStr options:0 range:stringRange usingBlock:^(NSTextCheckingResult * _Nullable result, NSMatchingFlags flags, BOOL * _Nonnull stop) {
-            NSRange phoneRange = result.range;
-            //定义一个NSAttributedstring接受电话号码字符串
-            phoneNumber = [str attributedSubstringFromRange:phoneRange];
-            //添加下划线
-            NSDictionary *attribtDic = @{NSUnderlineStyleAttributeName: [NSNumber numberWithInteger:NSUnderlineStyleSingle]};
-            [str addAttributes:attribtDic range:phoneRange];
-            //设置文本中的电话号码显示为黄色
-            [str addAttribute:NSForegroundColorAttributeName value:UIColorFromRGB(0xFF8200) range:phoneRange];
-            label.attributedText = str;
-            label.userInteractionEnabled = YES;
-            //添加手势，可以点击号码拨打电话
-            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapGesture:)];
-            [label addGestureRecognizer:tap];
-        }];
-    }
 }
 
 //实现拨打电话的方法

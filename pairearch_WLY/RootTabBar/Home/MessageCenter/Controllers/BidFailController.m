@@ -9,6 +9,7 @@
 #import "BidFailController.h"
 
 @interface BidFailController ()
+@property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
 
 @end
 
@@ -20,6 +21,8 @@
     
     self.view.backgroundColor = TOP_NAVIBAR_COLOR;
     self.title = @"消息";
+    
+    self.descriptionLabel.textColor = UIColorFromRGB(0xe35974);
 }
 
 - (void)didReceiveMemoryWarning {
