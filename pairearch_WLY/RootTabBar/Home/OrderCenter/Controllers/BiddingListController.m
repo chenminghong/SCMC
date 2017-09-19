@@ -48,10 +48,10 @@
         [self.listTableView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.and.left.and.bottom.and.right.mas_equalTo(self.view);
         }];
-        self.listTableView.delegate = self;
-        self.listTableView.dataSource = self;
-        self.listTableView.tableFooterView = [UIView new];
-        [MJRefreshUtil pullDownRefresh:self andScrollView:self.listTableView andAction:@selector(loadDataFromNet)];
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        self.tableView.tableFooterView = [UIView new];
+        [MJRefreshUtil pullDownRefresh:self andScrollView:self.tableView andAction:@selector(loadDataFromNet)];
     }
     return _tableView;
 }

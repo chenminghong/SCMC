@@ -18,8 +18,10 @@
 //#import "BiddingListController.h"
 
 #import "HomeCollectionCell.h"
+
 #import "TUListController.h"
 #import "OrderStatus220Controller.h"
+#import "MessageCenterController.h"
 
 @interface HomeViewController ()<SDCycleScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
@@ -119,7 +121,8 @@
 }
 
 - (void)newsButtonAction:(UIButton *)sender {
-    [ProgressHUD bwm_showTitle:@"暂无消息" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
+    MessageCenterController *messageVC = [MessageCenterController new];
+    [self.navigationController pushViewController:messageVC animated:YES];
 }
 
 #pragma mark -- Get Data
