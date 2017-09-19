@@ -50,8 +50,8 @@
                               UIColorFromRGB(0x54b8be),
                               UIColorFromRGB(0x33a881),
                               UIColorFromRGB(0xe86783)];
-    NSArray *titleArr = @[@"可抢单",
-                          @"抢单中",
+    NSArray *titleArr = @[@"交易大厅",
+                          @"我的交易",
                           @"待运送",
                           @"运送中"];
     NSArray *iconNameArr = @[@"keqiangdan",

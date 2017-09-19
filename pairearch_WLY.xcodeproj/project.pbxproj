@@ -78,6 +78,47 @@
 		0F7284BA1F70ED5C00F1684F /* SaftyCheckCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7284771F70ED5B00F1684F /* SaftyCheckCell.xib */; };
 		0F7284BB1F70ED5C00F1684F /* TUListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7284791F70ED5B00F1684F /* TUListTableCell.m */; };
 		0F7284BC1F70ED5C00F1684F /* TUListTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F72847A1F70ED5B00F1684F /* TUListTableCell.xib */; };
+		0F7284C01F70EECD00F1684F /* BidSuccessController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7284BE1F70EECD00F1684F /* BidSuccessController.m */; };
+		0F7284C11F70EECD00F1684F /* BidSuccessController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7284BF1F70EECD00F1684F /* BidSuccessController.xib */; };
+		0F7285391F71040D00F1684F /* [不服].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285121F71040D00F1684F /* [不服].png */; };
+		0F72853A1F71040D00F1684F /* [亲亲].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285131F71040D00F1684F /* [亲亲].png */; };
+		0F72853B1F71040D00F1684F /* [偷笑].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285141F71040D00F1684F /* [偷笑].png */; };
+		0F72853C1F71040D00F1684F /* [加油].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285151F71040D00F1684F /* [加油].png */; };
+		0F72853D1F71040D00F1684F /* [卖萌].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285161F71040D00F1684F /* [卖萌].png */; };
+		0F72853E1F71040D00F1684F /* [吐了].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285171F71040D00F1684F /* [吐了].png */; };
+		0F72853F1F71040D00F1684F /* [大哭].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285181F71040D00F1684F /* [大哭].png */; };
+		0F7285401F71040D00F1684F /* [大笑].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285191F71040D00F1684F /* [大笑].png */; };
+		0F7285411F71040D00F1684F /* [好色].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72851A1F71040D00F1684F /* [好色].png */; };
+		0F7285421F71040D00F1684F /* [害羞].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72851B1F71040D00F1684F /* [害羞].png */; };
+		0F7285431F71040D00F1684F /* [屌爆了].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72851C1F71040D00F1684F /* [屌爆了].png */; };
+		0F7285441F71040D00F1684F /* [帅气].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72851D1F71040D00F1684F /* [帅气].png */; };
+		0F7285451F71040D00F1684F /* [微笑].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72851E1F71040D00F1684F /* [微笑].png */; };
+		0F7285461F71040D00F1684F /* [快哭了].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72851F1F71040D00F1684F /* [快哭了].png */; };
+		0F7285471F71040D00F1684F /* [惊恐].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285201F71040D00F1684F /* [惊恐].png */; };
+		0F7285481F71040D00F1684F /* [惊讶].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285211F71040D00F1684F /* [惊讶].png */; };
+		0F7285491F71040D00F1684F /* [愤怒].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285221F71040D00F1684F /* [愤怒].png */; };
+		0F72854A1F71040D00F1684F /* [打死你].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285231F71040D00F1684F /* [打死你].png */; };
+		0F72854B1F71040D00F1684F /* [抓狂].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285241F71040D00F1684F /* [抓狂].png */; };
+		0F72854C1F71040D00F1684F /* [抱抱].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285251F71040D00F1684F /* [抱抱].png */; };
+		0F72854D1F71040D00F1684F /* [挖鼻孔].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285261F71040D00F1684F /* [挖鼻孔].png */; };
+		0F72854E1F71040D00F1684F /* [摸头].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285271F71040D00F1684F /* [摸头].png */; };
+		0F72854F1F71040D00F1684F /* [晕].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285281F71040D00F1684F /* [晕].png */; };
+		0F7285501F71040D00F1684F /* [求你了].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285291F71040D00F1684F /* [求你了].png */; };
+		0F7285511F71040D00F1684F /* [求包养].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72852A1F71040D00F1684F /* [求包养].png */; };
+		0F7285521F71040D00F1684F /* [流汗].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72852B1F71040D00F1684F /* [流汗].png */; };
+		0F7285531F71040D00F1684F /* [淘气].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72852C1F71040D00F1684F /* [淘气].png */; };
+		0F7285541F71040D00F1684F /* [猥琐].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72852D1F71040D00F1684F /* [猥琐].png */; };
+		0F7285551F71040D00F1684F /* [生气].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72852E1F71040D00F1684F /* [生气].png */; };
+		0F7285561F71040D00F1684F /* [白眼].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F72852F1F71040D00F1684F /* [白眼].png */; };
+		0F7285571F71040D00F1684F /* [给跪].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285301F71040D00F1684F /* [给跪].png */; };
+		0F7285581F71040D00F1684F /* [鄙视].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285311F71040D00F1684F /* [鄙视].png */; };
+		0F7285591F71040D00F1684F /* [闭嘴].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285321F71040D00F1684F /* [闭嘴].png */; };
+		0F72855A1F71040D00F1684F /* [阴险].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285331F71040D00F1684F /* [阴险].png */; };
+		0F72855B1F71040D00F1684F /* [难过].png in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285341F71040D00F1684F /* [难过].png */; };
+		0F72855C1F71040D00F1684F /* KZLinkLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7285361F71040D00F1684F /* KZLinkLabel.m */; };
+		0F72855D1F71040D00F1684F /* NSAttributedString+Emotion.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F7285381F71040D00F1684F /* NSAttributedString+Emotion.m */; };
+		0F7285611F7118C600F1684F /* BidFailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F72855F1F7118C600F1684F /* BidFailController.m */; };
+		0F7285621F7118C600F1684F /* BidFailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F7285601F7118C600F1684F /* BidFailController.xib */; };
 		0F8986511ED3D36B007DCDD0 /* BiddingDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */; };
 		0F8986521ED3D36B007DCDD0 /* BiddingDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */; };
 		0F8986551ED3D38D007DCDD0 /* BiddingDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F8986541ED3D38D007DCDD0 /* BiddingDetailModel.m */; };
@@ -320,6 +361,51 @@
 		0F7284781F70ED5B00F1684F /* TUListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TUListTableCell.h; sourceTree = "<group>"; };
 		0F7284791F70ED5B00F1684F /* TUListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TUListTableCell.m; sourceTree = "<group>"; };
 		0F72847A1F70ED5B00F1684F /* TUListTableCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TUListTableCell.xib; sourceTree = "<group>"; };
+		0F7284BD1F70EECD00F1684F /* BidSuccessController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidSuccessController.h; sourceTree = "<group>"; };
+		0F7284BE1F70EECD00F1684F /* BidSuccessController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidSuccessController.m; sourceTree = "<group>"; };
+		0F7284BF1F70EECD00F1684F /* BidSuccessController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidSuccessController.xib; sourceTree = "<group>"; };
+		0F7285121F71040D00F1684F /* [不服].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[不服].png"; sourceTree = "<group>"; };
+		0F7285131F71040D00F1684F /* [亲亲].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[亲亲].png"; sourceTree = "<group>"; };
+		0F7285141F71040D00F1684F /* [偷笑].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[偷笑].png"; sourceTree = "<group>"; };
+		0F7285151F71040D00F1684F /* [加油].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[加油].png"; sourceTree = "<group>"; };
+		0F7285161F71040D00F1684F /* [卖萌].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[卖萌].png"; sourceTree = "<group>"; };
+		0F7285171F71040D00F1684F /* [吐了].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[吐了].png"; sourceTree = "<group>"; };
+		0F7285181F71040D00F1684F /* [大哭].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[大哭].png"; sourceTree = "<group>"; };
+		0F7285191F71040D00F1684F /* [大笑].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[大笑].png"; sourceTree = "<group>"; };
+		0F72851A1F71040D00F1684F /* [好色].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[好色].png"; sourceTree = "<group>"; };
+		0F72851B1F71040D00F1684F /* [害羞].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[害羞].png"; sourceTree = "<group>"; };
+		0F72851C1F71040D00F1684F /* [屌爆了].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[屌爆了].png"; sourceTree = "<group>"; };
+		0F72851D1F71040D00F1684F /* [帅气].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[帅气].png"; sourceTree = "<group>"; };
+		0F72851E1F71040D00F1684F /* [微笑].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[微笑].png"; sourceTree = "<group>"; };
+		0F72851F1F71040D00F1684F /* [快哭了].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[快哭了].png"; sourceTree = "<group>"; };
+		0F7285201F71040D00F1684F /* [惊恐].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[惊恐].png"; sourceTree = "<group>"; };
+		0F7285211F71040D00F1684F /* [惊讶].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[惊讶].png"; sourceTree = "<group>"; };
+		0F7285221F71040D00F1684F /* [愤怒].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[愤怒].png"; sourceTree = "<group>"; };
+		0F7285231F71040D00F1684F /* [打死你].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[打死你].png"; sourceTree = "<group>"; };
+		0F7285241F71040D00F1684F /* [抓狂].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[抓狂].png"; sourceTree = "<group>"; };
+		0F7285251F71040D00F1684F /* [抱抱].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[抱抱].png"; sourceTree = "<group>"; };
+		0F7285261F71040D00F1684F /* [挖鼻孔].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[挖鼻孔].png"; sourceTree = "<group>"; };
+		0F7285271F71040D00F1684F /* [摸头].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[摸头].png"; sourceTree = "<group>"; };
+		0F7285281F71040D00F1684F /* [晕].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[晕].png"; sourceTree = "<group>"; };
+		0F7285291F71040D00F1684F /* [求你了].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[求你了].png"; sourceTree = "<group>"; };
+		0F72852A1F71040D00F1684F /* [求包养].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[求包养].png"; sourceTree = "<group>"; };
+		0F72852B1F71040D00F1684F /* [流汗].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[流汗].png"; sourceTree = "<group>"; };
+		0F72852C1F71040D00F1684F /* [淘气].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[淘气].png"; sourceTree = "<group>"; };
+		0F72852D1F71040D00F1684F /* [猥琐].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[猥琐].png"; sourceTree = "<group>"; };
+		0F72852E1F71040D00F1684F /* [生气].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[生气].png"; sourceTree = "<group>"; };
+		0F72852F1F71040D00F1684F /* [白眼].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[白眼].png"; sourceTree = "<group>"; };
+		0F7285301F71040D00F1684F /* [给跪].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[给跪].png"; sourceTree = "<group>"; };
+		0F7285311F71040D00F1684F /* [鄙视].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[鄙视].png"; sourceTree = "<group>"; };
+		0F7285321F71040D00F1684F /* [闭嘴].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[闭嘴].png"; sourceTree = "<group>"; };
+		0F7285331F71040D00F1684F /* [阴险].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[阴险].png"; sourceTree = "<group>"; };
+		0F7285341F71040D00F1684F /* [难过].png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "[难过].png"; sourceTree = "<group>"; };
+		0F7285351F71040D00F1684F /* KZLinkLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KZLinkLabel.h; sourceTree = "<group>"; };
+		0F7285361F71040D00F1684F /* KZLinkLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KZLinkLabel.m; sourceTree = "<group>"; };
+		0F7285371F71040D00F1684F /* NSAttributedString+Emotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSAttributedString+Emotion.h"; sourceTree = "<group>"; };
+		0F7285381F71040D00F1684F /* NSAttributedString+Emotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSAttributedString+Emotion.m"; sourceTree = "<group>"; };
+		0F72855E1F7118C600F1684F /* BidFailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidFailController.h; sourceTree = "<group>"; };
+		0F72855F1F7118C600F1684F /* BidFailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BidFailController.m; sourceTree = "<group>"; };
+		0F7285601F7118C600F1684F /* BidFailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BidFailController.xib; sourceTree = "<group>"; };
 		0F89864E1ED3D36B007DCDD0 /* BiddingDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiddingDetailController.h; sourceTree = "<group>"; };
 		0F89864F1ED3D36B007DCDD0 /* BiddingDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiddingDetailController.m; sourceTree = "<group>"; };
 		0F8986501ED3D36B007DCDD0 /* BiddingDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BiddingDetailController.xib; sourceTree = "<group>"; };
@@ -637,6 +723,12 @@
 				0F72841F1F70ED5B00F1684F /* MessageCenterController.h */,
 				0F7284201F70ED5B00F1684F /* MessageCenterController.m */,
 				0F7284211F70ED5B00F1684F /* MessageCenterController.xib */,
+				0F7284BD1F70EECD00F1684F /* BidSuccessController.h */,
+				0F7284BE1F70EECD00F1684F /* BidSuccessController.m */,
+				0F7284BF1F70EECD00F1684F /* BidSuccessController.xib */,
+				0F72855E1F7118C600F1684F /* BidFailController.h */,
+				0F72855F1F7118C600F1684F /* BidFailController.m */,
+				0F7285601F7118C600F1684F /* BidFailController.xib */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -767,6 +859,60 @@
 				0F72847A1F70ED5B00F1684F /* TUListTableCell.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		0F7285101F71040D00F1684F /* KZLinkLabel */ = {
+			isa = PBXGroup;
+			children = (
+				0F7285111F71040D00F1684F /* Emoji */,
+				0F7285351F71040D00F1684F /* KZLinkLabel.h */,
+				0F7285361F71040D00F1684F /* KZLinkLabel.m */,
+				0F7285371F71040D00F1684F /* NSAttributedString+Emotion.h */,
+				0F7285381F71040D00F1684F /* NSAttributedString+Emotion.m */,
+			);
+			path = KZLinkLabel;
+			sourceTree = "<group>";
+		};
+		0F7285111F71040D00F1684F /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				0F7285121F71040D00F1684F /* [不服].png */,
+				0F7285131F71040D00F1684F /* [亲亲].png */,
+				0F7285141F71040D00F1684F /* [偷笑].png */,
+				0F7285151F71040D00F1684F /* [加油].png */,
+				0F7285161F71040D00F1684F /* [卖萌].png */,
+				0F7285171F71040D00F1684F /* [吐了].png */,
+				0F7285181F71040D00F1684F /* [大哭].png */,
+				0F7285191F71040D00F1684F /* [大笑].png */,
+				0F72851A1F71040D00F1684F /* [好色].png */,
+				0F72851B1F71040D00F1684F /* [害羞].png */,
+				0F72851C1F71040D00F1684F /* [屌爆了].png */,
+				0F72851D1F71040D00F1684F /* [帅气].png */,
+				0F72851E1F71040D00F1684F /* [微笑].png */,
+				0F72851F1F71040D00F1684F /* [快哭了].png */,
+				0F7285201F71040D00F1684F /* [惊恐].png */,
+				0F7285211F71040D00F1684F /* [惊讶].png */,
+				0F7285221F71040D00F1684F /* [愤怒].png */,
+				0F7285231F71040D00F1684F /* [打死你].png */,
+				0F7285241F71040D00F1684F /* [抓狂].png */,
+				0F7285251F71040D00F1684F /* [抱抱].png */,
+				0F7285261F71040D00F1684F /* [挖鼻孔].png */,
+				0F7285271F71040D00F1684F /* [摸头].png */,
+				0F7285281F71040D00F1684F /* [晕].png */,
+				0F7285291F71040D00F1684F /* [求你了].png */,
+				0F72852A1F71040D00F1684F /* [求包养].png */,
+				0F72852B1F71040D00F1684F /* [流汗].png */,
+				0F72852C1F71040D00F1684F /* [淘气].png */,
+				0F72852D1F71040D00F1684F /* [猥琐].png */,
+				0F72852E1F71040D00F1684F /* [生气].png */,
+				0F72852F1F71040D00F1684F /* [白眼].png */,
+				0F7285301F71040D00F1684F /* [给跪].png */,
+				0F7285311F71040D00F1684F /* [鄙视].png */,
+				0F7285321F71040D00F1684F /* [闭嘴].png */,
+				0F7285331F71040D00F1684F /* [阴险].png */,
+				0F7285341F71040D00F1684F /* [难过].png */,
+			);
+			path = Emoji;
 			sourceTree = "<group>";
 		};
 		0FA20D1E1EC471AA005C2015 /* BiddingCenter */ = {
@@ -1222,6 +1368,7 @@
 		B384109E1E5C3CFE00F7069F /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				0F7285101F71040D00F1684F /* KZLinkLabel */,
 				0F67C68E1EEA8D7900AC9155 /* YQImageCompressor */,
 				0FE58E3A1EC984130041E1D9 /* ProgressHUD */,
 				0FE58E0C1EC980C30041E1D9 /* SGQRCode */,
@@ -1451,51 +1598,75 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F8986951ED806EC007DCDD0 /* ButtonFooterView.xib in Resources */,
+				0F7285391F71040D00F1684F /* [不服].png in Resources */,
 				B37BA6D01E80FA29001A74B8 /* AbnormalReportCell.xib in Resources */,
 				0F72848B1F70ED5B00F1684F /* BiddingListController.xib in Resources */,
+				0F72853C1F71040D00F1684F /* [加油].png in Resources */,
 				0F72849C1F70ED5C00F1684F /* OrderStatus244Controller.xib in Resources */,
 				0F7284B81F70ED5C00F1684F /* OrderListTableFooter.xib in Resources */,
 				B37BA6CB1E80D300001A74B8 /* AbnormalReportController.storyboard in Resources */,
 				0F8986731ED5591A007DCDD0 /* BidOrderDetailCell.xib in Resources */,
 				0F7284BA1F70ED5C00F1684F /* SaftyCheckCell.xib in Resources */,
+				0F7285421F71040D00F1684F /* [害羞].png in Resources */,
+				0F7285501F71040D00F1684F /* [求你了].png in Resources */,
 				0F8986831ED691CC007DCDD0 /* BidCheckingFooterView.xib in Resources */,
 				0F7284981F70ED5C00F1684F /* OrderStatus230Controller.xib in Resources */,
 				0F7284831F70ED5B00F1684F /* CollectionViewCell.xib in Resources */,
 				0F7284891F70ED5B00F1684F /* MessageTableCell.xib in Resources */,
 				0F72849A1F70ED5C00F1684F /* OrderStatus232Controller.xib in Resources */,
+				0F7285431F71040D00F1684F /* [屌爆了].png in Resources */,
 				0FE58E301EC980C30041E1D9 /* QRCodebottomRight@3x.png in Resources */,
 				0F7284921F70ED5B00F1684F /* OrderStatus220Controller.xib in Resources */,
 				0F89865A1ED3E12B007DCDD0 /* BidDetailCell.xib in Resources */,
+				0F72854C1F71040D00F1684F /* [抱抱].png in Resources */,
+				0F7285571F71040D00F1684F /* [给跪].png in Resources */,
 				0FB06E311EE64D77009B68D8 /* GetBiddingDetailController.xib in Resources */,
 				0F7284B21F70ED5C00F1684F /* OrderDetailCell.xib in Resources */,
 				0FE58E331EC980C30041E1D9 /* QRCodeTopLeft@2x.png in Resources */,
 				0FDE407B1ECE8F6700FAEF48 /* OrderStatus248Controller.xib in Resources */,
+				0F7285581F71040D00F1684F /* [鄙视].png in Resources */,
+				0F72854A1F71040D00F1684F /* [打死你].png in Resources */,
 				0F7284AA1F70ED5C00F1684F /* Header212View.xib in Resources */,
 				0FDE40671ECB0DC400FAEF48 /* TimePickerView.xib in Resources */,
 				0F7284AC1F70ED5C00F1684F /* HomeTableCell.xib in Resources */,
+				0F7285551F71040D00F1684F /* [生气].png in Resources */,
 				0F8986781ED57861007DCDD0 /* BiddingCheckingController.xib in Resources */,
+				0F7285591F71040D00F1684F /* [闭嘴].png in Resources */,
+				0F7285411F71040D00F1684F /* [好色].png in Resources */,
+				0F7285511F71040D00F1684F /* [求包养].png in Resources */,
 				0F7284A81F70ED5C00F1684F /* FooterSelectView.xib in Resources */,
 				B32228E91E52A2C300ED50ED /* LaunchScreen.storyboard in Resources */,
 				0FE58E321EC980C30041E1D9 /* QRCodeLine@3x.png in Resources */,
 				0FE58E2D1EC980C30041E1D9 /* QRCodebottomLeft@2x.png in Resources */,
+				0F7285401F71040D00F1684F /* [大笑].png in Resources */,
 				0FE58E371EC980C30041E1D9 /* sound.caf in Resources */,
+				0F72853F1F71040D00F1684F /* [大哭].png in Resources */,
 				0F7284871F70ED5B00F1684F /* MessageCenterController.xib in Resources */,
 				0FDE406E1ECB0FC100FAEF48 /* DatePickerView.xib in Resources */,
 				0F7284A41F70ED5C00F1684F /* WaitEnterController.xib in Resources */,
 				B38411461E5E91DE00F7069F /* CancelLoginCell.xib in Resources */,
+				0F72853D1F71040D00F1684F /* [卖萌].png in Resources */,
+				0F72854E1F71040D00F1684F /* [摸头].png in Resources */,
 				B32228E61E52A2C300ED50ED /* Assets.xcassets in Resources */,
 				0FE58E341EC980C30041E1D9 /* QRCodeTopLeft@3x.png in Resources */,
 				0F7284A01F70ED5C00F1684F /* PressEnterController.xib in Resources */,
 				0F72847C1F70ED5B00F1684F /* HomeViewController.storyboard in Resources */,
+				0F7285471F71040D00F1684F /* [惊恐].png in Resources */,
 				0F72848D1F70ED5B00F1684F /* ForkliftDriverStatus226Controller.xib in Resources */,
 				0FE58E511EC9AC130041E1D9 /* OrderStatus224Controller.xib in Resources */,
 				0FA20D391EC471AA005C2015 /* ListTableCell.xib in Resources */,
+				0F7285621F7118C600F1684F /* BidFailController.xib in Resources */,
 				0FE58E311EC980C30041E1D9 /* QRCodeLine@2x.png in Resources */,
 				0F7284961F70ED5C00F1684F /* OrderStatus228Controller.xib in Resources */,
 				0F7284B01F70ED5C00F1684F /* Mistake212Header.xib in Resources */,
+				0F72853E1F71040D00F1684F /* [吐了].png in Resources */,
+				0F7285451F71040D00F1684F /* [微笑].png in Resources */,
 				0F72847D1F70ED5B00F1684F /* SafetyControl.plist in Resources */,
+				0F7285461F71040D00F1684F /* [快哭了].png in Resources */,
 				B38411411E5E89C700F7069F /* PersonalCenterCell.xib in Resources */,
+				0F7285491F71040D00F1684F /* [愤怒].png in Resources */,
 				0FE58E2F1EC980C30041E1D9 /* QRCodebottomRight@2x.png in Resources */,
+				0F7285481F71040D00F1684F /* [惊讶].png in Resources */,
 				0FE58E2E1EC980C30041E1D9 /* QRCodebottomLeft@3x.png in Resources */,
 				0FE58E361EC980C30041E1D9 /* QRCodeTopRight@3x.png in Resources */,
 				0F7284B61F70ED5C00F1684F /* OrderListTableCell.xib in Resources */,
@@ -1504,15 +1675,28 @@
 				0F72849E1F70ED5C00F1684F /* PrepareEnterController.xib in Resources */,
 				0FD9C0B81EADD88D00CD7E00 /* OrdersViewController.storyboard in Resources */,
 				0F8986661ED42E08007DCDD0 /* BidSelectView.xib in Resources */,
+				0F72854F1F71040D00F1684F /* [晕].png in Resources */,
+				0F72855A1F71040D00F1684F /* [阴险].png in Resources */,
+				0F72853B1F71040D00F1684F /* [偷笑].png in Resources */,
+				0F7285531F71040D00F1684F /* [淘气].png in Resources */,
+				0F7285541F71040D00F1684F /* [猥琐].png in Resources */,
 				0F7284B41F70ED5C00F1684F /* OrderListCell.xib in Resources */,
+				0F7284C11F70EECD00F1684F /* BidSuccessController.xib in Resources */,
+				0F72855B1F71040D00F1684F /* [难过].png in Resources */,
+				0F72854D1F71040D00F1684F /* [挖鼻孔].png in Resources */,
+				0F72853A1F71040D00F1684F /* [亲亲].png in Resources */,
 				0F8986611ED41AD1007DCDD0 /* BiddingFooterView.xib in Resources */,
 				0F7284AE1F70ED5C00F1684F /* Mistake212Footer.xib in Resources */,
 				0FE58E351EC980C30041E1D9 /* QRCodeTopRight@2x.png in Resources */,
+				0F72854B1F71040D00F1684F /* [抓狂].png in Resources */,
+				0F7285441F71040D00F1684F /* [帅气].png in Resources */,
 				0F8986881ED7C4C5007DCDD0 /* WaitListController.xib in Resources */,
 				0F7284851F70ED5B00F1684F /* HomeCollectionCell.xib in Resources */,
 				B32228E41E52A2C300ED50ED /* Main.storyboard in Resources */,
+				0F7285561F71040D00F1684F /* [白眼].png in Resources */,
 				0F8986521ED3D36B007DCDD0 /* BiddingDetailController.xib in Resources */,
 				0F89868D1ED7C675007DCDD0 /* WaitTimeoutController.xib in Resources */,
+				0F7285521F71040D00F1684F /* [流汗].png in Resources */,
 				0F7284941F70ED5C00F1684F /* OrderStatus226Controller.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1577,6 +1761,7 @@
 				0F7284A11F70ED5C00F1684F /* SafetyControlController.m in Sources */,
 				0F89865F1ED41AC6007DCDD0 /* BiddingFooterView.m in Sources */,
 				0F8986691ED430C1007DCDD0 /* BidPickerView.m in Sources */,
+				0F72855D1F71040D00F1684F /* NSAttributedString+Emotion.m in Sources */,
 				B3CC54BF1E6020090072EA47 /* AutoHeight.m in Sources */,
 				0F8986591ED3E12B007DCDD0 /* BidDetailCell.m in Sources */,
 				0F8986871ED7C4C5007DCDD0 /* WaitListController.m in Sources */,
@@ -1648,7 +1833,9 @@
 				0FB06E301EE64D77009B68D8 /* GetBiddingDetailController.m in Sources */,
 				B357276A1E540E46003F9B2F /* NavigationController.m in Sources */,
 				B32228DE1E52A2C300ED50ED /* AppDelegate.m in Sources */,
+				0F7285611F7118C600F1684F /* BidFailController.m in Sources */,
 				0F7284A31F70ED5C00F1684F /* WaitEnterController.m in Sources */,
+				0F72855C1F71040D00F1684F /* KZLinkLabel.m in Sources */,
 				0FE58E061EC95A5A0041E1D9 /* OrderStatusKABaseController.m in Sources */,
 				0F7284A71F70ED5C00F1684F /* FooterSelectView.m in Sources */,
 				0F72848C1F70ED5B00F1684F /* ForkliftDriverStatus226Controller.m in Sources */,
@@ -1665,6 +1852,7 @@
 				0F8986901ED804C7007DCDD0 /* OutStorage220Controller.m in Sources */,
 				B38411311E5E830400F7069F /* CancelLoginTableViewCell.m in Sources */,
 				0F7284971F70ED5C00F1684F /* OrderStatus230Controller.m in Sources */,
+				0F7284C01F70EECD00F1684F /* BidSuccessController.m in Sources */,
 				0F72847E1F70ED5B00F1684F /* HomePageModel.m in Sources */,
 				0F7284841F70ED5B00F1684F /* HomeCollectionCell.m in Sources */,
 				B38411321E5E830400F7069F /* FeedbackIdeaTableViewCell.m in Sources */,

@@ -30,7 +30,7 @@
 #import "YQImageCompressTool.h"
 #import <UIImage+ImageCompress.h>
 #import <SDCycleScrollView.h>
-
+#import <STTweetLabel.h>
 
 
 //自定义头文件
@@ -54,6 +54,7 @@
 #import "MyImagePickerManager.h"
 #import "QrcodeHelper.h"
 #import "CustomVerticalButton.h"
+#import "KZLinkLabel.h"
 
 
 #pragma mark -- Define

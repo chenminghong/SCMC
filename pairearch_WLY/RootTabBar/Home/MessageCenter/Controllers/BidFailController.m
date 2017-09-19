@@ -1,22 +1,25 @@
 //
-//  EarlyWarningController.m
+//  BidFailController.m
 //  pairearch_WLY
 //
-//  Created by Jean on 2017/6/12.
+//  Created by Jean on 2017/9/19.
 //  Copyright © 2017年 Leo. All rights reserved.
 //
 
-#import "EarlyWarningController.h"
+#import "BidFailController.h"
 
-@interface EarlyWarningController ()
+@interface BidFailController ()
 
 @end
 
-@implementation EarlyWarningController
+@implementation BidFailController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.view.backgroundColor = TOP_NAVIBAR_COLOR;
+    self.title = @"消息";
 }
 
 - (void)didReceiveMemoryWarning {

@@ -9,6 +9,8 @@
 #import "MessageCenterController.h"
 
 #import "MessageTableCell.h"
+#import "BidSuccessController.h"
+#import "BidFailController.h"
 
 @interface MessageCenterController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -68,7 +70,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+    if (indexPath.row % 2 == 0) {
+        BidSuccessController *bidSuccessVC = [BidSuccessController new];
+        [self.navigationController pushViewController:bidSuccessVC animated:YES];
+    } else {
+        BidFailController *bidFailVC = [BidFailController new];
+        [self.navigationController pushViewController:bidFailVC animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

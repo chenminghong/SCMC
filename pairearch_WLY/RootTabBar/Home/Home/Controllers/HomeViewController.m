@@ -60,7 +60,7 @@
                                 @"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1128343348,3478453008&fm=26&gp=0.jpg"];
     self.sdCycleView.imageURLStringsGroup = imageUrlStrArr;
     
-    [self getHomePageData];
+//    [self getHomePageData];
     
 //    [ProgressHUD bwm_showTitle:@"加载成功" toView:self.view hideAfter:MAXFLOAT msgType:BWMMBProgressHUDMsgTypeSuccessful];
 }
