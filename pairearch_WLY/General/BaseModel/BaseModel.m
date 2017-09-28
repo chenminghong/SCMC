@@ -411,7 +411,6 @@
     if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         [center removePendingNotificationRequestsWithIdentifiers:@[identifier]];
-//        [center removeDeliveredNotificationsWithIdentifiers:@[identifier]];
     } else if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }
