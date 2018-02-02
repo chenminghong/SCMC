@@ -151,4 +151,66 @@ void providerReleaseData (void *info, const void *data, size_t size){
     free((void *)data);
 }
 
+
+
+/*---------------------------------- 生成一维码-------------------------------*/
+
++ (UIImage *)generateBarCode:(NSString *)code size:(CGSize)size color:(UIColor *)color backGroundColor:(UIColor *)backGroundColor {
+    CIImage *ciimage = [self generateBarCodeImage:code color:color backGroundColor:backGroundColor];
+    return [self resizeCodeImage:ciimage withSize:size];
+}
+
++ (CIImage *)generateBarCodeImage:(NSString *)source color:(UIColor *)color backGroundColor:(UIColor *)backGroundColor {
+    // iOS 8.0以上的系统才支持条形码的生成，iOS8.0以下使用第三方控件生成
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0) {
+        // 注意生成条形码的编码方式
+        NSData *data = [source dataUsingEncoding: NSASCIIStringEncoding];
+        CIFilter *filter = [CIFilter filterWithName:@"CICode128BarcodeGenerator"];
+        [filter setValue:data forKey:@"inputMessage"];
+        // 设置生成的条形码的上，下，左，右的margins的值
+        [filter setValue:[NSNumber numberWithInteger:0] forKey:@"inputQuietSpace"];
+        
+        //设置条形码颜色和背景颜色
+        CIFilter * colorFilter = [CIFilter filterWithName:@"CIFalseColor"];
+        [colorFilter setValue:filter.outputImage forKey:@"inputImage"];
+        //条形码颜色
+        if (color == nil) {
+            color = [UIColor blackColor];
+        }
+        if (backGroundColor == nil) {
+            backGroundColor = [UIColor whiteColor];
+        }
+        [colorFilter setValue:[CIColor colorWithCGColor:color.CGColor] forKey:@"inputColor0"];
+        //背景颜色
+        [colorFilter setValue:[CIColor colorWithCGColor:backGroundColor.CGColor] forKey:@"inputColor1"];
+        
+        return colorFilter.outputImage;
+    }else{
+        return nil;
+    }
+}
+
++ (UIImage *)resizeCodeImage:(CIImage *)image withSize:(CGSize)size {
+    if (image) {
+        CGRect extent = CGRectIntegral(image.extent);
+        CGFloat scaleWidth = size.width/CGRectGetWidth(extent);
+        CGFloat scaleHeight = size.height/CGRectGetHeight(extent);
+        size_t width = CGRectGetWidth(extent) * scaleWidth;
+        size_t height = CGRectGetHeight(extent) * scaleHeight;
+        CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceGray();
+        CGContextRef contentRef = CGBitmapContextCreate(nil, width, height, 8, 0, colorSpaceRef, (CGBitmapInfo)kCGImageAlphaNone);
+        CIContext *context = [CIContext contextWithOptions:nil];
+        CGImageRef imageRef = [context createCGImage:image fromRect:extent];
+        CGContextSetInterpolationQuality(contentRef, kCGInterpolationNone);
+        CGContextScaleCTM(contentRef, scaleWidth, scaleHeight);
+        CGContextDrawImage(contentRef, extent, imageRef);
+        CGImageRef imageRefResized = CGBitmapContextCreateImage(contentRef);
+        CGContextRelease(contentRef);
+        CGImageRelease(imageRef);
+        return [UIImage imageWithCGImage:imageRefResized];
+    }else{
+        return nil;
+    }
+}
+
 @end

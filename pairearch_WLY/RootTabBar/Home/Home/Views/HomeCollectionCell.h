@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomePageModel;
+
 typedef void(^SelectCellBlock)(NSIndexPath *indexPath);
 
 @interface HomeCollectionCell : UITableViewCell<UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
@@ -15,6 +17,8 @@ typedef void(^SelectCellBlock)(NSIndexPath *indexPath);
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, copy) SelectCellBlock selectAction;  //点击cell回调
+
+@property (nonatomic, strong) HomePageModel *homeModel;
 
 
 

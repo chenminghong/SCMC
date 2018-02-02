@@ -33,4 +33,16 @@
  */
 + (UIImage *)creatCustomColorShadowLogoImageWithMessage:(NSString *)message logoImage:(UIImage *)logoImage imageSize:(CGFloat)imageSize drawColor:(UIColor *)drawColor;
 
+
+/**
+ 生成条形码
+
+ @param code 需要生成条形码的内容
+ @param size 生成的条形码的大小
+ @param color 生成的条形码的颜色
+ @param backGroundColor 生成的条形码的背景颜色
+ @return 生成的条形码图片的对象
+ */
++ (UIImage *)generateBarCode:(NSString *)code size:(CGSize)size color:(UIColor *)color backGroundColor:(UIColor *)backGroundColor;
+
 @end

@@ -10,10 +10,13 @@
 
 #import "TUListTableCell.h"
 #import "OrderListController.h"
+#import "TuListModel.h"
 
 @interface TUListController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) UITableView *tableView;
+
+@property (nonatomic, strong) TuListModel *tulistModel;
 
 @end
 
@@ -35,6 +38,7 @@
         self.tableView.tableFooterView = [UITableView new];
         self.tableView.separatorInset = UIEdgeInsetsZero;
         self.tableView.separatorColor = TABLE_SEPARATOR_COLOR;
+        [MJRefreshUtil pullDownRefresh:self andScrollView:self.tableView andAction:@selector(loadData)];
     }
     return _tableView;
 }
@@ -44,7 +48,29 @@
     // Do any additional setup after loading the view from its nib.
     
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:self.tableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    [MJRefreshUtil begainRefresh:self.tableView];
+}
+
+//加载数据
+- (void)loadData {
+    NSDictionary *paraDict = @{@"driverTel":[LoginModel shareLoginModel].phone,
+                               OPERATION_KEY:WAIT_TRANSPORT_LIST_API};
+    [TuListModel getDataWithUrl:PAIREACH_NETWORK_URL parameters:paraDict hudTarget:self endBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        if (!error) {
+            self.tulistModel = responseObject;
+        }
+        NSLog(@"%lud",(unsigned long) self.tulistModel.modelListArr.count);
+        if (self.tulistModel.modelListArr.count <= 0) {
+            self.tableView.placeHolderView = [NoDataView getPlaceHoldViewWithImgName:@"zanwuyundan" titleText:@"暂无可运输的运单，可联系承运商指派运单"];
+        }
+        [self.tableView reloadData];
+        [MJRefreshUtil endRefresh:self.tableView];
+    }];
 }
 
 #pragma mark -- UITableViewDataSource
@@ -54,7 +80,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return self.tulistModel.modelListArr.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -63,12 +89,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TUListTableCell *cell = [TUListTableCell getListCellWithTable:tableView indexPath:indexPath];
+    cell.tuModel = self.tulistModel.modelListArr[indexPath.row];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    OrderListController *orderListVC = [OrderListController new];
-    [self.navigationController pushViewController:orderListVC animated:YES];
+    TuListModel *model = self.tulistModel.modelListArr[indexPath.row];
+    [OrderListController enterTulistDetailViewControllerWithTarget:self tuCode:model.tuCode status:100];
 }
 
 - (void)didReceiveMemoryWarning {

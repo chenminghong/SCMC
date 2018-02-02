@@ -38,7 +38,7 @@
 - (UIImageView *)logoImageView {
     if (!_logoImageView) {
         self.logoImageView = [UIImageView new];
-        self.logoImageView.image = [UIImage imageNamed:@"logonew.png"];
+        self.logoImageView.image = [UIImage imageNamed:@"logo_img"];
         self.logoImageView.layer.masksToBounds = YES;
         self.logoImageView.layer.cornerRadius = 10;
         [self.view addSubview:self.logoImageView];
@@ -102,6 +102,8 @@
             make.right.equalTo(self.userNameTF.mas_right);
             make.height.mas_equalTo(40);
         }];
+        self.loginBtn.layer.cornerRadius = 5.0;
+        self.loginBtn.backgroundColor = MAIN_BUTTON_BGCOLOR;
     }
     return _loginBtn;
 }
@@ -189,7 +191,7 @@
 }
 
 //模态出登录界面
-+ (void)showSelfInController:(UIViewController *)controller completeBlock:(void (^)())completeBlock {
++ (void)showSelfInController:(UIViewController *)controller completeBlock:(void (^)(void))completeBlock {
     LoginViewController *loginVC = [LoginViewController new];
     NavigationController *navigationVC = [[NavigationController alloc] initWithRootViewController:loginVC];
     //显示第一个tabBar
@@ -203,7 +205,7 @@
         [JPUSHService setTags:nil aliasInbackground:@""];
         
         //停止定位上传功能
-        [LocationManager shareManager].orderCode = nil;
+        [MyBMKLocationManager stopUploadLocation];
         
         //友盟账号退出登录
         [MobClick profileSignOff];
@@ -230,7 +232,7 @@
     
     [self.view endEditing:YES];
     
-    if ([NetworkHelper getNetworkStatus] == NetworkStatusNone) {
+    if ([NetworkHelper localizedNetworkReachabilityStatus] == NetworkReachabilityStatusNotReachable) {
         [MBProgressHUD bwm_showTitle:@"网络连接错误，请检查网络！" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
     }
     
@@ -245,45 +247,73 @@
         return;
     }
     
-    MBProgressHUD *hud = [MBProgressHUD bwm_showHUDAddedTo:self.view title:@"登录中..."];
-    NSDictionary *paramDict = @{@"driverTel":[NSString stringWithFormat:@"%@", self.userNameTF.text],
-                                @"driverPwd":[NSString stringWithFormat:@"%@", [BaseModel md5HexDigest:self.passwordTF.text]],
-                                @"deviceRoot":@"0",
-                                @"sdkVersion":[[UIDevice currentDevice] systemVersion],
-                                @"androidID":@"",
-                                @"macAddress":[BaseModel getMacAddress],
-                                @"manufacturer":@"Apple",
-                                @"model":[BaseModel iphoneType],
-                                @"is4G":@"1",
-                                @"wifiEnabled":@"1",
-                                @"networkOperatorName":[BaseModel getCarrierName],
-                                @"imei":[SAMKeychainManager getUniquelyIdentifies],
-                                @"imsi":[BaseModel getIMSI],
-                                @"phoneType":@"0",
-                                @"simOperatorName":[BaseModel getMobileNetworkCode],
-                                @"phoneStatus":@"0",
-                                @"simCardNo":[SAMKeychainManager getUniquelyIdentifies],
+//    NSDictionary *paramDict = @{@"account":[NSString stringWithFormat:@"%@", self.userNameTF.text],
+//                                @"password":[NSString stringWithFormat:@"%@", [BaseModel md5HexDigest:self.passwordTF.text]],
+//                                OPERATION_KEY:USER_LOGIN_API,
+//                                @"deviceRoot":@"0",
+//                                @"sdkVersion":[[UIDevice currentDevice] systemVersion],
+//                                @"androidID":@"",
+//                                @"macAddress":[BaseModel getMacAddress],
+//                                @"manufacturer":@"Apple",
+//                                @"model":[BaseModel iphoneType],
+//                                @"is4G":@"1",
+//                                @"wifiEnabled":@"1",
+//                                @"networkOperatorName":[BaseModel getCarrierName],
+//                                @"imei":[SAMKeychainManager getUniquelyIdentifies],
+//                                @"imsi":[BaseModel getIMSI],
+//                                @"phoneType":@"0",
+//                                @"simOperatorName":[BaseModel getMobileNetworkCode],
+//                                @"phoneStatus":@"0",
+//                                @"simCardNo":[SAMKeychainManager getUniquelyIdentifies],
+//                                };
+    
+    NSDictionary *paramDict = @{@"account":[NSString stringWithFormat:@"%@", self.userNameTF.text],
+                                @"password":[NSString stringWithFormat:@"%@", [BaseModel md5HexDigest:self.passwordTF.text]],
+                                OPERATION_KEY:USER_LOGIN_API,
                                 };
     NSLog(@"LoginParam:%@", paramDict);
-    [LoginModel getDataWithParameters:paramDict endBlock:^(LoginModel *model, NSError *error) {
-        [hud hide:YES];
-        if (!error) {
-            MBProgressHUD *hud = [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL / 2.0];
-            [hud setCompletionBlock:^(){
+    MBProgressHUD *hud1 = [MBProgressHUD bwm_showHUDAddedTo:self.view title:@"登录中..."];
+    [LoginModel getDataWithUrl:PAIREACH_NETWORK_URL parameters:paramDict endBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [hud1 hide:NO];
+        if (responseObject) {
+            MBProgressHUD *hud2 = [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL / 2.0];
+            [hud2 setCompletionBlock:^(){
                 [self hideLoginPage];
             }];
             
             //在后台给JPush设置别名
-            [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].tel];
+            [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].phone];
             
             //友盟统计账号登录
-            NSString *name = [NSString stringWithFormat:@"%@_%@", [LoginModel shareLoginModel].name, [LoginModel shareLoginModel].tel];
+            NSString *name = [NSString stringWithFormat:@"%@_%@", [LoginModel shareLoginModel].fullName, [LoginModel shareLoginModel].phone];
             [MobClick profileSignInWithPUID:name];
         } else {
             NSString *message = error.userInfo[ERROR_MSG];
             [MBProgressHUD bwm_showTitle:message toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
     }];
+    
+    /*
+     [LoginModel getDataWithParameters:paramDict hudTarget:self.view endBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+     if (!error) {
+     MBProgressHUD *hud2 = [MBProgressHUD bwm_showTitle:@"登录成功!" toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL / 2.0];
+     [hud2 setCompletionBlock:^(){
+     [self hideLoginPage];
+     }];
+     
+     //在后台给JPush设置别名
+     [JPUSHService setTags:nil aliasInbackground:[LoginModel shareLoginModel].phone];
+     
+     //友盟统计账号登录
+     NSString *name = [NSString stringWithFormat:@"%@_%@", [LoginModel shareLoginModel].fullName, [LoginModel shareLoginModel].phone];
+     [MobClick profileSignInWithPUID:name];
+     } else {
+     NSString *message = error.userInfo[ERROR_MSG];
+     [MBProgressHUD bwm_showTitle:message toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+     }
+     }];
+     */
+    
 }
 
 - (void)didReceiveMemoryWarning {

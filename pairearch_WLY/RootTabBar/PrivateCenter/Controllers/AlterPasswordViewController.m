@@ -12,7 +12,6 @@
 #import <CommonCrypto/CommonDigest.h>
 
 @interface AlterPasswordViewController ()
-@property (nonatomic, strong) UITextField *originalPasswordTF;
 @property (nonatomic, strong) UITextField *passwordTF;
 @property (nonatomic, strong) UITextField *confirmNewPasswordTF;
 
@@ -27,27 +26,15 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"设置密码";
     
-    //原密码
-    self.originalPasswordTF = [[UITextField alloc] initWithFrame:CGRectMake(20, 15, self.view.frame.size.width - 40, 40)];
-    self.originalPasswordTF.placeholder = @"原密码";
-    self.originalPasswordTF.secureTextEntry = YES;
-    self.originalPasswordTF.clearButtonMode = UITextFieldViewModeWhileEditing;
-    [self.view addSubview:self.originalPasswordTF];
-    
-    //第一条分隔线
-    UIView *firstLine = [[UIView alloc] initWithFrame:CGRectMake(10, self.originalPasswordTF.frame.origin.y + self.originalPasswordTF.frame.size.height + 5, self.view.frame.size.width - 20, 2)];
-    firstLine.backgroundColor = [UIColor colorWithRed:231 / 255.0 green:231 / 255.0 blue:231 / 255.0 alpha:1.0];
-    [self.view addSubview:firstLine];
-    
     //新密码
-    self.passwordTF = [[UITextField alloc] initWithFrame:CGRectMake(self.originalPasswordTF.frame.origin.x, firstLine.frame.origin.y + firstLine.frame.size.height + 5, self.originalPasswordTF.frame.size.width, self.originalPasswordTF.frame.size.height)];
+    self.passwordTF = [[UITextField alloc] initWithFrame:CGRectMake(20, 15, self.view.frame.size.width - 40, 40)];
     self.passwordTF.placeholder = @"新密码";
     self.passwordTF.secureTextEntry = YES;
     self.passwordTF.clearButtonMode = UITextFieldViewModeWhileEditing;
     [self.view addSubview:self.passwordTF];
     
     //第二条分隔线
-    UIView *secondLine = [[UIView alloc] initWithFrame:CGRectMake(firstLine.frame.origin.x, self.passwordTF.frame.origin.y + self.passwordTF.frame.size.height + 5, firstLine.frame.size.width, firstLine.frame.size.height)];
+    UIView *secondLine = [[UIView alloc] initWithFrame:CGRectMake(10, self.passwordTF.frame.origin.y + self.passwordTF.frame.size.height + 5, kScreenWidth - 20, 2)];
     secondLine.backgroundColor = [UIColor colorWithRed:231 / 255.0 green:231 / 255.0 blue:231 / 255.0 alpha:1.0];
     [self.view addSubview:secondLine];
     
@@ -82,72 +69,41 @@
 //确定button
 - (void)buttonAction {
     //判断原密码、新密码和确认密码是否为空
-    if (0 == self.originalPasswordTF.text.length || 0 == self.passwordTF.text.length || 0 == self.confirmNewPasswordTF.text.length) {
+    if (0 == self.passwordTF.text.length || 0 == self.confirmNewPasswordTF.text.length) {
         //提醒用户输入信息不能为空
         [MBProgressHUD bwm_showTitle:@"输入的密码不能为空" toView:self.view hideAfter:2.0];
         return;
     } else {
-        //如果原密码与修改后的密码相同，提醒用户
-        if ([self.originalPasswordTF.text isEqualToString:self.passwordTF.text]) {
-            [MBProgressHUD bwm_showTitle:@"新密码与原密码相同，请重新输入！" toView:self.view hideAfter:2.0];
-            self.originalPasswordTF.text = @"";
+        //如果修改密码与确认密码不相同，提醒用户
+        if (![self.passwordTF.text isEqualToString:self.confirmNewPasswordTF.text]) {
+            [MBProgressHUD bwm_showTitle:@"两次密码输入不一致，请重新输入！" toView:self.view hideAfter:2.0];
             self.passwordTF.text = @"";
             self.confirmNewPasswordTF.text = @"";
             return;
         } else {
-            //如果修改密码与确认密码不相同，提醒用户
-            if (![self.passwordTF.text isEqualToString:self.confirmNewPasswordTF.text]) {
-                [MBProgressHUD bwm_showTitle:@"两次密码输入不一致，请重新输入！" toView:self.view hideAfter:2.0];
-                self.passwordTF.text = @"";
-                self.confirmNewPasswordTF.text = @"";
-                return;
-            } else {
-                //如果原密码输入错误，提醒用户
-                NSString *password = [[NSUserDefaults standardUserDefaults] objectForKey:USER_ACCOUNT];
-                if (![self.originalPasswordTF.text isEqualToString:password]) {
-                    [MBProgressHUD bwm_showTitle:@"原始密码输入错误，请重新输入！" toView:self.view hideAfter:2.0];
-                } else {
-                    //请求修改密码
-                    [self PostRequestForAlterPasswordWithOldPwd:self.originalPasswordTF.text AndPwd:self.passwordTF.text];
-                    
-                }
-            }
+            //请求修改密码
+            [self postRequestForAlterPassword];
         }
     }
-
 }
 
 //请求修改密码
-- (void)PostRequestForAlterPasswordWithOldPwd:(NSString *)oldPwd AndPwd:(NSString *)pwd {
+- (void)postRequestForAlterPassword {
     [self.view endEditing:YES];
-    NSDictionary *paraDict = @{@"mobile":[[NSUserDefaults standardUserDefaults] objectForKey:USER_NUMBER], @"newPwd":[BaseModel md5HexDigest:self.passwordTF.text]};
-    
+    NSDictionary *paraDict = @{@"account":[[NSUserDefaults standardUserDefaults] objectForKey:USER_NUMBER], @"password":[BaseModel md5HexDigest:self.passwordTF.text], @"comfrmPwd":[BaseModel md5HexDigest:self.confirmNewPasswordTF.text], OPERATION_KEY:CHANGE_PASSWORD_API};
     MBProgressHUD *hud = [MBProgressHUD bwm_showHUDAddedTo:self.view title:@"正在修改密码..."];
-    [[NetworkHelper shareClient] POST:CHANGE_PASSWORD_API parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        [hud hide:NO];
-        
-        NSDictionary *dataDict = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-        NSLog(@"change_PWD:%@", dataDict);
-        NSInteger updateResult = [dataDict[@"updateResult"] integerValue];
-        if (updateResult != 0) {
-            [MBProgressHUD bwm_showTitle:@"密码修改失败，请重试!" toView:self.view hideAfter:2.0];
-            return;
-        }
-        MBProgressHUD *hud = [MBProgressHUD bwm_showTitle:@"密码修改成功!" toView:self.view hideAfter:2.0];
-        [[NSUserDefaults standardUserDefaults] setValue:self.passwordTF.text forKey:USER_ACCOUNT];
-        [LoginModel updateInfoValue:[BaseModel md5HexDigest:self.passwordTF.text] forKey:@"pwd"];
-        __weak typeof(self) weakself = self;
-        [hud setCompletionBlock:^(){
-            [LoginViewController showSelfInController:weakself completeBlock:^{
-                [weakself.navigationController popViewControllerAnimated:NO];
+    [NetworkHelper POST:PAIREACH_NETWORK_URL parameters:paraDict hudTarget:[UIApplication sharedApplication].keyWindow progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [hud hide:YES];
+        if (!error) {
+            MBProgressHUD *hud1 = [MBProgressHUD bwm_showTitle:@"密码修改成功!" toView:self.view hideAfter:2.0];
+            __weak typeof(self) weakself = self;
+            [hud1 setCompletionBlock:^(){
+                [LoginViewController showSelfInController:weakself completeBlock:^{
+                    [weakself.navigationController popViewControllerAnimated:NO];
+                }];
             }];
-        }];
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        [hud hide:NO];
-        NSString *description = error.localizedFailureReason.length == 0? @"修改密码失败!":error.localizedFailureReason;
-        [MBProgressHUD bwm_showTitle:description toView:self.view hideAfter:2.0];
-        
+            [[NSUserDefaults standardUserDefaults] setValue:[BaseModel md5HexDigest:self.passwordTF.text] forKey:USER_ACCOUNT];
+        }
     }];
 }
 

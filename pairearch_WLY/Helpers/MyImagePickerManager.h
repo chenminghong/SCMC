@@ -20,7 +20,7 @@ typedef void(^FinishPostBlock)(id responseObject, NSError *error);
 
 @property (nonatomic, copy) FinishPickerBlock finishPickerBlock;    //结束选择图片回调
 
-@property (nonatomic, copy) FinishPostBlock finishPostBlock;        //上传结束回调
+@property (nonatomic, copy) EndResultBlock endResultBlock;        //上传结束回调
 
 @property (nonatomic, strong) NSDictionary *paraDict;               //上传参数
 
@@ -36,10 +36,10 @@ typedef void(^FinishPostBlock)(id responseObject, NSError *error);
  @param finishPickerBlock 完成拍照之后回传照片信息
  @param urlStr 需要上传的Url地址
  @param paraDict 需要上传的参数
- @param endBlock 上传之后服务器回调
+ @param endResultBlock 上传之后服务器回调
  @return 返回当前助手对象
  */
-+ (MyImagePickerManager *)presentPhotoTakeControllerInTarget:(UIViewController *)target finishPickingBlock:(FinishPickerBlock)finishPickerBlock postUrlStr:(NSString *)urlStr paraDict:(NSDictionary *)paraDict endBlock:(void (^)(id responseObject, NSError *error))endBlock;
++ (MyImagePickerManager *)presentPhotoTakeControllerInTarget:(UIViewController *)target finishPickingBlock:(FinishPickerBlock)finishPickerBlock postUrlStr:(NSString *)urlStr paraDict:(NSDictionary *)paraDict endResultBlock:(EndResultBlock)endResultBlock;
 
 
 /**

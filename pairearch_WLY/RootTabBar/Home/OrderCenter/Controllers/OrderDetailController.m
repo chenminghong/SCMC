@@ -57,14 +57,16 @@
 #pragma mark -- Network
 
 - (void)getDataFromNet {
-    [OrderDetailModel getDataWithParameters:@{@"userName":[LoginModel shareLoginModel].tel.length > 0? [LoginModel shareLoginModel].tel:@"", @"orderCode":self.orderCode} endBlock:^(id model, NSError *error) {
-        if (!error) {
-            self.detailModel = model;
-        } else {
-            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-        }
-        [self.tableView reloadData];
-    }];
+    /*
+     [OrderDetailModel getDataWithParameters:@{@"userName":[LoginModel shareLoginModel].phone, @"orderCode":self.orderCode} endBlock:^(id model, NSError *error) {
+     if (!error) {
+     self.detailModel = model;
+     } else {
+     [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+     }
+     [self.tableView reloadData];
+     }];
+     */
 }
 
 #pragma mark -- UITableViewDelegate

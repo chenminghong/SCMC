@@ -8,12 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@class TuListModel;
+
 @interface TUListTableCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *tuNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UILabel *planTimeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *isGetTULabel;
 @property (weak, nonatomic) IBOutlet UIImageView *nextMarkImgview;
+@property (nonatomic, strong) TuListModel *tuModel;
 
 
 /**

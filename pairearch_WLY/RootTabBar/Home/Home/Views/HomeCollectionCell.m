@@ -9,6 +9,7 @@
 #import "HomeCollectionCell.h"
 
 #import "CollectionViewCell.h"
+#import "HomePageModel.h"
 
 #define LINE_HEIGHT (kScreenWidth * 584.0 / 640.0)
 
@@ -40,6 +41,11 @@
     return cell;
 }
 
+- (void)setHomeModel:(HomePageModel *)homeModel {
+    _homeModel = homeModel;
+    [self.collectionView reloadData];
+}
+
 #pragma mark -- UICollectionViewDelegateFlowLayout
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -48,8 +54,6 @@
         scale = 1.0 - scale;
     }
     CGSize size = CGSizeMake((kScreenWidth - 35.0) * scale, (LINE_HEIGHT - 120.0) / 2.0);
-    NSLog(@"%@", [NSValue valueWithCGSize:size]);
-    NSLog(@"%@", @(LINE_HEIGHT));
     return size;
 }
 
@@ -70,6 +74,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     CollectionViewCell *cell = [CollectionViewCell getCellWithCollectionView:collectionView indexPath:indexPath];
+    cell.homeModel = self.homeModel;
     return cell;
 }
 

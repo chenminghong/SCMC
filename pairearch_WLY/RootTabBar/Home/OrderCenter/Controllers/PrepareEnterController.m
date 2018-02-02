@@ -8,21 +8,16 @@
 
 #import "PrepareEnterController.h"
 
-#import "CustomHexagonLabel.h"
-#import "PressEnterController.h"
+#import "PrepareEnterCell.h"
+#import "OrderListController.h"
+#import "NestedSelectModel.h"
 
 
-@interface PrepareEnterController ()
+@interface PrepareEnterController ()<UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UIView *bottomBackgroundView;
+@property (strong, nonatomic) UITableView *tableView;
 
-@property (nonatomic, strong) CustomHexagonLabel *topStatusLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *wharfLabel;
-@property (weak, nonatomic) IBOutlet UILabel *planEnterTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *pageDesLabel;
-@property (weak, nonatomic) IBOutlet UIView *labelView;
-@property (weak, nonatomic) IBOutlet UILabel *enterDesLabel;
+@property (nonatomic, strong) NSTimer *timer;   //定时器
 
 @end
 
@@ -30,25 +25,61 @@
 
 #pragma mark -- Lazy Loading
 
-- (CustomHexagonLabel *)topStatusLabel {
-    if (!_topStatusLabel) {
-        self.topStatusLabel = [CustomHexagonLabel new];
-        [self.bottomBackgroundView addSubview:self.topStatusLabel];
-        [self.topStatusLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-            CGFloat top = CGRectGetHeight(self.bottomBackgroundView.bounds)*40/982.0;
-            CGFloat width = CGRectGetWidth(self.bottomBackgroundView.bounds) * 220 / 600.0;
-            CGFloat height = CGRectGetHeight(self.bottomBackgroundView.bounds) * 60 / 982.0;
-            make.top.equalTo(self.bottomBackgroundView.mas_top).with.offset(top);
-            make.centerX.mas_equalTo(self.bottomBackgroundView.mas_centerX);
-            make.size.mas_equalTo(CGSizeMake(width, height));
+- (UITableView *)tableView {
+    if (!_tableView) {
+        self.tableView = [UITableView new];
+        [self.view addSubview:self.tableView];
+        [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.edges.mas_equalTo(self.view);
         }];
-        self.topStatusLabel.backgroundColor = UIColorFromRGB(0x00a7eb);
-        self.topStatusLabel.text = @"准备入厂";
-        self.topStatusLabel.textColor = [UIColor whiteColor];
-        self.topStatusLabel.font = [UIFont systemFontOfSize:20.0];
-        self.topStatusLabel.textAlignment = NSTextAlignmentCenter;
+        self.tableView.showsVerticalScrollIndicator = NO;
+        self.tableView.delegate = self;
+        self.tableView.dataSource = self;
+        self.tableView.estimatedRowHeight = 700;
+//        self.tableView.backgroundColor = UIColorFromRGB(0xfdf6de);
+        self.tableView.backgroundColor = TOP_NAVIBAR_COLOR;
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 10)];
+        self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth, 10)];
     }
-    return _topStatusLabel;
+    return _tableView;
+}
+
+//初始化定时器
+- (NSTimer *)timer {
+    if (!_timer) {
+        _timer = [NSTimer scheduledTimerWithTimeInterval:120.0 target:self selector:@selector(refreshViewstatus) userInfo:nil repeats:YES];
+    }
+    return _timer;
+}
+
+/**
+ 重启定时器
+ */
+- (void)startTimer {
+    [self.timer setFireDate:[NSDate distantPast]];
+}
+
+
+/**
+ 暂停定时器
+ */
+- (void)stopTimer {
+    [self.timer setFireDate:[NSDate distantFuture]];
+}
+
+//获取前面排队的车子数量和等待时间
+- (void)refreshViewstatus {
+    NSDictionary *paraDict = @{@"driverTel":[LoginModel shareLoginModel].phone,
+                               OPERATION_KEY:GET_TRANSPORT_ORDERINFO_API
+                               };
+    
+    [NetworkHelper GET:PAIREACH_NETWORK_URL parameters:paraDict progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        if (!error && responseObject) {
+            [self.selectedModel setValuesForKeysWithDictionary:responseObject];
+            [self.tableView reloadData];
+        }
+    }];
 }
 
 - (void)viewDidLoad {
@@ -56,18 +87,33 @@
     // Do any additional setup after loading the view from its nib.
     
     self.view.backgroundColor = TOP_NAVIBAR_COLOR;
-    self.bottomBackgroundView.layer.masksToBounds = YES;
-    self.bottomBackgroundView.layer.cornerRadius = 10;
-    [self.bottomBackgroundView addSubview:self.topStatusLabel];
-    self.labelView.layer.masksToBounds = YES;
-    self.labelView.layer.cornerRadius = 5;
-    self.enterDesLabel.layer.masksToBounds = YES;
-    self.enterDesLabel.layer.cornerRadius = 5;
+    [self.view addSubview:self.tableView];
 }
 
-- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    PressEnterController *prepareVC = [PressEnterController new];
-    [self.navigationController pushViewController:prepareVC animated:YES];
+
+
+- (void)setSelectedModel:(NestedSelectModel *)selectedModel {
+    [super setSelectedModel:selectedModel];
+    [self.tableView reloadData];
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    PrepareEnterCell *cell = [PrepareEnterCell getCellWithTable:tableView indexPath:indexPath];
+    cell.selectedModel = self.selectedModel;
+    return cell;
+}
+
+- (void)tunumberButtonAction:(UIButton *)sender {
+    NSString *tuCode = sender.currentTitle;
+    [OrderListController enterTulistDetailViewControllerWithTarget:self tuCode:tuCode status:[self.selectedModel.processList[0] integerValue]];
 }
 
 - (void)didReceiveMemoryWarning {

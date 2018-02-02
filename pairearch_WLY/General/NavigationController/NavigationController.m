@@ -50,6 +50,7 @@
         [viewController.navigationController setNavigationBarHidden:NO animated:YES];
     }
     [super pushViewController:viewController animated:animated];
+    viewController.title = @"我来运";
 }
 
 /**
@@ -142,7 +143,7 @@
     backBtn.frame = CGRectMake(0, 0, 44, 44);
     [backBtn setImage:[UIImage imageNamed:@"fanhui_icon"] forState:UIControlStateNormal];
     [backBtn addTarget:target action:sel forControlEvents:UIControlEventTouchUpInside];
-    UIBarButtonItem *backItem = [[UIBarButtonItem alloc]initWithCustomView:backBtn];
+    UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     UIBarButtonItem *spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     spaceItem.width = -15;
     return @[spaceItem, backItem];

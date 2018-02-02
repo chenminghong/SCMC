@@ -387,8 +387,10 @@
         return;
     }
     
-    NSDictionary *paraDict = @{@"driverTel":[LoginModel shareLoginModel].tel, @"driverName":[LoginModel shareLoginModel].name, @"orderCode":cell.loadNumberTf.text, @"remark":cell.loadNumberTv.text};
     
+    
+    /*
+     NSDictionary *paraDict = @{@"driverTel":[LoginModel shareLoginModel].phone, @"driverName":[LoginModel shareLoginModel].fullName, @"orderCode":cell.loadNumberTf.text, @"remark":cell.loadNumberTv.text};
     [NetworkHelper POST:ABNORMAL_UPLOAD_API parameters:paraDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
         for (NSInteger i = 0; i < _selectedPhotos.count; i++) {
             [formData appendPartWithFileData:UIImageJPEGRepresentation(_selectedPhotos[i], 0.8) name:@"file" fileName:[NSString stringWithFormat:@"abnormal_upload%ld.jpg", (long)i] mimeType:@"image/jpeg"];
@@ -409,6 +411,8 @@
     } failure:^(NSError *error) {
         [ProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
     }];
+     
+     */
 }
 
 #pragma mark - TZImagePickerControllerDelegate

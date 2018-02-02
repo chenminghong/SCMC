@@ -13,7 +13,13 @@ typedef NS_ENUM(NSUInteger, WarehouseType) {
     WarehouseTypeOutside,
 };
 
+
 @interface BaseModel : NSObject
+
+@property (nonatomic, strong) NSArray *modelListArr;   //存储本类Model数据对象的数组
+
+
+/******************************Model数据模型初始化********************************/
 
 //初始化Model
 - (instancetype)initWithDict:(NSDictionary *)dict;
@@ -24,20 +30,57 @@ typedef NS_ENUM(NSUInteger, WarehouseType) {
 //初始化Model
 + (NSArray *)getModelsWithDicts:(NSArray *)dicts;
 
-//请求
-+ (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock;
 
-//请求
-+ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock;
+/******************************数据请求********************************/
+//GET
++ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(EndResultBlock)endBlock;
+
++ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict hudTarget:(id)hudTarget endBlock:(EndResultBlock)endBlock;
+
+//+ (NSURLSessionDataTask *)getDataWithOperation:(NSString *)operation parameters:(NSDictionary *)paramDict endBlock:(EndResultBlock)endBlock;
+
+//+ (NSURLSessionDataTask *)getDataWithOperation:(NSString *)operation parameters:(NSDictionary *)paramDict hudTarget:(id)hudTarget endBlock:(EndResultBlock)endBlock;
+
+//POST
++ (NSURLSessionDataTask *)postDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(EndResultBlock)endBlock;
+
++ (NSURLSessionDataTask *)postDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict hudTarget:(id)hudTarget endBlock:(EndResultBlock)endBlock;
+
+//+ (NSURLSessionDataTask *)postDataWithOperation:(NSString *)operation parameters:(NSDictionary *)paramDict endBlock:(EndResultBlock)endBlock;
+
+//+ (NSURLSessionDataTask *)postDataWithOperation:(NSString *)operation parameters:(NSDictionary *)paramDict hudTarget:(id)hudTarget endBlock:(EndResultBlock)endBlock;
+
+
+/******************************接口参数处理********************************/
 
 //网络接口请求添加签名参数sign  ?不起作用啊
 + (NSDictionary *)signReqParams:(NSDictionary *)paramDict;
 
+//密码MD5加密(Base64转码)
++ (NSString *)md5HexDigest:(NSString *)text;
+
+/**
+ 对参数进行处理，供后台对接口数据进行校验
+ 
+ @param operation 当前请求的接口
+ @param requestEntityDict 当前需要接口对应的真实参数
+ @return 返回处理好的参数结果
+ */
++ (NSDictionary *)parametersTransformationWithOperation:(NSString *)operation requestEntityDict:(NSDictionary *)requestEntityDict;
+
+/**
+ 对参数进行处理，供后台对接口数据进行校验
+ 
+ @param requestEntityDict 当前需要接口对应的真实参数
+ @return 返回处理好的参数结果
+ */
++ (NSDictionary *)parametersTransformationWithRequestEntityDict:(NSDictionary *)requestEntityDict;
+
+
+/******************************获取数据基础数据********************************/
+
 //获取MAC地址
 + (NSString *)getMacAddress;
-
-//密码MD5加密
-+ (NSString *)md5HexDigest:(NSString*)password;
 
 //获取设备型号
 + (NSString *)iphoneType;
@@ -96,4 +139,6 @@ typedef NS_ENUM(NSUInteger, WarehouseType) {
  移除所有的通知
  */
 + (void)removeAllPendingLocalNotification;
+
 @end
+

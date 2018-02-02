@@ -12,7 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *tuNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *orderCountLabel;
 @property (weak, nonatomic) IBOutlet UIView *separatorLine;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *separatorLineHeight;
 
 /**
  获取当前的cell

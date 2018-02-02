@@ -10,7 +10,6 @@
 
 #import "HomeViewController.h"
 #import "OrdersCenterController.h"
-#import "OrdersViewController.h"
 #import "PersonalCenterViewController.h"
 #import "LoginViewController.h"
 
@@ -33,23 +32,23 @@
     HomeViewController *homeVC = [homeSB instantiateViewControllerWithIdentifier:@"HomeViewController"];
     NavigationController *homeNC = [self addNavigationItemForViewController:homeVC];
     
-    UIStoryboard *ordersSB = [UIStoryboard storyboardWithName:@"OrdersViewController" bundle:[NSBundle mainBundle]];
-    OrdersViewController *ordersVC = [ordersSB instantiateViewControllerWithIdentifier:@"OrdersViewController"];
-    NavigationController *ordersNC = [self addNavigationItemForViewController:ordersVC];
+//    UIStoryboard *ordersSB = [UIStoryboard storyboardWithName:@"OrdersViewController" bundle:[NSBundle mainBundle]];
+//    OrdersViewController *ordersVC = [ordersSB instantiateViewControllerWithIdentifier:@"OrdersViewController"];
+//    NavigationController *ordersNC = [self addNavigationItemForViewController:ordersVC];
     
-//    UIStoryboard *orderSB = [UIStoryboard storyboardWithName:@"OrdersCenterController" bundle:[NSBundle mainBundle]];
-//    OrdersCenterController *orderVC = [orderSB instantiateViewControllerWithIdentifier:@"OrdersCenterController"];
-//    NavigationController *orderNC = [self addNavigationItemForViewController:orderVC];
+    UIStoryboard *orderSB = [UIStoryboard storyboardWithName:@"OrdersCenterController" bundle:[NSBundle mainBundle]];
+    OrdersCenterController *orderVC = [orderSB instantiateViewControllerWithIdentifier:@"OrdersCenterController"];
+    NavigationController *orderNC = [self addNavigationItemForViewController:orderVC];
     
     PersonalCenterViewController *privateVC = [PersonalCenterViewController new];
     NavigationController *privateNC = [self addNavigationItemForViewController:privateVC];
     
     self.tabBar.translucent = NO;
     self.tabBar.barTintColor = BOTTOM_ITEMBAR_COLOR;
-    self.viewControllers = @[homeNC, ordersNC, privateNC];
+    self.viewControllers = @[homeNC, orderNC, privateNC];
     
     NSArray *titles = @[@"首页", @"历史运单", @"个人中心"];
-    NSArray *images = @[@"zhuye", @"yundanzhongxin", @"gerenzhongxin"];
+    NSArray *images = @[@"首页", @"货车", @"个人中心"];
     [self.tabBar.items enumerateObjectsUsingBlock:^(UITabBarItem *item, NSUInteger idx, BOOL *stop) {
         [item setTitle:titles[idx]];
         [item setImage:[[UIImage imageNamed:images[idx]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

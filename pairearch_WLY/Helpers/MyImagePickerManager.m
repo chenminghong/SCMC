@@ -116,13 +116,13 @@
  @param endBlock 上传之后服务器回调
  @return 返回当前助手对象
  */
-+ (MyImagePickerManager *)presentPhotoTakeControllerInTarget:(UIViewController *)target finishPickingBlock:(FinishPickerBlock)finishPickerBlock postUrlStr:(NSString *)urlStr paraDict:(NSDictionary *)paraDict endBlock:(void (^)(id responseObject, NSError *error))endBlock {
++ (MyImagePickerManager *)presentPhotoTakeControllerInTarget:(UIViewController *)target finishPickingBlock:(FinishPickerBlock)finishPickerBlock postUrlStr:(NSString *)urlStr paraDict:(NSDictionary *)paraDict endResultBlock:(EndResultBlock)endResultBlock {
     MyImagePickerManager *manager = [self shareManager];
     manager.target = target;
     manager.imagePickerVC.navigationBar.barTintColor = target.navigationController.navigationBar.barTintColor;
     manager.imagePickerVC.navigationBar.tintColor = target.navigationController.navigationBar.tintColor;
     manager.finishPickerBlock = finishPickerBlock;
-    manager.finishPostBlock = endBlock;
+    manager.endResultBlock = endResultBlock;
     manager.urlStr = urlStr;
     manager.paraDict = paraDict;
     [manager takePhotoWithTarget:target];
@@ -191,49 +191,11 @@
                 NSLog(@"图片保存失败 %@",error);
             } else {
                 NSLog(@"图片保存成功");
-                //获取保存后的图片并上传
-                /*
-                 [manager getCameraRollAlbum:NO allowPickingImage:YES completion:^(TZAlbumModel *model) {
-                 [manager getAssetsFromFetchResult:model.result allowPickingVideo:NO allowPickingImage:YES completion:^(NSArray<TZAssetModel *> *models) {
-                 TZAssetModel *assetModel = [models firstObject];
-                 if (manager.sortAscendingByModificationDate) {
-                 assetModel = [models lastObject];
-                 }
-                 
-                 //获取图片时间
-                 NSDateFormatter *dateFormatter = [NSDateFormatter new];
-                 [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-                 PHAsset *tempAsset = assetModel.asset;
-                 NSString *photoTime = [dateFormatter stringFromDate:tempAsset.creationDate];
-                 
-                 //添加请求参数
-                 NSMutableDictionary *tempParaDict = [NSMutableDictionary dictionaryWithDictionary:self.paraDict];
-                 [tempParaDict setObject:photoTime.length? photoTime:@"" forKey:@"photoTime"];
-                 NSString *addressStr = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"address"]];
-                 [tempParaDict setObject:addressStr forKey:@"address"];
-                 
-                 NSData *postData = UIImageJPEGRepresentation(image, 0.05);
-                 NSLog(@"postDataLength:%lu", postData.length / 1000);
-                 [NetworkHelper POST:self.urlStr parameters:tempParaDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
-                 [formData appendPartWithFileData:postData name:@"photo" fileName:@"abnormal_upload.jpg" mimeType:@"image/jpeg"];
-                 } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
-                 if (self.finishPostBlock) {
-                 self.finishPostBlock(responseObject, nil);
-                 }
-                 } failure:^(NSError *error) {
-                 if (self.finishPostBlock) {
-                 self.finishPostBlock(nil, error);
-                 }
-                 }];
-                 }];
-                 }];
-                 
-                 */
             }
         }];
-        
-        __weak MBProgressHUD *hud = [MBProgressHUD bwm_showHUDAddedTo:self.target.view title:nil animated:YES];
-        
+
+        /*
+         //获取图片时间戳等信息
         NSDictionary *dataDict = [info objectForKey:UIImagePickerControllerMediaMetadata];
         NSDictionary *infoDict = [dataDict objectForKey:@"{TIFF}"];
         NSString *photoTime = [infoDict objectForKey:@"DateTime"];
@@ -248,26 +210,21 @@
         [tempParaDict setObject:photoTime forKey:@"photoTime"];
         NSString *addressStr = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"address"]];
         [tempParaDict setObject:addressStr forKey:@"address"];
+         */
         
         
+        //压缩图片并上传
         UIImage *compressImage = [UIImage compressImage:image compressRatio:0.05];
         NSData *imageData = UIImageJPEGRepresentation(compressImage, 0.3);
         NSLog(@"imageDataLength:%lu", imageData.length/1000);
-        [[NetworkHelper shareClient] POST:self.urlStr parameters:tempParaDict constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
-            [formData appendPartWithFileData:imageData name:@"photo" fileName:@"abnormal_upload.jpg" mimeType:@"image/jpeg"];
-        } progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-            [hud hide:NO];
-            if (self.finishPostBlock) {
-                responseObject = [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil];
-                self.finishPostBlock(responseObject, nil);
-            }
-        } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-            [hud hide:NO];
-            if (self.finishPostBlock) {
-                self.finishPostBlock(nil, error);
+        
+        [NetworkHelper POST:self.urlStr parameters:self.paraDict hudTarget:self.target.view constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFileData:imageData name:@"photoFile" fileName:@"photo_upload.jpg" mimeType:@"image/jpeg"];
+        } progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+            if (self.endResultBlock) {
+                self.endResultBlock(task, responseObject, error);
             }
         }];
-        
         
         /*
         [YQImageCompressTool CompressToDataAtBackgroundWithImage:image ShowSize:CGSizeMake(600, 600*image.size.height/image.size.width) FileSize:100 block:^(NSData *resultData) {
@@ -356,15 +313,14 @@
         [tempParaDict setObject:photoTime forKey:@"photoTime"];
         NSString *addressStr = [NSString stringWithFormat:@"%@", [LocationManager shareManager].addressInfo[@"address"]];
         [tempParaDict setObject:addressStr forKey:@"address"];
-        [NetworkHelper POST:urlStr parameters:tempParaDict constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        
+        [NetworkHelper POST:urlStr parameters:tempParaDict hudTarget:target constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
             [formData appendPartWithFileData:data name:@"photo" fileName:@"abnormal_upload.jpg" mimeType:@"image/jpeg"];
-        } progress:nil success:^(NSURLSessionDataTask *task, id responseObject) {
+        } progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
             if (endBlock) {
-                endBlock(responseObject, nil);
-            }
-        } failure:^(NSError *error) {
-            if (endBlock) {
-                endBlock(nil, error);
+                if (!error) {
+                    endBlock(responseObject, nil);
+                }
             }
         }];
     }];

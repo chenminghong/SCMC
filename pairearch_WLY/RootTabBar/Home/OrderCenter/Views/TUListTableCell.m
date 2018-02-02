@@ -8,6 +8,8 @@
 
 #import "TUListTableCell.h"
 
+#import "TuListModel.h"
+
 @implementation TUListTableCell
 
 - (void)awakeFromNib {
@@ -27,6 +29,13 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
+}
+
+- (void)setTuModel:(TuListModel *)tuModel {
+    _tuModel = tuModel;
+    self.tuNumberLabel.text = tuModel.tuCode;
+    self.countLabel.text = [NSString stringWithFormat:@"运单数量：%@", tuModel.orderCount];
+    self.planTimeLabel.text = [NSString stringWithFormat:@"预计发货日期：%@", tuModel.planLoadDate];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

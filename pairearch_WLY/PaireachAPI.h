@@ -9,59 +9,128 @@
 #ifndef PaireachAPI_h
 #define PaireachAPI_h
 
+
+
+
+//网络请求加密秘钥
+#define SECURITY_KEY                      @"ApKKT6/wmftRRLh9aAd+lg=="   //MD5加密秘钥
+
+//网络请求参数关键字
+#define SIGN_KEY                          @"sign"               //密文
+#define PARAMETER_KEY                     @"parameter"          //请求参数
+#define MODULE_KEY                        @"module"             //模块
+#define OPERATION_KEY                     @"operation"          //操作类型
+#define REQUESTENTITY_KEY                 @"requestEntity"      //实际操作参数
+#define APPVERSION_KEY                    @"appversion"         //APP版本
+#define APPTYPE_KEY                       @"apptype"            //app类型
+#define APPSYSTEM_KEY                     @"appsystem"          //app的系统类型
+#define LIMIT_KEY                         @"limit"              //每页限制数量
+#define START_KEY                         @"start"              //每页开始位置
+#define UPLOAD_FILE_KEY                   @"type"               //上传拍照文件关键字
+#define UPLOAD_FILE_VALUE                 @"operationProcess"   //上传拍照文件要添加的type键值对的value值
+#define WHETHER_NEED_LOCATION_KRY         @"whether_need_location"  //是否需要上传位置信息
+//网络请求数据解析关键字
+#define RESULT_FLAG_KEY                   @"resultFlag"         //请求成功标识
+#define MESSAGE_KEY                       @"message"            //请求成功失败提示语句
+#define RESPONSE_ENTITY_KEY               @"responseEntity"     //供界面显示使用的Data数据
+
+
 #pragma markk -- APP接口定义
 
 /*============================BaseUrl相关=============================*/
 //API前缀定义
-#define PAIREACH_BASE_URL                @"http://106.14.39.65:8385/itip/clientApp"       //测试线上
-//#define PAIREACH_BASE_URL                @"http://192.168.0.140:8085/itip/client/"      //Ada本地IP
-//#define PAIREACH_BASE_URL                @"http://192.168.1.14:8086/itip/client/"     //备用
-//#define PAIREACH_BASE_URL                @"http://itiptest.paireach.com/client/"       //双至域名
+#define BASE_URL                @"http://139.196.188.185:8385/itip-app-web"    //测试线上
+//#define BASE_URL                @"http://192.168.0.158:8283/itip-app-web"       //Ocean本地IP
+//#define BASE_URL                @"http://itiptest.paireach.com/client/"        //双至域名
+
+//改版APP数据请求接口
+#define PAIREACH_NETWORK_URL                 @"mobileDispatch/index.html"    //测试环境
+#define PAIREACH_NETWORK_UPLOAD_URL          @"mobileFile/index.html"        //上传图片的BaseUrl
+
+//#define PAIREACH_NETWORK_URL                 @"mobileDispatch/index.html"      //Ocean本地环境
+//#define PAIREACH_NETWORK_UPLOAD_URL          @"mobileFile/index.html"        //上传图片的BaseUrl
 
 
-/*
- 接口访问地址：192.168.0.188:8085/itip/clientApp/
- 
- 司机接单： driverAcceptOrder.a
- 内仓司机装货签到：loadSignOrder.a
- 外仓装货签到：outLoadStartOrder.a
- 装货开始：loadStartOrder.a
- 装货结束:loadEndOrder.a
- 运单轨迹：saveTrackList.a
- 收货签到：unloadStartOrder.a
- 收货完成：unloadEndOrder.a
- 是否可以入装货工厂：canEnterFactory.a
- 未结束TU列表：queryDriverAllTus.a
- TU绑定运单列表：queryOrdersByTu.a
- APP首页数据统计：countHome.a
- */
+
+/*============================用户相关服务=============================*/
+
+//APP接口服务类型
+#define APP_USER_SERVICE_MODULE          @"appUserService"
+
+//用户登录接口
+#define USER_LOGIN_API                    @"appUserLogin"                //post
+
+//修改密码接口
+#define CHANGE_PASSWORD_API               @"appUpdatePwd"                //post
 
 /*============================首页相关=============================*/
 
-//接收运单
-#define GET_LOAD_API                      @"driverAcceptOrder.a"                //post
+//数据个数统计模块首页
+#define HOME_INDEX_MODULE                 @"appIndexService"              //get
 
-//首页个数数据
-#define HOME_PAGE_COUNT_API                @"countHome.a"            //get
+//首页顶部图片数据
+#define HOME_IMAGE_LIST_API               @"appIndexAdvert"                //get
 
-//地理位置上传
-#define UPLOAD_LOCATION_API               @"saveTrackList.a"                //post
-
-
+//首页个数显示数据
+#define HOME_TOTAL_API                    @"appIndexCount"                 //get
 
 
 
+/*============================运单数据相关用户相关=============================*/
 
-//首页订单详情数据
-#define LOAD_DETAIL_API                   @"loadOrderDetailById.a"              //get
+//订单服务模块
+#define ORDER_SERVICE_MODULE              @"transportOrderService"
 
-//安全选项检查
-#define SAFETY_CONFIRMATION_API           @"safeVeriSave.a"                     //post
+//待运送列表
+#define WAIT_TRANSPORT_LIST_API           @"appWaitTransOrderList"    //get
+
+//根据TU单获取TU单详情
+#define GET_TU_DETAIL_API                 @"appGetTuDetailByCode"     //get
+
+//点击订单获取订单详情
+#define GET_ORDER_DETAIL_API              @"appGetOrderDetailByCode"  //get
+
+//获取历史运单接口
+#define GET_DRIVER_HISTORY_API            @"appGetDriverHistoryOrder"   //GET
+
+
+/*============================运单流程操作相关=============================*/
+//运单流程操作模块
+#define DRIVER_VEHICLE_SERVICE_MODULE     @"driverVehicleService"    //POST
+
+//接单操作调用接口
+#define RECEIVE_ORDER_API                 @"driverAcceptOrder"    //GET
+
+//各个流程节点操作接口
+#define PROCESSNODE_OPERATION_API         @"driverProcessOperation"    //get
+
+//获取配送中运单信息接口
+#define GET_TRANSPORT_ORDERINFO_API       @"driverTranspOrderInfo"     //get
+
+//查询前面排队的车子数量接口
+#define GET_FRONTCAR_COUNT_API            @"queryLineUpCount"          //get
+
+
+/*============================拍照上传操作相关=============================*/
+
+//拍照上传模块
+#define LOCATION_UPLOAD_MODULE            @"trajectoryAppService"
+
+//拍照上传接口
+#define LOCATION_UPLOAD_API               @"orderTrajectoryUpload"      //POST
 
 
 
 
-/*============================运单中心用户相关=============================*/
+
+
+
+
+
+
+
+
+
 
 //内仓司机装货入厂签到
 #define SIGN_UP_API                       @"loadSignOrder.a"           //post
@@ -89,6 +158,8 @@
 
 //获取TU单列表数据
 #define TU_LIST_API                       @"queryDriverAllTus.a"       //post
+
+
 
 
 
@@ -147,13 +218,6 @@
 
 
 /*============================个人中心用户相关=============================*/
-
-//用户登录
-#define USER_LOGIN_API                    @"loginForDriver.a"                   //post
-
-//修改密码
-#define CHANGE_PASSWORD_API               @"changeDriverPwd.a"                  //post
-
 //异常反馈
 #define ABNORMAL_UPLOAD_API               @"uploadAbnormalPresentationInfo.a"   //post
 

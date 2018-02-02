@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class NestedSelectModel;
+
+typedef void(^ProcessEndBlock)(NSDictionary *responseInfo);
+
 @interface BaseViewController : UIViewController
+
+@property (nonatomic, strong) NestedSelectModel *selectedModel;
+
+@property (nonatomic, copy) ProcessEndBlock processEndBlock;
 
 @end

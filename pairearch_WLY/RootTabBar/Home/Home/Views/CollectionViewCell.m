@@ -8,6 +8,8 @@
 
 #import "CollectionViewCell.h"
 
+#import "HomePageModel.h"
+
 @implementation CollectionViewCell
 
 - (void)awakeFromNib {
@@ -69,7 +71,22 @@
     cell.backgroundColor = cellColorArr[indexPath.item];
     cell.centreTitleLabel.text = titleArr[indexPath.item];
     cell.iconImgView.image = [UIImage imageNamed:iconNameArr[indexPath.item]];
+    cell.indexPath = indexPath;
     return cell;
+}
+
+- (void)setHomeModel:(HomePageModel *)homeModel {
+    _homeModel = homeModel;
+    //给数量标签赋值
+    if (self.indexPath.item == 0) {
+        self.countLabel.text = homeModel.orderGradCount;
+    } else if (self.indexPath.item == 1) {
+        self.countLabel.text = homeModel.orderGradingCount;
+    } else if (self.indexPath.item == 2) {
+        self.countLabel.text = homeModel.orderWaitTransCount;
+    } else {
+        self.countLabel.text = homeModel.orderWaitTransingCount;
+    }
 }
 
 @end

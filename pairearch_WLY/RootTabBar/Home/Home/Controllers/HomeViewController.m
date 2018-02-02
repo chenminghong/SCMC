@@ -9,30 +9,25 @@
 #import "HomeViewController.h"
 
 #import "HomePageModel.h"
-//#import "LoginViewController.h"
-//#import "PaomaLabel.h"
-//#import "WQLPaoMaView.h"
-//#import "HomeTableCell.h"
-//#import "OrderStatus212Controller.h"
-//#import "Mistake212Controller.h"
-//#import "BiddingListController.h"
-
 #import "HomeCollectionCell.h"
-
 #import "TUListController.h"
-#import "OrderStatus220Controller.h"
+#import "NestedSelectStateController.h"
 #import "MessageCenterController.h"
+#import "TransationListController.h"
+#import "MyTransationController.h"
+#import "ImageListModel.h"
 
 @interface HomeViewController ()<SDCycleScrollViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
-
 @property (nonatomic, strong) UITableView *tableView;
-
-@property (nonatomic, strong) HomePageModel *homePageModel;
 
 @property (nonatomic, strong) SDCycleScrollView *sdCycleView;
 
 @property (nonatomic, strong) UIButton *newsButton;  //右上角消息按钮
+
+@property (nonatomic, strong) ImageListModel *imageListModel;   //顶部图片数据源
+
+@property (nonatomic, strong) HomePageModel *homePageModel;
 
 @end
 
@@ -42,29 +37,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.newsButton];
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:self.newsButton];
+    self.navigationItem.rightBarButtonItem = item;
     self.view.backgroundColor = [UIColor whiteColor];
     self.title = @"我来运";
     
     [self.view addSubview:self.tableView];
-    
+    [MJRefreshUtil pullDownRefresh:self andScrollView:self.tableView andAction:@selector(getHomePageData)];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    
-    NSArray *imageUrlStrArr = @[@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1238497980,1597218505&fm=26&gp=0.jpg",
-                                @"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1450410798,281036268&fm=26&gp=0.jpg",
-                                @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3503460854,933931965&fm=26&gp=0.jpg",
-                                @"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1128343348,3478453008&fm=26&gp=0.jpg"];
-    self.sdCycleView.imageURLStringsGroup = imageUrlStrArr;
-    
-//    [self getHomePageData];
-    
-//    [ProgressHUD bwm_showTitle:@"加载成功" toView:self.view hideAfter:MAXFLOAT msgType:BWMMBProgressHUDMsgTypeSuccessful];
+    [MJRefreshUtil begainRefresh:self.tableView];
 }
-
 
 #pragma mark -- LazyLoading
 
@@ -102,20 +88,23 @@
     if (!_newsButton) {
         _newsButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _newsButton.frame = CGRectMake(kScreenWidth - 60, 31, 22, 22);
-        [_newsButton setBackgroundImage:[UIImage imageNamed:@"havenews"] forState:UIControlStateNormal];
+//        _newsButton.frame = CGRectMake(kScreenWidth - 60, -20, 60, 44);
+        _newsButton.backgroundColor = [UIColor lightGrayColor];
+//        [_newsButton setBackgroundImage:[UIImage imageNamed:@"havenews"] forState:UIControlStateNormal];
+        [_newsButton setImage:[UIImage imageNamed:@"havenews"] forState:UIControlStateNormal];
 //        [_newsButton setImage:[UIImage imageNamed:@"havenews"] forState:UIControlStateNormal];
 //        [_newsButton setTitle:@"消息" forState:UIControlStateNormal];
         [_newsButton addTarget:self action:@selector(newsButtonAction:) forControlEvents:UIControlEventTouchUpInside];
-        UIView *tipsView = [UIView new];
-        tipsView.backgroundColor = [UIColor redColor];
-        [_newsButton addSubview:tipsView];
-        [tipsView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.mas_equalTo(_newsButton.mas_top).with.offset(1);
-            make.right.mas_equalTo(_newsButton.mas_right).with.offset(1);
-            make.size.mas_equalTo(CGSizeMake(5, 5));
-        }];
-        tipsView.layer.masksToBounds = YES;
-        tipsView.layer.cornerRadius = 2.5;
+//        UIView *tipsView = [UIView new];
+//        tipsView.backgroundColor = [UIColor redColor];
+//        [_newsButton addSubview:tipsView];
+//        [tipsView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.top.mas_equalTo(_newsButton.mas_top).with.offset(1);
+//            make.right.mas_equalTo(_newsButton.mas_right).with.offset(1);
+//            make.size.mas_equalTo(CGSizeMake(5, 5));
+//        }];
+//        tipsView.layer.masksToBounds = YES;
+//        tipsView.layer.cornerRadius = 2.5;
     }
     return _newsButton;
 }
@@ -129,27 +118,62 @@
 
 //获取首页Data数据
 - (void)getHomePageData {
+    //获取首页顶部图片的数据
+    [self getImageListData];
     
-    [HomePageModel getDataWithUrl:HOME_PAGE_COUNT_API parameters:@{@"mobile":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
+    //获取首页各个模块订单数量的数据
+    NSDictionary *paraDict = @{@"account":[LoginModel shareLoginModel].phone,
+                               OPERATION_KEY:HOME_TOTAL_API
+                               };
+    [HomePageModel getDataWithUrl:PAIREACH_NETWORK_URL parameters:paraDict hudTarget:self endBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
         if (!error) {
-            self.homePageModel = model;
-            if (self.homePageModel.orderModelList.count > 0) {
-                HomePageModel *model = self.homePageModel.orderModelList[0];
-                if ([model.status integerValue] > ORDER_STATUS_212) {
-                    [LocationManager shareManager].orderCode = model.code;  //开启定位上传
-                } else {
-                    [LocationManager shareManager].orderCode = nil;   //结束定位上传
-                }
+            self.homePageModel = responseObject;
+            if ([self.homePageModel.orderWaitTransingCount integerValue] > 0) {
+//                [[LocationManager shareManager] startUploadLocation];  //开启定位上传
+                [MyBMKLocationManager startUploadLocationWithTUCode:self.homePageModel.tuCode];
             } else {
-                [LocationManager shareManager].orderCode = nil;   //结束定位上传
+//                [[LocationManager shareManager] stopUploadLocation];   //结束定位上传
+                [MyBMKLocationManager stopUploadLocation];
             }
-        } else {
-            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL];
         }
         [self.tableView reloadData];
         [MJRefreshUtil endRefresh:self.tableView];
     }];
 }
+
+//获取顶部图片轮播图数据
+- (void)getImageListData {
+    NSDictionary *paraDict = @{OPERATION_KEY:HOME_IMAGE_LIST_API};
+    
+    [ImageListModel getDataWithUrl:PAIREACH_NETWORK_URL parameters:paraDict endBlock:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        if (!error) {
+            self.imageListModel = responseObject;
+            NSMutableArray *imageUrlArr = [NSMutableArray array];
+            for (ImageListModel *imageModel in self.imageListModel.modelListArr) {
+                [imageUrlArr addObject:imageModel.imagePath];
+            }
+            /*
+            NSArray *tempUrlArr = @[@"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1238497980,1597218505&fm=26&gp=0.jpg",
+                            @"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1450410798,281036268&fm=26&gp=0.jpg",
+                            @"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3503460854,933931965&fm=26&gp=0.jpg",
+                            @"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1128343348,3478453008&fm=26&gp=0.jpg"];
+            imageUrlArr = [NSMutableArray arrayWithArray:tempUrlArr];
+             */
+            
+            self.sdCycleView.imageURLStringsGroup = imageUrlArr;
+            if (imageUrlArr.count > 1) {
+                self.sdCycleView.infiniteLoop = YES;
+                self.sdCycleView.autoScroll = YES;
+                self.sdCycleView.showPageControl = YES;
+            } else {
+                self.sdCycleView.infiniteLoop = NO;
+                self.sdCycleView.autoScroll = NO;
+                self.sdCycleView.showPageControl = NO;
+            }
+        }
+    }];
+}
+
 
 //设置不同字体颜色
 - (void)fuwenbenLabel:(UILabel *)labell FontNumber:(id)font AndRange:(NSRange)range AndColor:(UIColor *)vaColor {
@@ -166,7 +190,8 @@
 #pragma mark -- SDCycleScrollViewDelegate
 
 - (void)cycleScrollView:(SDCycleScrollView *)cycleScrollView didSelectItemAtIndex:(NSInteger)index {
-    [ProgressHUD bwm_showTitle:[NSString stringWithFormat:@"第%ld张", index+1] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
+    ImageListModel *model = self.imageListModel.modelListArr[index];
+    [ProgressHUD bwm_showTitle:[NSString stringWithFormat:@"第%ld张:%@", index+1, model.content] toView:self.view hideAfter:HUD_HIDE_TIMEINTERVAL/2.0];
 }
 
 #pragma mark -- TableViewDelegate
@@ -188,13 +213,15 @@
         switch (indexPath.item) {
             case 0:
             {
-                [ProgressHUD bwm_showTitle:@"正在开发" toView:self.view hideAfter:1.0];
+                TransationListController *transationVC = [TransationListController new];
+                [self.navigationController pushViewController:transationVC animated:YES];
             }
                 break;
                 
             case 1:
             {
-                [ProgressHUD bwm_showTitle:@"正在开发" toView:self.view hideAfter:1.0];
+                MyTransationController *myTransationVC = [MyTransationController new];
+                [self.navigationController pushViewController:myTransationVC animated:YES];
             }
                 break;
                 
@@ -207,8 +234,8 @@
                 
             case 3:
             {
-                OrderStatus220Controller *orderVC = [OrderStatus220Controller new];
-                [self.navigationController pushViewController:orderVC animated:YES];
+                NestedSelectStateController *selectedVC = [NestedSelectStateController new];
+                [self.navigationController pushViewController:selectedVC animated:YES];
 
             }
                 break;
@@ -217,6 +244,7 @@
                 break;
         }
     }];
+    cell.homeModel = self.homePageModel;
     return cell;
 }
 

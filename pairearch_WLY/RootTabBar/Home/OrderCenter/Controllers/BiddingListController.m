@@ -92,11 +92,8 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ListTableCell *cell = [ListTableCell getCellWithTable:tableView];
-    cell.indexPath = indexPath;
-    cell.orderModel = self.listModelArr[indexPath.row];
-    cell.assortLabel.hidden = NO;
-    cell.assortLabel.text = @"抢";
+    ListTableCell *cell = [ListTableCell getCellWithTable:tableView indexPath:indexPath];
+//    cell.orderModel = self.listModelArr[indexPath.row];
     return cell;
 }
 

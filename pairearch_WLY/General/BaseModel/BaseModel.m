@@ -20,16 +20,14 @@
 //获取SIM卡信息
 #import <CoreTelephony/CTCarrier.h>
 #import <CoreTelephony/CTTelephonyNetworkInfo.h>
-
 #import <dlfcn.h>
 
 
 #define SERVERKEY @"52a5dad279cd11e4b5ea0016maxinlin"
 
-#define PRIVATE_PATH "/System/Library/PrivateFrameworks/CoreTelephony.framework/CoreTelephony"
-
 @implementation BaseModel
 
+#pragma mark -- 初始化数据
 //实例方法初始化
 - (instancetype)initWithDict:(NSDictionary *)dict {
     self = [super init];
@@ -37,6 +35,22 @@
         [self setValuesForKeysWithDictionary:dict];
     }
     return self;
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key {
+    if (!value) {
+        value = @"";
+    }
+    if (![value isKindOfClass:[NSArray class]] &&
+        ![value isKindOfClass:[NSDictionary class]]) {
+        value = [NSString stringWithFormat:@"%@", value];
+    }
+    [super setValue:value forKey:key];
+    
+}
+
+- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+    
 }
 
 //类方法初始化
@@ -53,27 +67,236 @@
     return modelsArr;
 }
 
-- (void)setValue:(id)value forKey:(NSString *)key {
-    if (value == nil) {
-        value = @"";
+#pragma mark -- 数据请求
+//GET请求
++ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(EndResultBlock)endBlock {
+    return [NetworkHelper GET:url parameters:paramDict progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self initializationDataModelWithTask:task responseObject:responseObject error:error endResult:endBlock];
+    }];
+}
+
++ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict hudTarget:(id)hudTarget endBlock:(EndResultBlock)endBlock {
+    return [NetworkHelper GET:url parameters:paramDict hudTarget:hudTarget progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self initializationDataModelWithTask:task responseObject:responseObject error:error endResult:endBlock];
+    }];
+}
+
+/*
++ (NSURLSessionDataTask *)getDataWithOperation:(NSString *)operation parameters:(NSDictionary *)paramDict endBlock:(EndResultBlock)endBlock {
+    return [NetworkHelper GET:PAIREACH_BASE_URL parameters:paramDict progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self initializationDataModelWithTask:task responseObject:responseObject error:error endResult:endBlock];
+    }];
+}
+
++ (NSURLSessionDataTask *)getDataWithOperation:(NSString *)operation parameters:(NSDictionary *)paramDict hudTarget:(id)hudTarget endBlock:(EndResultBlock)endBlock {
+    return [NetworkHelper GET:PAIREACH_BASE_URL parameters:paramDict hudTarget:hudTarget progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self initializationDataModelWithTask:task responseObject:responseObject error:error endResult:endBlock];
+    }];
+}
+ */
+
+//POST
++ (NSURLSessionDataTask *)postDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(EndResultBlock)endBlock {
+    return [NetworkHelper POST:url parameters:paramDict progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self initializationDataModelWithTask:task responseObject:responseObject error:error endResult:endBlock];
+    }];
+}
+
++ (NSURLSessionDataTask *)postDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict hudTarget:(id)hudTarget endBlock:(EndResultBlock)endBlock {
+    return [NetworkHelper POST:url parameters:paramDict hudTarget:hudTarget progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self initializationDataModelWithTask:task responseObject:responseObject error:error endResult:endBlock];
+    }];
+}
+
+/*
++ (NSURLSessionDataTask *)postDataWithOperation:(NSString *)operation parameters:(NSDictionary *)paramDict endBlock:(EndResultBlock)endBlock {
+    return [NetworkHelper POST:PAIREACH_BASE_URL parameters:paramDict progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        [self initializationDataModelWithTask:task responseObject:responseObject error:error endResult:endBlock];
+    }];
+}
+
++ (NSURLSessionDataTask *)postDataWithOperation:(NSString *)operation parameters:(NSDictionary *)paramDict hudTarget:(id)hudTarget endBlock:(EndResultBlock)endBlock {
+    return [NetworkHelper POST:PAIREACH_BASE_URL parameters:paramDict hudTarget:hudTarget progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+        return [NetworkHelper POST:PAIREACH_BASE_URL parameters:paramDict hudTarget:hudTarget progress:nil endResult:^(NSURLSessionDataTask *task, id responseObject, NSError *error) {
+            [self initializationDataModelWithTask:task responseObject:responseObject error:error endResult:endBlock];
+        }];
+    }];
+}
+ */
+
+
+//Model数据的初始化
++ (void)initializationDataModelWithTask:(NSURLSessionDataTask *)task
+                         responseObject:(id)responseObject
+                                  error:(NSError *)error
+                              endResult:(EndResultBlock)endResult
+{
+    if (!endResult) {
+        return;
     }
-    NSString *tempValue = [NSString stringWithFormat:@"%@", value];
-    [super setValue:tempValue forKey:key];
     
+    if (!error) {
+        if ([responseObject isKindOfClass:[NSArray class]]) {
+            id model = [[self class] new];
+            [model setValue:[self getModelsWithDicts:responseObject] forKey:@"modelListArr"];
+            endResult(task, model, nil);
+        } else if ([responseObject isKindOfClass:[NSDictionary class]]) {
+            id model = [self getModelWithDict:responseObject];
+            endResult(task, model, nil);
+        } else {
+            endResult(task, responseObject, nil);
+        }
+    } else {
+        endResult(task, nil, error);
+    }
 }
 
-- (void)setValue:(id)value forUndefinedKey:(NSString *)key {
+//密码MD5加密
++ (NSString *)md5HexDigest:(NSString *)text {
+    const char *original_str = [text UTF8String];
+    unsigned char result[CC_MD5_DIGEST_LENGTH];
+    CC_MD5(original_str, (CC_LONG)strlen(original_str), result);
     
+    /*
+    NSMutableString *hash = [NSMutableString string];
+    for (int i = 0; i < 16; i++) {
+        [hash appendFormat:@"%02X", result[i]];
+    }
+    NSString *mdfiveString = [hash lowercaseString];
+     */
+    
+    NSData *data = [NSData dataWithBytes:result length:CC_MD5_DIGEST_LENGTH];
+//    Base64转码
+    return [data base64EncodedStringWithOptions:0];
 }
 
-//网络请求
-+ (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock {
-    return nil;
+/**
+ 根据接口的Operation名称获取模块名称
+
+ @param operation 当前接口名称
+ @return 获取的模块名称
+ */
++ (NSString *)getModuleStrWithOperation:(NSString *)operation {
+    NSDictionary *moduleDict = @{
+                                 APP_USER_SERVICE_MODULE:@[USER_LOGIN_API,
+                                                           CHANGE_PASSWORD_API
+                                                           ],
+                                 HOME_INDEX_MODULE:@[HOME_IMAGE_LIST_API,
+                                                     HOME_TOTAL_API
+                                                     ],
+                                 ORDER_SERVICE_MODULE:@[WAIT_TRANSPORT_LIST_API,
+                                                        GET_TU_DETAIL_API,
+                                                        GET_ORDER_DETAIL_API,
+                                                        GET_DRIVER_HISTORY_API
+                                                        ],
+                                 DRIVER_VEHICLE_SERVICE_MODULE:@[RECEIVE_ORDER_API,
+                                                                 PROCESSNODE_OPERATION_API,
+                                                                 GET_TRANSPORT_ORDERINFO_API,
+                                                                 GET_FRONTCAR_COUNT_API],
+                                 LOCATION_UPLOAD_MODULE:@[LOCATION_UPLOAD_API]
+                                 };
+    
+    NSArray *keysArr = [moduleDict allKeys];
+    for (NSString *key in keysArr) {
+        NSArray *operationArr = [moduleDict objectForKey:key];
+        for (NSString *tempOperation in operationArr) {
+            if ([operation isEqualToString:tempOperation]) {
+                return key;
+            }
+        }
+    }
+    return @"";
 }
 
-//网络请求
-+ (NSURLSessionDataTask *)getDataWithUrl:(NSString *)url parameters:(NSDictionary *)paramDict endBlock:(void (^)(id model, NSError *error))endBlock {
-    return nil;
++ (NSString *)securityProcessingWithContent:(NSString *)content {
+    CocoaSecurityResult *md5Result = [CocoaSecurity md5:content];
+    if (md5Result.data.length > 0) {
+        return [md5Result.data base64EncodedStringWithOptions:0];
+    }
+    return content;
+}
+
+
+/*
+ {
+    sign : 密文,
+    parameter : {
+                "module" : "appUserService",
+                "operation" : "appUserLogin",
+                "requestEntity" : {
+                                    "account" : "000000",
+                                    "password" : "123456"
+                                   },
+                },
+ }
+ */
+
+
+/**
+ 对参数进行处理，供后台对接口数据进行校验
+
+ @param operation 当前请求的接口
+ @param requestEntityDict 当前需要接口对应的真实参数
+ @return 返回处理好的参数结果
+ */
++ (NSDictionary *)parametersTransformationWithOperation:(NSString *)operation requestEntityDict:(NSDictionary *)requestEntityDict {
+    NSMutableDictionary *entityDict = [NSMutableDictionary dictionaryWithDictionary:requestEntityDict];
+    if ([requestEntityDict[WHETHER_NEED_LOCATION_KRY] boolValue]) {
+        BMKLocation *location = [MyBMKLocationManager shareManager].location;
+        if (!requestEntityDict[@"addr"] && location) {
+            NSString *locationDes = [NSString stringWithFormat:@"%@ %@ %@ %@ %@", location.rgcData.country, location.rgcData.province, location.rgcData.city, location.rgcData.district, location.rgcData.street];
+            [entityDict setObject:locationDes forKey:@"addr"];
+        }
+        
+        CLLocationCoordinate2D coordinate = location.location.coordinate;
+        if (!requestEntityDict[@"lat"] && location) {
+            NSString *latStr = [NSString stringWithFormat:@"%f", coordinate.latitude];
+            [entityDict setObject:latStr forKey:@"lat"];
+        }
+        if (!requestEntityDict[@"lng"] && location) {
+            NSString *lngStr = [NSString stringWithFormat:@"%f", coordinate.longitude];
+            [entityDict setObject:lngStr forKey:@"lng"];
+        }
+    }
+    
+    NSString *moduleStr = [self getModuleStrWithOperation:operation];
+    NSString *uploadType = requestEntityDict[UPLOAD_FILE_KEY];
+    NSString *versionStr = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
+    NSDictionary *tempDict = @{MODULE_KEY:moduleStr,
+                               OPERATION_KEY:operation,
+                               REQUESTENTITY_KEY:entityDict,
+                               APPVERSION_KEY:versionStr,
+                               APPTYPE_KEY:@"iOS",
+                               APPSYSTEM_KEY:[UIDevice currentDevice].systemVersion,
+                               LIMIT_KEY: requestEntityDict[@"limit"]? requestEntityDict[@"limit"]:@0,
+                               START_KEY:requestEntityDict[@"limit"]? requestEntityDict[@"limit"]:@0,
+                               UPLOAD_FILE_KEY:uploadType.length>0? uploadType:@""
+                               };
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:tempDict options:0 error:&error];
+    if (error) {
+        return nil;
+    }
+    NSString *jsonStr = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    NSString *tempStr = [NSString stringWithFormat:@"%@%@", jsonStr, SECURITY_KEY];
+    NSString *signStr1 = [self md5HexDigest:tempStr];
+    NSDictionary *transDict = @{SIGN_KEY:signStr1,
+                                PARAMETER_KEY:jsonStr};
+        return transDict;
+}
+
+/**
+ 对参数进行处理，供后台对接口数据进行校验
+ 
+ @param requestEntityDict 当前需要接口对应的真实参数
+ @return 返回处理好的参数结果
+ */
++ (NSDictionary *)parametersTransformationWithRequestEntityDict:(NSDictionary *)requestEntityDict {
+    NSString *operationStr = [requestEntityDict objectForKey:OPERATION_KEY];
+    if (operationStr.length > 0) {
+        return [self parametersTransformationWithOperation:operationStr requestEntityDict:requestEntityDict];
+    }
+    return @{};
 }
 
 //网络接口请求添加签名参数sign  ?不起作用啊
@@ -166,20 +389,6 @@
     
     return [outstring uppercaseString];
 }
-
-//密码MD5加密
-+ (NSString *)md5HexDigest:(NSString *)password {
-    const char *original_str = [password UTF8String];
-    unsigned char result[CC_MD5_DIGEST_LENGTH];
-    CC_MD5(original_str, (CC_LONG)strlen(original_str), result);
-    NSMutableString *hash = [NSMutableString string];
-    for (int i = 0; i < 16; i++) {
-        [hash appendFormat:@"%02X", result[i]];
-    }
-    NSString *mdfiveString = [hash lowercaseString];
-    return mdfiveString;
-}
-
 
 //获取设备型号
 + (NSString *)iphoneType {
@@ -411,6 +620,7 @@
     if ([UIDevice currentDevice].systemVersion.floatValue >= 10.0) {
         UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
         [center removePendingNotificationRequestsWithIdentifiers:@[identifier]];
+//        [center removeDeliveredNotificationsWithIdentifiers:@[identifier]];
     } else if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0) {
         [[UIApplication sharedApplication] cancelAllLocalNotifications];
     }

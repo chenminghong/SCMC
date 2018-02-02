@@ -9,7 +9,6 @@
 #import "NestedSelectStateController.h"
 
 #import "HomePageModel.h"
-#import "Mistake212Controller.h"
 #import "WaitTimeoutController.h"
 #import "WaitListController.h"
 #import "OutStorage220Controller.h"
@@ -48,19 +47,19 @@
 - (void)getCustomMessageAction:(NSNotification *)sender {
     NSDictionary *userInfo = [sender userInfo];
     NSInteger flag = [userInfo[@"flag"] integerValue];
-    if (flag == 0) {
-        self.homePageModel.code = userInfo[@"orderCode"];
-        self.homePageModel.status = userInfo[@"status"];
-        self.code = self.homePageModel.code;
-        self.status = self.homePageModel.status.integerValue;;
-    }
+//    if (flag == 0) {
+//        self.homePageModel.code = userInfo[@"orderCode"];
+//        self.homePageModel.status = userInfo[@"status"];
+//        self.code = self.homePageModel.code;
+//        self.status = self.homePageModel.status.integerValue;;
+//    }
     
 }
 
 - (void)setHomePageModel:(HomePageModel *)homePageModel {
     _homePageModel = homePageModel;
-    self.code = homePageModel.code;
-    self.status = homePageModel.status.integerValue;
+//    self.code = homePageModel.code;
+//    self.status = homePageModel.status.integerValue;
 }
 
 - (void)setStatus:(NSInteger)status {
@@ -80,15 +79,15 @@
         case ORDER_STATUS_220://已接收待签到
         {
             self.title = @"装货工厂签到";
-            if (self.homePageModel.warehouseType.integerValue == WarehouseTypeInside) {
-                Mistake212Controller *childVC = [Mistake212Controller new];
-                [self addChildController:childVC];
-                childVC.homePageModel = self.homePageModel;
-            } else {
-                OutStorage220Controller *childVC = [OutStorage220Controller new];
-                [self addChildController:childVC];
-                childVC.homePageModel = self.homePageModel;
-            }
+//            if (self.homePageModel.warehouseType.integerValue == WarehouseTypeInside) {
+//                Mistake212Controller *childVC = [Mistake212Controller new];
+//                [self addChildController:childVC];
+//                childVC.homePageModel = self.homePageModel;
+//            } else {
+//                OutStorage220Controller *childVC = [OutStorage220Controller new];
+//                [self addChildController:childVC];
+//                childVC.homePageModel = self.homePageModel;
+//            }
         }
             break;
             
@@ -133,10 +132,10 @@
             
         case ORDER_STATUS_232:
         {
-            if ([self.homePageModel.isRoadSea containsString:@"海铁"]) {
-                [self.navigationController popViewControllerAnimated:YES];
-                return;
-            }
+//            if ([self.homePageModel.isRoadSea containsString:@"海铁"]) {
+//                [self.navigationController popViewControllerAnimated:YES];
+//                return;
+//            }
             self.title = @"收货签到";
 //            OrderStatus232Controller *childVC = [OrderStatus232Controller new];
 //            [self addChildController:childVC];
@@ -176,7 +175,7 @@
 
 //判断是否能进入装货工厂
 - (void)getIsEnterFactory {
-    [[NetworkHelper shareClient] GET:CAN_ENTERFAC_API parameters:@{@"userName":[LoginModel shareLoginModel].tel, @"orderCode":self.code} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [[NetworkHelper shareClient] GET:CAN_ENTERFAC_API parameters:@{@"userName":[LoginModel shareLoginModel].phone, @"orderCode":self.code} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
         [self isEnterFactoryWithStatus:str.integerValue];
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

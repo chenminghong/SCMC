@@ -1,0 +1,92 @@
+PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
+  - BaiduMobStat (4.3.0)
+  - CocoaSecurity (1.2.4)
+  - DYCoordinateInChina (0.1.1)
+  - DYLocationConverter (0.0.4):
+    - DYCoordinateInChina
+  - FDFullscreenPopGesture (1.1)
+  - IQKeyboardManager (3.3.7)
+  - JCore (1.1.1)
+  - JPush (3.0.2):
+    - JCore (= 1.1.1)
+  - Masonry (1.0.2)
+  - MBProgressHUD (0.9.2)
+  - MBProgressHUD+BWMExtension (1.0.1):
+    - MBProgressHUD (~> 0.9.1)
+  - MJRefresh (3.1.12)
+  - pop (1.0.9)
+  - SAMKeychain (1.5.2)
+  - SDCycleScrollView (1.3)
+  - SDWebImage (4.0.0):
+    - SDWebImage/Core (= 4.0.0)
+  - SDWebImage/Core (4.0.0)
+  - TZImagePickerController (1.7.8)
+  - UIImage+ImageCompress (0.0.1)
+  - UMengAnalytics-NO-IDFA (4.2.5)
+  - XFDialogBuilder (1.2.9):
+    - pop
+  - XHVersion (1.0.1)
+
+DEPENDENCIES:
+  - AFNetworking
+  - BaiduMobStat (~> 4.3.0)
+  - CocoaSecurity
+  - DYLocationConverter (~> 0.0.4)
+  - FDFullscreenPopGesture
+  - IQKeyboardManager
+  - JPush
+  - Masonry
+  - MBProgressHUD (~> 0.9.2)
+  - MBProgressHUD+BWMExtension (~> 1.0.1)
+  - MJRefresh
+  - SAMKeychain
+  - SDCycleScrollView
+  - SDWebImage
+  - TZImagePickerController
+  - UIImage+ImageCompress
+  - UMengAnalytics-NO-IDFA
+  - XFDialogBuilder (~> 1.2.9)
+  - XHVersion (~> 1.0.1)
+
+SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  BaiduMobStat: 2c4828d07d4b3d2fc2142262db03e685db74c0d9
+  CocoaSecurity: d288a6f87e0f363823d2cb83e753814a6944f71a
+  DYCoordinateInChina: 26eede8f63682536b9f2688cf9cbe4ebf21dcbf9
+  DYLocationConverter: c6046909d23087f808b1515df344870d5e854baf
+  FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
+  IQKeyboardManager: 249c3946acf61345c18b038eb50863fe2793e3a8
+  JCore: 2210a789c8efb7dc2a46b1c24d2209b995b18ad2
+  JPush: 5d53c88e32e48b559edc3adb20ade30903a5b9e1
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MBProgressHUD: 1569cf7ace17a8bac47aabfbb8580a49690386d1
+  MBProgressHUD+BWMExtension: d0603a1c0b03ef74cae6a0986d63c0bdf34bedfe
+  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+  SAMKeychain: 1865333198217411f35327e8da61b43de79b635b
+  SDCycleScrollView: 90e43636fcc8e6a7f74e8b64d87418a8e96549b4
+  SDWebImage: 76a6348bdc74eb5a55dd08a091ef298e56b55e41
+  TZImagePickerController: 87a138ae5d585225aaa6c8abe2cface0f0ad19dd
+  UIImage+ImageCompress: 6b38489f38075d569d9f25d72af7ecf5c84c1057
+  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
+  XFDialogBuilder: 6c29727a3144b55b6701d904871fe9b7622c23b3
+  XHVersion: 9a108b063d3b935da224f5ba5c4bd3cb875616d7
+
+PODFILE CHECKSUM: 876ac36a4d6eafb29ba02846b939c06bcde95d18
+
+COCOAPODS: 1.2.0

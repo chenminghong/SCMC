@@ -1,63 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="OrderListTableCell" rowHeight="61" id="KGk-i7-Jjw" customClass="OrderListTableCell">
-            <rect key="frame" x="0.0" y="0.0" width="447" height="61"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrderListTableCell" rowHeight="58" id="KGk-i7-Jjw" customClass="OrderListTableCell">
+            <rect key="frame" x="0.0" y="0.0" width="447" height="58"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="447" height="61"/>
+                <rect key="frame" x="0.0" y="0.0" width="447" height="57.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TU10001" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZTk-eu-clj">
-                        <rect key="frame" x="10" y="10" width="73" height="40.5"/>
+                        <rect key="frame" x="10" y="0.0" width="73" height="21.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="FRc-dO-JQ3"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="运单数量：2" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MvC-t5-aMG">
-                        <rect key="frame" x="334.5" y="10" width="102.5" height="40.5"/>
+                        <rect key="frame" x="334" y="0.0" width="103" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8DR-68-ZuZ">
-                        <rect key="frame" x="0.0" y="59.5" width="447" height="1"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="1" id="Xog-TR-sQc"/>
-                        </constraints>
-                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="MvC-t5-aMG" secondAttribute="trailing" constant="10" id="100-DN-FNU"/>
-                    <constraint firstAttribute="bottom" secondItem="8DR-68-ZuZ" secondAttribute="bottom" id="1Hj-Fg-wTY"/>
-                    <constraint firstItem="8DR-68-ZuZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="2M1-29-MlF"/>
-                    <constraint firstAttribute="bottom" secondItem="ZTk-eu-clj" secondAttribute="bottom" constant="10" id="9lR-PC-wI2"/>
-                    <constraint firstAttribute="trailing" secondItem="8DR-68-ZuZ" secondAttribute="trailing" id="HnA-oG-U3F"/>
-                    <constraint firstAttribute="bottom" secondItem="MvC-t5-aMG" secondAttribute="bottom" constant="10" id="U9e-j6-bPz"/>
-                    <constraint firstItem="MvC-t5-aMG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="bKy-CA-TyZ"/>
-                    <constraint firstItem="ZTk-eu-clj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="kyW-c6-pRB"/>
-                    <constraint firstItem="MvC-t5-aMG" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="nKK-lO-FDu"/>
-                    <constraint firstItem="ZTk-eu-clj" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="vOP-iV-g0o"/>
-                    <constraint firstItem="ZTk-eu-clj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="z2l-Nk-Vxs"/>
+                    <constraint firstItem="ZTk-eu-clj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="UvU-6a-3me"/>
+                    <constraint firstAttribute="bottom" secondItem="ZTk-eu-clj" secondAttribute="bottom" id="eiF-KV-ad2"/>
+                    <constraint firstItem="MvC-t5-aMG" firstAttribute="bottom" secondItem="ZTk-eu-clj" secondAttribute="bottom" id="f9G-ub-nh4"/>
+                    <constraint firstItem="ZTk-eu-clj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="geq-Dd-vtv"/>
+                    <constraint firstItem="MvC-t5-aMG" firstAttribute="top" secondItem="ZTk-eu-clj" secondAttribute="top" id="kfP-gv-MSR"/>
+                    <constraint firstItem="MvC-t5-aMG" firstAttribute="centerY" secondItem="ZTk-eu-clj" secondAttribute="centerY" id="xIK-Hh-P51"/>
+                    <constraint firstAttribute="trailing" secondItem="MvC-t5-aMG" secondAttribute="trailing" constant="10" id="yxX-5O-EYu"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="orderCountLabel" destination="MvC-t5-aMG" id="DgV-EF-ayW"/>
-                <outlet property="separatorLine" destination="8DR-68-ZuZ" id="mwl-aC-dGV"/>
-                <outlet property="separatorLineHeight" destination="Xog-TR-sQc" id="huz-7h-thf"/>
                 <outlet property="tuNumberLabel" destination="ZTk-eu-clj" id="RE6-AR-Mnj"/>
             </connections>
-            <point key="canvasLocation" x="-38.5" y="60.5"/>
+            <point key="canvasLocation" x="-38.5" y="-53"/>
         </tableViewCell>
     </objects>
 </document>

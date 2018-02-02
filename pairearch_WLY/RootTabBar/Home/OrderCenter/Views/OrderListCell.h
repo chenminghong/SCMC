@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class OrdersListModel;
+
 @interface OrderListCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *orderNumberLabel;
 @property (weak, nonatomic) IBOutlet UILabel *planLoadTimeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *appointTimeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *fromButton;
 @property (weak, nonatomic) IBOutlet UILabel *fromNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fromAddressLabel;
@@ -19,7 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *toNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *toAddressLabel;
 @property (weak, nonatomic) IBOutlet UIView *separatorLine;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *separatorLineHeight;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topConstrant;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *heightConstrant;
+
+@property (nonatomic, strong) OrdersListModel *orderListModel;
 
 /**
  获取当前的cell

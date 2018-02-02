@@ -74,20 +74,13 @@
     }
 }
 
-
 /**
  上传位置信息到后台
  */
 - (void)uploadLocationToServer {
-    if (self.orderCode.length <= 0) {
-        return;
-    }
     NSMutableDictionary *paraDict = [NSMutableDictionary dictionaryWithDictionary:self.addressInfo];
-    [paraDict setObject:self.orderCode forKey:@"orderCode"];
-    [paraDict setObject:[LoginModel shareLoginModel].tel.length>0? [LoginModel shareLoginModel].tel:@"" forKey:@"driverTel"];
-    [[NetworkHelper shareClient] POST:UPLOAD_LOCATION_API parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-//        NSString *responseStr = [NSString stringWithFormat:@"%@", [NSJSONSerialization JSONObjectWithData:responseObject options:0 error:nil]];
-//        NSLog(@"成功：%@", responseStr);
+    [paraDict setObject:[LoginModel shareLoginModel].phone forKey:@"driverTel"];
+    [[NetworkHelper shareClient] POST:PAIREACH_NETWORK_URL parameters:paraDict progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         NSLog(@"%@", error.userInfo[ERROR_MSG]);
     }];
@@ -137,16 +130,15 @@
     __weak typeof(self) weakSelf = self;
     [geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
         if (!error) {
-            CLPlacemark *placemark=[placemarks firstObject];
-            NSDictionary *locationDict = placemark.addressDictionary;
-    
+            CLPlacemark *placemark = [placemarks firstObject];
             NSString *speed = [NSString stringWithFormat:@"%f", location.speed];
             NSString *direction = [NSString stringWithFormat:@"%f", location.course];
+            NSDictionary *locationDict = placemark.addressDictionary;
             NSArray *addressArr = [NSArray arrayWithArray:locationDict[@"FormattedAddressLines"]];
             NSString *address = addressArr.count? addressArr[0]:@"";
-            NSString *province = locationDict[@"State"];
-            NSString *city = locationDict[@"City"];
-            NSString *area = locationDict[@"SubLocality"];
+            NSString *city = placemark.locality;
+            NSString *province = placemark.administrativeArea;
+            NSString *area = placemark.subLocality;
             NSString *remark = @"iOS";
             NSString *active = @"Y";
             
@@ -160,7 +152,7 @@
                                  @"speed":speed,
                                  @"direction":direction,
                                  @"address":address,
-                                 @"province":province,
+                                 @"province":province? province:city,
                                  @"city":city,
                                  @"area":area,
                                  @"remark":remark,

@@ -129,7 +129,7 @@
 
 - (void)footerButtonAction:(UIButton *)sender {
     //选择图片并且上传
-    NSString *userName = [LoginModel shareLoginModel].tel;
+    NSString *userName = [LoginModel shareLoginModel].phone;
     NSString *orderCode = self.homePageModel.code;
     CLLocation *location =  [LocationManager shareManager].location;
     NSString *lat = [NSString stringWithFormat:@"%f", location.coordinate.latitude];

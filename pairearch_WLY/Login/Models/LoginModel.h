@@ -8,55 +8,37 @@
 
 #import "BaseModel.h"
 
-@interface LoginModel : NSObject
+@interface LoginModel : BaseModel
 /*
  {
-    cpDriver = {
-        code = 22104;  //司机的id
-        createDate = "2017-02-23 17:56:55"; //用户的创建时间
-        createUser = 102admin; //创建者
-        driverCardUrl = 37;  //身份证号对应的链接地址的表的id
-        id = 22104;  //表的id
-        idCard = 111111111111112;  //身份证号
-        lastLoginTime = "2017-02-23 19:08:28"; //最近一次登录的时间
-        logicState = 1;
-        modifyDate = "2017-02-10 12:24:45";  //修改时间
-        modifyUser = 102admin;  //修改人
-        name = "\U5b8f\U8c611"; //用户名
-        pwd = e10adc3949ba59abbe56e057f20f883e;  //密码
-        tel = 18100000001;  //电话号码
-    };
-    loginResult = 1;
-    remark = "\U767b\U5f55\U6210\U529f\Uff01\Uff01";
+    account = 17721011540;
+    active = Y;
+    createDate = 1511251153000;
+    fullName = Jean;
+    id = 23;
+    idCard = 000000000000000000;
+    limit = 0;
+    phone = 17721011540;
+    start = 0;
+    tokenLastOptTime = 1511409606795;
+    tokenTimeOut = 43200000;
+    userCode = 1027;
  }
  */
 
-@property (nonatomic, copy) NSString *code;  //司机的id
+@property (nonatomic, copy) NSString *account;      //登录账号
 
-@property (nonatomic, copy) NSString *createDate;  //用户的创建时间
+@property (nonatomic, copy) NSString *userCode;     //用户编码
 
-@property (nonatomic, copy) NSString *createUser;  //创建者
+@property (nonatomic, copy) NSString *headImg;      //用户头像
 
-@property (nonatomic, copy) NSString *driverCardUrl;  //身份证号对应的链接地址的表的id
+@property (nonatomic, copy) NSString *fullName;     //用户姓名
 
-@property (nonatomic, copy) NSString *userId;  //表的id
+@property (nonatomic, copy) NSString *idCard;       //身份证
 
-@property (nonatomic, copy) NSString *idCard; //身份证号
+@property (nonatomic, copy) NSString *phone;        //手机号码
 
-@property (nonatomic, copy) NSString *lastLoginTime;  //最后一次登录的时间
-
-@property (nonatomic, copy) NSString *logicState;
-
-@property (nonatomic, copy) NSString *modifyDate;  //修改时间
-
-@property (nonatomic, copy) NSString *modifyUser; //修改人
-
-@property (nonatomic, copy) NSString *name; //用户名
-
-@property (nonatomic, copy) NSString *pwd;  //密码
-
-@property (nonatomic, copy) NSString *tel;  //密码
-
+@property (nonatomic, copy) NSString *createDate;   //创建时间
 
 //初始化
 + (instancetype)shareLoginModel;
@@ -73,7 +55,5 @@
 //修改某一条信息
 + (void)updateInfoValue:(NSString *)infoValue forKey:(NSString *)key;
 
-//请求登录数据
-+ (NSURLSessionDataTask *)getDataWithParameters:(NSDictionary *)paramDict endBlock:(void (^)(id, NSError *))endBlock;
 
 @end

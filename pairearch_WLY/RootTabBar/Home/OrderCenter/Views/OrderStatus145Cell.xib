@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="OrderStatus145Cell" rowHeight="456" id="KGk-i7-Jjw" customClass="OrderStatus145Cell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="456"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="455.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3hP-G8-fy9">
+                        <rect key="frame" x="119" y="20" width="83" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="DIX-bg-srA"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <state key="normal" title="TU10001">
+                            <color key="titleColor" red="0.80398052929999997" green="0.30983889100000001" blue="0.37676936389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                    </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcD-Ip-txQ">
+                        <rect key="frame" x="58" y="70" width="205" height="1"/>
+                        <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="bq2-o4-YUx"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcM-JZ-Mco">
+                        <rect key="frame" x="58" y="298" width="205" height="1"/>
+                        <color key="backgroundColor" red="0.93166857960000005" green="0.73742550610000002" blue="0.31641966100000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="hiJ-V6-WVm"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="装货完成时，请点击“装货完成拍照”" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="abE-NV-xOe">
+                        <rect key="frame" x="40" y="319" width="240" height="106.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kU8-OH-naC" customClass="CustomVerticalButton">
+                        <rect key="frame" x="67.5" y="91" width="187" height="187"/>
+                        <color key="backgroundColor" red="0.23397815229999999" green="0.65892678500000001" blue="0.90820056199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="kU8-OH-naC" secondAttribute="height" multiplier="1:1" id="QGP-2e-F60"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <state key="normal" title="装货完成拍照" image="paizhao">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="abE-NV-xOe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="40" id="7eX-6m-Hu5"/>
+                    <constraint firstItem="fcM-JZ-Mco" firstAttribute="top" secondItem="kU8-OH-naC" secondAttribute="bottom" constant="20" id="Hmr-T1-Ztx"/>
+                    <constraint firstItem="zcD-Ip-txQ" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="384:600" id="IMn-1h-cAO"/>
+                    <constraint firstItem="zcD-Ip-txQ" firstAttribute="top" secondItem="3hP-G8-fy9" secondAttribute="bottom" constant="20" id="Jm5-3c-N2g"/>
+                    <constraint firstItem="fcM-JZ-Mco" firstAttribute="centerX" secondItem="3hP-G8-fy9" secondAttribute="centerX" id="KcG-nI-vrt"/>
+                    <constraint firstItem="fcM-JZ-Mco" firstAttribute="height" secondItem="zcD-Ip-txQ" secondAttribute="height" id="Kem-qs-c9K"/>
+                    <constraint firstItem="kU8-OH-naC" firstAttribute="top" secondItem="zcD-Ip-txQ" secondAttribute="bottom" constant="20" id="L0j-IR-jSo"/>
+                    <constraint firstItem="3hP-G8-fy9" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="ZU8-1K-VBH"/>
+                    <constraint firstItem="fcM-JZ-Mco" firstAttribute="width" secondItem="zcD-Ip-txQ" secondAttribute="width" id="bxs-ch-0aM"/>
+                    <constraint firstItem="3hP-G8-fy9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="cgp-GI-3wJ"/>
+                    <constraint firstItem="zcD-Ip-txQ" firstAttribute="centerX" secondItem="3hP-G8-fy9" secondAttribute="centerX" id="d4W-mj-s2g"/>
+                    <constraint firstAttribute="bottom" secondItem="abE-NV-xOe" secondAttribute="bottom" constant="30" id="dlA-Fa-uNY"/>
+                    <constraint firstItem="fcM-JZ-Mco" firstAttribute="centerX" secondItem="zcD-Ip-txQ" secondAttribute="centerX" id="eOJ-me-LfG"/>
+                    <constraint firstItem="abE-NV-xOe" firstAttribute="top" secondItem="fcM-JZ-Mco" secondAttribute="bottom" constant="20" id="qFa-8V-SJJ"/>
+                    <constraint firstItem="kU8-OH-naC" firstAttribute="centerX" secondItem="3hP-G8-fy9" secondAttribute="centerX" id="tIf-ee-WBb"/>
+                    <constraint firstItem="kU8-OH-naC" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="350:600" id="wSp-zq-Pb3"/>
+                    <constraint firstAttribute="trailing" secondItem="abE-NV-xOe" secondAttribute="trailing" constant="40" id="zO5-pr-63t"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="photoImgButton" destination="kU8-OH-naC" id="6aH-bp-c8x"/>
+                <outlet property="statusDescriptionLabel" destination="abE-NV-xOe" id="zPJ-Y2-jU9"/>
+                <outlet property="tuNumberButton" destination="3hP-G8-fy9" id="lZA-rg-iWa"/>
+            </connections>
+            <point key="canvasLocation" x="25" y="16"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="paizhao" width="96" height="72"/>
+    </resources>
+</document>

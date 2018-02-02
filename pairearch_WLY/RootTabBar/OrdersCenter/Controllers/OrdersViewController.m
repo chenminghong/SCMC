@@ -10,8 +10,6 @@
 
 #import "OrderListTableCell.h"
 #import "HomePageModel.h"
-
-#import "Mistake212Controller.h"
 #import "NestedSelectStateController.h"
 
 @interface OrdersViewController ()<UITableViewDelegate, UITableViewDataSource>
@@ -56,27 +54,30 @@
 
 //获取订单列表Data数据
 - (void)getOrderListData {
-    __weak typeof(self) weakSelf = self;
-    [HomePageModel getDataWithUrl:ORDER_LIST_API parameters:@{@"driverTel":[LoginModel shareLoginModel].tel? [LoginModel shareLoginModel].tel:@""} endBlock:^(id model, NSError *error) {
-        if (!error) {
-            weakSelf.homeModel = model;
-            if (weakSelf.homeModel.orderModelList.count <= 0) {
-                [LocationManager shareManager].orderCode = nil;  //结束定位上传
-                [MBProgressHUD bwm_showTitle:@"暂无订单" toView:weakSelf.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-            } else {
-                HomePageModel *model = weakSelf.homeModel.orderModelList[0];
-                if ([model.status integerValue] > ORDER_STATUS_212) {
-                    [LocationManager shareManager].orderCode = model.code;  //开启定位上传
-                } else {
-                    [LocationManager shareManager].orderCode = nil;  //关闭定位上传
-                }
-            }
-        } else {
-            [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:weakSelf.view hideAfter:HUD_HIDE_TIMEINTERVAL];
-        }
-        [self.tableView reloadData];
-        [MJRefreshUtil endRefresh:weakSelf.tableView];
-    }];
+    
+    /*
+     __weak typeof(self) weakSelf = self;
+     [HomePageModel getDataWithOperation:ORDER_LIST_API parameters:@{@"driverTel":[LoginModel shareLoginModel].phone} endBlock:^(id model, NSError *error) {
+     if (!error) {
+     weakSelf.homeModel = model;
+     if (weakSelf.homeModel.orderModelList.count <= 0) {
+     [LocationManager shareManager].orderCode = nil;  //结束定位上传
+     [MBProgressHUD bwm_showTitle:@"暂无订单" toView:weakSelf.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+     } else {
+     HomePageModel *model = weakSelf.homeModel.orderModelList[0];
+     if ([model.status integerValue] > ORDER_STATUS_212) {
+     [LocationManager shareManager].orderCode = model.code;  //开启定位上传
+     } else {
+     [LocationManager shareManager].orderCode = nil;  //关闭定位上传
+     }
+     }
+     } else {
+     [MBProgressHUD bwm_showTitle:error.userInfo[ERROR_MSG] toView:weakSelf.view hideAfter:HUD_HIDE_TIMEINTERVAL];
+     }
+     [self.tableView reloadData];
+     [MJRefreshUtil endRefresh:weakSelf.tableView];
+     }];
+     */
 }
 
 #pragma mark -- TableViewDelegate
@@ -86,17 +87,17 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.homeModel.orderModelList.count;
+    return 1;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomePageModel *model = self.homeModel.orderModelList[indexPath.row];
-    CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
-    CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
-    CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
-    CGFloat endDcAddConstant = [BaseModel heightForTextString:model.dcAddress width:(kScreenWidth - 85.0)  fontSize:13.0];
-    CGFloat height = startNameConstant + startAddConstant + endDcNameConstant + endDcAddConstant + 50.0 + 20 + 30;
-    return height < 130.0? 130.0:height;
+//    HomePageModel *model = self.homeModel.orderModelList[indexPath.row];
+//    CGFloat startNameConstant = [BaseModel heightForTextString:model.sourceName width:(kScreenWidth - 85.0)  fontSize:16.0];
+//    CGFloat startAddConstant = [BaseModel heightForTextString:model.sourceAddr width:(kScreenWidth - 85.0)  fontSize:16.0];
+//    CGFloat endDcNameConstant = [BaseModel heightForTextString:model.dcName width:(kScreenWidth - 85.0)  fontSize:13.0];
+//    CGFloat endDcAddConstant = [BaseModel heightForTextString:model.dcAddress width:(kScreenWidth - 85.0)  fontSize:13.0];
+//    CGFloat height = startNameConstant + startAddConstant + endDcNameConstant + endDcAddConstant + 50.0 + 20 + 30;
+    return 130;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -106,13 +107,14 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    HomePageModel *model = self.homeModel.orderModelList[indexPath.row];
-    [self jumpToControllerWithParaModel:model];
+//    HomePageModel *model = self.homeModel.orderModelList[indexPath.row];
+//    [self jumpToControllerWithParaModel:model];
 }
 
 //KA界面跳转逻辑
 - (void)jumpToControllerWithParaModel:(HomePageModel *)model {
-    NSInteger status = model.status.integerValue;
+//    NSInteger status = model.status.integerValue;
+    NSInteger status = 0;
     NSLog(@"status:%ld", (long)status);
     switch (status) {
         case ORDER_STATUS_212://待接收

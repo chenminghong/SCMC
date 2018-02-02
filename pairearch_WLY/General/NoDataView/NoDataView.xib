@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="NoDataView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BTX-ap-9Yi">
+                    <rect key="frame" x="113" y="100" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="150" id="ASX-do-n4s"/>
+                        <constraint firstAttribute="width" constant="150" id="sdk-ma-HC0"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BdH-E3-VNQ">
+                    <rect key="frame" x="40" y="270" width="295" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="BdH-E3-VNQ" firstAttribute="top" secondItem="BTX-ap-9Yi" secondAttribute="bottom" constant="20" id="2tf-21-sYR"/>
+                <constraint firstItem="BdH-E3-VNQ" firstAttribute="centerX" secondItem="BTX-ap-9Yi" secondAttribute="centerX" id="DYO-pH-Fec"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="BdH-E3-VNQ" secondAttribute="trailing" constant="40" id="Nso-6p-XHa"/>
+                <constraint firstItem="BTX-ap-9Yi" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="O9r-D2-5Ft"/>
+                <constraint firstItem="BdH-E3-VNQ" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="40" id="PoY-FW-KZu"/>
+                <constraint firstItem="BTX-ap-9Yi" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="bottom" multiplier="150:1000" id="liH-nW-1l6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="imgView" destination="BTX-ap-9Yi" id="Esb-T0-fjx"/>
+                <outlet property="textLabel" destination="BdH-E3-VNQ" id="fbw-Tz-4Pf"/>
+            </connections>
+        </view>
+    </objects>
+</document>

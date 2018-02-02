@@ -59,12 +59,12 @@
 - (void)setHomeModel:(HomePageModel *)homeModel {
     _homeModel = homeModel;
 
-    self.loadNumberLabel.text = [NSString stringWithFormat:@"单号:%@", homeModel.code];
-    self.planLoadTimeLabel.text = homeModel.wareDispatchTime;
-    self.startNameLabel.text = homeModel.sourceName;
-    self.startAddressLabel.text = homeModel.sourceAddr;
-    self.endNameLabel.text = homeModel.dcName;
-    self.endAddressLabel.text = homeModel.dcAddress;
+//    self.loadNumberLabel.text = [NSString stringWithFormat:@"单号:%@", homeModel.code];
+//    self.planLoadTimeLabel.text = homeModel.wareDispatchTime;
+//    self.startNameLabel.text = homeModel.sourceName;
+//    self.startAddressLabel.text = homeModel.sourceAddr;
+//    self.endNameLabel.text = homeModel.dcName;
+//    self.endAddressLabel.text = homeModel.dcAddress;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

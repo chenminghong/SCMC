@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class HomePageModel;
+
 @interface CollectionViewCell : UICollectionViewCell
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *iconImgView;
 @property (weak, nonatomic) IBOutlet UILabel *centreTitleLabel;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *countLabelWidth;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imgViewWidth;
+@property (nonatomic, strong) NSIndexPath *indexPath;
+@property (nonatomic, strong) HomePageModel *homeModel;
 
 /**
  获取cell

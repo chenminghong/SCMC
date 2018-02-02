@@ -45,6 +45,7 @@
         self.tableView.dataSource = self;
         self.tableView.tableFooterView = [UIView new];
         self.tableView.backgroundColor = TOP_NAVIBAR_COLOR;
+        self.tableView.placeHolderView = [NoDataView getPlaceHoldViewWithImgName:@"zanwuxiaoxi" titleText:@"暂无消息"];
 //        [MJRefreshUtil pullDownRefresh:self andScrollView:self.listTableView andAction:@selector(loadDataFromNet)];
     }
     return _tableView;
@@ -53,11 +54,11 @@
 #pragma marks -- TableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return 0;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

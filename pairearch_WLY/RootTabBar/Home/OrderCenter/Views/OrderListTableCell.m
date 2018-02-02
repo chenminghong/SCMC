@@ -17,7 +17,6 @@
     self.tuNumberLabel.textColor = UIColorFromRGB(0x4c4c4c);
     self.orderCountLabel.textColor = UIColorFromRGB(0x4c4c4c);
     self.separatorLine.backgroundColor = TABLE_SEPARATOR_COLOR;
-    self.separatorLineHeight.constant = 0.5;
 }
 
 

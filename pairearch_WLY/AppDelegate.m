@@ -10,7 +10,6 @@
 
 #import "LoginViewController.h"
 #import "RootTabController.h"
-#import "OrdersViewController.h"
 #import <XHVersion.h>
 
 
@@ -211,38 +210,20 @@
     NSString *content = [userInfo valueForKey:@"content"];
     NSDictionary *extras = [userInfo valueForKey:@"extras"];
     if (extras) {
-        NSString *jsonStr = [extras valueForKey:@"params"]; //服务端传递的Extras附加字段，key是自己定义的
+        NSString *jsonStr = [extras valueForKey:@"params"]; //服务端传递的Extras附加字段，key是自己定义的、
         NSData *jsonData = [jsonStr dataUsingEncoding:NSUTF8StringEncoding];
         if (jsonData) {
             NSDictionary *paraDict = [NSJSONSerialization JSONObjectWithData:jsonData options:0 error:nil];
+            NSString *tuCode = paraDict[@"tuCode"];
             [[NSNotificationCenter defaultCenter] postNotificationName:GET_CUSTOM_MESSAGE_NAME object:nil userInfo:paraDict];
+            [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:tuCode.length>0? tuCode:@"tuCode" repeatInterval:0];
             
-            NSString *orderCode = [NSString stringWithFormat:@"%@", paraDict[@"orderCode"]];
-            NSInteger status = [paraDict[@"status"] integerValue];
-            if (status == ORDER_STATUS_224 ||
-                status == ORDER_STATUS_225 ||
-                status == ORDER_STATUS_227) {
-                [[NetworkHelper shareClient] GET:CAN_ENTERFAC_API parameters:@{@"userName":[LoginModel shareLoginModel].tel, @"orderCode":orderCode} progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-                    NSString *str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-                    if (str.integerValue == 1) {
-                        [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:orderCode repeatInterval:0];
-                        [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:[NSString stringWithFormat:@"%@_timer", orderCode] repeatInterval:60];
-                    } else {
-                        [BaseModel removeAllPendingLocalNotification];
-                        [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:orderCode repeatInterval:0];
-                    }
-                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-                    [self addNetLocalNotificationWithDesStr:content.length <= 0? @"":content];
-                }];
-            } else {
-                [BaseModel removeAllPendingLocalNotification];
-                [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:orderCode repeatInterval:0];
-                //        [self addNetLocalNotificationWithDesStr:content.length <= 0? @"":content];
-            }
+            //            [BaseModel removeAllPendingLocalNotification];
+            //            [BaseModel addLocalNotificationWithContent:content.length <= 0? @"":content identifier:orderCode repeatInterval:0];
         }
     }
     
-    
+    /*
     //刷新订单中心列表状态
     RootTabController *rootVC = (RootTabController *)self.window.rootViewController;
     if (rootVC && rootVC.selectedIndex == 1) {
@@ -253,7 +234,7 @@
             [MJRefreshUtil begainRefresh:orderVC.tableView];
         }
     }
-    
+     */
 }
 
 
